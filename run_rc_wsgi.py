@@ -206,7 +206,8 @@ def application(env, start_response):
 #--------------------
 
 host = 'localhost'
-PORT = 9004
+#PORT = 9004	# ichuang
+PORT = 9003	# marty
 
 def runserver():
 	LOG('========> started at %s' % time.ctime(time.time()))
