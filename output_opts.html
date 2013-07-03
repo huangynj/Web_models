@@ -1,0 +1,93 @@
+
+<div class="framel">
+<br><br>
+<form method="POST" action="output.py" name="output_options" id="output_options">
+<p>
+
+<label><h3>Output:</h3><br></label>
+
+          <p>Plot type:      <label><input type="radio" id="plot_type_ts" name="plot_type" value="time_opts" checked> Timeseries &nbsp </label>
+                          <label><input type="radio" id="plot_type_pr" name="plot_type" value="prof_opts"> Profile &nbsp </label>
+                          <label><input type="radio" id="plot_type_th" name="plot_type" value="hov_opts"> Time-height section<br></label>
+
+          Select plotting variable:
+                <label> <select name="timeplot" id="time_opts" class="out_opts"><br>
+                        <option  value="time_sst">Surface temperature</option>
+                        <option  value="time_precip">Precipitation</option>
+                        <option  value="time_T500">500mb Temperature</option>
+                        <option  value="time_radflx">TOA radiative fluxes</option></select></label>
+
+                <label> <select name="profplot" id="prof_opts" class="out_opts"><br>
+                        <option  value="profile_t">Temperature</option>
+                        <option  value="profile_q">Specific humidity</option>
+                        <option  value="profile_rh">Relative humidity</option>
+                        <option  value="profile_cld">Cloud fraction</option>
+                        <option  value="profile_clw">Cloud water content</option>
+                        <option  value="profile_b">Parcel buoyancy</option>
+                        <option  value="profile_MSE">Moist static energy</option>
+                        <option  value="profile_heating">Diabatic heating rates</option>
+                        <option  value="profile_massflux">Convective mass flux</option>
+                        <option  value="profile_entrainment">Convective entrainment</option></select></label>
+
+                <label> <select name="hovplot" id="hov_opts" class="out_opts"><br>
+                        <option  value="hov_t">Temperature</option>
+                        <option  value="hov_q">Relative humidity</option>
+                        <option  value="hov_cld">Cloud fraction</option>
+                        <option  value="hov_buoy">Parcel buoyancy</option></select></label></p>
+
+                 <input type="hidden" id="dirname" name="dirname" value=""> 
+      <script> // Toggle the output options
+           $("input:radio[name='plot_type']").click(function() {      
+              $('.out_opts').hide();
+              $('#' + $("input:radio[name='plot_type']:checked").val()).show();
+           });
+      </script>
+
+<div id="plot_div">
+   <!-- image goes here -->
+</div>
+
+</div>
+
+<div class="framer">
+<!--<div id="outdir">-->
+<!--</div>-->
+        <br><br><br><br><center><input type="submit" value="Replot" id="replot"><br></center>
+	<input type="hidden" name="session" value="">
+
+
+</form>
+</div>
+        <script>
+
+$("#replot").click(function() {
+
+    var url = "./output.py"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#output_options").serialize(), // serializes the form's elements.
+	   //beforeSend: alert($("#output_options").serialize()),
+	   //error: alert(),
+           success: function(data)
+           {
+		//$("#plot_div").html("whoo!");
+         	var d = new Date();
+		var figfile = $("#plot").attr("src")
+		//alert(figfile)
+		$("#plot").attr("src", figfile+"?"+d.getTime());
+           }
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+});
+</script>
+
+
+
+
+
+
+
+

@@ -1,0 +1,116 @@
+========> started at Wed Jul  3 23:07:39 2013
+========> started at Wed Jul  3 23:08:19 2013
+========> started at Wed Jul  3 23:08:40 2013
+========> started at Wed Jul  3 23:11:43 2013
+------------------------------------------------------------
+GET
+user = ichuang@MIT.EDU
+========> started at Wed Jul  3 23:13:52 2013
+========> started at Wed Jul  3 23:15:07 2013
+------------------------------------------------------------
+POST
+user = ichuang@MIT.EDU
+------------------------------------------------------------
+POST
+user = ichuang@MIT.EDU
+========> started at Wed Jul  3 23:15:51 2013
+------------------------------------------------------------
+POST
+user = ichuang@MIT.EDU
+data = FieldStorage(None, None, [MiniFieldStorage('days', '6'), MiniFieldStorage('co2', '360.0'), MiniFieldStorage('S0', '1360.0'), MiniFieldStorage('SSTi', '27'), MiniFieldStorage('dirname', 'n'), MiniFieldStorage('plot_type', 'time_opts'), MiniFieldStorage('timeplot', 'time_sst'), MiniFieldStorage('time_step', '5'), MiniFieldStorage('graph_time', '6'), MiniFieldStorage('avg_time', '10'), MiniFieldStorage('rad_type', '0'), MiniFieldStorage('theta', '15'), MiniFieldStorage('month', '3'), MiniFieldStorage('day', '1'), MiniFieldStorage('hour', '0.0'), MiniFieldStorage('rad_cld', '0'), MiniFieldStorage('rad_freq', '1'), MiniFieldStorage('ch4', '1.72'), MiniFieldStorage('n2o', '310.0'), MiniFieldStorage('cfc11', '280.0'), MiniFieldStorage('cfc12', '484.0'), MiniFieldStorage('dry_conv', 'on'), MiniFieldStorage('moist_conv', 'on'), MiniFieldStorage('turb_flux', 'on'), MiniFieldStorage('alpha', '0.15'), MiniFieldStorage('ugust', '5.0'), MiniFieldStorage('water_frac', '1.0'), MiniFieldStorage('ml_depth', '1.0'), MiniFieldStorage('w_max', '0.0'), MiniFieldStorage('w_p', '500'), MiniFieldStorage('w_T', '1000'), MiniFieldStorage('w_bot', '1000'), MiniFieldStorage('w_top', '100'), MiniFieldStorage('p_pbl', '100'), MiniFieldStorage('session', '')])
+========> started at Wed Jul  3 23:16:19 2013
+------------------------------------------------------------
+POST
+user = ichuang@MIT.EDU
+data = FieldStorage(None, None, [MiniFieldStorage('days', '6'), MiniFieldStorage('co2', '360.0'), MiniFieldStorage('S0', '1360.0'), MiniFieldStorage('SSTi', '27'), MiniFieldStorage('dirname', 'n'), MiniFieldStorage('plot_type', 'time_opts'), MiniFieldStorage('timeplot', 'time_sst'), MiniFieldStorage('time_step', '5'), MiniFieldStorage('graph_time', '6'), MiniFieldStorage('avg_time', '10'), MiniFieldStorage('rad_type', '0'), MiniFieldStorage('theta', '15'), MiniFieldStorage('month', '3'), MiniFieldStorage('day', '1'), MiniFieldStorage('hour', '0.0'), MiniFieldStorage('rad_cld', '0'), MiniFieldStorage('rad_freq', '1'), MiniFieldStorage('ch4', '1.72'), MiniFieldStorage('n2o', '310.0'), MiniFieldStorage('cfc11', '280.0'), MiniFieldStorage('cfc12', '484.0'), MiniFieldStorage('dry_conv', 'on'), MiniFieldStorage('moist_conv', 'on'), MiniFieldStorage('turb_flux', 'on'), MiniFieldStorage('alpha', '0.15'), MiniFieldStorage('ugust', '5.0'), MiniFieldStorage('water_frac', '1.0'), MiniFieldStorage('ml_depth', '1.0'), MiniFieldStorage('w_max', '0.0'), MiniFieldStorage('w_p', '500'), MiniFieldStorage('w_T', '1000'), MiniFieldStorage('w_bot', '1000'), MiniFieldStorage('w_top', '100'), MiniFieldStorage('p_pbl', '100'), MiniFieldStorage('session', '')])
+========> started at Wed Jul  3 23:18:12 2013
+------------------------------------------------------------
+POST
+user = ichuang@MIT.EDU
+data = FieldStorage(None, None, [MiniFieldStorage('days', '6'), MiniFieldStorage('co2', '360.0'), MiniFieldStorage('S0', '1360.0'), MiniFieldStorage('SSTi', '27'), MiniFieldStorage('dirname', 'n'), MiniFieldStorage('plot_type', 'time_opts'), MiniFieldStorage('timeplot', 'time_sst'), MiniFieldStorage('time_step', '5'), MiniFieldStorage('graph_time', '6'), MiniFieldStorage('avg_time', '10'), MiniFieldStorage('rad_type', '0'), MiniFieldStorage('theta', '15'), MiniFieldStorage('month', '3'), MiniFieldStorage('day', '1'), MiniFieldStorage('hour', '0.0'), MiniFieldStorage('rad_cld', '0'), MiniFieldStorage('rad_freq', '1'), MiniFieldStorage('ch4', '1.72'), MiniFieldStorage('n2o', '310.0'), MiniFieldStorage('cfc11', '280.0'), MiniFieldStorage('cfc12', '484.0'), MiniFieldStorage('dry_conv', 'on'), MiniFieldStorage('moist_conv', 'on'), MiniFieldStorage('turb_flux', 'on'), MiniFieldStorage('alpha', '0.15'), MiniFieldStorage('ugust', '5.0'), MiniFieldStorage('water_frac', '1.0'), MiniFieldStorage('ml_depth', '1.0'), MiniFieldStorage('w_max', '0.0'), MiniFieldStorage('w_p', '500'), MiniFieldStorage('w_T', '1000'), MiniFieldStorage('w_bot', '1000'), MiniFieldStorage('w_top', '100'), MiniFieldStorage('p_pbl', '100'), MiniFieldStorage('session', '')])
+hello world
+form=FieldStorage(None, None, [MiniFieldStorage('days', '6'), MiniFieldStorage('co2', '360.0'), MiniFieldStorage('S0', '1360.0'), MiniFieldStorage('SSTi', '27'), MiniFieldStorage('dirname', 'n'), MiniFieldStorage('plot_type', 'time_opts'), MiniFieldStorage('timeplot', 'time_sst'), MiniFieldStorage('time_step', '5'), MiniFieldStorage('graph_time', '6'), MiniFieldStorage('avg_time', '10'), MiniFieldStorage('rad_type', '0'), MiniFieldStorage('theta', '15'), MiniFieldStorage('month', '3'), MiniFieldStorage('day', '1'), MiniFieldStorage('hour', '0.0'), MiniFieldStorage('rad_cld', '0'), MiniFieldStorage('rad_freq', '1'), MiniFieldStorage('ch4', '1.72'), MiniFieldStorage('n2o', '310.0'), MiniFieldStorage('cfc11', '280.0'), MiniFieldStorage('cfc12', '484.0'), MiniFieldStorage('dry_conv', 'on'), MiniFieldStorage('moist_conv', 'on'), MiniFieldStorage('turb_flux', 'on'), MiniFieldStorage('alpha', '0.15'), MiniFieldStorage('ugust', '5.0'), MiniFieldStorage('water_frac', '1.0'), MiniFieldStorage('ml_depth', '1.0'), MiniFieldStorage('w_max', '0.0'), MiniFieldStorage('w_p', '500'), MiniFieldStorage('w_T', '1000'), MiniFieldStorage('w_bot', '1000'), MiniFieldStorage('w_top', '100'), MiniFieldStorage('p_pbl', '100'), MiniFieldStorage('session', '')])
+path=
+------------------------------------------------------------
+POST
+user = ichuang@MIT.EDU
+data = FieldStorage(None, None, [MiniFieldStorage('days', '5'), MiniFieldStorage('co2', '360.0'), MiniFieldStorage('S0', '1360.0'), MiniFieldStorage('SSTi', '27'), MiniFieldStorage('dirname', 'n'), MiniFieldStorage('plot_type', 'time_opts'), MiniFieldStorage('timeplot', 'time_sst'), MiniFieldStorage('time_step', '5'), MiniFieldStorage('graph_time', '6'), MiniFieldStorage('avg_time', '10'), MiniFieldStorage('rad_type', '0'), MiniFieldStorage('theta', '15'), MiniFieldStorage('month', '3'), MiniFieldStorage('day', '1'), MiniFieldStorage('hour', '0.0'), MiniFieldStorage('rad_cld', '0'), MiniFieldStorage('rad_freq', '1'), MiniFieldStorage('ch4', '1.72'), MiniFieldStorage('n2o', '310.0'), MiniFieldStorage('cfc11', '280.0'), MiniFieldStorage('cfc12', '484.0'), MiniFieldStorage('dry_conv', 'on'), MiniFieldStorage('moist_conv', 'on'), MiniFieldStorage('turb_flux', 'on'), MiniFieldStorage('alpha', '0.15'), MiniFieldStorage('ugust', '5.0'), MiniFieldStorage('water_frac', '1.0'), MiniFieldStorage('ml_depth', '1.0'), MiniFieldStorage('w_max', '0.0'), MiniFieldStorage('w_p', '500'), MiniFieldStorage('w_T', '1000'), MiniFieldStorage('w_bot', '1000'), MiniFieldStorage('w_top', '100'), MiniFieldStorage('p_pbl', '100'), MiniFieldStorage('session', '')])
+hello world
+form=FieldStorage(None, None, [MiniFieldStorage('days', '5'), MiniFieldStorage('co2', '360.0'), MiniFieldStorage('S0', '1360.0'), MiniFieldStorage('SSTi', '27'), MiniFieldStorage('dirname', 'n'), MiniFieldStorage('plot_type', 'time_opts'), MiniFieldStorage('timeplot', 'time_sst'), MiniFieldStorage('time_step', '5'), MiniFieldStorage('graph_time', '6'), MiniFieldStorage('avg_time', '10'), MiniFieldStorage('rad_type', '0'), MiniFieldStorage('theta', '15'), MiniFieldStorage('month', '3'), MiniFieldStorage('day', '1'), MiniFieldStorage('hour', '0.0'), MiniFieldStorage('rad_cld', '0'), MiniFieldStorage('rad_freq', '1'), MiniFieldStorage('ch4', '1.72'), MiniFieldStorage('n2o', '310.0'), MiniFieldStorage('cfc11', '280.0'), MiniFieldStorage('cfc12', '484.0'), MiniFieldStorage('dry_conv', 'on'), MiniFieldStorage('moist_conv', 'on'), MiniFieldStorage('turb_flux', 'on'), MiniFieldStorage('alpha', '0.15'), MiniFieldStorage('ugust', '5.0'), MiniFieldStorage('water_frac', '1.0'), MiniFieldStorage('ml_depth', '1.0'), MiniFieldStorage('w_max', '0.0'), MiniFieldStorage('w_p', '500'), MiniFieldStorage('w_T', '1000'), MiniFieldStorage('w_bot', '1000'), MiniFieldStorage('w_top', '100'), MiniFieldStorage('p_pbl', '100'), MiniFieldStorage('session', '')])
+path=
+------------------------------------------------------------
+POST
+user = ichuang@MIT.EDU
+data = FieldStorage(None, None, [MiniFieldStorage('days', '6'), MiniFieldStorage('co2', '360.0'), MiniFieldStorage('S0', '1360.0'), MiniFieldStorage('SSTi', '27'), MiniFieldStorage('dirname', 'n'), MiniFieldStorage('plot_type', 'time_opts'), MiniFieldStorage('timeplot', 'time_sst'), MiniFieldStorage('time_step', '5'), MiniFieldStorage('graph_time', '6'), MiniFieldStorage('avg_time', '10'), MiniFieldStorage('rad_type', '0'), MiniFieldStorage('theta', '15'), MiniFieldStorage('month', '3'), MiniFieldStorage('day', '1'), MiniFieldStorage('hour', '0.0'), MiniFieldStorage('rad_cld', '0'), MiniFieldStorage('rad_freq', '1'), MiniFieldStorage('ch4', '1.72'), MiniFieldStorage('n2o', '310.0'), MiniFieldStorage('cfc11', '280.0'), MiniFieldStorage('cfc12', '484.0'), MiniFieldStorage('dry_conv', 'on'), MiniFieldStorage('moist_conv', 'on'), MiniFieldStorage('turb_flux', 'on'), MiniFieldStorage('alpha', '0.15'), MiniFieldStorage('ugust', '5.0'), MiniFieldStorage('water_frac', '1.0'), MiniFieldStorage('ml_depth', '1.0'), MiniFieldStorage('w_max', '0.0'), MiniFieldStorage('w_p', '500'), MiniFieldStorage('w_T', '1000'), MiniFieldStorage('w_bot', '1000'), MiniFieldStorage('w_top', '100'), MiniFieldStorage('p_pbl', '100'), MiniFieldStorage('session', '')])
+hello world
+form=FieldStorage(None, None, [MiniFieldStorage('days', '6'), MiniFieldStorage('co2', '360.0'), MiniFieldStorage('S0', '1360.0'), MiniFieldStorage('SSTi', '27'), MiniFieldStorage('dirname', 'n'), MiniFieldStorage('plot_type', 'time_opts'), MiniFieldStorage('timeplot', 'time_sst'), MiniFieldStorage('time_step', '5'), MiniFieldStorage('graph_time', '6'), MiniFieldStorage('avg_time', '10'), MiniFieldStorage('rad_type', '0'), MiniFieldStorage('theta', '15'), MiniFieldStorage('month', '3'), MiniFieldStorage('day', '1'), MiniFieldStorage('hour', '0.0'), MiniFieldStorage('rad_cld', '0'), MiniFieldStorage('rad_freq', '1'), MiniFieldStorage('ch4', '1.72'), MiniFieldStorage('n2o', '310.0'), MiniFieldStorage('cfc11', '280.0'), MiniFieldStorage('cfc12', '484.0'), MiniFieldStorage('dry_conv', 'on'), MiniFieldStorage('moist_conv', 'on'), MiniFieldStorage('turb_flux', 'on'), MiniFieldStorage('alpha', '0.15'), MiniFieldStorage('ugust', '5.0'), MiniFieldStorage('water_frac', '1.0'), MiniFieldStorage('ml_depth', '1.0'), MiniFieldStorage('w_max', '0.0'), MiniFieldStorage('w_p', '500'), MiniFieldStorage('w_T', '1000'), MiniFieldStorage('w_bot', '1000'), MiniFieldStorage('w_top', '100'), MiniFieldStorage('p_pbl', '100'), MiniFieldStorage('session', '')])
+path=
+========> started at Wed Jul  3 23:25:12 2013
+------------------------------------------------------------
+POST
+user = ichuang@MIT.EDU
+hello world
+form={'dry_conv': MiniFieldStorage('dry_conv', 'on'), 'plot_type': MiniFieldStorage('plot_type', 'time_opts'), 'n2o': MiniFieldStorage('n2o', '310.0'), 'w_max': MiniFieldStorage('w_max', '0.0'), 'S0': MiniFieldStorage('S0', '1360.0'), 'month': MiniFieldStorage('month', '3'), 'graph_time': MiniFieldStorage('graph_time', '6'), 'session': MiniFieldStorage('session', ''), 'time_step': MiniFieldStorage('time_step', '5'), 'dirname': MiniFieldStorage('dirname', 'n'), 'w_p': MiniFieldStorage('w_p', '500'), 'co2': MiniFieldStorage('co2', '360.0'), 'avg_time': MiniFieldStorage('avg_time', '10'), 'cfc11': MiniFieldStorage('cfc11', '280.0'), 'cfc12': MiniFieldStorage('cfc12', '484.0'), 'turb_flux': MiniFieldStorage('turb_flux', 'on'), 'water_frac': MiniFieldStorage('water_frac', '1.0'), 'moist_conv': MiniFieldStorage('moist_conv', 'on'), 'day': MiniFieldStorage('day', '1'), 'rad_cld': MiniFieldStorage('rad_cld', '0'), 'theta': MiniFieldStorage('theta', '15'), 'timeplot': MiniFieldStorage('timeplot', 'time_sst'), 'w_bot': MiniFieldStorage('w_bot', '1000'), 'SSTi': MiniFieldStorage('SSTi', '27'), 'w_top': MiniFieldStorage('w_top', '100'), 'w_T': MiniFieldStorage('w_T', '1000'), 'alpha': MiniFieldStorage('alpha', '0.15'), 'rad_type': MiniFieldStorage('rad_type', '0'), 'ugust': MiniFieldStorage('ugust', '5.0'), 'rad_freq': MiniFieldStorage('rad_freq', '1'), 'hour': MiniFieldStorage('hour', '0.0'), 'days': MiniFieldStorage('days', '6'), 'ch4': MiniFieldStorage('ch4', '1.72'), 'p_pbl': MiniFieldStorage('p_pbl', '100'), 'ml_depth': MiniFieldStorage('ml_depth', '1.0')}
+path=
+========> started at Wed Jul  3 23:26:15 2013
+------------------------------------------------------------
+POST
+user = ichuang@MIT.EDU
+hello world
+form={'dry_conv': MiniFieldStorage('dry_conv', 'on'), 'plot_type': MiniFieldStorage('plot_type', 'time_opts'), 'n2o': MiniFieldStorage('n2o', '310.0'), 'w_max': MiniFieldStorage('w_max', '0.0'), 'S0': MiniFieldStorage('S0', '1360.0'), 'month': MiniFieldStorage('month', '3'), 'graph_time': MiniFieldStorage('graph_time', '6'), 'session': MiniFieldStorage('session', ''), 'time_step': MiniFieldStorage('time_step', '5'), 'dirname': MiniFieldStorage('dirname', 'n'), 'w_p': MiniFieldStorage('w_p', '500'), 'co2': MiniFieldStorage('co2', '360.0'), 'avg_time': MiniFieldStorage('avg_time', '10'), 'cfc11': MiniFieldStorage('cfc11', '280.0'), 'cfc12': MiniFieldStorage('cfc12', '484.0'), 'turb_flux': MiniFieldStorage('turb_flux', 'on'), 'water_frac': MiniFieldStorage('water_frac', '1.0'), 'moist_conv': MiniFieldStorage('moist_conv', 'on'), 'day': MiniFieldStorage('day', '1'), 'rad_cld': MiniFieldStorage('rad_cld', '0'), 'theta': MiniFieldStorage('theta', '15'), 'timeplot': MiniFieldStorage('timeplot', 'time_sst'), 'w_bot': MiniFieldStorage('w_bot', '1000'), 'SSTi': MiniFieldStorage('SSTi', '27'), 'w_top': MiniFieldStorage('w_top', '100'), 'w_T': MiniFieldStorage('w_T', '1000'), 'alpha': MiniFieldStorage('alpha', '0.15'), 'rad_type': MiniFieldStorage('rad_type', '0'), 'ugust': MiniFieldStorage('ugust', '5.0'), 'rad_freq': MiniFieldStorage('rad_freq', '1'), 'hour': MiniFieldStorage('hour', '0.0'), 'days': MiniFieldStorage('days', '6'), 'ch4': MiniFieldStorage('ch4', '1.72'), 'p_pbl': MiniFieldStorage('p_pbl', '100'), 'ml_depth': MiniFieldStorage('ml_depth', '1.0')}
+path=
+========> started at Wed Jul  3 23:27:04 2013
+------------------------------------------------------------
+POST
+user = ichuang@MIT.EDU
+hello world
+form={'dry_conv': 'on', 'plot_type': 'time_opts', 'n2o': '310.0', 'w_max': '0.0', 'S0': '1360.0', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '5', 'dirname': 'n', 'w_p': '500', 'co2': '360.0', 'avg_time': '10', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'timeplot': 'time_sst', 'w_bot': '1000', 'SSTi': '27', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'rad_freq': '1', 'hour': '0.0', 'days': '6', 'ch4': '1.72', 'p_pbl': '100', 'ml_depth': '1.0'}
+path=
+========> started at Wed Jul  3 23:31:03 2013
+------------------------------------------------------------
+POST
+user = ichuang@MIT.EDU
+hello world
+form={'dry_conv': 'on', 'plot_type': 'time_opts', 'n2o': '310.0', 'w_max': '0.0', 'S0': '1360.0', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '5', 'dirname': 'n', 'w_p': '500', 'co2': '360.0', 'avg_time': '10', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'timeplot': 'time_sst', 'w_bot': '1000', 'SSTi': '27', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'rad_freq': '1', 'hour': '0.0', 'days': '6', 'ch4': '1.72', 'p_pbl': '100', 'ml_depth': '1.0'}
+path=
+dirname=n
+------------------------------------------------------------
+GET
+user = ichuang@MIT.EDU
+get: path=temp/tmpLo2vAI/plot1.png
+------------------------------------------------------------
+GET
+user = ichuang@MIT.EDU
+get: path=temp/tmpLo2vAI/plot1.png
+========> started at Wed Jul  3 23:41:18 2013
+------------------------------------------------------------
+GET
+user = ichuang@MIT.EDU
+get: path=temp/tmpLo2vAI/plot1.png
+done at Wed Jul  3 23:41:21 2013
+------------------------------------------------------------
+POST
+user = ichuang@MIT.EDU
+hello world
+form={'dry_conv': 'on', 'plot_type': 'time_opts', 'n2o': '310.0', 'w_max': '0.0', 'S0': '1360.0', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '5', 'dirname': 'n', 'w_p': '500', 'co2': '360.0', 'avg_time': '10', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'timeplot': 'time_sst', 'w_bot': '1000', 'SSTi': '27', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'rad_freq': '1', 'hour': '0.0', 'days': '6', 'ch4': '1.72', 'p_pbl': '100', 'ml_depth': '1.0'}
+path=
+dirname=n
+done at Wed Jul  3 23:41:25 2013
+------------------------------------------------------------
+GET
+user = ichuang@MIT.EDU
+get: path=temp/tmppDOvC9/plot1.png
+done at Wed Jul  3 23:41:25 2013
+------------------------------------------------------------
+POST
+user = ichuang@MIT.EDU
+hello world
+form={'dry_conv': 'on', 'plot_type': 'time_opts', 'n2o': '310.0', 'w_max': '0.0', 'S0': '1360.0', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '5', 'dirname': 'n', 'w_p': '500', 'co2': '360.0', 'avg_time': '10', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'timeplot': 'time_sst', 'w_bot': '1000', 'SSTi': '28', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'rad_freq': '1', 'hour': '0.0', 'days': '5', 'ch4': '1.72', 'p_pbl': '100', 'ml_depth': '1.0'}
+path=
+dirname=n
+done at Wed Jul  3 23:41:59 2013
+------------------------------------------------------------
+GET
+user = ichuang@MIT.EDU
+get: path=temp/tmphuTjTs/plot1.png
+done at Wed Jul  3 23:42:00 2013
