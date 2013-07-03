@@ -123,7 +123,7 @@ def do_POST(form, path):
         
         # Print the figure
         if os.path.isfile(fig_file):
-        	image_code =  "<img id=plot src=/rc2/"+fig_file+" alt=\"RC model output\" width=\"600\" height=\"450\" />"
+        	image_code =  "<img id=plot src=/rc/"+fig_file+" alt=\"RC model output\" width=\"600\" height=\"450\" />"
         else:
         	image_code = '<html><h2>Plotting error</h2>'+'<p>There was an error in creating the plot you asked for. <br>'+'You can try plotting something else, or rerun the simulation.'
         

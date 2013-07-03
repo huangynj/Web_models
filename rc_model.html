@@ -129,7 +129,7 @@
 
    <h2>One column radiative-convective model</h2>
 
-   <form method="POST" action="/rc2" name="model_options" id="model_options">
+   <form method="POST" action="/rc" name="model_options" id="model_options">
    <p>
 
 
@@ -369,7 +369,7 @@
 <script>
 $("#run_model").click(function() {
 
-    var url = "/rc2"; // the script where you handle the form input.
+    var url = "/rc"; // the script where you handle the form input.
 
     $.ajax({
            type: "POST",
