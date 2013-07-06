@@ -1,9 +1,10 @@
 
 <div class="framel">
 <br><br>
-<form method="POST" action="output.py" name="output_options" id="output_options">
+<form method="POST" action="/rc" name="output_options" id="output_options">
 <p>
 
+<input type="hidden" name="replot" value="yes">
 <label><h3>Output:</h3><br></label>
 
           <p>Plot type:      <label><input type="radio" id="plot_type_ts" name="plot_type" value="time_opts" checked> Timeseries &nbsp </label>
@@ -53,7 +54,7 @@
 <!--<div id="outdir">-->
 <!--</div>-->
         <br><br><br><br><center><input type="submit" value="Replot" id="replot"><br></center>
-	<input type="hidden" name="session" value="">
+	<input type="hidden" name="plot_again" value="">
 
 
 </form>
@@ -62,7 +63,7 @@
 
 $("#replot").click(function() {
 
-    var url = "./output.py"; // the script where you handle the form input.
+    var url = "/rc"; // the script where you handle the form input.
 
     $.ajax({
            type: "POST",

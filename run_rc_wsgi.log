@@ -114,3 +114,282 @@ GET
 user = ichuang@MIT.EDU
 get: path=temp/tmphuTjTs/plot1.png
 done at Wed Jul  3 23:42:00 2013
+========> started at Sat Jul  6 16:50:14 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'dry_conv': 'on', 'plot_type': 'time_opts', 'n2o': '310.0', 'w_max': '0.0', 'S0': '1360.0', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '5', 'dirname': 'n', 'w_p': '500', 'co2': '360.0', 'avg_time': '10', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'timeplot': 'time_sst', 'w_bot': '1000', 'SSTi': '27', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'rad_freq': '1', 'hour': '0.0', 'days': '5', 'ch4': '1.72', 'p_pbl': '100', 'ml_depth': '1.0'}
+path=
+dirname=n
+========> started at Sat Jul  6 16:50:36 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'dry_conv': 'on', 'plot_type': 'time_opts', 'n2o': '310.0', 'w_max': '0.0', 'S0': '1360.0', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '5', 'dirname': 'n', 'w_p': '500', 'co2': '360.0', 'avg_time': '10', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'timeplot': 'time_sst', 'w_bot': '1000', 'SSTi': '27', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'rad_freq': '1', 'hour': '0.0', 'days': '5', 'ch4': '1.72', 'p_pbl': '100', 'ml_depth': '1.0'}
+path=
+dirname=n
+done at Sat Jul  6 16:50:43 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpGwvEte/plot1.png
+done at Sat Jul  6 16:50:43 2013
+========> started at Sat Jul  6 16:51:15 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'dry_conv': 'on', 'plot_type': 'time_opts', 'n2o': '310.0', 'w_max': '0.0', 'S0': '1360.0', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '5', 'dirname': 'n', 'w_p': '500', 'co2': '360.0', 'avg_time': '10', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'timeplot': 'time_sst', 'w_bot': '1000', 'SSTi': '27', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'rad_freq': '1', 'hour': '0.0', 'days': '5', 'ch4': '1.72', 'p_pbl': '100', 'ml_depth': '1.0'}
+path=
+dirname=n
+done at Sat Jul  6 16:51:20 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpevPYOJ/plot1.png
+done at Sat Jul  6 16:51:20 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'profplot': 'profile_t', 'plot_type': 'hov_opts', 'timeplot': 'time_sst', 'dirname': 'temp/tmpevPYOJ', 'hovplot': 'hov_t'}
+path=
+dirname=temp/tmpevPYOJ
+========> started at Sat Jul  6 16:52:01 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'dry_conv': 'on', 'plot_type': 'time_opts', 'n2o': '310.0', 'w_max': '0.0', 'S0': '1360.0', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '5', 'dirname': 'n', 'w_p': '500', 'co2': '360.0', 'avg_time': '10', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'timeplot': 'time_sst', 'w_bot': '1000', 'SSTi': '27', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'rad_freq': '1', 'hour': '0.0', 'days': '5', 'ch4': '1.72', 'p_pbl': '100', 'ml_depth': '1.0'}
+path=
+dirname=n
+done at Sat Jul  6 16:52:07 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpqSls8I/plot1.png
+done at Sat Jul  6 16:52:07 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'plot_type': 'hov_opts', 'timeplot': 'time_sst', 'replot': 'yes', 'hovplot': 'hov_t', 'profplot': 'profile_t', 'dirname': 'temp/tmpqSls8I'}
+path=
+dirname=temp/tmpqSls8I
+done at Sat Jul  6 16:52:11 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpqSls8I/plot1.png
+done at Sat Jul  6 16:52:11 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'dry_conv': 'on', 'plot_type': 'time_opts', 'n2o': '310.0', 'w_max': '0.0', 'S0': '1360.0', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '5', 'dirname': 'temp/tmpqSls8I', 'w_p': '500', 'co2': '360.0', 'avg_time': '10', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'timeplot': 'time_sst', 'w_bot': '1000', 'SSTi': '27', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'restart': 'on', 'rad_freq': '1', 'hour': '0.0', 'days': '5', 'ch4': '1.72', 'p_pbl': '100', 'ml_depth': '1.0'}
+path=
+dirname=temp/tmpqSls8I
+done at Sat Jul  6 16:52:21 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpqSls8I/plot1.png
+done at Sat Jul  6 16:52:21 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'plot_type': 'time_opts', 'timeplot': 'time_sst', 'replot': 'yes', 'hovplot': 'hov_t', 'profplot': 'profile_t', 'dirname': 'temp/tmpqSls8I'}
+path=
+dirname=temp/tmpqSls8I
+done at Sat Jul  6 16:52:26 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpqSls8I/plot1.png
+done at Sat Jul  6 16:52:26 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'dry_conv': 'on', 'plot_type': 'time_opts', 'n2o': '310.0', 'w_max': '0.0', 'S0': '1360.0', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '5', 'dirname': 'temp/tmpqSls8I', 'w_p': '500', 'co2': '360.0', 'avg_time': '10', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'timeplot': 'time_sst', 'w_bot': '1000', 'SSTi': '27', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'rad_freq': '1', 'hour': '0.0', 'days': '5', 'ch4': '1.72', 'p_pbl': '100', 'ml_depth': '1.0'}
+path=
+dirname=temp/tmpqSls8I
+done at Sat Jul  6 16:52:36 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpqSls8I/plot1.png
+done at Sat Jul  6 16:52:36 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'plot_type': 'time_opts', 'timeplot': 'time_sst', 'replot': 'yes', 'hovplot': 'hov_t', 'profplot': 'profile_t', 'dirname': 'temp/tmpqSls8I'}
+path=
+dirname=temp/tmpqSls8I
+done at Sat Jul  6 16:52:38 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpqSls8I/plot1.png
+done at Sat Jul  6 16:52:38 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'plot_type': 'time_opts', 'timeplot': 'time_sst', 'replot': 'yes', 'hovplot': 'hov_t', 'profplot': 'profile_t', 'dirname': 'temp/tmpqSls8I'}
+path=
+dirname=temp/tmpqSls8I
+done at Sat Jul  6 16:52:40 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpqSls8I/plot1.png
+done at Sat Jul  6 16:52:40 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'dry_conv': 'on', 'plot_type': 'time_opts', 'n2o': '310.0', 'w_max': '0.0', 'S0': '1360.0', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '5', 'dirname': 'n', 'w_p': '500', 'co2': '360.0', 'avg_time': '10', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'timeplot': 'time_sst', 'w_bot': '1000', 'SSTi': '27', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'rad_freq': '1', 'hour': '0.0', 'days': '5', 'ch4': '1.72', 'p_pbl': '100', 'ml_depth': '1.0'}
+path=
+dirname=n
+done at Sat Jul  6 16:52:43 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpKr2QVO/plot1.png
+done at Sat Jul  6 16:52:43 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'plot_type': 'prof_opts', 'timeplot': 'time_sst', 'replot': 'yes', 'hovplot': 'hov_t', 'profplot': 'profile_t', 'dirname': 'temp/tmpKr2QVO'}
+path=
+dirname=temp/tmpKr2QVO
+done at Sat Jul  6 16:52:54 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpKr2QVO/plot1.png
+done at Sat Jul  6 16:52:54 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'plot_type': 'time_opts', 'timeplot': 'time_sst', 'replot': 'yes', 'hovplot': 'hov_t', 'profplot': 'profile_t', 'dirname': 'temp/tmpKr2QVO'}
+path=
+dirname=temp/tmpKr2QVO
+done at Sat Jul  6 16:52:59 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpKr2QVO/plot1.png
+done at Sat Jul  6 16:52:59 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'plot_type': 'hov_opts', 'timeplot': 'time_sst', 'replot': 'yes', 'hovplot': 'hov_t', 'profplot': 'profile_t', 'dirname': 'temp/tmpKr2QVO'}
+path=
+dirname=temp/tmpKr2QVO
+done at Sat Jul  6 16:53:03 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpKr2QVO/plot1.png
+done at Sat Jul  6 16:53:03 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'plot_type': 'hov_opts', 'timeplot': 'time_sst', 'replot': 'yes', 'hovplot': 'hov_q', 'profplot': 'profile_t', 'dirname': 'temp/tmpKr2QVO'}
+path=
+dirname=temp/tmpKr2QVO
+done at Sat Jul  6 16:53:08 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpKr2QVO/plot1.png
+done at Sat Jul  6 16:53:08 2013
+========> started at Sat Jul  6 17:02:23 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'dry_conv': 'on', 'plot_type': 'time_opts', 'n2o': '310.0', 'w_max': '0.0', 'S0': '1360.0', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '5', 'dirname': 'n', 'w_p': '500', 'co2': '360.0', 'avg_time': '10', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'timeplot': 'time_sst', 'w_bot': '1000', 'SSTi': '27', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'rad_freq': '1', 'hour': '0.0', 'days': '5', 'ch4': '1.72', 'p_pbl': '100', 'ml_depth': '1.0'}
+path=
+dirname=n
+done at Sat Jul  6 17:02:30 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpZrWu0f/plot1.png
+done at Sat Jul  6 17:02:30 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'plot_type': 'hov_opts', 'timeplot': 'time_sst', 'replot': 'yes', 'hovplot': 'hov_t', 'profplot': 'profile_t', 'dirname': 'temp/tmpZrWu0f'}
+path=
+dirname=temp/tmpZrWu0f
+done at Sat Jul  6 17:02:34 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpZrWu0f/plot1.png
+done at Sat Jul  6 17:02:34 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'plot_type': 'prof_opts', 'timeplot': 'time_sst', 'replot': 'yes', 'hovplot': 'hov_t', 'profplot': 'profile_t', 'dirname': 'temp/tmpZrWu0f'}
+path=
+dirname=temp/tmpZrWu0f
+done at Sat Jul  6 17:02:37 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpZrWu0f/plot1.png
+done at Sat Jul  6 17:02:37 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'dry_conv': 'on', 'plot_type': 'time_opts', 'n2o': '310.0', 'w_max': '0.0', 'S0': '1360.0', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '5', 'dirname': 'temp/tmpZrWu0f', 'w_p': '500', 'co2': '360.0', 'avg_time': '10', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'timeplot': 'time_sst', 'w_bot': '1000', 'SSTi': '27', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'restart': 'on', 'rad_freq': '1', 'hour': '0.0', 'days': '5', 'ch4': '1.72', 'p_pbl': '100', 'ml_depth': '1.0'}
+path=
+dirname=temp/tmpZrWu0f
+done at Sat Jul  6 17:02:43 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpZrWu0f/plot1.png
+done at Sat Jul  6 17:02:43 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'plot_type': 'hov_opts', 'timeplot': 'time_sst', 'replot': 'yes', 'hovplot': 'hov_t', 'profplot': 'profile_t', 'dirname': 'temp/tmpZrWu0f'}
+path=
+dirname=temp/tmpZrWu0f
+done at Sat Jul  6 17:02:48 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpZrWu0f/plot1.png
+done at Sat Jul  6 17:02:48 2013
+------------------------------------------------------------
+POST
+user = mssingh@MIT.EDU
+hello world
+form={'plot_type': 'prof_opts', 'timeplot': 'time_sst', 'replot': 'yes', 'hovplot': 'hov_t', 'profplot': 'profile_t', 'dirname': 'temp/tmpZrWu0f'}
+path=
+dirname=temp/tmpZrWu0f
+done at Sat Jul  6 17:02:52 2013
+------------------------------------------------------------
+GET
+user = mssingh@MIT.EDU
+get: path=temp/tmpZrWu0f/plot1.png
+done at Sat Jul  6 17:02:52 2013

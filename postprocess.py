@@ -182,7 +182,7 @@ def output_control(form,dirname):
 		exit()
 
 
-
+        mp.clf()
 	return filename
 
 ######################################################################
