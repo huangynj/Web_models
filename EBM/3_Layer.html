@@ -1,0 +1,364 @@
+<html>
+<head>
+	<title>N-layer radiative equilibrium model</title>
+
+ 	<!-- Style sheet for fonts etc -->
+	<LINK href="test_style.css" rel="stylesheet" type="text/css"> 
+ 
+
+
+	<style>
+	  h1 {
+	     color: #3c3c3c;
+	     font: normal 2em/1.4em "Open Sans", Verdana, Geneva, sans-serif;
+	     letter-spacing: 1px;
+	     margin-bottom: 30px;
+	     text-align: center; }
+
+	  h2 {
+	     color: #646464;
+	     font: normal 1.2em/1.2em Georgia, Cambria, "Times New Roman", Times, serif;
+	     letter-spacing: 1px;
+	     margin-bottom: 15px;
+	     text-transform: uppercase;
+	     -webkit-font-smoothing: antialiased; }
+
+
+
+
+          h3 {
+             color: #3c3c3c;
+             font: normal 1.2em/1.2em Georgia, Cambria, "Times New Roman", Times, serif;
+             margin: 0px; }
+
+          .framel {
+	     width: 70%;
+	     float: left;
+	     overflow-y: none;
+	  }
+
+
+          .framer {
+	     width: 30%;
+	     float: left;
+	     overflow-y: none;
+	  }
+
+	  .label {
+	      display: inline-block;
+	      width: 250px;
+	      font: inherit;
+	      color: inherit; }
+          
+	  .dates {
+	      width: 160px; 
+	      display: inline-block;
+	      font: inherit;
+	      color: inherit; }
+
+
+	  .chkbx {
+	      margin-left: 20px; 
+	      font: inherit;
+	      color: inherit; }
+
+	  .form_input {
+              color: #3c3c3c;
+              font: 300 1rem/1.6rem Georgia, Cambria, "Times New Roman", Times, serif;
+              margin-bottom: 5px;
+              text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+              -webkit-font-smoothing: antialiased; }
+
+	  p {
+              color: #3c3c3c;
+              font: 300 1rem/1.6rem Georgia, Cambria, "Times New Roman", Times, serif;
+              margin-bottom: 5px;
+	      margin-left: 0px; 
+              text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+              -webkit-font-smoothing: antialiased; }
+ 
+	</style>
+
+
+
+	<!-- Load in the jquery and jquery-ui language components -->
+	<script src="jquery-1.9.1.min.js"></script>
+        <script src="numeric-1.2.6.min.js"></script>
+
+
+
+	<!-- Script to read variables from the URL -->
+	<script>
+		function getUrlVars() {
+	    	   var vars = {};
+	    	   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        	      vars[key] = value;
+    		   });
+    	           return vars;
+		}
+	</script>
+
+</head>
+
+
+<body>
+<div class="framel">
+
+
+   <h2>N-layer radiative equilirbium model</h2>
+
+   <form method="POST" action="N_layer.py" name="model_options" id="model_options">
+   <p>
+
+     <!-- BASIC PARAMETERS -->
+     <p>Set the value of the solar constant, S<sub>0</sub>, the planetary albedo &alpha;<sub>p</sub>, and the long-wave emissivity of each atmospheric layer &epsilon;. Then click "run model" to solve for the radiative equilibrium temperature of each layer. Each atmospheric layer is assumed to be transparent to solar radiation.</p><br>
+
+<br><br> 
+
+<table>
+  <tr>
+    <td style="vertical-align:middle">S<sub>0</sub> = </td><td style="vertical-align:middle"><input type="text" size="4" name="S0" id="S0" value="1370"> W/m<sup>2</sup></td><td style="vertical-align:middle"><img align="right" src="sun.png" width="100" height="100"></td><td style="vertical-align:middle"></td>
+  </tr>
+  <tr id="lay3">
+    <td style="vertical-align:middle">&epsilon; = <br>&alpha; = </td><td style="vertical-align:middle"><input type="text" size="2" name="e3" id="e3" value="1.0"><br><input type="text" size="2" name="a3" id="a3" value="0.2"></td><td style="vertical-align:middle"><img src="layer.png" width="260" height="100"></td><td style="vertical-align:middle" id="T3"></td>
+  </tr>
+  <tr id="lay2">
+    <td style="vertical-align:middle">&epsilon; = </td><td style="vertical-align:middle"><input type="text" size="2" name="e2" id="e2" value="1.0"></td><td style="vertical-align:middle"><img src="layer.png" width="260" height="100"></td><td style="vertical-align:middle" id="T2"></td>
+  </tr>
+  <tr id="lay1">
+    <td style="vertical-align:middle">&epsilon; = </td><td style="vertical-align:middle"><input type="text" size="2" name="e1" id="e1" value="1.0"></td><td style="vertical-align:middle"><img src="layer.png" width="260" height="100"></td><td style="vertical-align:middle" id="T1"></td>
+  </tr>
+  <tr id="surf">
+    <td style="vertical-align:middle">&alpha;<sub>p</sub> = </td><td style="vertical-align:middle"><input type="text" size="2" name="alpha" id="alpha" value="0.3"></td><td style="vertical-align:middle"><img src="surface.png" width="260" height="80"></td><td style="vertical-align:middle" id="Ts"></td>
+  </tr>
+</table>
+
+
+
+</div>
+
+
+
+<div class="framer">
+	 <br><br><br>
+         <center><input type="submit" value="Run model" id="run_model"><br></center>
+         <input type="hidden" name="session">
+
+   <div id="put"></div>
+
+   </form>
+
+
+<script>
+$("#run_model").click(function() {
+
+    jQuery('input[type=input], input').attr('disabled', true);
+    
+    // Input variables 
+    var S0 = $('#S0').val() 
+    var alpha = $('#alpha').val() 
+    var e1 = $('#e1').val() 
+    var e2 = $('#e2').val() 
+
+    sig    = 5.67e-8            //  Stefan-Boltzmann constant 
+
+   
+    Te = Math.pow(S0*(1-alpha)/(4*sig),0.25) //  Effective emission temperature in absence of clouds
+
+
+    f1   = 0.15;
+    f2   = 0.1;                 // Fraction of clouds in each layer
+    f3   = 0.6;
+
+
+    ac1  = 0.8;
+    ac2  = 0.65;                // Cloud albedos in each layer
+    ac3  = 0.4;
+
+    ecloud1 = 0.9;
+    ecloud2 =0.85;              // Cloud emissivities in each layer
+    ecloud3 =0.8;
+
+    ec3= 0.55;                  // Background clear sky emissivity 
+
+    stoptime = 100;             // Nondimensional time that integration stops
+    dt = 0.001;                 // Nondimensional time step
+    al = 500;                   // Convective relaxation parameter
+    asf = 0.2;                  // Asselin filter for time stepping
+
+    dtt = numeric.mul(2,dt);
+
+    // calculate effective emissivity of layer 3
+    e3 = (1-f3)*ec3 +f3*ecloud3;
+
+    ftemp = (1-ac1*f1)*(1-ac2*f2)*(1-ac3*f3);
+    ftemp2=1-ftemp;
+
+    //
+    //  Initial guess
+    //
+    T31 = 0.75;
+    T21 = T31+.147;
+    T11 = T21+0.088;
+    Ts1 = T11+0.056;
+
+    T32=Math.pow(T31,4);
+    T21=Math.pow(T21,4);
+    T11=Math.pow(T11,4);
+    Ts1=Math.pow(Ts1,4);
+
+
+
+    T32=T31;
+    T22=T21;
+    T12=T11;
+    Ts2=Ts1;
+
+    Nsteps = Math.floor(stoptime/dt);
+
+
+    for(j=1;j<Nsteps;++j){
+ 
+       T3=Math.pow(T31,0.25);
+       T2=Math.pow(T21,0.25);
+       T1=Math.pow(T11,0.25);
+       Ts=Math.pow(Ts1,0.25);
+    
+       //  Re-calculate clear-sky and total emissivities taking into account 
+       //  variable water vapor. Added according to notes by Malte Jansen, 10/2007
+
+       Tsc=Te*Ts-273.15;
+       T1c=Te*T1-273.15;
+       T2c=Te*T2-273.15;
+       T3c=Te*T3-273.15;
+
+       // Saturation vapor pressures in layers 1 and 2
+       es1=6.112*Math.exp(17.67*T1c/(243.5+T1c));
+       es2=6.112*Math.exp(17.67*T2c/(243.5+T2c));
+
+       // Clear sky emissivities in layers 1 and 2
+       ec1=1-(1-ec3)*Math.exp(-0.21*es1);
+       ec2=1-(1-ec3)*Math.exp(-0.41*es2);
+      
+       // Effective emissivities in layers 1 and 2
+       e1=(1-f1)*ec1+f1*ecloud1;
+       e2=(1-f2)*ec2+f2*ecloud2;
+
+      //
+      // end mods
+      //
+      //   Tgraph(j)=Te.*Ts;
+      //   Time(j)=dt.*j;
+
+      //
+      //  Introduce temperature-dependent moist adiabatic lapse rates.  11/2007.   
+
+      // Saturation vapor pressure at surface
+      //
+      ess=6.112*Math.exp(17.67*Tsc/(243.5+Tsc));
+      es3=6.112*Math.exp(17.67*T3c/(243.5+T3c));
+
+      //   
+      // Saturation specific humidities
+      //
+      qs=0.622*ess/1000;
+      q1=0.622*es1/800;
+      q2=0.622*es2/600;
+      q3=0.622*es3/400;
+
+
+      //
+      // Moist adiabatic temperature differences across layers
+      //
+      gam1= 0.1*(1+8.7e3*(qs+q1)/(Te*(Ts+T1)))/(1+1.36e7*2*(qs+q1)/Math.pow(Te*(Ts+T1),2));
+      gam2=0.12*(1+8.7e3*(q1+q2)/(Te*(T1+T2)))/(1+1.36e7*2*(q1+q2)/Math.pow(Te*(T1+T2),2));
+      gam3=0.14*(1+8.7e3*(q2+q3)/(Te*(T2+T3)))/(1+1.36e7*2*(q2+q3)/Math.pow(Te*(T2+T3),2));
+
+      //  
+      // Convective heat fluxes
+      //
+      fcon1=al*Math.max(0,(Ts-T1-gam1));
+      fcon2=al*Math.max(0,(T1-T2-gam2));
+      fcon3=al*Math.max(0,(T2-T3-gam3));
+
+      //
+      //  Mods 10/17/2008
+      //
+      f3=1-Math.exp(-5*fcon3);
+      ecloud3=1-Math.exp(-2.8*f3);
+      e3=(1-f3)*ec3+f3*ecloud3;
+      ftemp=(1-ac1*f1)*(1-ac2*f2)*(1-ac3*f3);
+      ftemp2=1-ftemp;
+
+      //
+      // Calculate entropy production
+      //
+      //Sprod(j)=fcon1.*(1./T1-1./Ts)+fcon2.*(1./T2-1./T1)+fcon3.*(1./T3-1./T2);
+      //   
+
+      //
+      //  End mods
+      //
+
+      dts=(1-ftemp2)+e1*T12+e2*(1-e1)*T22+e3*(1-e2)*(1-e1)*T32-Ts1-fcon1;
+      dt1=e1*(Ts2+e2*T22+(1-e2)*e3*T32-2*T11)+fcon1-fcon2;
+      dt2=e2*(e1*T12+(1-e1)*Ts2+e3*T32-2*T21)+fcon2-fcon3;
+      dt3=e3*((1-e1)*(1-e2)*Ts2+(1-e2)*e1*T12+e2*T22-2*T31)+fcon3;
+      
+
+      Ts3=Ts1+dtt*dts;
+      T13=T11+dtt*dt1;
+      T23=T21+dtt*dt2;
+      T33=T31+dtt*dt3;
+      //
+      //  Apply Asselin filter 
+      //
+      Ts1=Ts2+asf*(Ts1+Ts3-2*Ts2);
+      T11=T12+asf*(T11+T13-2*T12);
+      T21=T22+asf*(T21+T23-2*T22);
+      T31=T32+asf*(T31+T33-2*T32);
+
+      Ts2=Ts3;
+      T12=T13;
+      T22=T23;
+      T32=T33;
+
+
+
+    }
+
+
+
+
+      Ts = Te*Ts;
+      T1 = Te*T1;
+      T2 = Te*T2;
+      T3 = Te*T3;
+
+
+
+                $('#Ts').html("T<sub>s</sub> = "+Ts.toFixed(1)+" K")
+                $('#T1').html("T<sub>1</sub> = "+T1.toFixed(1)+" K")
+                $('#T2').html("T<sub>2</sub> = "+T2.toFixed(1)+" K")
+                $('#T3').html("T<sub>3</sub> = "+T3.toFixed(1)+" K")
+               jQuery('input[type=input], input').attr('disabled', false);
+
+    return false; // avoid to execute the actual submit of the form.
+});
+</script>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+</body>
+
+</html>
+
