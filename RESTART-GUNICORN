@@ -1,4 +1,0 @@
-#!/bin/bash
-kill `cat gunicorn.pid`
-sleep 1
-./START-GUNICORN

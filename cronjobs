@@ -1,2 +1,0 @@
-0 * * * * /usr/bin/tmpwatch 10m /afs/athena.mit.edu/user/m/s/mssingh/web_scripts/12.340x/temp > /dev/null
-0 * * * * /usr/bin/tmpwatch 10m /afs/athena.mit.edu/user/m/s/mssingh/web_scripts/12.811/temp > /dev/null
