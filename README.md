@@ -89,6 +89,7 @@ eaps-12340x web-interface models
                * rc_web             - fortran executable
                * O3.in              - Ozone input profile
                * profile.reference  - Reference profile used for fixed cloud simulations
+               * src/               - Source code ofor RC model
 
             ### log/ ###
 
