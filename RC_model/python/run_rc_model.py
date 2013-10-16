@@ -13,31 +13,27 @@ import json
 import multiprocessing
 import threading
 
-
 import sys
-from mime import *
 
 
 # Modules specific to RC model
+from mime import *
 from write_input    import write_params_in,write_sounding_in
 from postprocess    import output_control, get_output
 from plot_model_log import plot_model_log
 
 # Initial setup  ###################################################################################
 
-# Directory where each model instance will be stored
-TEMPDIR = 'temp'
-os.environ['MPLCONFIGDIR'] = './'+TEMPDIR+'/'
 
-# Default user
-DEFAULT_USER = "unknown"
+
+
+### Parameters for server instance ###
 
 # Number of simultaneous model instances allowed
 num_threads = 2
 
 # max time for any given simulation (seconds)
 max_simulation_time = 5*60
-
 
 # Verbosity of log (0,0.5,1,2)
 verbose = 0
@@ -47,8 +43,9 @@ PIDFILE    = "../log/rc_model.pid"
 LOGFILE    = "../log/rc_model_log.txt"
 Q_STATFILE = "../log/queue_status.txt"
 REPORTDIR  = "../log/reports/"
-TMPWATCH   = "/home/mssingh/bin/tmpwatch"
 
+# Location of the tmpwatch command
+TMPWATCH   = "/home/mssingh/bin/tmpwatch"
 
 # Name of output html template
 output_opts = '../output_opts.html'
@@ -58,6 +55,16 @@ model_exec = '../model/rc_web'
 
 # relative path to O3 input file
 O3in = '../model/O3.in'
+
+# Directory where each model instance will be stored
+TEMPDIR = 'temp'
+
+### Setup server instance ###
+
+os.environ['MPLCONFIGDIR'] = './'+TEMPDIR+'/'
+
+# Default user
+DEFAULT_USER = "unknown"
 
 # Send PID to logfile
 open(PIDFILE,'w').write(str(os.getpid()))

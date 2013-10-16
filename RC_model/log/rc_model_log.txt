@@ -256,3 +256,7 @@ Wed Oct 16 15:35:08 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpJORfZZ, le
 Wed Oct 16 15:35:08 2013: run: wait time: temp/tmpJORfZZ: 0.00149893760681
 Wed Oct 16 15:35:10 2013: run: run time: temp/tmpJORfZZ: 0.0937422990799
 Wed Oct 16 15:35:11 2013: run: success: temp/tmpJORfZZ
+Wed Oct 16 17:21:46 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpJORfZZ, length: 20 days
+Wed Oct 16 17:21:46 2013: run: wait time: temp/tmpJORfZZ: 0.000196933746338
+Wed Oct 16 17:21:48 2013: run: run time: temp/tmpJORfZZ: 0.0907296061516
+Wed Oct 16 17:21:48 2013: run: success: temp/tmpJORfZZ
