@@ -1,0 +1,258 @@
+Tue Oct 15 15:58:18 2013: ==================================================
+Tue Oct 15 15:58:18 2013: === Starting Radiative-convective model server ===
+Tue Oct 15 15:58:18 2013: ===                                               
+Tue Oct 15 15:58:18 2013: === Using 2 threads for RC model                 
+Tue Oct 15 15:58:18 2013: === On 1 CPUs                                    
+Tue Oct 15 15:58:18 2013: ===                                               
+Tue Oct 15 15:58:18 2013: === Max simulation time: 300 seconds               
+Tue Oct 15 15:58:18 2013: ==================================================
+Tue Oct 15 15:58:22 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpWoFG8k, length: 20 days
+Tue Oct 15 15:58:22 2013: run: wait time: temp/tmpWoFG8k: 0.00117897987366
+Tue Oct 15 15:58:24 2013: run: return code: 0
+Tue Oct 15 15:58:24 2013: run: run time: temp/tmpWoFG8k: 0.0882268071175
+Tue Oct 15 15:58:24 2013: run: success: temp/tmpWoFG8k
+Tue Oct 15 15:58:25 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpWoFG8k, length: 20 days
+Tue Oct 15 15:58:25 2013: run: wait time: temp/tmpWoFG8k: 0.000205993652344
+Tue Oct 15 15:58:27 2013: run: return code: 0
+Tue Oct 15 15:58:27 2013: run: run time: temp/tmpWoFG8k: 0.0913877487183
+Tue Oct 15 15:58:28 2013: run: success: temp/tmpWoFG8k
+Tue Oct 15 15:58:29 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpWoFG8k, length: 200 days
+Tue Oct 15 15:58:29 2013: run: wait time: temp/tmpWoFG8k: 0.000198841094971
+Tue Oct 15 15:58:42 2013: Submit simulation: mssingh@MIT.EDU: n, length: 20 days
+Tue Oct 15 15:58:42 2013: run: wait time: temp/tmp54SvzW: 0.000147104263306
+Tue Oct 15 15:58:55 2013: Submit simulation: mssingh@MIT.EDU: n, length: 20 days
+Tue Oct 15 15:58:58 2013: run: killing simulation: temp/tmpWoFG8k
+Tue Oct 15 15:58:58 2013: Run: Model exit with code 143 - temp/tmpWoFG8k
+Tue Oct 15 15:58:58 2013: run: return code: 143
+Tue Oct 15 15:58:58 2013: run: wait time: temp/tmpaSPh10: 3.06215620041
+Tue Oct 15 15:59:22 2013: run: return code: 0
+Tue Oct 15 15:59:22 2013: run: run time: temp/tmp54SvzW: 2.02720745802
+Tue Oct 15 15:59:23 2013: run: success: temp/tmp54SvzW
+Tue Oct 15 15:59:28 2013: === Running scheduled tasks
+Tue Oct 15 15:59:33 2013: run: return code: 0
+Tue Oct 15 15:59:33 2013: run: run time: temp/tmpaSPh10: 1.71220110655
+Tue Oct 15 15:59:33 2013: run: success: temp/tmpaSPh10
+Tue Oct 15 16:01:20 2013: ==================================================
+Tue Oct 15 16:01:20 2013: === Starting Radiative-convective model server ===
+Tue Oct 15 16:01:20 2013: ===                                               
+Tue Oct 15 16:01:20 2013: === Using 2 threads for RC model                 
+Tue Oct 15 16:01:20 2013: === On 1 CPUs                                    
+Tue Oct 15 16:01:20 2013: ===                                               
+Tue Oct 15 16:01:20 2013: === Max simulation time: 300 seconds               
+Tue Oct 15 16:01:20 2013: ==================================================
+Tue Oct 15 16:01:22 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpWoFG8k, length: 200 days
+Tue Oct 15 16:01:22 2013: run: wait time: temp/tmpWoFG8k: 0.00123405456543
+Tue Oct 15 16:04:16 2013: run: return code: 0
+Tue Oct 15 16:04:16 2013: run: run time: temp/tmpWoFG8k: 0.867686325312
+Tue Oct 15 16:04:16 2013: run: success: temp/tmpWoFG8k
+Tue Oct 15 16:17:26 2013: ==================================================
+Tue Oct 15 16:17:26 2013: === Starting Radiative-convective model server ===
+Tue Oct 15 16:17:26 2013: ===                                               
+Tue Oct 15 16:17:26 2013: === Using 2 threads for RC model                 
+Tue Oct 15 16:17:26 2013: === On 1 CPUs                                    
+Tue Oct 15 16:17:26 2013: ===                                               
+Tue Oct 15 16:17:26 2013: === Max simulation time: 300 seconds               
+Tue Oct 15 16:17:26 2013: ==================================================
+Tue Oct 15 16:23:26 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpWoFG8k, length: 20 days
+Tue Oct 15 16:23:26 2013: run: wait time: temp/tmpWoFG8k: 0.0011899471283
+Tue Oct 15 16:23:27 2013: run: run time: temp/tmpWoFG8k: 0.0877308964729
+Tue Oct 15 16:23:28 2013: run: success: temp/tmpWoFG8k
+Tue Oct 15 16:23:29 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpWoFG8k, length: 20 days
+Tue Oct 15 16:23:29 2013: run: wait time: temp/tmpWoFG8k: 0.000203847885132
+Tue Oct 15 16:23:30 2013: Submit simulation: mssingh@MIT.EDU: temp/tmp54SvzW, length: 20 days
+Tue Oct 15 16:23:30 2013: run: wait time: temp/tmp54SvzW: 0.000140905380249
+Tue Oct 15 16:23:31 2013: run: run time: temp/tmpWoFG8k: 0.103441500664
+Tue Oct 15 16:23:31 2013: run: success: temp/tmpWoFG8k
+Tue Oct 15 16:23:32 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpaSPh10, length: 20 days
+Tue Oct 15 16:23:32 2013: run: wait time: temp/tmpaSPh10: 0.000142097473145
+Tue Oct 15 16:23:33 2013: run: run time: temp/tmp54SvzW: 0.138224554062
+Tue Oct 15 16:23:33 2013: run: success: temp/tmp54SvzW
+Tue Oct 15 16:23:34 2013: Submit simulation: mssingh@MIT.EDU: temp/tmp54SvzW, length: 20 days
+Tue Oct 15 16:23:34 2013: run: wait time: temp/tmp54SvzW: 0.000144004821777
+Tue Oct 15 16:23:34 2013: run: run time: temp/tmpaSPh10: 0.140094506741
+Tue Oct 15 16:23:35 2013: run: success: temp/tmpaSPh10
+Tue Oct 15 16:23:36 2013: run: run time: temp/tmp54SvzW: 0.103158950806
+Tue Oct 15 16:23:36 2013: run: success: temp/tmp54SvzW
+Tue Oct 15 16:23:38 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpWoFG8k, length: 20 days
+Tue Oct 15 16:23:38 2013: run: wait time: temp/tmpWoFG8k: 0.000162839889526
+Tue Oct 15 16:23:40 2013: Submit simulation: mssingh@MIT.EDU: temp/tmp54SvzW, length: 20 days
+Tue Oct 15 16:23:40 2013: run: wait time: temp/tmp54SvzW: 0.000191926956177
+Tue Oct 15 16:23:40 2013: run: run time: temp/tmpWoFG8k: 0.0887684941292
+Tue Oct 15 16:23:40 2013: run: success: temp/tmpWoFG8k
+Tue Oct 15 16:23:41 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpaSPh10, length: 20 days
+Tue Oct 15 16:23:41 2013: run: wait time: temp/tmpaSPh10: 0.000133037567139
+Tue Oct 15 16:23:44 2013: run: run time: temp/tmp54SvzW: 0.189540302753
+Tue Oct 15 16:23:44 2013: run: success: temp/tmp54SvzW
+Tue Oct 15 16:23:54 2013: run: run time: temp/tmpaSPh10: 0.644293403625
+Tue Oct 15 16:23:54 2013: Submit simulation: mssingh@MIT.EDU: temp/tmp54SvzW, length: 50 days
+Tue Oct 15 16:23:54 2013: run: wait time: temp/tmp54SvzW: 0.000149011611938
+Tue Oct 15 16:23:54 2013: run: success: temp/tmpaSPh10
+Tue Oct 15 16:23:56 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpaSPh10, length: 20 days
+Tue Oct 15 16:23:56 2013: run: wait time: temp/tmpaSPh10: 0.000166893005371
+Tue Oct 15 16:23:58 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpWoFG8k, length: 20 days
+Tue Oct 15 16:24:38 2013: run: run time: temp/tmpaSPh10: 2.08327884674
+Tue Oct 15 16:24:38 2013: run: wait time: temp/tmpWoFG8k: 39.5395121574
+Tue Oct 15 16:24:38 2013: run: success: temp/tmpaSPh10
+Tue Oct 15 16:25:17 2013: run: run time: temp/tmpWoFG8k: 1.99033224583
+Tue Oct 15 16:25:18 2013: run: success: temp/tmpWoFG8k
+Tue Oct 15 16:25:21 2013: run: run time: temp/tmp54SvzW: 1.73717671871
+Tue Oct 15 16:25:21 2013: run: success: temp/tmp54SvzW
+Tue Oct 15 16:35:43 2013: Submit simulation: mssingh@MIT.EDU: temp/tmp54SvzW, length: 50 days
+Tue Oct 15 16:35:43 2013: run: wait time: temp/tmp54SvzW: 0.000170230865479
+Tue Oct 15 16:35:45 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpaSPh10, length: 20 days
+Tue Oct 15 16:35:45 2013: run: wait time: temp/tmpaSPh10: 0.00014591217041
+Tue Oct 15 16:35:46 2013: Submit simulation: mssingh@MIT.EDU: n, length: 20 days
+Tue Oct 15 16:35:48 2013: run: run time: temp/tmpaSPh10: 0.18374119997
+Tue Oct 15 16:35:48 2013: run: wait time: temp/tmp2EaPvp: 1.8886950016
+Tue Oct 15 16:35:49 2013: run: run time: temp/tmp54SvzW: 0.121479640007
+Tue Oct 15 16:35:49 2013: run: success: temp/tmpaSPh10
+Tue Oct 15 16:35:49 2013: run: success: temp/tmp54SvzW
+Tue Oct 15 16:36:17 2013: Submit simulation: mssingh@MIT.EDU: temp/tmp54SvzW, length: 100 days
+Tue Oct 15 16:36:17 2013: run: wait time: temp/tmp54SvzW: 0.000190019607544
+Tue Oct 15 16:36:20 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpaSPh10, length: 100 days
+Tue Oct 15 16:36:20 2013: run: wait time: temp/tmpaSPh10: 0.00016713142395
+Tue Oct 15 16:36:23 2013: Submit simulation: mssingh@MIT.EDU: temp/tmp2EaPvp, length: 20 days
+Tue Oct 15 16:36:31 2013: run: run time: temp/tmp54SvzW: 0.146344919205
+Tue Oct 15 16:36:31 2013: run: wait time: temp/tmp2EaPvp: 8.87354516983
+Tue Oct 15 16:36:33 2013: run: success: temp/tmp54SvzW
+Tue Oct 15 16:37:12 2013: run: run time: temp/tmpaSPh10: 0.515247960091
+Tue Oct 15 16:37:12 2013: run: success: temp/tmpaSPh10
+Tue Oct 15 17:19:19 2013: Submit simulation: mssingh@MIT.EDU: temp/tmp54SvzW, length: 100 days
+Tue Oct 15 17:19:19 2013: run: wait time: temp/tmp54SvzW: 0.000153064727783
+Tue Oct 15 17:19:28 2013: run: run time: temp/tmp54SvzW: 0.0896587109566
+Tue Oct 15 17:19:28 2013: run: success: temp/tmp54SvzW
+Tue Oct 15 18:41:17 2013: Submit simulation: mssingh@MIT.EDU: temp/tmp54SvzW, length: 100 days
+Tue Oct 15 18:41:17 2013: run: wait time: temp/tmp54SvzW: 0.000175952911377
+Tue Oct 15 18:41:26 2013: run: run time: temp/tmp54SvzW: 0.0820617890358
+Tue Oct 15 18:41:26 2013: run: success: temp/tmp54SvzW
+Tue Oct 15 20:47:46 2013: Submit simulation: pog@MIT.EDU: n, length: 20 days
+Tue Oct 15 20:47:46 2013: run: wait time: temp/tmpG5Yh9u: 0.000195980072021
+Tue Oct 15 20:47:47 2013: run: run time: temp/tmpG5Yh9u: 0.0918318510056
+Tue Oct 15 20:47:48 2013: run: success: temp/tmpG5Yh9u
+Wed Oct 16 01:00:00 2013: === Running scheduled tasks
+Wed Oct 16 02:02:31 2013: ==================================================
+Wed Oct 16 02:02:31 2013: === Starting Radiative-convective model server ===
+Wed Oct 16 02:02:31 2013: ===                                               
+Wed Oct 16 02:02:31 2013: === Using 2 threads for RC model                 
+Wed Oct 16 02:02:31 2013: === On 1 CPUs                                    
+Wed Oct 16 02:02:31 2013: ===                                               
+Wed Oct 16 02:02:31 2013: === Max simulation time: 300 seconds               
+Wed Oct 16 02:02:31 2013: ==================================================
+Wed Oct 16 02:04:55 2013: Submit simulation: mssingh@MIT.EDU: n, length: 20 days
+Wed Oct 16 02:04:55 2013: run: wait time: temp/tmp0DIwJK: 0.00105094909668
+Wed Oct 16 02:04:56 2013: run: run time: temp/tmp0DIwJK: 0.0902302503586
+Wed Oct 16 02:04:57 2013: run: success: temp/tmp0DIwJK
+Wed Oct 16 14:06:19 2013: Submit simulation: mssingh@MIT.EDU: n, length: 100 days
+Wed Oct 16 14:06:19 2013: run: wait time: temp/tmptBCCfC: 0.000226020812988
+Wed Oct 16 14:06:21 2013: Submit simulation: mssingh@MIT.EDU: n, length: 100 days
+Wed Oct 16 14:06:21 2013: run: wait time: temp/tmp0rk9Wa: 0.000145196914673
+Wed Oct 16 14:06:23 2013: Submit simulation: mssingh@MIT.EDU: n, length: 20 days
+Wed Oct 16 14:06:25 2013: run: removing from queue: temp/tmpkibdGz
+Wed Oct 16 14:06:26 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpkibdGz, length: 20 days
+Wed Oct 16 14:06:35 2013: run: run time: temp/tmptBCCfC: 0.152635040283
+Wed Oct 16 14:06:35 2013: run: wait time: temp/tmpkibdGz: 11.6441779137
+Wed Oct 16 14:06:35 2013: run: success: temp/tmptBCCfC
+Wed Oct 16 14:06:50 2013: run: run time: temp/tmp0rk9Wa: 0.289498989582
+Wed Oct 16 14:06:50 2013: run: wait time: temp/tmpkibdGz: 24.0348730087
+Wed Oct 16 14:06:51 2013: Found only 1 model thread(s). Restarting broken thread(s).
+Wed Oct 16 14:06:51 2013: run: success: temp/tmp0rk9Wa
+Wed Oct 16 14:06:54 2013: run: run time: temp/tmpkibdGz: 0.955175149441
+Wed Oct 16 14:06:54 2013: run: success: temp/tmpkibdGz
+Wed Oct 16 14:08:29 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpkibdGz, length: 20 days
+Wed Oct 16 14:08:29 2013: run: wait time: temp/tmpkibdGz: 0.000458955764771
+Wed Oct 16 14:08:48 2013: run: run time: temp/tmpkibdGz: 0.950134193897
+Wed Oct 16 14:08:48 2013: run: success: temp/tmpkibdGz
+Wed Oct 16 14:15:26 2013: ==================================================
+Wed Oct 16 14:15:26 2013: === Starting Radiative-convective model server ===
+Wed Oct 16 14:15:26 2013: ===                                               
+Wed Oct 16 14:15:26 2013: === Using 2 threads for RC model                 
+Wed Oct 16 14:15:26 2013: === On 1 CPUs                                    
+Wed Oct 16 14:15:26 2013: ===                                               
+Wed Oct 16 14:15:26 2013: === Max simulation time: 300 seconds               
+Wed Oct 16 14:15:26 2013: ==================================================
+Wed Oct 16 14:15:33 2013: === Running scheduled tasks
+Wed Oct 16 14:19:05 2013: ==================================================
+Wed Oct 16 14:19:05 2013: === Starting Radiative-convective model server ===
+Wed Oct 16 14:19:05 2013: ===                                               
+Wed Oct 16 14:19:05 2013: === Using 2 threads for RC model                 
+Wed Oct 16 14:19:05 2013: === On 1 CPUs                                    
+Wed Oct 16 14:19:05 2013: ===                                               
+Wed Oct 16 14:19:05 2013: === Max simulation time: 300 seconds               
+Wed Oct 16 14:19:05 2013: ==================================================
+Wed Oct 16 14:19:12 2013: === Running scheduled tasks
+Wed Oct 16 14:20:36 2013: ==================================================
+Wed Oct 16 14:20:36 2013: === Starting Radiative-convective model server ===
+Wed Oct 16 14:20:36 2013: ===                                               
+Wed Oct 16 14:20:36 2013: === Using 2 threads for RC model                 
+Wed Oct 16 14:20:36 2013: === On 1 CPUs                                    
+Wed Oct 16 14:20:36 2013: ===                                               
+Wed Oct 16 14:20:36 2013: === Max simulation time: 300 seconds               
+Wed Oct 16 14:20:36 2013: ==================================================
+Wed Oct 16 14:20:43 2013: === Running scheduled tasks
+Wed Oct 16 14:22:32 2013: ==================================================
+Wed Oct 16 14:22:32 2013: === Starting Radiative-convective model server ===
+Wed Oct 16 14:22:32 2013: ===                                               
+Wed Oct 16 14:22:32 2013: === Using 2 threads for RC model                 
+Wed Oct 16 14:22:32 2013: === On 1 CPUs                                    
+Wed Oct 16 14:22:32 2013: ===                                               
+Wed Oct 16 14:22:32 2013: === Max simulation time: 300 seconds               
+Wed Oct 16 14:22:32 2013: ==================================================
+Wed Oct 16 14:22:39 2013: === Running scheduled tasks
+Wed Oct 16 14:28:57 2013: ==================================================
+Wed Oct 16 14:28:57 2013: === Starting Radiative-convective model server ===
+Wed Oct 16 14:28:57 2013: ===                                               
+Wed Oct 16 14:28:57 2013: === Using 2 threads for RC model                 
+Wed Oct 16 14:28:57 2013: === On 1 CPUs                                    
+Wed Oct 16 14:28:57 2013: ===                                               
+Wed Oct 16 14:28:57 2013: === Max simulation time: 300 seconds               
+Wed Oct 16 14:28:57 2013: ==================================================
+Wed Oct 16 14:29:04 2013: === Running scheduled tasks
+Wed Oct 16 14:29:35 2013: Submit simulation: mssingh@MIT.EDU: temp/tmptBCCfC, length: 100 days
+Wed Oct 16 14:29:35 2013: run: wait time: temp/tmptBCCfC: 0.000957012176514
+Wed Oct 16 14:29:46 2013: Submit simulation: mssingh@MIT.EDU: temp/tmp0rk9Wa, length: 20 days
+Wed Oct 16 14:29:46 2013: run: wait time: temp/tmp0rk9Wa: 0.000246047973633
+Wed Oct 16 14:29:55 2013: run: run time: temp/tmptBCCfC: 0.203046491146
+Wed Oct 16 14:29:56 2013: run: success: temp/tmptBCCfC
+Wed Oct 16 14:30:11 2013: run: run time: temp/tmp0rk9Wa: 1.26873335838
+Wed Oct 16 14:30:12 2013: run: success: temp/tmp0rk9Wa
+Wed Oct 16 14:31:05 2013: ==================================================
+Wed Oct 16 14:31:05 2013: === Starting Radiative-convective model server ===
+Wed Oct 16 14:31:05 2013: ===                                               
+Wed Oct 16 14:31:05 2013: === Using 2 threads for RC model                 
+Wed Oct 16 14:31:05 2013: === On 1 CPUs                                    
+Wed Oct 16 14:31:05 2013: ===                                               
+Wed Oct 16 14:31:05 2013: === Max simulation time: 300 seconds               
+Wed Oct 16 14:31:05 2013: ==================================================
+Wed Oct 16 14:31:13 2013: === Running scheduled tasks
+Wed Oct 16 14:32:14 2013: ==================================================
+Wed Oct 16 14:32:14 2013: === Starting Radiative-convective model server ===
+Wed Oct 16 14:32:14 2013: ===                                               
+Wed Oct 16 14:32:14 2013: === Using 2 threads for RC model                 
+Wed Oct 16 14:32:14 2013: === On 1 CPUs                                    
+Wed Oct 16 14:32:14 2013: ===                                               
+Wed Oct 16 14:32:14 2013: === Max simulation time: 300 seconds               
+Wed Oct 16 14:32:14 2013: ==================================================
+Wed Oct 16 15:08:05 2013: Submit simulation: jvagard@MIT.EDU: n, length: 20 days
+Wed Oct 16 15:08:05 2013: run: wait time: temp/tmpSxU6qD: 0.00118112564087
+Wed Oct 16 15:08:06 2013: run: run time: temp/tmpSxU6qD: 0.091205406189
+Wed Oct 16 15:08:07 2013: run: success: temp/tmpSxU6qD
+Wed Oct 16 15:08:16 2013: Submit simulation: mssingh@MIT.EDU: n, length: 20 days
+Wed Oct 16 15:08:16 2013: run: wait time: temp/tmpJORfZZ: 0.000189065933228
+Wed Oct 16 15:08:18 2013: run: run time: temp/tmpJORfZZ: 0.0895586013794
+Wed Oct 16 15:08:18 2013: run: success: temp/tmpJORfZZ
+Wed Oct 16 15:08:34 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpJORfZZ, length: 20 days
+Wed Oct 16 15:08:34 2013: run: wait time: temp/tmpJORfZZ: 0.000164985656738
+Wed Oct 16 15:08:36 2013: run: run time: temp/tmpJORfZZ: 0.089297246933
+Wed Oct 16 15:08:37 2013: run: success: temp/tmpJORfZZ
+Wed Oct 16 15:10:14 2013: ==================================================
+Wed Oct 16 15:10:14 2013: === Starting Radiative-convective model server ===
+Wed Oct 16 15:10:14 2013: ===                                               
+Wed Oct 16 15:10:14 2013: === Using 2 threads for RC model                 
+Wed Oct 16 15:10:14 2013: === On 1 CPUs                                    
+Wed Oct 16 15:10:14 2013: ===                                               
+Wed Oct 16 15:10:14 2013: === Max simulation time: 300 seconds               
+Wed Oct 16 15:10:14 2013: ==================================================
+Wed Oct 16 15:35:08 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpJORfZZ, length: 20 days
+Wed Oct 16 15:35:08 2013: run: wait time: temp/tmpJORfZZ: 0.00149893760681
+Wed Oct 16 15:35:10 2013: run: run time: temp/tmpJORfZZ: 0.0937422990799
+Wed Oct 16 15:35:11 2013: run: success: temp/tmpJORfZZ

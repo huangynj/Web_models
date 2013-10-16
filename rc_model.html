@@ -2,198 +2,175 @@
 <head>
 	<title>Radiative-convective model</title>
 
+      
+     <!-- STYLE INFO  ---------------------------------------------->
+
  	<!-- Style sheet for fonts etc -->
-	<LINK href="test_style.css" rel="stylesheet" type="text/css"> 
+	<LINK rel="stylesheet" href="../tools/mitx_style.css" type="text/css"> 
 
 	<!-- Style sheet for progress bar -->
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="../tools/jquery-ui-1.10.3.custom/css/start/jquery-ui-1.10.3.custom.min.css" type="text/css">
 
-	<style>
-	  h1 {
-	     color: #3c3c3c;
-	     font: normal 2em/1.4em "Open Sans", Verdana, Geneva, sans-serif;
-	     letter-spacing: 1px;
-	     margin-bottom: 30px;
-	     text-align: center; }
-
-	  h2 {
-	     color: #646464;
-	     font: normal 1.2em/1.2em Georgia, Cambria, "Times New Roman", Times, serif;
-	     letter-spacing: 1px;
-	     margin-bottom: 15px;
-	     text-transform: uppercase;
-	     -webkit-font-smoothing: antialiased; }
+	<!-- Style sheet for model -->
+	<link rel="stylesheet" href="rc_model.css" type="text/css">
 
 
-
-
-          h3 {
-             color: #3c3c3c;
-             font: normal 1.2em/1.2em Georgia, Cambria, "Times New Roman", Times, serif;
-             margin: 0px; }
-
-          .framel {
-	     width: 70%;
-	     float: left;
-	     overflow-y: none;
-	  }
-
-
-          .framer {
-	     width: 30%;
-	     float: left;
-	     overflow-y: none;
-	  }
-
-	  .label {
-	      display: inline-block;
-	      width: 250px;
-	      font: inherit;
-	      color: inherit; }
-          
-	  .dates {
-	      width: 160px; 
-	      display: inline-block;
-	      font: inherit;
-	      color: inherit; }
-
-
-	  .chkbx {
-	      margin-left: 20px; 
-	      font: inherit;
-	      color: inherit; }
-
-	  .form_input {
-              color: #3c3c3c;
-              font: 300 1rem/1.6rem Georgia, Cambria, "Times New Roman", Times, serif;
-              margin-bottom: 5px;
-              text-shadow: 0 1px rgba(255, 255, 255, 0.4);
-              -webkit-font-smoothing: antialiased; }
-
-	  p {
-              color: #3c3c3c;
-              font: 300 1rem/1.6rem Georgia, Cambria, "Times New Roman", Times, serif;
-              margin-bottom: 5px;
-	      margin-left: 50px; 
-              text-shadow: 0 1px rgba(255, 255, 255, 0.4);
-              -webkit-font-smoothing: antialiased; }
- 
-	</style>
-
-
+      <!-- JAVASCRIPT ---------------------------------------------->
 
 	<!-- Load in the jquery and jquery-ui language components -->
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<script src="../tools/jquery-1.9.1/jquery-1.9.1.min.js"></script>
+        <script src="../tools/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+        <script src="../tools/jquery-validation-1.11.1/dist/jquery.validate.min.js"></script>
 
-        <!-- Initial script to set upo form -->
-	<script> 
-		$(document).ready(function(){
-                   $("#adv_opts").hide() 		// Hide advanced options
-                   $("#theta").hide()			// Hide latitude in radiation selector
-                   $("#month_label").hide()		// Hide months   in radiation selector
-                   $("#day").hide()			// Hide days     in radiation selector
-                   $("#hour").hide()			// Hide hour     in radiation selector
-                   $("#force").hide()			// Hide forcing options
-                   $(".force_opts").hide()		// Hide forcing options (all)
-                   $("#restart").hide()			// Hide option to restart
+        <!-- Load in the scripts required for this page -->
+        <script src="rc_model.js"></script>
 
-		   // Decide whether to show various options depending on the URL given
-                   if (getUrlVars()["sim"]==1) {$("#sim").val(1)} else { $("#adv_simulation").hide() }
-                   if (getUrlVars()["rad"]==1) {$("#rad").val(1)} else { $("#adv_radiation").hide() }
-                   if (getUrlVars()["gas"]==1) {$("#gas").val(1)} else { $("#adv_composition").hide() }
-                   if (getUrlVars()["srf"]==1) {$("#srf").val(1)} else { $("#adv_surface").hide() }
-                   if (getUrlVars()["par"]==1) {$("#par").val(1)} else { $("#adv_parameterizations").hide() }
-                   if (getUrlVars()["frc"]==1) {$("#frc").val(1)} else { $("#adv_forcing").hide() }
-		});
-	</script>
-
-
-	<!-- Script to read variables from the URL -->
-	<script>
-		function getUrlVars() {
-	    	   var vars = {};
-	    	   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        	      vars[key] = value;
-    		   });
-    	           return vars;
-		}
-	</script>
 
 </head>
 
 
 <body>
-<div class="framel">
+
+
+<div class="framel"> <!-- Left frame ************************************************************************* -->
 
 
    <h2>One column radiative-convective model</h2>
 
-   <form method="POST" action="/rc" name="model_options" id="model_options">
+   <form method="POST" action="/rc" name="model_options" id="model_options" onsubmit="return false" novalidate="">
    <p>
 
 
-     <!-- BASIC PARAMETERS -->
+     <!-- BASIC PARAMETERS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+     <div class="form_input" id="basic">
      <h3>Basic Parameters:</h3> <br>
 
-        <p><span class="label">Length of simulation: </span>   <input type="text" size="4" name="days" value="5"     > days <br>
-           <span class="label">CO2 concentration:    </span>   <input type="text" size="4" name="co2"  value="360.0" > ppm  <br>
-           <span class="label">Solar Constant:       </span>   <input type="text" size="4" name="S0"   value="1360.0"> W/m^2<br>
-           <span class="label">Initial SST:          </span>   <input type="text" size="4" name="SSTi" value="27"    > deg C<br></p>
-	   <span id="restart" ><p><input type="checkbox" name="restart"> Restart from end of previous simulation<br></p></span>
+        <p>
+           <span class="label">Length of simulation: </span>   
+           <label><input type="number" min="10" max="2000" 
+                         title="Minimum: 10&#10;Maximum: 2000&#10;Default: 20"  
+                         name="days" value="20" id="days" class=required> days
+           </label> 
+           <span class=errcontainer></span> <br>
 
-      <!-- OUTPUT OPTIONS: These are hidden  --> 
-	   <input type="hidden"  id="dirname_r" name="dirname" value="n">
-	   <input type="hidden"  name="plot_type" value="time_opts">
-           <input type="hidden"  name="timeplot"  value="time_sst">
 
-      <label><input type="checkbox" name="show_adv" id="show_adv"><i> Show advanced parameters </i><br></label>
+           <span class="label">CO2 concentration:    </span> 
+           <label><input type="number" min="1" max="10000" 
+                         title="Minimum: 1&#10;Maximum: 10000&#10;Default: 360" 
+                         name="co2"  value="360" class=required> ppm  
+           </label>
+           <span class=errcontainer></span><br>
 
-      <script> // Toggle the advanced options
-  	   $("#show_adv").click(function(){
-	      $("#adv_opts").toggle();
-	   });
-      </script>
 
-      <!-- ADVANCED OPTIONS - only show if checkbox is checked -->
-      <div id="adv_opts">
+           <span class="label">Solar Constant:       </span>
+           <label><input type="number" min=100 max=5000 
+                         title="Minimum: 100&#10;Maximum: 5000&#10;Default 1360" 
+                         name="S0" value="1360.0" class=required> W/m^2 
+           </label>
+           <span class=errcontainer></span><br>
 
-	 <!-- Advanced simulation options - hidden by default -->
-         <div id="adv_simulation" class="form_input">
-         <h3>Simulation parameters:</h3><input type="hidden"><br>
-	    <p><span class="label">Model time-step:                </span>  <input type="text" size="4" name="time_step"  value="5" > minutes <br>
-	       <span class="label">Time between graphical output:  </span>  <input type="text" size="4" name="graph_time" value="6" > hours   <br>
-	       <span class="label">Graphics averaging time:        </span>  <input type="text" size="4" name="avg_time"   value="10"> days    <br></p>
-          </div>
+           <span class="label">Initial SST:          </span>  
+           <label> <input type="number"  min=0 max=50
+                          title="Minimum: 0&#10;Maximum: 50&#10;Default: 27" 
+                          name="SSTi" value="27" class=required> deg C 
+          </label>
+          <span class=errcontainer></span><br></p>
+
+
+          <span id="restart" >
+            <p><label><input type="checkbox" name="restart"> Restart from end of previous simulation</label><br></p>
+          </span>
+
+
+          <!-- Checkbox to show advanced options -->
+          <label><input type="checkbox" name="show_adv" id="show_adv"><i>&nbsp  Show advanced parameters </i></label><br>
+
+      </div> <!-- Basic parameters -->
 
  
 
+      <!-- OUTPUT OPTIONS: These are hidden %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  --> 
+	   <input type="hidden"  name="dirname"   id="dirname" value="n">
+
+
+
+
+
+    
+      <!-- ADVANCED OPTIONS - only show if checkbox is checked %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  -->
+      <div id="adv_opts">
+
+	 <!-- Advanced simulation options - hidden by default --------------------------------------------- -->
+         <div id="adv_simulation" class="form_input">
+         <h3>Simulation parameters:</h3><input type="hidden"><br>
+
+	    <p>
+               <span class="label">Model time-step:                </span>  
+               <label><input type="number" min=1 max=20 
+                             title="Minimum: 1&#10;Maximum: 20&#10;Default: 5" 
+                             name="time_step"  value="5" class="required"> minutes
+               </label>
+               <span class=errcontainer></span><br>
+
+               <span class="label">Time between graphical output:                </span>  
+               <label><input type="number" min=1 max=48 
+                             title="Minimum: 1&#10;Maximum: 48&#10;Default: 6" 
+                             name="graph_time"  value="6" class="required"> hours
+               </label>
+               <span class=errcontainer></span><br>
+
+               <span class="label">Graphics averaging time:                </span>  
+               <label><input type="number" min=1 max=100 
+                             title="Minimum: 1&#10;Maximum: 100&#10;Default: 10" 
+                             name="avg_time"  value="10" class="required"> days
+               </label>
+               <span class=errcontainer></span><br></p>
+
+
+
+
+         </div> <!-- Simulation options -->
+
+ 
+
+	 <!-- Radiation options -------------------------------------------------------------------- -->
          <div class="form_input">
          <h3>Radiation parameters:</h3><input type="hidden"><br>
-	    <p><span class="dates">Select type of radiation: </span><select name="rad_type" id="rad_type">
+
+	    <p>
+               <span class="dates">Select type of radiation: </span><select name="rad_type" id="rad_type">
                  <option  value="1">Annual- and Diurnal- average radiation</option>
                  <option  value="2">Diurnal- average radiation</option>
                  <option  value="3">Diurnally varying radiation</option>
                  <option  value="4">Fully time-varying radiation</option>
                  <option  value="0" selected>Planetary-average radiation</option></select>
+            <br>
+	    <label class="chkbx" id="theta">
+               <span class="dates"> Latitude: </span>   
+               <label><input type="number" min=-90 max=90 
+                             title="Minimum: -90&#10;Maximum: 90&#10;Default: 15" 
+                             name="theta" value="15" class=required> degrees 
+               </label>
+               <span class=errcontainer></span><br>
+            </label>
+     
+            <label id=date_label>
+            <label class="chkbx" id="month_label">
+                <span class=dates>Date:</span> <select name="month" id="month">
+                  <option  value="1" >Jan</option>
+                  <option  value="2" >Feb</option>
+                  <option  value="3" selected>Mar</option>
+                  <option  value="4" >Apr</option>
+                  <option  value="5" >May</option>
+                  <option  value="6" >Jun</option>
+                  <option  value="7" >Jul</option>
+                  <option  value="8" >Aug</option>
+                  <option  value="9" >Sep</option>
+                  <option  value="10">Oct</option>
+   	          <option  value="11">Nov</option>
+                  <option  value="12">Dec</option></select></label>
 
-	    <label class="chkbx" id="theta"><span class="dates"> Latitude: </span>   <input type="text" size="4" name="theta" value="15"> degrees<br></label>
-
-	       <label class="chkbx" id="month_label"><span class=dates>Date:</span> <select name="month" id="month">
-                 <option  value="1" >Jan</option>
-                 <option  value="2" >Feb</option>
-                 <option  value="3" selected>Mar</option>
-                 <option  value="4" >Apr</option>
-                 <option  value="5" >May</option>
-                 <option  value="6" >Jun</option>
-                 <option  value="7" >Jul</option>
-                 <option  value="8" >Aug</option>
-                 <option  value="9" >Sep</option>
-                 <option  value="10">Oct</option>
-	         <option  value="11">Nov</option>
-                 <option  value="12">Dec</option></select></label>
-
-	       <label class="chkbx"><select name="day" id="day">
+	     <label class="chkbx"><select name="day" id="day">
                  <option  value="1">1</option>
                  <option  value="2">2</option>
                  <option  value="3">3</option>
@@ -223,202 +200,262 @@
 	         <option  value="28">28</option>
 	         <option  value="29" id="d29">29</option>
 	         <option  value="30" id="d30">30</option>
-                 <option  value="31" id="d31">31</option></select><br></label>
+                 <option  value="31" id="d31">31</option></select>
+             </label><br>
+             </label>
+
+              
+             <label class="chkbx" id="hour">
+               <span class="dates">Hour: </span>
+               <label><input type="number" min=0 max=24 
+                             title="Minimum: 0&#10;Maximum: 24&#10;Default: 0" 
+                             name="hour" value="0.0" class=required>&nbsp
+               </label>
+               <span class=errcontainer></span><br>
+             </label>
 
 
-              <script> // make sure the month has the right number of days 
-		 $("#month").change(function () {
-                     var mon = parseInt($("#month option:selected").val())
-		     var months = [4,6,9,11];
-                     if (months.indexOf(mon)>-1) {
-			   $("#d29").show();
-			   $("#d30").show();
-			   $("#d31").hide();
-   		   } else if (mon=="2") {
-			   $("#d29").hide();
-			   $("#d30").hide();
-			   $("#d31").hide();
-		   } else {
-			   $("#d29").show();
-			   $("#d30").show();
-			   $("#d31").show();}
-		 })
-               </script>
+	     Cloud-radiation options:<br>
+             <span class=chkbx>  
+                <label><input  type="radio" name="rad_cld" value="y">&nbsp Interactive clouds </label>
+             </span><br>
 
-              <label class="chkbx" id="hour"><span class=dates>Hour: </span><input type="text" size="4" name="hour" value="0.0"><br></label>
+             <span class=chkbx>  
+               <label> <input  type="radio" name="rad_cld" value="n">&nbsp Fix clouds at a reference profile </label>
+             </span><br>
 
-              <script> // Show the date options only when appropriate 
-		 $("#rad_type").change(function () {
-                     var rad = $("#rad_type option:selected").val()
-                     if (rad=="0") {
-			   $("#theta").hide();
-			   $("#month_label").hide();
-			   $("#day").hide();
-			   $("#hour").hide();}
-                     else if (rad=="1") {
-			   $("#theta").show();
-			   $("#month_label").hide();
-			   $("#day").hide();
-			   $("#hour").hide();}
-                     else if (rad=="2" ) {
-			   $("#theta").show();
-			   $("#month_label").show();
-			   $("#day").show();
-			   $("#hour").hide();}
-                     else if (rad=="3" || rad=="4") {
-			   $("#theta").show();
-			   $("#month_label").show();
-			   $("#day").show();
-			   $("#hour").show();}
-		 })
+             <span class=chkbx>  
+               <label> <input  type="radio" name="rad_cld" value="0" checked>&nbsp No clouds </label>                   
+             </span><br>
 
-	      </script>
-                
-		Cloud-radiation options:<br>
-                <span class=chkbx>  <input  type="radio" name="rad_cld" value="y"        > Interactive clouds           </span><br>
-                <span class=chkbx>  <input  type="radio" name="rad_cld" value="n"        > Fix clouds at initial profile</span><br>
-                <span class=chkbx>  <input  type="radio" name="rad_cld" value="0" checked> No clouds                    </span><br>
+             <label>
+	        <input type="checkbox" name="rad_wv" id="rad_wv"> 
+                 &nbsp Hold water vapor distribution fixed for radiation calculations</label><br></p>
 
-	        <input type="checkbox" name="rad_wv"> </span> Hold water vapor distribution fixed for radiation calculations<br></p>
-	      <div id="adv_radiation">
-	        <p><span class=label> Time between radiation calls: </span><input type="text" size="4" name="rad_freq" value="1"> hours<br></p>
-              </div></p>
-         </div>
+ 
+             <!-- Advanced radiation options - hidden by default -->
+             <div id="adv_radiation">
+               <p><span class="label">Time between radiation calls:         </span>  
+               <label><input type="number" min=1 max=6 
+                             title="Minimum: 1&#10;Maximum: 6&#10;Default: 1" 
+                             name="rad_freq"  value="1" class="required"> hours
+               </label>
+               <span class=errcontainer></span><br></p>
+
+
+             </div>
+
+
+         </div> <!-- radiation options -->
 
 
 
 
-	 <!-- ATMOSPHERIC COMPOSITION -->
-         <div class="form_input" id="adv_composition">
+	 <!-- Atmospheric composition ------------------------------------------------------------ -->
          <h3>Atmospheric composition:</h3><br>
-         <p><span class="label">CH4 concentration:     </span>     <input type="text" size="4" name="ch4"   value="1.72" > ppm<br>
-	    <span class="label">N2O concentration:     </span>     <input type="text" size="4" name="n2o"   value="310.0"> ppb<br>
-	    <span class="label">CFC11 concentration:   </span>     <input type="text" size="4" name="cfc11" value="280.0"> ppt<br>
-	    <span class="label">CFC12 concentration:   </span>     <input type="text" size="4" name="cfc12" value="484.0"> ppt<br></p>
-	 </div>
+         <p><span class="label">CH4 concentration:     </span>    
+            <label> 
+               <input type="number" min="1" max="10000" 
+                      title="Minimum: 1&#10;Maximum: 10000&#10;Default: 1.72"   
+                      name="ch4"   value="1.72" class=required > ppm 
+            </label>
+            <span class=errcontainer></span><br>
 
-	 <!-- PARAMETERIZATIONS -->
+	    <span class="label">N2O concentration:     </span>   
+            <label>  
+               <input type="number" min="1" max="10000" 
+                      title="Minimum: 1&#10;Maximum: 10000&#10;Default: 310"
+                      name="n2o"   value="310.0" class=required> ppb 
+            </label>
+            <span class=errcontainer></span><br>
+
+            <!-- advanced composition -->
+            <div class="form_input" id="adv_composition">
+             <p>
+	       <span class="label">CFC11 concentration:     </span>   
+               <label>  
+                  <input type="number" min="1" max="2000" 
+                         title="Minimum: 1&#10;Maximum: 2000&#10;Default: 280"
+                         name="cfc11"   value="280.0" class=required> ppt 
+               </label>
+               <span class=errcontainer></span><br>
+
+	       <span class="label">CFC12 concentration:     </span>   
+               <label>  
+                  <input type="number" min="1" max="2000" 
+                         title="Minimum: 1&#10;Maximum: 2000&#10;Default: 484"
+                         name="cfc12"   value="484.0" class=required> ppt 
+               </label>
+               <span class=errcontainer></span><br></p>
+
+	    </div>
+
+
+
+	 <!-- PARAMETERIZATIONS ---------------------------------------------------------  -->
          <div class="form_input" id="adv_parameterizations">
          <h3>Parameterizations:</h3><br>
-         <p><input type="checkbox" name="dry_conv"   checked> Dry convection   <br>
-	    <input type="checkbox" name="moist_conv" checked> Moist convection <br>
-	    <input type="checkbox" name="turb_flux"  checked> Surface fluxes   <br></p>
+         <p><label><input type="checkbox" name="dry_conv"   checked> Dry convection   </label><br>
+	    <label><input type="checkbox" name="moist_conv" checked> Moist convection </label><br>
+	    <label><input type="checkbox" name="turb_flux"  checked> Surface fluxes   </label><br></p>
          </div>
 
 
 	 <!-- SURFACE -->
          <div class="form_input" id="surface">
          <h3>Surface parameters:</h3><br>
-	 <p><span class="label">Surface albedo:		               </span> <input type="text" size="4" name="alpha" value="0.15">   <br>
-            <span class="label">Surface windspeed:		       </span> <input type="text" size="4" name="ugust" value="5.0"> m/s<br>
-            <div id="adv_surface">
-              <p><span class="label">Fraction of surf. covered by water:</span> <input type="text" size="4" name="water_frac" value="1.0"><br>
-              <span class="label">Mixed layer depth:                   </span> <input type="text" size="4" name="ml_depth" value="1.0"> m<br></p>
-            </div>
-	    <p><input type="checkbox" name="surf_int"> Fixed surface temperature<br></p>
-          </div>
 
-	 <!-- FORCING -->
+	 <p><span class="label">Surface albedo:           </span> 
+            <label><input type="number" min=0 max=1 
+                         title="Minimum: 0&#10;Maximum: 1&#10;Default: 0.15" 
+                          name="alpha" value="0.15" class=required> 
+            </label>
+            <span class=errcontainer></span>  <br>
+
+            <span class="label">Surface windspeed:	   </span> 
+            <label><input type="number" min=0.1 max=100 
+                          title="Minimum: 0.1&#10;Maximum: 100&#10;Default: 5" 
+                          name="ugust" value="5.0" class=required> m/s
+            </label>
+            <span class=errcontainer></span><br>
+
+            <!-- advanced surface options (hidden by default) -->
+            <div id="adv_surface">
+
+              <p>
+                 <span class="label">Fraction of surf. covered by water:	   </span> 
+                 <label><input type="number" min=0 max=1 
+                               title="Minimum: 0&#10;Maximum: 1&#10;Default: 1" 
+                               name="water_frac" value="1.0" class=required> 
+                 </label>
+                 <span class=errcontainer></span><br>
+
+                 <span class="label">Mixed layer depth:	   </span> 
+                 <label><input type="number" min=0.1 max=100 
+                               title="Minimum: 0.1&#10;Maximum: 100&#10;Default: 1" 
+                               name="ml_depth" value="1.0" class=required> m
+                 </label>
+                 <span class=errcontainer></span><br>
+
+
+            </div>
+
+
+	    <p><label><input type="checkbox" name="surf_int">&nbsp Fixed surface temperature</label><br></p>
+
+          </div><!-- surface options -->
+
+	 <!-- FORCING options (hidden by default) -------------------------------------------- -->
          <div id="adv_forcing" class="form_input">
          <h3>Forcing:</h3><br>
- 	    <p><input type="checkbox" name="forcing" id="forcing"> Include large-scale forcing<br></label>
-	    <div id="force">
-  	     <p>Forcing type:
-                     <span class="chkbx"> <input type="radio" name="forcing_opt" value="omega"> Specify omega profile<br></span>
-	            <span class="chkbx">  <input type="radio" name="forcing_opt" value="wtg"> Weak Temperature gradient mode<br></span></p>
 
-	    </div>
-	    <div id="omega" class="force_opts">
-	    <p><span class=label>Extreme value of omega:		</span>   <input type="text" size="4" name="w_max" value="0.0"> hPa/hr <br>
-	       <span class=label>Pressure of maximum in forcing:	</span>   <input type="text" size="4" name="w_p" value="500"> hPa <br>
-	       <span class=label>Period of forcing:			</span>   <input type="text" size="4" name="w_T" value="1000"> hours <br>
-	       <span class=label>Pres. levs b/w which forcing extends: </span>
-	                <span class="chkbx"> <input type="text" size="4" name="w_bot" value="1000"> hPa to
-	                 <input type="text" size="4" name="w_top" value="100"> hPa<br>
- 	    </div>
-	    <div id="wtg" class="force_opts">
-	       <p><span class=label>Pressure above which sounding fixed</span><input type="text" size="4" name="p_pbl" value="100"> hPa<br></label></p>
-	    </div>
-         </div>
+ 	    <p><label><input type="checkbox" name="forcing" id="forcing">&nbsp Include large-scale forcing<br></label>
+	    
+               <div id="force">
+  	       <p>Forcing type:
+                   <p>
+                     <span class="chkbx"> 
+                       <label><input type="radio" name="forcing_opt" value="omega">&nbsp Specify omega profile</label><br>
+                     </span>
 
-         <script> // Show the forcing options only when appropriate 
-	    $("#forcing").click(function(){
-	         $("#force").toggle();
-	         $('.force_opts').hide();
-	    })
-	    $("input:radio[name='forcing_opt']").click(function() {      
-	         $('.force_opts').hide();
-	         $('#' + $("input:radio[name='forcing_opt']:checked").val()).show();
-	    });
+	            <span class="chkbx">  
+                       <label><input type="radio" name="forcing_opt" value="wtg">&nbsp Weak Temperature gradient mode</label><br>
+                    </span>
+               </p>
+   	       </div>
 
-          </script>
+  	       <div id="omega" class="force_opts">
+     	         <p>
+                   <span class="label">Extreme value of omega:	   </span> 
+                   <label><input type="number" min=0 max=100 
+                               title="Minimum: 0&#10;Maximum: 10&#10;Default: 0" 
+                               name="w_max" value="0.0" class=required> hPa/hr
+                   </label>
+                   <span class=errcontainer></span><br>
+
+                   <span class="label">Pressure of maximum in forcing:	   </span> 
+                   <label><input type="number" min=0 max=1000 
+                               title="Minimum: 0&#10;Maximum: 1000&#10;Default: 500" 
+                               name="w_p" value="500.0" class=required> hPa
+                   </label>
+                   <span class=errcontainer></span><br>
+
+
+                   <span class="label">Period of forcing:	   </span> 
+                   <label><input type="number" min=1 max=10000 
+                               title="Minimum: 1&#10;Maximum: 10000&#10;Default: 10000" 
+                               name="w_T" value="1000" class=required> hPa/hr
+                   </label>
+                   <span class=errcontainer></span><br>
+
+
+
+
+                   <span class=label>Pres. levs b/w which forcing extends: </span>
+
+	           <span class="chkbx"> </span>
+                    
+                      <label>  <input type="number" min=0 max=1000 
+                             title="Minimum: 0&#10;Maximum: 1000&#10;Default: 1000" 
+                             name="w_bot" value="1000" class=required> hPa to
+                      </label>
+                      <span class=errcontainer></span>
+                 
+                      
+                      <label><input type="number" min=0 max=1000 
+                             title="Minimum: 0&#10;Maximum: 1000&#10;Default: 100" 
+                             name="w_top" value="100" class=required> hPa
+                      </label>
+                      <span class=errcontainer></span><br>
+ 
+	       </div>
+
+	       <div id="wtg" class="force_opts">
+                 <p>
+                   <span class="label">Pressure above which sounding fixed:	   </span> 
+                   <label><input type="number" min=1 max=1000 
+                               title="Minimum: 1&#10;Maximum: 1000&#10;Default: 850" 
+                               name="p_pbl" value="850" class=required> hPa/hr
+                   </label>
+                   <span class=errcontainer></span><br>
+
+  	       </div>
+            </div>
+
 
       </div>
 
+      <!-- Reset button -->
+      <div>
+         <input type="reset" value="Reset" id="reset_form">
+      </div>
 
-</div>
+    </div> <!-- framel -->
 
-<div class="framer">
+    <div class="framer">
 	 <br><br><br>
-         <center><input type="submit" value="Run model" id="run_model"><br></center>
+         <center><input type="submit" value="Run model" id="run_model"></center>
+         <center><input type="submit" value="Stop model" id="stop_model"></center>
+         <center><input type="submit" value="Run model" id="Run_modelhidden" style="visibility:hidden"><br></center>
          <input type="hidden" name="session">
 
 
-   </form>
-
-<script>
-$("#run_model").click(function() {
-
-    var url = "/rc"; // the script where you handle the form input.
-
-    $.ajax({
-           type: "POST",
-           url: url,
-           data: $("#model_options").serialize(), // serializes the form's elements.
-           beforeSend: function() {//alert($("#model_options").serialize()) 
-				$('#put').html("")
-				$('#loading').html('<br><br><br><center><h3>Model is running</h3><br><br><h2>Please Wait<h2></center><br>')
-				$("#loading").show() 
-				$( "#progress" ).progressbar({
-				value: false
-				}) 
-				$("#progress").show() 
-				jQuery('input[type=input], input').attr('disabled', true);
-				
-                                },
-           error: function() {alert('The model crashed. Sorry for this useless message - error handling is a work in progress.')},
-           success: function(data)
-           {    
-		$('#loading').hide()
-		$('#progress').hide()
-               $('#put').html(data); // show response from the python script.
-                var d = new Date();
-                var figfile = $("#plot").attr("src")
-                //alert(figfile)
-                $("#plot").attr("src", figfile+"?"+d.getTime());
-
-               $("#dirname_r").val($('#dirname').val())
-               $("#prof_opts").hide()
-               $("#hov_opts").hide()
-               $("#restart").show()
-               jQuery('input[type=input], input').attr('disabled', false);
-
-           }
-         });
-
-    return false; // avoid to execute the actual submit of the form.
-});
-</script>
 
 
-</div>
 
-<div id="output_div">
-<div id="put"></div>
-<div id=loading_container class=framel>
-<div id="loading"></div><div id="progress" style="width:300px; margin: 0px auto;"></div>
-</div>
-</div>
+     </div> <!-- framer -->
+
+  </form> <!-- model options form -->
+
+  <div id="output_div">
+     <div id="put"></div>
+
+     <div id=loading_container class=framel>
+       <div id="loading"></div>
+       <div id="progress" style="width:300px; margin: 0px auto;"></div>
+     </div>
+
+  </div>
 
 
 </body>

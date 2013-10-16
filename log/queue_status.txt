@@ -1,0 +1,11 @@
+-----------------------------------
+Time: Wed Oct 16 15:35:11 2013
+Number of model threads:   2
+Number of working threads: 2
+
+Number of server threads:  2
+
+Running jobs:
+
+Queued jobs:
+

@@ -1,0 +1,5 @@
+#!/bin/csh
+
+set proc_id = `cat ./log/rc_model.pid`
+pkill -P $proc_id 
+kill  $proc_id 

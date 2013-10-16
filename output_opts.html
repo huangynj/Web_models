@@ -1,17 +1,43 @@
 
-<div class="framel">
-<br><br>
-<form method="POST" action="/rc" name="output_options" id="output_options">
-<p>
+  <div class="framel">
+  <br><br>
+  <form method="POST" action="/rc" name="output_options" id="output_options">
 
-<input type="hidden" name="replot" value="yes">
-<label><h3>Output:</h3><br></label>
+    <p>
 
-          <p>Plot type:      <label><input type="radio" id="plot_type_ts" name="plot_type" value="time_opts" checked> Timeseries &nbsp </label>
-                          <label><input type="radio" id="plot_type_pr" name="plot_type" value="prof_opts"> Profile &nbsp </label>
-                          <label><input type="radio" id="plot_type_th" name="plot_type" value="hov_opts"> Time-height section<br></label>
+    <input type="hidden" name="replot" value="yes">
+    <label><h3>Output:</h3><br></label>
 
-          Select plotting variable:
+
+      <!-- Type of plot %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  -->
+      <p><span class=dates>Plot type:</span>
+         <label><input type="radio" id="plot_type_ts" 
+                       name="plot_type" value="time_opts" checked> Timeseries &nbsp 
+         </label><br>
+
+         <span class=dates></span>
+         <label><input type="radio" id="plot_type_pr" 
+                       name="plot_type" value="prof_opts"> Profile &nbsp 
+         </label><br>
+
+         <span class=dates></span>
+         <label><input type="radio" id="plot_type_th" 
+                       name="plot_type" value="hov_opts"> Time-height section
+         </label><br>
+
+
+         <!-- This is removed by the server if there is a previous simulation to diff from -->
+         <!--DIFF
+         <span class=dates></span>
+         <label><input type="radio" id="plot_type_th" 
+                      name="plot_type" value="diff_opts"> Difference from previous simulation
+         </label><br>
+          DIFF-->
+
+    <br>
+
+       <!-- PLotting variable %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% --> 
+         <span class=dates> Select plotting variable:</span>
                 <label> <select name="timeplot" id="time_opts" class="out_opts"><br>
                         <option  value="time_sst">Surface temperature</option>
                         <option  value="time_precip">Precipitation</option>
@@ -24,7 +50,19 @@
                         <option  value="profile_rh">Relative humidity</option>
                         <option  value="profile_cld">Cloud fraction</option>
                         <option  value="profile_clw">Cloud water content</option>
-                        <option  value="profile_b">Parcel buoyancy</option>
+                        <!--<option  value="profile_b">Parcel buoyancy</option>-->
+                        <option  value="profile_MSE">Moist static energy</option>
+                        <option  value="profile_heating">Diabatic heating rates</option>
+                        <option  value="profile_massflux">Convective mass flux</option>
+                        <option  value="profile_entrainment">Convective entrainment</option></select></label>
+
+                <label> <select name="diffplot" id="diff_opts" class="out_opts"><br>
+                        <option  value="profile_t">Temperature</option>
+                        <option  value="profile_q">Specific humidity</option>
+                        <option  value="profile_rh">Relative humidity</option>
+                        <option  value="profile_cld">Cloud fraction</option>
+                        <option  value="profile_clw">Cloud water content</option>
+                        <!--<option  value="profile_b">Parcel buoyancy</option>-->
                         <option  value="profile_MSE">Moist static energy</option>
                         <option  value="profile_heating">Diabatic heating rates</option>
                         <option  value="profile_massflux">Convective mass flux</option>
@@ -37,53 +75,82 @@
                         <option  value="hov_buoy">Parcel buoyancy</option></select></label></p>
 
                  <input type="hidden" id="dirname" name="dirname" value=""> 
-      <script> // Toggle the output options
-           $("input:radio[name='plot_type']").click(function() {      
-              $('.out_opts').hide();
-              $('#' + $("input:radio[name='plot_type']:checked").val()).show();
-           });
-      </script>
-
-<div id="plot_div">
-   <!-- image goes here -->
-</div>
-
-</div>
-
-<div class="framer">
-<!--<div id="outdir">-->
-<!--</div>-->
-        <br><br><br><br><center><input type="submit" value="Replot" id="replot"><br></center>
-	<input type="hidden" name="plot_again" value="">
 
 
-</form>
-</div>
-        <script>
+    <div id="plot_div">
+     <!-- image goes here -->
+    </div>
 
-$("#replot").click(function() {
+    <br>
 
-    var url = "/rc"; // the script where you handle the form input.
 
-    $.ajax({
-           type: "POST",
-           url: url,
-           data: $("#output_options").serialize(), // serializes the form's elements.
-	   //beforeSend: alert($("#output_options").serialize()),
-	   //error: alert(),
-           success: function(data)
-           {
-		//$("#plot_div").html("whoo!");
-         	var d = new Date();
-		var figfile = $("#plot").attr("src")
-		//alert(figfile)
-		$("#plot").attr("src", figfile+"?"+d.getTime());
-           }
-         });
+    <script>
+       // Set the table name - need to keep this here to ensure correct dirname
+       var textfile='/rc?textfile='+$('#dirname').val()+'/table.out'
+    </script>
 
-    return false; // avoid to execute the actual submit of the form.
-});
-</script>
+  </div> <!-- left frame div -->
+
+
+
+  <div class="framer"> <!-- Right hand frame ------------------------------------------------------------- -->
+
+  <!--<div id="outdir">-->
+  <!--</div>-->
+ 
+
+   <br><br><br><br><center><input type="submit" value="Replot" id="replot"><br></center>
+   <input type="hidden" name="plot_again" value="">
+
+
+  </form>
+
+
+  <!-- some space below the replot button (Should not use <br> like this. Should change to css -->
+  <br><br><br>
+  <br><br><br>
+  <br><br><br>
+  <br><br><br>
+  <br><br><br>
+  <br><br>
+
+
+<!-- style for the table of data -->
+<style type="text/css">
+
+.datagrid table { border-collapse: collapse; text-align: left; width: 100%; } .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 1px solid #006699; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }.datagrid table td, .datagrid table th { padding: 3px 2px; }.datagrid table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; color:#FFFFFF; font-size: 15px; font-weight: bold; border-left: 1px solid #0070A8; } .datagrid table thead th:first-child { border: none; }.datagrid table tbody td { color: #00496B; border-left: 1px solid #E1EEF4;font-size: 12px;font-weight: normal; }.datagrid table tbody .alt td { background: #E1EEF4; color: #00496B; }.datagrid table tbody td:first-child { border-left: none; }.datagrid table tbody tr:last-child td { border-bottom: none; }
+
+
+</style>
+
+  <!-- The data table -->
+  <center>
+    <div class="datagrid" style="width:74%;float:center">
+      <table>
+        <thead><tr><th colspan ="2">Avg. over last 10 days</th></tr></thead>
+        <tbody>
+      	  <tr            ><td>SST                </td><td>##SST## &nbsp;&nbsp;deg C</td></tr>
+		<tr class="alt"><td>F<sub>TOA</sub>    </td><td>#FNTOA# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
+		<tr            ><td>LW<sub>TOA</sub>   </td><td>#LWTOA# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
+		<tr class="alt"><td>SW<sub>TOA</sub>   </td><td>#SWTOA# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
+		<tr            ><td>LW<sub>sfc</sub>   </td><td>#LWSFC# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
+		<tr class="alt"><td>SW<sub>sfc</sub>   </td><td>#SWSFC# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
+		<tr            ><td>LH<sub>sfc</sub>   </td><td>#LHSFC# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
+		<tr class="alt"><td>SH<sub>sfc</sub>   </td><td>#SHSFC# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
+        </tbody>
+      </table>
+  </div>
+  
+  <br>
+  <a href="" onClick="this.href=textfile" target="_blank">Text output</a>
+
+  </center>
+
+  </div>
+
+<!-- javascript for the output options -->
+<script src="output_opts.js"></script>
+
 
 
 
