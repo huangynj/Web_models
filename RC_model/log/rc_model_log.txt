@@ -260,3 +260,256 @@ Wed Oct 16 17:21:46 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpJORfZZ, le
 Wed Oct 16 17:21:46 2013: run: wait time: temp/tmpJORfZZ: 0.000196933746338
 Wed Oct 16 17:21:48 2013: run: run time: temp/tmpJORfZZ: 0.0907296061516
 Wed Oct 16 17:21:48 2013: run: success: temp/tmpJORfZZ
+Wed Oct 16 20:03:08 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpJORfZZ, length: 20 days
+Wed Oct 16 20:03:08 2013: run: wait time: temp/tmpJORfZZ: 0.000148057937622
+Wed Oct 16 20:03:10 2013: run: run time: temp/tmpJORfZZ: 0.0900378465652
+Wed Oct 16 20:03:11 2013: run: success: temp/tmpJORfZZ
+Thu Oct 17 01:00:00 2013: === Running scheduled tasks
+Thu Oct 17 01:10:49 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpJORfZZ, length: 20 days
+Thu Oct 17 01:10:49 2013: run: wait time: temp/tmpIsQ_kh: 0.000227928161621
+Thu Oct 17 01:10:51 2013: run: run time: temp/tmpIsQ_kh: 0.0930085539818
+Thu Oct 17 01:10:51 2013: run: success: temp/tmpIsQ_kh
+Thu Oct 17 01:10:52 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpIsQ_kh, length: 20 days
+Thu Oct 17 01:10:52 2013: run: wait time: temp/tmpIsQ_kh: 0.000157117843628
+Thu Oct 17 01:10:52 2013: run: killing simulation: temp/tmpIsQ_kh
+Thu Oct 17 01:10:52 2013: Run: Model exit with code 143 - temp/tmpIsQ_kh
+Thu Oct 17 01:10:53 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpIsQ_kh, length: 20 days
+Thu Oct 17 01:10:53 2013: run: wait time: temp/tmpIsQ_kh: 0.000168085098267
+Thu Oct 17 01:10:53 2013: run: killing simulation: temp/tmpIsQ_kh
+Thu Oct 17 01:10:53 2013: Run: Model exit with code 143 - temp/tmpIsQ_kh
+Thu Oct 17 01:10:54 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpIsQ_kh, length: 20 days
+Thu Oct 17 01:10:54 2013: run: wait time: temp/tmpIsQ_kh: 0.000156164169312
+Thu Oct 17 01:10:56 2013: run: run time: temp/tmpIsQ_kh: 0.0899126529694
+Thu Oct 17 01:10:56 2013: run: success: temp/tmpIsQ_kh
+Thu Oct 17 01:10:56 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpIsQ_kh, length: 20 days
+Thu Oct 17 01:10:56 2013: run: wait time: temp/tmpIsQ_kh: 0.000149965286255
+Thu Oct 17 01:10:58 2013: run: run time: temp/tmpIsQ_kh: 0.0899797558784
+Thu Oct 17 01:10:58 2013: run: success: temp/tmpIsQ_kh
+Thu Oct 17 01:20:35 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpIsQ_kh, length: 20 days
+Thu Oct 17 01:20:35 2013: run: wait time: temp/tmpIsQ_kh: 0.00013279914856
+Thu Oct 17 01:20:37 2013: run: run time: temp/tmpIsQ_kh: 0.089791405201
+Thu Oct 17 01:20:37 2013: run: success: temp/tmpIsQ_kh
+Thu Oct 17 13:26:10 2013: Submit simulation: jvagard@MIT.EDU: n, length: 20 days
+Thu Oct 17 13:26:10 2013: run: wait time: temp/tmpqWXL8D: 0.000189065933228
+Thu Oct 17 13:26:12 2013: run: run time: temp/tmpqWXL8D: 0.0965900540352
+Thu Oct 17 13:26:12 2013: run: success: temp/tmpqWXL8D
+Thu Oct 17 17:28:18 2013: Submit simulation: jvagard@MIT.EDU: n, length: 20 days
+Thu Oct 17 17:28:18 2013: run: wait time: temp/tmpowUHg7: 0.000174999237061
+Thu Oct 17 17:28:20 2013: run: run time: temp/tmpowUHg7: 0.0894793510437
+Thu Oct 17 17:28:20 2013: run: success: temp/tmpowUHg7
+Thu Oct 17 19:52:32 2013: Submit simulation: mssingh@MIT.EDU: n, length: 20 days
+Thu Oct 17 19:52:32 2013: run: wait time: temp/tmpiNvM5E: 0.000153064727783
+Thu Oct 17 19:52:33 2013: run: run time: temp/tmpiNvM5E: 0.0917118430138
+Thu Oct 17 19:52:34 2013: run: success: temp/tmpiNvM5E
+Thu Oct 17 20:20:30 2013: Submit simulation: mssingh@MIT.EDU: n, length: 20 days
+Thu Oct 17 20:20:30 2013: run: wait time: temp/tmpUpqTpg: 0.000127077102661
+Thu Oct 17 20:20:32 2013: run: run time: temp/tmpUpqTpg: 0.0927101492882
+Thu Oct 17 20:20:32 2013: run: success: temp/tmpUpqTpg
+Thu Oct 17 20:27:50 2013: ==================================================
+Thu Oct 17 20:27:50 2013: === Starting Radiative-convective model server ===
+Thu Oct 17 20:27:50 2013: ===                                               
+Thu Oct 17 20:27:50 2013: === Using 2 threads for RC model                 
+Thu Oct 17 20:27:50 2013: === On 1 CPUs                                    
+Thu Oct 17 20:27:50 2013: ===                                               
+Thu Oct 17 20:27:50 2013: === Max simulation time: 300 seconds               
+Thu Oct 17 20:27:50 2013: ==================================================
+Thu Oct 17 20:27:53 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpUpqTpg, length: 20 days
+Thu Oct 17 20:27:53 2013: run: wait time: temp/tmpUpqTpg: 0.00134181976318
+Thu Oct 17 20:27:55 2013: run: run time: temp/tmpUpqTpg: 0.0908915519714
+Thu Oct 17 20:29:40 2013: ==================================================
+Thu Oct 17 20:29:40 2013: === Starting Radiative-convective model server ===
+Thu Oct 17 20:29:40 2013: ===                                               
+Thu Oct 17 20:29:40 2013: === Using 2 threads for RC model                 
+Thu Oct 17 20:29:40 2013: === On 1 CPUs                                    
+Thu Oct 17 20:29:40 2013: ===                                               
+Thu Oct 17 20:29:40 2013: === Max simulation time: 300 seconds               
+Thu Oct 17 20:29:40 2013: ==================================================
+Thu Oct 17 20:29:49 2013: Submit simulation: mssingh@MIT.EDU: n, length: 20 days
+Thu Oct 17 20:29:49 2013: run: wait time: temp/tmpckvOqh: 0.00142002105713
+Thu Oct 17 20:29:51 2013: run: run time: temp/tmpckvOqh: 0.0971217513084
+Thu Oct 17 20:29:51 2013: run: success: temp/tmpckvOqh
+Thu Oct 17 20:31:34 2013: ==================================================
+Thu Oct 17 20:31:34 2013: === Starting Radiative-convective model server ===
+Thu Oct 17 20:31:34 2013: ===                                               
+Thu Oct 17 20:31:34 2013: === Using 2 threads for RC model                 
+Thu Oct 17 20:31:34 2013: === On 1 CPUs                                    
+Thu Oct 17 20:31:34 2013: ===                                               
+Thu Oct 17 20:31:34 2013: === Max simulation time: 300 seconds               
+Thu Oct 17 20:31:34 2013: ==================================================
+Thu Oct 17 20:31:38 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpckvOqh, length: 20 days
+Thu Oct 17 20:31:38 2013: run: wait time: temp/tmpckvOqh: 0.00130295753479
+Thu Oct 17 20:31:40 2013: run: run time: temp/tmpckvOqh: 0.0912027478218
+Thu Oct 17 20:31:40 2013: run: success: temp/tmpckvOqh
+Thu Oct 17 20:33:31 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpckvOqh, length: 20 days
+Thu Oct 17 20:33:31 2013: run: wait time: temp/tmpckvOqh: 0.000237226486206
+Thu Oct 17 20:33:33 2013: run: run time: temp/tmpckvOqh: 0.0899103999138
+Thu Oct 17 20:33:33 2013: run: success: temp/tmpckvOqh
+Thu Oct 17 20:34:13 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpckvOqh, length: 20 days
+Thu Oct 17 20:34:13 2013: run: wait time: temp/tmpckvOqh: 0.000150918960571
+Thu Oct 17 20:34:15 2013: run: run time: temp/tmpckvOqh: 0.0897729992867
+Thu Oct 17 20:34:15 2013: run: success: temp/tmpckvOqh
+Thu Oct 17 20:35:06 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpckvOqh, length: 20 days
+Thu Oct 17 20:35:06 2013: run: wait time: temp/tmpckvOqh: 0.000176906585693
+Thu Oct 17 20:35:08 2013: run: run time: temp/tmpckvOqh: 0.089812707901
+Thu Oct 17 20:35:08 2013: run: success: temp/tmpckvOqh
+Thu Oct 17 20:36:32 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpckvOqh, length: 20 days
+Thu Oct 17 20:36:32 2013: run: wait time: temp/tmpckvOqh: 0.000144004821777
+Thu Oct 17 20:36:34 2013: run: run time: temp/tmpckvOqh: 0.0883502006531
+Thu Oct 17 20:36:34 2013: run: success: temp/tmpckvOqh
+Thu Oct 17 20:36:47 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpckvOqh, length: 20 days
+Thu Oct 17 20:36:47 2013: run: wait time: temp/tmpckvOqh: 0.000272989273071
+Thu Oct 17 20:36:49 2013: run: run time: temp/tmpckvOqh: 0.0898473978043
+Thu Oct 17 20:36:49 2013: run: success: temp/tmpckvOqh
+Thu Oct 17 20:37:06 2013: Submit simulation: jvagard@MIT.EDU: n, length: 20 days
+Thu Oct 17 20:37:06 2013: run: wait time: temp/tmpbj37Yc: 0.000148057937622
+Thu Oct 17 20:37:08 2013: run: run time: temp/tmpbj37Yc: 0.0995207548141
+Thu Oct 17 20:37:08 2013: run: success: temp/tmpbj37Yc
+Thu Oct 17 20:37:19 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpckvOqh, length: 20 days
+Thu Oct 17 20:37:19 2013: run: wait time: temp/tmpckvOqh: 0.0001540184021
+Thu Oct 17 20:37:21 2013: run: run time: temp/tmpckvOqh: 0.0954832911491
+Thu Oct 17 20:37:21 2013: run: success: temp/tmpckvOqh
+Thu Oct 17 20:37:32 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpckvOqh, length: 20 days
+Thu Oct 17 20:37:32 2013: run: wait time: temp/tmpckvOqh: 0.000160932540894
+Thu Oct 17 20:37:34 2013: run: run time: temp/tmpckvOqh: 0.0932513475418
+Thu Oct 17 20:37:34 2013: run: success: temp/tmpckvOqh
+Thu Oct 17 20:38:03 2013: ==================================================
+Thu Oct 17 20:38:03 2013: === Starting Radiative-convective model server ===
+Thu Oct 17 20:38:03 2013: ===                                               
+Thu Oct 17 20:38:03 2013: === Using 2 threads for RC model                 
+Thu Oct 17 20:38:03 2013: === On 1 CPUs                                    
+Thu Oct 17 20:38:03 2013: ===                                               
+Thu Oct 17 20:38:03 2013: === Max simulation time: 300 seconds               
+Thu Oct 17 20:38:03 2013: ==================================================
+Thu Oct 17 20:38:12 2013: Submit simulation: mssingh@MIT.EDU: n, length: 100 days
+Thu Oct 17 20:38:12 2013: run: wait time: temp/tmpCdU9RD: 0.000977993011475
+Thu Oct 17 20:38:20 2013: run: run time: temp/tmpCdU9RD: 0.0823187208176
+Thu Oct 17 20:38:20 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:39:58 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 100 days
+Thu Oct 17 20:39:58 2013: run: wait time: temp/tmpCdU9RD: 0.000200033187866
+Thu Oct 17 20:40:03 2013: run: killing simulation: temp/tmpCdU9RD
+Thu Oct 17 20:40:03 2013: Run: Model exit with code 143 - temp/tmpCdU9RD
+Thu Oct 17 20:40:07 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:40:07 2013: run: wait time: temp/tmpCdU9RD: 0.000141143798828
+Thu Oct 17 20:40:09 2013: run: run time: temp/tmpCdU9RD: 0.0889659047127
+Thu Oct 17 20:40:10 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:40:31 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:40:31 2013: run: wait time: temp/tmpCdU9RD: 0.000168085098267
+Thu Oct 17 20:40:33 2013: run: run time: temp/tmpCdU9RD: 0.0906798481941
+Thu Oct 17 20:40:33 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:40:52 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:40:52 2013: run: wait time: temp/tmpCdU9RD: 0.000221967697144
+Thu Oct 17 20:40:54 2013: run: run time: temp/tmpCdU9RD: 0.0896847486496
+Thu Oct 17 20:40:54 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:41:05 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:41:05 2013: run: wait time: temp/tmpCdU9RD: 0.000159025192261
+Thu Oct 17 20:41:06 2013: run: run time: temp/tmpCdU9RD: 0.089702296257
+Thu Oct 17 20:41:07 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:41:34 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:41:34 2013: run: wait time: temp/tmpCdU9RD: 0.000165939331055
+Thu Oct 17 20:41:36 2013: run: run time: temp/tmpCdU9RD: 0.0896003007889
+Thu Oct 17 20:41:36 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:43:05 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:43:05 2013: run: wait time: temp/tmpCdU9RD: 0.000164985656738
+Thu Oct 17 20:43:07 2013: run: run time: temp/tmpCdU9RD: 0.0911450505257
+Thu Oct 17 20:43:07 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:43:40 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:43:40 2013: run: wait time: temp/tmpCdU9RD: 0.00014591217041
+Thu Oct 17 20:43:42 2013: run: run time: temp/tmpCdU9RD: 0.090492105484
+Thu Oct 17 20:43:42 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:47:09 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:47:09 2013: run: wait time: temp/tmpCdU9RD: 0.000160932540894
+Thu Oct 17 20:47:10 2013: run: run time: temp/tmpCdU9RD: 0.0964588999748
+Thu Oct 17 20:47:11 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:47:29 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:47:29 2013: run: wait time: temp/tmpCdU9RD: 0.000176906585693
+Thu Oct 17 20:47:31 2013: run: run time: temp/tmpCdU9RD: 0.0964697480202
+Thu Oct 17 20:47:31 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:49:03 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:49:03 2013: run: wait time: temp/tmpCdU9RD: 0.000200986862183
+Thu Oct 17 20:49:05 2013: run: run time: temp/tmpCdU9RD: 0.101104044914
+Thu Oct 17 20:49:05 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:49:44 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:49:44 2013: run: wait time: temp/tmpCdU9RD: 0.00014591217041
+Thu Oct 17 20:49:46 2013: run: run time: temp/tmpCdU9RD: 0.0903631567955
+Thu Oct 17 20:49:46 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:50:55 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:50:55 2013: run: wait time: temp/tmpCdU9RD: 0.000214099884033
+Thu Oct 17 20:50:56 2013: run: run time: temp/tmpCdU9RD: 0.0902081012726
+Thu Oct 17 20:50:57 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:53:43 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:53:43 2013: run: wait time: temp/tmpCdU9RD: 0.000172138214111
+Thu Oct 17 20:53:45 2013: run: run time: temp/tmpCdU9RD: 0.0926309943199
+Thu Oct 17 20:53:45 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:54:48 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 20:54:48 2013: run: wait time: temp/tmpCdU9RD: 0.000149011611938
+Thu Oct 17 20:54:50 2013: run: run time: temp/tmpCdU9RD: 0.0894091486931
+Thu Oct 17 20:54:50 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 20:57:18 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpiNvM5E, length: 20 days
+Thu Oct 17 20:57:18 2013: run: wait time: temp/tmpiNvM5E: 0.000131130218506
+Thu Oct 17 20:57:19 2013: run: run time: temp/tmpiNvM5E: 0.0929922938347
+Thu Oct 17 20:57:20 2013: run: success: temp/tmpiNvM5E
+Thu Oct 17 21:00:41 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 21:00:41 2013: run: wait time: temp/tmpCdU9RD: 0.000137090682983
+Thu Oct 17 21:00:43 2013: run: run time: temp/tmpCdU9RD: 0.0938264012337
+Thu Oct 17 21:00:43 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 21:02:51 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 21:02:51 2013: run: wait time: temp/tmpCdU9RD: 0.000159025192261
+Thu Oct 17 21:02:53 2013: run: run time: temp/tmpCdU9RD: 0.0915539503098
+Thu Oct 17 21:02:53 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 21:06:47 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpCdU9RD, length: 20 days
+Thu Oct 17 21:06:47 2013: run: wait time: temp/tmpCdU9RD: 0.0001380443573
+Thu Oct 17 21:06:49 2013: run: run time: temp/tmpCdU9RD: 0.0897526025772
+Thu Oct 17 21:06:49 2013: run: success: temp/tmpCdU9RD
+Thu Oct 17 21:07:16 2013: Submit simulation: mssingh@MIT.EDU: n, length: 20 days
+Thu Oct 17 21:07:16 2013: run: wait time: temp/tmproNTxF: 0.000170946121216
+Thu Oct 17 21:07:18 2013: run: run time: temp/tmproNTxF: 0.0967411518097
+Thu Oct 17 21:07:18 2013: run: success: temp/tmproNTxF
+Thu Oct 17 21:09:54 2013: Submit simulation: jvagard@MIT.EDU: n, length: 20 days
+Thu Oct 17 21:09:54 2013: run: wait time: temp/tmpIl5Zp1: 0.000137805938721
+Thu Oct 17 21:09:56 2013: run: run time: temp/tmpIl5Zp1: 0.0890549063683
+Thu Oct 17 21:09:56 2013: run: success: temp/tmpIl5Zp1
+Thu Oct 17 21:11:17 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpiNvM5E, length: 50 days
+Thu Oct 17 21:11:17 2013: run: wait time: temp/tmpiNvM5E: 0.00014591217041
+Thu Oct 17 21:11:21 2013: run: run time: temp/tmpiNvM5E: 0.084410161972
+Thu Oct 17 21:11:22 2013: run: success: temp/tmpiNvM5E
+Thu Oct 17 21:36:44 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpiNvM5E, length: 100 days
+Thu Oct 17 21:36:44 2013: run: wait time: temp/tmpiNvM5E: 0.000200033187866
+Thu Oct 17 21:36:52 2013: run: run time: temp/tmpiNvM5E: 0.0846937608719
+Thu Oct 17 21:36:53 2013: run: success: temp/tmpiNvM5E
+Thu Oct 17 21:37:00 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpiNvM5E, length: 100 days
+Thu Oct 17 21:37:00 2013: run: wait time: temp/tmpiNvM5E: 0.000148057937622
+Thu Oct 17 21:38:26 2013: run: run time: temp/tmpiNvM5E: 0.86720733881
+Thu Oct 17 21:38:27 2013: run: success: temp/tmpiNvM5E
+Fri Oct 18 01:00:00 2013: === Running scheduled tasks
+Fri Oct 18 14:05:52 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpiNvM5E, length: 100 days
+Fri Oct 18 14:06:02 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpiNvM5E, length: 100 days
+Fri Oct 18 14:06:02 2013: run: wait time: temp/tmpXB6Mrl: 0.000233173370361
+Fri Oct 18 14:06:11 2013: run: run time: temp/tmpXB6Mrl: 0.0883184599876
+Fri Oct 18 14:06:12 2013: run: success: temp/tmpXB6Mrl
+Fri Oct 18 14:07:03 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpXB6Mrl, length: 100 days
+Fri Oct 18 14:07:03 2013: run: wait time: temp/tmpXB6Mrl: 0.000231981277466
+Fri Oct 18 14:07:36 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpXB6Mrl, length: 100 days
+Fri Oct 18 14:07:36 2013: run: wait time: temp/tmpXB6Mrl: 0.000144004821777
+Fri Oct 18 14:07:38 2013: run: killing simulation: temp/tmpXB6Mrl
+Fri Oct 18 14:07:38 2013: Run: Model exit with code 143 - temp/tmpXB6Mrl
+Fri Oct 18 14:10:00 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpXB6Mrl, length: 33 days
+Fri Oct 18 14:10:00 2013: run: wait time: temp/tmpXB6Mrl: 0.000159978866577
+Fri Oct 18 14:10:01 2013: Found only 1 model thread(s). Restarting broken thread(s).
+Fri Oct 18 14:10:33 2013: run: run time: temp/tmpXB6Mrl: 0.987890850414
+Fri Oct 18 14:10:34 2013: run: success: temp/tmpXB6Mrl
+Fri Oct 18 14:12:58 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpXB6Mrl, length: 20 days
+Fri Oct 18 14:12:58 2013: run: wait time: temp/tmpXB6Mrl: 0.000246047973633
+Fri Oct 18 14:12:59 2013: run: run time: temp/tmpXB6Mrl: 0.0956240057945
+Fri Oct 18 14:13:00 2013: run: success: temp/tmpXB6Mrl
+Fri Oct 18 15:48:22 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpXB6Mrl, length: 200 days
+Fri Oct 18 15:48:22 2013: run: wait time: temp/tmpXB6Mrl: 0.000156879425049
+Fri Oct 18 15:49:03 2013: run: run time: temp/tmpXB6Mrl: 0.203900749683
+Fri Oct 18 15:49:04 2013: run: success: temp/tmpXB6Mrl
+Fri Oct 18 16:43:58 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpXB6Mrl, length: 12 days
+Fri Oct 18 16:43:58 2013: run: wait time: temp/tmpXB6Mrl: 0.000295877456665
+Fri Oct 18 16:44:00 2013: run: run time: temp/tmpXB6Mrl: 0.108033994834
+Fri Oct 18 16:44:01 2013: run: success: temp/tmpXB6Mrl
+Fri Oct 18 16:46:28 2013: Submit simulation: mssingh@MIT.EDU: n, length: 20 days
+Fri Oct 18 16:46:28 2013: run: wait time: temp/tmpDCH6ex: 0.0001540184021
+Fri Oct 18 16:46:30 2013: run: run time: temp/tmpDCH6ex: 0.0903324961662
+Fri Oct 18 16:46:30 2013: run: success: temp/tmpDCH6ex

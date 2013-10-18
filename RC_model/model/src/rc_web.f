@@ -71,6 +71,8 @@ C
         REAL FTRA(NA,1),FU(NA),FV(NA),FUNET(NA),FVNET(NA),FTRANET(NA)
         REAL FTADJ(NA), FRADJ(NA) ! addendum sb
 C
+        REAL SFLUX, SHFLUX, LHFLUX
+C
         LOGICAL ok, correc, correc2, rad1st, radcomp
      :        ,newobs,nodomega,newqlw,evap_prec
      :        ,correctd
@@ -146,6 +148,7 @@ C
         REAL FTBAR(NA,6), FRBAR(NA,6), BUOYBAR(NA,2), RHBAR(NA)
         REAL HBAR(NA,2), MBAR(NA,3), MDET(NA,2), WATERBAR(NA,2)
         REAL TRAGRAPH(NA), GZ(NA)
+        REAL SHFBAR, LHFBAR
 	  REAL CFRACBAR(NA),CLQBAR(NA)
 C
 C  Latent heat at T=0 C
@@ -494,6 +497,8 @@ C
 	  ICB=2                                     
         FTS=0.0
 C
+        SHFBAR=0.0
+        LHFBAR=0.0
         DO 60 I=1,NP
          FTNET(I)=0.0
          FRNET(I)=0.0
@@ -559,8 +564,13 @@ c -- sb
         TPERRI=0.
 c
 	  nradc=0
+	  topbarlw=0.0
+	  topbarsw=0.0
 	  topbar=0.0
+	  botbarlw=0.0
+	  botbarsw=0.0
 	  botbar=0.0
+	  sstbar=0.0
 	  vmax=64.0
 C
 C  Begin time loop at next statement
@@ -852,9 +862,16 @@ c
      s             topsw,toplw,solsw,sollw,
      s             topsw0,toplw0,solsw0,sollw0)
 c
-	topbar=topbar+toplw(1)
-	botbar=botbar+solsw(1)+sollw(1)
-	nradc=nradc+1
+	IF(TIME.GE.ENDTIME-AVTIME/100)THEN
+	 topbarlw=topbarlw-toplw(1)
+	 botbar=botbar+solsw(1)+sollw(1)
+	 topbar=topbar+topsw(1)-toplw(1)
+	 botbarlw=botbarlw+sollw(1)
+	 topbarsw=topbarsw+topsw(1)
+	 botbarsw=botbarsw+solsw(1)
+	 nradc=nradc+1
+	 sstbar=sstbar+TS2(1)-273.15
+	ENDIF
 C
 C  Calculate net radiative cooling rate
 C
@@ -939,10 +956,14 @@ C
          TC=T2(1)-273.15
          ALV=LV0-CPVMCL*TC
          SFLUX=0.0
+         SHFLUX=0.0
+         LHFLUX=0.0
          IF(FLUXSWITCH.EQ.'y')THEN
-          SFLUX=(CPD*(1.-R2(1))+CPV*R2(1))*100.0*ROWS*CD*(VSURF*
-     1      (TS1-TSA)-VSPRIME*TPRIME)+
-     2      ALV*BETA*100.0*ROWS*CD*(VSURF*(RSS-R1(1))-VSPRIME*QPRIME)
+          SHFLUX=(CPD*(1.-R2(1))+CPV*R2(1))*100.0*ROWS*CD*(VSURF*
+     1      (TS1-TSA)-VSPRIME*TPRIME)
+          LHFLUX=ALV*BETA*100.0*ROWS*CD*(VSURF*(RSS-R1(1))-
+     1      VSPRIME*QPRIME)
+          SFLUX=SHFLUX + LHFLUX
          END IF
 C
 C  Input interactive net surface radiative flux to ocean
@@ -1016,6 +1037,10 @@ C
           FRBAR(I,4)=FRBAR(I,4)+FRADV
          END IF
   140	CONTINUE
+
+        SHFBAR=SHFBAR+SHFLUX
+        LHFBAR=LHFBAR+LHFLUX
+
 C
 C  Create smoothed quantities for time-height sections
 C
@@ -1277,6 +1302,8 @@ C
           SIJ(I,J)=SIJ(I,J)-0.001
   295	 CONTINUE
   300	CONTINUE
+        SHFBAR=FAC*SHFBAR
+        LHFBAR=FAC*LHFBAR
 C
 C  Headers for output files
 C
@@ -1389,11 +1416,30 @@ C
 	CLOSE(15)
 C
 	OPEN(UNIT=15,FILE=OUTDIR(1:NDIR)//'/lwbar.out',STATUS='UNKNOWN')
-	 WRITE(15,*)(topbar/float(nradc))
+	 WRITE(15,*)(topbarlw/float(nradc))
+	 WRITE(15,*)(botbarlw/float(nradc))
+	CLOSE(15)
+C
+	OPEN(UNIT=15,FILE=OUTDIR(1:NDIR)//'/swbar.out',STATUS='UNKNOWN')
+	 WRITE(15,*)(topbarsw/float(nradc))
+	 WRITE(15,*)(botbarsw/float(nradc))
 	CLOSE(15)
 C
 	OPEN(UNIT=15,FILE=OUTDIR(1:NDIR)//'/botbar.out',STATUS='UNKNOWN')
 	 WRITE(15,*)(botbar/float(nradc))
+	CLOSE(15)
+C
+	OPEN(UNIT=15,FILE=OUTDIR(1:NDIR)//'/topbar.out',STATUS='UNKNOWN')
+	 WRITE(15,*)(topbar/float(nradc))
+	CLOSE(15)
+C
+	OPEN(UNIT=15,FILE=OUTDIR(1:NDIR)//'/sstbar.out',STATUS='UNKNOWN')
+	 WRITE(15,*)(sstbar/float(nradc))
+	CLOSE(15)
+C
+	OPEN(UNIT=15,FILE=OUTDIR(1:NDIR)//'/shfbar.out',STATUS='UNKNOWN')
+	 WRITE(15,*)(SHFBAR)
+	 WRITE(15,*)(LHFBAR)        
 	CLOSE(15)
 C
       OPEN(UNIT=15,FILE=OUTDIR(1:NDIR)//'/buoy.out',STATUS='UNKNOWN')

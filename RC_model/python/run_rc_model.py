@@ -552,8 +552,12 @@ def enquire_sim(form,path,queue,user): #########################################
        
 
            # Read some key numbers and from the output files
-           table_vals = get_output(dirname+'/botbar.out')
+           table_vals      = get_output(dirname+'/topbar.out')
+           table_vals.extend(get_output(dirname+'/botbar.out'))
            table_vals.extend(get_output(dirname+'/lwbar.out'))
+           table_vals.extend(get_output(dirname+'/swbar.out'))
+           table_vals.extend(get_output(dirname+'/shfbar.out'))
+           table_vals.extend(get_output(dirname+'/sstbar.out'))
 
 
            
@@ -571,9 +575,15 @@ def enquire_sim(form,path,queue,user): #########################################
 	      html_file = html_file.replace('DIFF-->','')
            
 
-	   # Add the average values to the table
-	   html_file = html_file.replace('#LWSFC#',"%7.1f" % float(table_vals[0][0]))
-	   html_file = html_file.replace('#LWTOA#',"%7.1f" % float(table_vals[1][0]))
+	   # Add the average values to the table (Upward fluxes are positive)
+	   html_file = html_file.replace('#FNTOA#',"%7.1f" % -float(table_vals[0][0]))
+	   html_file = html_file.replace('#LWTOA#',"%7.1f" % -float(table_vals[2][0]))
+	   html_file = html_file.replace('#LWSFC#',"%7.1f" % -float(table_vals[3][0]))
+	   html_file = html_file.replace('#SWTOA#',"%7.1f" % -float(table_vals[4][0]))
+	   html_file = html_file.replace('#SWSFC#',"%7.1f" % -float(table_vals[5][0]))
+	   html_file = html_file.replace('#SHSFC#',"%7.1f" % float(table_vals[6][0]))
+	   html_file = html_file.replace('#LHSFC#',"%7.1f" % float(table_vals[7][0]))
+	   html_file = html_file.replace('##SST##',"%7.1f" % float(table_vals[8][0]))
         
            # Make sure the new form knows where the output lives so we can restart
 	   html_file = html_file.replace('dirname" value="','dirname" value="'+dirname)

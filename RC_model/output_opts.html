@@ -118,29 +118,37 @@
 <!-- style for the table of data -->
 <style type="text/css">
 
-.datagrid table { border-collapse: collapse; text-align: left; width: 100%; } .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 1px solid #006699; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }.datagrid table td, .datagrid table th { padding: 3px 2px; }.datagrid table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; color:#FFFFFF; font-size: 15px; font-weight: bold; border-left: 1px solid #0070A8; } .datagrid table thead th:first-child { border: none; }.datagrid table tbody td { color: #00496B; border-left: 1px solid #E1EEF4;font-size: 12px;font-weight: normal; }.datagrid table tbody .alt td { background: #E1EEF4; color: #00496B; }.datagrid table tbody td:first-child { border-left: none; }.datagrid table tbody tr:last-child td { border-bottom: none; }
+
+.datagrid table { border-collapse: collapse; text-align: left; width: 100%; } .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 1px solid #006699; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }.datagrid table td, .datagrid table th { padding: 3px 10px; }.datagrid table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; color:#FFFFFF; font-size: 15px; font-weight: bold; border-left: 1px solid #0070A8; } .datagrid table thead th:first-child { border: none; }.datagrid table tbody td { color: #00496B; border-left: 1px solid #E1EEF4;font-size: 12px;font-weight: normal; }.datagrid table tbody .alt td { background: #E1EEF4; color: #00496B; }.datagrid table tbody td:first-child { border-left: none; }.datagrid table tbody tr:last-child td { border-bottom: none; }
+
 
 
 </style>
 
   <!-- The data table -->
   <center>
-    <div class="datagrid" style="width:74%;float:center">
+    <div style="width:74%;float:center">
+    <div class="datagrid" style="width:100%;float:center">
       <table>
-        <thead><tr><th colspan ="2">Avg. over last 10 days</th></tr></thead>
+        <thead><tr><th colspan ="3">Avg. over last 10 days</th></tr></thead>
         <tbody>
-      	  <tr            ><td>SST                </td><td>##SST## &nbsp;&nbsp;deg C</td></tr>
-		<tr class="alt"><td>F<sub>TOA</sub>    </td><td>#FNTOA# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
-		<tr            ><td>LW<sub>TOA</sub>   </td><td>#LWTOA# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
-		<tr class="alt"><td>SW<sub>TOA</sub>   </td><td>#SWTOA# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
-		<tr            ><td>LW<sub>sfc</sub>   </td><td>#LWSFC# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
-		<tr class="alt"><td>SW<sub>sfc</sub>   </td><td>#SWSFC# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
-		<tr            ><td>LH<sub>sfc</sub>   </td><td>#LHSFC# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
-		<tr class="alt"><td>SH<sub>sfc</sub>   </td><td>#SHSFC# &nbsp;&nbsp;W/m<sup>2</sup></td></tr>
+                <tr            ><td title="Sea-surface temperature">SST                      </td><td>##SST##</td><td> deg C</td></tr>
+		<tr class="alt"><td title="Net flux at top of atmosphere">F<sub>TOA</sub>    </td><td>#FNTOA#</td><td> W/m<sup>2</sup></td></tr>
+		<tr            ><td title="Long-wave flux at top of atmosphere">LW<sub>TOA</sub>   </td><td>#LWTOA#</td><td> W/m<sup>2</sup></td></tr>
+		<tr class="alt"><td title="Short-wave flux at top of atmosphere">SW<sub>TOA</sub>   </td><td>#SWTOA#</td><td> W/m<sup>2</sup></td></tr>
+		<tr            ><td title="Long-wave flux at surface">LW<sub>sfc</sub>   </td><td>#LWSFC#</td><td> W/m<sup>2</sup></td></tr>
+		<tr class="alt"><td title="Short-wave flux at surface">SW<sub>sfc</sub>   </td><td>#SWSFC#</td><td> W/m<sup>2</sup></td></tr>
+		<tr            ><td title="Latent heat flux">LH<sub>sfc</sub>   </td><td>#LHSFC#</td><td> W/m<sup>2</sup></td></tr>
+		<tr class="alt"><td title="Sensible heat flux">SH<sub>sfc</sub>   </td><td>#SHSFC#</td><td> W/m<sup>2</sup></td></tr>
         </tbody>
       </table>
   </div>
-  
+ <font size="1.2"><i>Positive fluxes are directed upward. </i></font><br>
+ <font size="1.2"><i>Mouseover the variable names for their description. </i></font>
+
+</div>
+
+  <br>
   <br>
   <a href="" onClick="this.href=textfile" target="_blank">Text output</a>
 
