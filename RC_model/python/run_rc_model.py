@@ -21,6 +21,7 @@ from mime import *
 from write_input    import write_params_in,write_sounding_in
 from postprocess    import output_control, get_output
 from plot_model_log import plot_model_log
+from s3_functions   import send_to_bucket,get_from_bucket,S3_name
 
 # Initial setup  ###################################################################################
 
@@ -181,7 +182,7 @@ class model_daemon(multiprocessing.Process): ###################################
     def run(self):
         while True:
             # gets the simulation parameters from the queue
-            [dirname,submit_time,days] = self.queue.get()
+            [dirname,submit_time,days,s3_file] = self.queue.get()
 
  
             # Calculate queue wait time
@@ -206,6 +207,16 @@ class model_daemon(multiprocessing.Process): ###################################
 
             if return_code == 0:
                LOG('run: run time: '+dirname+': '+str(run_time))
+
+            # Note that result is about to be cached
+               with open(dirname+'/log.out', 'w') as f:
+      	  	  f.write('cached')
+
+            # Send output to the cache
+            if s3_file != '':
+               send_to_bucket(s3_file,dirname)
+
+
 
 
     #----------------------------------------------------------------------
@@ -287,6 +298,8 @@ class model_daemon(multiprocessing.Process): ###################################
         form = {}
         form["plot_opt"] = "time_sst"
         json_output = output_control(form,dirname,json_output)
+
+
         
         # tell client we are done
         with open(dirname+'/log.out', 'w') as f:
@@ -337,7 +350,7 @@ def submit_sim(form, path, queue,user): ########################################
          
         if verbose > 1:
            LOG("form=%s" % dict((k,form[k].value) for k in form))
-         
+        
 
         # Initialize JSON output structure ----------------------------
         json_output = {}
@@ -381,6 +394,25 @@ def submit_sim(form, path, queue,user): ########################################
 
         # Add dirname to JSON output
         json_output['dirname'] = dirname
+
+        # If restart move pforile.out to profile.old
+        if ( os.path.isfile(dirname+'/profile.out') ): 
+                os.rename(dirname+'/profile.out',dirname+'/profile.old')
+
+        # Set name for s3 storage of cached results
+        s3_file = S3_name(form)
+
+        # Attempt to obtain output from cache
+        if 'restart' not in form:
+           LOG('Run: Attempting to get cached results')
+           retval = get_from_bucket(s3_file,dirname)
+           if retval == 0:
+              json_output['html'] = '<br><br><br><center><h3>Retrieving cached results</h3><br><br><h2>Please Wait<h2></center><br>'
+              form = {}
+              form["plot_opt"] = "time_sst"
+              json_output = output_control(form,dirname,json_output)
+              return json.dumps(json_output,indent=1)
+
         
 	# Write inputs for model ------------------------------
         
@@ -446,9 +478,6 @@ def submit_sim(form, path, queue,user): ########################################
                 LOG('>> Error: Could not create input file')
 		return json.dumps(json_output,indent=1)
         
-        # If restart move pforile.out to profile.old
-        if ( os.path.isfile(dirname+'/profile.out') ): 
-                os.rename(dirname+'/profile.out',dirname+'/profile.old')
 
 
 	
@@ -463,7 +492,7 @@ def submit_sim(form, path, queue,user): ########################################
         queued_jobs[dirname] = 'run' 
         queue_order.append(dirname) 
         submit_time = time.time()
-        queue.put([dirname,submit_time,days])             
+        queue.put([dirname,submit_time,days,s3_file])             
         json_output['html'] = '<br><br><br><center><h3>Your job is in the queue</h3><br><br><h2>Please Wait<h2></center><br>'
 
 
@@ -538,7 +567,7 @@ def enquire_sim(form,path,queue,user): #########################################
               json_output['html'] += '<br><br><h2>Please Wait</h2></center><br>'
 
         # Model is finished ~~~~~~~~~~~~~~~~~~
-        elif  model_status == 'finished':
+        elif  model_status == 'finished' or model_status == 'cached':
 
            json_output['status'] = 'done'
            fig_file = dirname+'/plot1.png'
@@ -594,6 +623,8 @@ def enquire_sim(form,path,queue,user): #########################################
  
 	   # print the html to file
 	   json_output['html'] =  html_file
+
+   
 
         # Model timed out ~~~~~~~~~~~~~~~~~~
         elif model_status =='timeout':

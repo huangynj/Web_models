@@ -1365,6 +1365,9 @@ C
 C
 C   Time-height sections
 C
+C MS: removing these to save space in the cache
+C
+      if(.false.) then
 	OPEN(UNIT=15,FILE=OUTDIR(1:NDIR)//'/cldhov.out',STATUS='UNKNOWN')
 	DO I=1,NPR
 	 WRITE(15,322)(CLDHOV(I,J),J=1,NP)
@@ -1415,6 +1418,8 @@ C
 	END DO
 	CLOSE(15)
 C
+      endif ! MS end removal of hov-mullers
+
 	OPEN(UNIT=15,FILE=OUTDIR(1:NDIR)//'/lwbar.out',STATUS='UNKNOWN')
 	 WRITE(15,*)(topbarlw/float(nradc))
 	 WRITE(15,*)(botbarlw/float(nradc))
@@ -1442,9 +1447,10 @@ C
 	 WRITE(15,*)(LHFBAR)        
 	CLOSE(15)
 C
-      OPEN(UNIT=15,FILE=OUTDIR(1:NDIR)//'/buoy.out',STATUS='UNKNOWN')
-	DO 330 J=1,NPR
-	 WRITE(15,325)(BTIME(J,I),I=1,NP)
+C MS remove output of buoyancy
+C      OPEN(UNIT=15,FILE=OUTDIR(1:NDIR)//'/buoy.out',STATUS='UNKNOWN')
+C	DO 330 J=1,NPR
+C	 WRITE(15,325)(BTIME(J,I),I=1,NP)
 c	 WRITE(16,325)(WTIME(J,I),J=1,NPR)
 c	 WRITE(17,326)P(I)
   330	CONTINUE

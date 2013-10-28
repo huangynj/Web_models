@@ -41,13 +41,15 @@ def output_control(form,dirname,json_output):
         try:
 	   time = np.array(get_output(outdir+'time.out'))
    	   profile = np.array(get_output(outdir+'profile.out'))
-	   cldhov = np.array(get_output(outdir+'cldhov.out'))
-	   thov = np.array(get_output(outdir+'thov.out'))
-	   rhhov = np.array(get_output(outdir+'rhhov.out'))
-	   mhov = np.array(get_output(outdir+'mhov.out'))
-	   mphov = np.array(get_output(outdir+'mphov.out'))
-	   buoy = np.array(get_output(outdir+'buoy.out'))
-	   mhov = np.array(get_output(outdir+'omhov.out'))
+
+           # Not plotting the time-height sections anymore
+	   #cldhov = np.array(get_output(outdir+'cldhov.out'))
+	   #thov = np.array(get_output(outdir+'thov.out'))
+	   #rhhov = np.array(get_output(outdir+'rhhov.out'))
+	   #mhov = np.array(get_output(outdir+'mhov.out'))
+	   #mphov = np.array(get_output(outdir+'mphov.out'))
+	   #buoy = np.array(get_output(outdir+'buoy.out'))
+	   #mhov = np.array(get_output(outdir+'omhov.out'))
 
 
            if (os.path.isfile(dirname+'/profile.old')):
