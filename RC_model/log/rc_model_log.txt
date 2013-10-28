@@ -1042,3 +1042,29 @@ Mon Oct 28 14:48:20 2013: run: success: temp/tmpAu2gHk
 Mon Oct 28 14:49:56 2013: Submit simulation: mssingh@MIT.EDU: n, length: 50 days
 Mon Oct 28 14:49:57 2013: run: Returning cached result
 Mon Oct 28 14:49:57 2013: run: success: temp/tmpbHAZDc
+Mon Oct 28 20:56:03 2013: ==================================================
+Mon Oct 28 20:56:03 2013: === Starting Radiative-convective model server ===
+Mon Oct 28 20:56:03 2013: ===                                               
+Mon Oct 28 20:56:03 2013: === Using 2 threads for RC model                 
+Mon Oct 28 20:56:03 2013: === On 1 CPUs                                    
+Mon Oct 28 20:56:03 2013: ===                                               
+Mon Oct 28 20:56:03 2013: === Max simulation time: 300 seconds               
+Mon Oct 28 20:56:03 2013: ==================================================
+Mon Oct 28 20:56:13 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpAu2gHk, length: 50 days
+Mon Oct 28 20:56:13 2013: run: wait time: temp/tmpAu2gHk: 0.00163984298706
+Mon Oct 28 20:56:14 2013: run: run time: temp/tmpAu2gHk: 0.0319022798538
+Mon Oct 28 20:56:15 2013: run: success: temp/tmpAu2gHk
+Mon Oct 28 20:56:18 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpAu2gHk, length: 50 days
+Mon Oct 28 20:56:19 2013: run: Returning cached result
+Mon Oct 28 20:56:19 2013: run: success: temp/tmpAu2gHk
+Mon Oct 28 20:56:22 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpAu2gHk, length: 100 days
+Mon Oct 28 20:56:22 2013: run: wait time: temp/tmpAu2gHk: 0.000254154205322
+Mon Oct 28 20:56:25 2013: run: run time: temp/tmpAu2gHk: 0.029135529995
+Mon Oct 28 20:56:25 2013: run: success: temp/tmpAu2gHk
+Mon Oct 28 20:56:28 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpAu2gHk, length: 200 days
+Mon Oct 28 20:56:29 2013: run: wait time: temp/tmpAu2gHk: 0.000172853469849
+Mon Oct 28 20:56:48 2013: run: run time: temp/tmpAu2gHk: 0.0981402647495
+Mon Oct 28 20:56:49 2013: run: success: temp/tmpAu2gHk
+Mon Oct 28 20:56:52 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpAu2gHk, length: 200 days
+Mon Oct 28 20:56:54 2013: run: Returning cached result
+Mon Oct 28 20:56:54 2013: run: success: temp/tmpAu2gHk

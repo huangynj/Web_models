@@ -2,7 +2,7 @@
  -------         ------                          ---------------                     
  Program Control                                                                     
     n          (y or n)                    Restart from end of last integration?    
-    50          days                        Length of integration                    
+    200          days                        Length of integration                    
     5          minutes                     Time step                                
     10          days                        Composite averaging time at end of integration
     6          hours                       Frequency of graphics output to time series   
