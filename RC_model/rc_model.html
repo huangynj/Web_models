@@ -47,17 +47,17 @@
 
         <p>
            <span class="label">Length of simulation: </span>   
-           <label><input type="number" min="10" max="2000" 
-                         title="Minimum: 10&#10;Maximum: 2000&#10;Default: 20"  
-                         name="days" value="20" id="days" class=required> days
+           <label><input type="number" min="50" max="1000" 
+                         title="Minimum: 50&#10;Maximum: 1000&#10;Default: 50"  
+                         name="days" value="50" id="days" class=required> days
            </label> 
            <span class=errcontainer></span> <br>
 
 
            <span class="label">CO<sub>2</sub> concentration:    </span> 
-           <label><input type="number" min="1" max="10000" 
+           <label><input type="number" min="20" max="10000" 
                          title="Minimum: 1&#10;Maximum: 10000&#10;Default: 360" 
-                         name="co2"  value="360" class=required> ppm  
+                         name="co2" id="co2"  value="360" class=required> ppm  
            </label>
            <span class=errcontainer></span><br>
 
@@ -65,25 +65,22 @@
            <span class="label">Solar Constant:       </span>
            <label><input type="number" min=100 max=5000 
                          title="Minimum: 100&#10;Maximum: 5000&#10;Default 1360" 
-                         name="S0" value="1360.0" class=required> W/m^2 
+                         name="S0" id = "S0" value="1360" class=required> W/m^2 
            </label>
            <span class=errcontainer></span><br>
 
            <span class="label">Initial SST:          </span>  
-           <label> <input type="number"  min=0 max=50
-                          title="Minimum: 0&#10;Maximum: 50&#10;Default: 27" 
-                          name="SSTi" value="27" class=required> deg C 
+           <label> <input type="number"  min=-20 max=50
+                          title="Minimum: -20&#10;Maximum: 50&#10;Default: 27" 
+                          name="SSTi" id="SSTi" value="27" class=required> deg C 
           </label>
           <span class=errcontainer></span><br></p>
 
 
-          <span id="restart" >
-            <p><label><input type="checkbox" name="restart"> Restart from end of previous simulation</label><br></p>
-          </span>
 
 
           <!-- Checkbox to show advanced options -->
-          <label><input type="checkbox" name="show_adv" id="show_adv"><i>&nbsp  Show advanced parameters </i></label><br>
+          <label><input type="checkbox" name="show_adv" id="show_adv"><i>&nbsp  Show advanced parameters </i></label>
 
       </div> <!-- Basic parameters -->
 
@@ -99,6 +96,12 @@
     
       <!-- ADVANCED OPTIONS - only show if checkbox is checked %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  -->
       <div id="adv_opts">
+
+          <span id="restart" >
+            <p><label><input type="checkbox" name="restart"> Restart from end of previous simulation</label><br></p>
+            <br>
+          </span>
+
 
 	 <!-- Advanced simulation options - hidden by default --------------------------------------------- -->
          <div id="adv_simulation" class="form_input">
@@ -257,15 +260,15 @@
             <label> 
                <input type="number" min="1" max="10000" 
                       title="Minimum: 1&#10;Maximum: 10000&#10;Default: 1.72"   
-                      name="ch4"   value="1.72" class=required > ppm 
+                      name="ch4" id="ch4"  value="1.7" class=required > ppm 
             </label>
             <span class=errcontainer></span><br>
 
 	    <span class="label">N<sub>2</sub>O concentration:     </span>   
             <label>  
-               <input type="number" min="1" max="10000" 
-                      title="Minimum: 1&#10;Maximum: 10000&#10;Default: 310"
-                      name="n2o"   value="310.0" class=required> ppb 
+               <input type="number" min="10" max="10000" 
+                      title="Minimum: 10&#10;Maximum: 10000&#10;Default: 310"
+                      name="n2o" id="n2o"  value="310" class=required> ppb 
             </label>
             <span class=errcontainer></span><br>
 
@@ -308,14 +311,14 @@
 	 <p><span class="label">Surface albedo:           </span> 
             <label><input type="number" min=0 max=1 
                          title="Minimum: 0&#10;Maximum: 1&#10;Default: 0.15" 
-                          name="alpha" value="0.15" class=required> 
+                          name="alpha" id="alpha" value="0.15" class=required> 
             </label>
             <span class=errcontainer></span>  <br>
 
             <span class="label">Surface windspeed:	   </span> 
-            <label><input type="number" min=0.1 max=100 
+            <label><input type="number" min=0.5 max=100 
                           title="Minimum: 0.1&#10;Maximum: 100&#10;Default: 5" 
-                          name="ugust" value="5.0" class=required> m/s
+                          name="ugust" id="ugust" value="5.0" class=required> m/s
             </label>
             <span class=errcontainer></span><br>
 

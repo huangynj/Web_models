@@ -149,6 +149,14 @@ $(document).ready(function(){
                           // If form is valid (check using jquery validate plugin)
                           if ($("#model_options").valid()){
 
+                             // Show the server response
+                             $('#loading').html('<br><br><br><center><h3>Submitting simulation</h3><br><br><h2>Please Wait<h2></center><br>')
+                             $('#loading').show()
+  
+                             // Set the progress bar to inderterminate
+                             $( "#progress" ).progressbar({value: false})
+                             $("#progress").show() 
+
                              // Clear previous output
                              $('#put').html("")
 
@@ -278,8 +286,8 @@ $(document).ready(function(){
 
 
 
-// Function to reset form //////////////////////////////////////////////////////////////
-$("#reset_form").click(function() {
+   // Function to reset form //////////////////////////////////////////////////////////////
+   $("#reset_form").click(function() {
          
           // Hide advanced options
           $("#adv_opts").hide()   
@@ -289,10 +297,36 @@ $("#reset_form").click(function() {
 
           // reset form
           return true;
-});
+   });
 
 
- 
+   // Function to create spinners /////////////////////////////////////////////////////////
+   $(function() {
+      $( "#days" ).spinner({
+        step: 50
+      });
+      $( "#co2" ).spinner({
+        step: 20
+      });
+      $( "#S0" ).spinner({
+        step: 2
+      });
+      $( "#SSTi" ).spinner({
+        step: 1
+      });
+      $( "#ch4" ).spinner({
+        step: 0.1
+      });
+      $( "#n2o" ).spinner({
+        step: 10
+      });
+      $( "#alpha" ).spinner({
+        step: 0.05
+      });
+      $( "#ugust" ).spinner({
+        step: 0.5
+      });
+   }); 
 
 
 }); // End of document ready function 

@@ -35,6 +35,7 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
    stop_vec = []      # Vector of user stopped sims
    timeout_vec = []   # Vector of timeouts
    success_vec = []   # Vector of succesful sims
+   cache_vec = []     # Vector of cache returns
 
    # Get the simulation data -----------------------------------------
    for row in open(LOGFILE,'rt'):
@@ -86,6 +87,9 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
         elif 'success' in the_rest[1]:
            call_vec.append(8)
            success_vec.append(time_vec[-1])
+        elif 'cache' in the_rest[1]:
+           call_vec.append(10)
+           cache_vec.append(time_vec[-1])
         else:
            call_vec.append(9)
 
@@ -240,23 +244,26 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
    string = 'Successful: '+str(len(success_vec))
    ax.text(1.13, 0.65, string, fontsize=15,transform=ax.transAxes)
 
-   string = 'Stopped by user: '+str(len(stop_vec))
+   string = 'Cached: '+str(len(cache_vec))
    ax.text(1.13, 0.55, string, fontsize=15,transform=ax.transAxes)
 
-   string = 'Timeouts: '+str(len(timeout_vec))
+   string = 'Stopped by user: '+str(len(stop_vec))
    ax.text(1.13, 0.45, string, fontsize=15,transform=ax.transAxes)
 
-   string = 'Errors: '+str(len(error_vec))
+   string = 'Timeouts: '+str(len(timeout_vec))
    ax.text(1.13, 0.35, string, fontsize=15,transform=ax.transAxes)
 
-   string = 'Total Users: '+str(len(user_list))
+   string = 'Errors: '+str(len(error_vec))
    ax.text(1.13, 0.25, string, fontsize=15,transform=ax.transAxes)
 
+   string = 'Total Users: '+str(len(user_list))
+   ax.text(1.13, 0.15, string, fontsize=15,transform=ax.transAxes)
+
    string = 'Plot updated daily'
-   ax.text(1.13, 0.10, string, fontsize=12,transform=ax.transAxes)
+   ax.text(1.13, 0.0, string, fontsize=12,transform=ax.transAxes)
 
    string = 'All times in UTC'
-   ax.text(1.13, 0.03, string, fontsize=12,transform=ax.transAxes)
+   ax.text(1.13, -0.08, string, fontsize=12,transform=ax.transAxes)
 
 
    hf = mp.savefig(REPORTDIR+the_year+'_'+the_month+'.png')

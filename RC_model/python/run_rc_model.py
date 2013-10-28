@@ -263,7 +263,7 @@ class model_daemon(multiprocessing.Process): ###################################
 
            elif run_obj.returncode > 0:
 
-               LOG('Run: Model exit with code '+str(run_obj.returncode)+' - '+dirname)
+               LOG('run: Model exit with code '+str(run_obj.returncode)+' - '+dirname)
                try:
                   with open(dirname+'/log.out', 'w') as f:
                      f.write('exit '+str(run_obj.returncode))
@@ -404,13 +404,13 @@ def submit_sim(form, path, queue,user): ########################################
 
         # Attempt to obtain output from cache
         if 'restart' not in form:
-           LOG('Run: Attempting to get cached results')
            retval = get_from_bucket(s3_file,dirname)
            if retval == 0:
               json_output['html'] = '<br><br><br><center><h3>Retrieving cached results</h3><br><br><h2>Please Wait<h2></center><br>'
               form = {}
               form["plot_opt"] = "time_sst"
               json_output = output_control(form,dirname,json_output)
+              LOG('run: Returning cached result')
               return json.dumps(json_output,indent=1)
 
         
