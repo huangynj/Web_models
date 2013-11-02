@@ -158,7 +158,7 @@ def output_control(form,dirname,json_output):
 
 	elif plot_opt == "profile_rh":
 		filename = dirname+"/plot1.png"
-		plot_profile(profile[:,4],p,r'$RH$ (%)','Relative humidity') # col4: RH
+		plot_profile(profile[:,4]*100,p,r'$RH$ (%)','Relative humidity') # col4: RH
 		hf = mp.savefig(filename)
 
 	elif plot_opt == "profile_heating":
@@ -184,7 +184,7 @@ def output_control(form,dirname,json_output):
 
 	elif plot_opt == "profile_MSE":
 		filename = dirname+"/plot1.png"
-		plot_profile(profile[:,14],p,'MSE (K)','Moist static energy') # col14, MSE
+		plot_profile(profile[:,14],p,'MSE (J/kg)','Moist static energy') # col14, MSE
 		mp.xlim((min(profile[:,14])-5,profile[0,14]+20))
 		hf = mp.savefig(filename)
 

@@ -1087,8 +1087,8 @@ C
 C
          SST_TS(NPR,1)=TSA-273.15
          SST_TS(NPR,2)=TS1-273.15
-         TQ(NPR,1)=T2(21)-273.
-         TQ(NPR,2)=1000.*R2(21)
+         TQ(NPR,1)=T2(11)-273. ! MS change to level 11 for different resolution
+         TQ(NPR,2)=1000.*R2(11) ! MS change for 24 level model
          ENTS=0.0
 	   TS1C=TS1-273.15
 	   DO I=1,NP

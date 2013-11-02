@@ -150,7 +150,7 @@ $(document).ready(function(){
                           if ($("#model_options").valid()){
 
                              // Show the server response
-                             $('#loading').html('<br><br><br><center><h3>Submitting simulation</h3><br><br><h2>Please Wait<h2></center><br>')
+                             $('#loading').html('<br><br><br><center><h3>Looking for cached results</h3><br><br><h2>Please Wait<h2></center><br>')
                              $('#loading').show()
   
                              // Set the progress bar to inderterminate

@@ -46,7 +46,7 @@ Q_STATFILE = "../log/queue_status.txt"
 REPORTDIR  = "../log/reports/"
 
 # Location of the tmpwatch command
-TMPWATCH   = "/home/mssingh/bin/tmpwatch"
+TMPWATCH   = "../../tools/tmpwatch/tmpwatch"
 
 # Name of output html template
 output_opts = '../output_opts.html'
@@ -343,7 +343,7 @@ def submit_sim(form, path, queue,user): ########################################
         '''
         This function submits a simulation to be run.
         '''
-        
+        print "form=%s" % dict((k,form[k].value) for k in form)
         # Put some info in the LOG file -------------------------------
         days = form['days'].value
         LOG('Submit simulation: %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
