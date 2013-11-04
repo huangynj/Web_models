@@ -2,3 +2,54 @@ Sat Nov  2 01:00:00 2013: === Welcome to the month of Nov
 Fri Nov  1 01:00:00 2013: === Running scheduled tasks
 Sat Nov  2 01:00:00 2013: === Running scheduled tasks
 Sun Nov  3 01:00:00 2013: === Running scheduled tasks
+Sun Nov  3 23:09:10 2013: Submit simulation: mssingh@MIT.EDU: n, length: 50 days
+Sun Nov  3 23:09:11 2013: run: Returning cached result
+Sun Nov  3 23:09:11 2013: run: success: temp/tmpirKKf0
+Sun Nov  3 23:10:24 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpirKKf0, length: 500 days
+Sun Nov  3 23:10:25 2013: run: wait time: temp/tmpirKKf0: 0.000249147415161
+Sun Nov  3 23:11:07 2013: run: run time: temp/tmpirKKf0: 0.0838000364304
+Sun Nov  3 23:11:07 2013: run: success: temp/tmpirKKf0
+Mon Nov  4 01:00:00 2013: === Running scheduled tasks
+Mon Nov  4 01:35:09 2013: Submit simulation: mssingh@MIT.EDU: n, length: 50 days
+Mon Nov  4 01:35:09 2013: run: wait time: temp/tmppfb6kS: 0.000256061553955
+Mon Nov  4 01:35:10 2013: run: run time: temp/tmppfb6kS: 0.0258734416962
+Mon Nov  4 01:35:11 2013: run: success: temp/tmppfb6kS
+Mon Nov  4 01:35:20 2013: Submit simulation: mssingh@MIT.EDU: temp/tmppfb6kS, length: 100 days
+Mon Nov  4 01:35:21 2013: run: wait time: temp/tmppfb6kS: 0.000184059143066
+Mon Nov  4 01:35:24 2013: run: run time: temp/tmppfb6kS: 0.0333232092857
+Mon Nov  4 01:35:25 2013: run: success: temp/tmppfb6kS
+Mon Nov  4 01:37:56 2013: Submit simulation: mssingh@MIT.EDU: temp/tmppfb6kS, length: 100 days
+Mon Nov  4 01:37:57 2013: run: Returning cached result
+Mon Nov  4 01:38:06 2013: Submit simulation: mssingh@MIT.EDU: temp/tmppfb6kS, length: 100 days
+Mon Nov  4 01:38:06 2013: run: Returning cached result
+Mon Nov  4 01:38:07 2013: run: success: temp/tmppfb6kS
+Mon Nov  4 14:08:19 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpmZfQmq, length: 1000 days
+Mon Nov  4 14:08:20 2013: run: Returning cached result
+Mon Nov  4 14:08:21 2013: run: success: temp/tmpcPNlgq
+Mon Nov  4 14:09:28 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpcPNlgq, length: 1000 days
+Mon Nov  4 14:09:29 2013: run: Returning cached result
+Mon Nov  4 14:11:56 2013: Submit simulation: mssingh@MIT.EDU: n, length: 50 days
+Mon Nov  4 14:11:57 2013: run: Returning cached result
+Mon Nov  4 14:11:57 2013: run: success: temp/tmpT3MB91
+Mon Nov  4 15:01:07 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpT3MB91, length: 50 days
+Mon Nov  4 15:01:08 2013: run: Returning cached result
+Mon Nov  4 15:01:08 2013: run: success: temp/tmpT3MB91
+Mon Nov  4 15:01:18 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpT3MB91, length: 50 days
+Mon Nov  4 15:01:18 2013: run: Returning cached result
+Mon Nov  4 15:01:45 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpT3MB91, length: 150 days
+Mon Nov  4 15:01:45 2013: run: wait time: temp/tmpT3MB91: 0.000252962112427
+Mon Nov  4 15:01:46 2013: run: killing simulation: temp/tmpT3MB91
+Mon Nov  4 15:01:46 2013: run: Model exit with code 143 - temp/tmpT3MB91
+Mon Nov  4 15:03:02 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpT3MB91, length: 100 days
+Mon Nov  4 15:03:03 2013: run: Returning cached result
+Mon Nov  4 15:03:03 2013: Found only 1 model thread(s). Restarting broken thread(s).
+Mon Nov  4 15:03:03 2013: run: success: temp/tmpT3MB91
+Mon Nov  4 15:03:07 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpT3MB91, length: 100 days
+Mon Nov  4 15:03:08 2013: run: Returning cached result
+Mon Nov  4 15:03:13 2013: Submit simulation: mssingh@MIT.EDU: temp/tmpT3MB91, length: 100 days
+Mon Nov  4 15:03:14 2013: run: Returning cached result
+Mon Nov  4 15:03:14 2013: run: success: temp/tmpT3MB91
+Mon Nov  4 15:06:34 2013: Submit simulation: mssingh@MIT.EDU: n, length: 50 days
+Mon Nov  4 15:06:34 2013: run: Returning cached result
+Mon Nov  4 15:06:44 2013: Submit simulation: mssingh@MIT.EDU: n, length: 50 days
+Mon Nov  4 15:06:44 2013: run: Returning cached result

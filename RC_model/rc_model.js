@@ -196,7 +196,8 @@ $(document).ready(function(){
            // Sucessfully posted simulation to server
            success: function(data) {   
                
- 
+                     if(model_terminated ==0){// Ensure model has not already been stopped
+
                        // Parse the response from the server
                        var data = JSON.parse(data);
 
@@ -239,6 +240,7 @@ $(document).ready(function(){
                           $("#run_model").show();
                           jQuery('input[type=input], input').attr('disabled', false);}
                        }
+                     }
 
        }); // End ajax call
  
