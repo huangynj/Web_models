@@ -24,7 +24,7 @@ threading*
 
 s3_functions.py ----------------------------
 
-boto
+boto**
 
 postprocess.py -----------------------------
 
