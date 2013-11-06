@@ -328,6 +328,12 @@ $(document).ready(function(){
       $( "#ugust" ).spinner({
         step: 0.5
       });
+      $( "#thetaspin" ).spinner({
+        step: 15
+      });
+      $( "#hourspin" ).spinner({
+        step: 1
+      });
    }); 
 
 

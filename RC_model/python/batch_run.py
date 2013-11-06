@@ -1,13 +1,14 @@
 #!/usr/bin/python
 
 
-import urllib
+import urllib2
+import urllib 
 import json 
 
-form_url = 'http://eaps.mitx.mit.edu/rc'
+form_url = 'https://eaps.mitx.mit.edu/rc'
 
 
-jdata = json.dumps({
+jdata = {
                       "days"      :  "100"  ,
                       "co2"       :  "720"  ,
                       'dry_conv'  :  'on'   , 
@@ -40,10 +41,15 @@ jdata = json.dumps({
                       'ch4'       :  '1.7'  , 
                       'p_pbl'     :  '850'  , 
                       'ml_depth'  :  '1.0'
-                   })
+                   }
 
 
-urllib.urlopen(form_url, jdata)
+data = urllib.urlencode(jdata)
+print data
+req = urllib2.Request(form_url, data)
+
+response = urllib2.urlopen(req)
+print response
 
 
 

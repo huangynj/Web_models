@@ -786,10 +786,10 @@ def application(env, start_response):
 	path = env.get('PATH_INFO', '').lstrip('/')
 	data = None
 	
-	sslcert = env.get('HTTP_SSL_CLIENT_S_DN','')	# username from SSL cert
+	#sslcert = env.get('HTTP_SSL_CLIENT_S_DN','')	# username from SSL cert
         user = DEFAULT_USER
-	if sslcert:
-		user = sslcert.rsplit('emailAddress=',1)[-1]
+	#if sslcert:
+        #	user = sslcert.rsplit('emailAddress=',1)[-1]
 
 
         # Log the request
