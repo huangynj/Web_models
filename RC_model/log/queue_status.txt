@@ -1,11 +1,82 @@
 -----------------------------------
-Time: Thu Nov  7 15:20:32 2013
+Time: Thu Nov  7 13:25:12 2013
 Number of model threads:   2
 Number of working threads: 2
 
 Number of server threads:  2
 
 Running jobs:
+    temp/tmpIO5HTZ : 15894
+    temp/tmpKXq3hY : 15901
 
 Queued jobs:
+    temp/tmpP6qgNU : run
+    temp/tmp52s7fH : run
+    temp/tmprs25MH : run
+    temp/tmpY4Ewav : run
+    temp/tmppvQpnl : run
+    temp/tmph85cuT : run
+    temp/tmpuyz4a_ : run
+    temp/tmpFDTWtf : run
+    temp/tmpZ_C7GJ : run
+    temp/tmp0AcpSm : run
+    temp/tmp_bPDbS : run
+    temp/tmpoWEbFd : run
+    temp/tmpIwpGsZ : run
+    temp/tmpfoCWw2 : run
+    temp/tmpp5Iy2H : run
+    temp/tmpnh3kFH : run
+    temp/tmpxsHodz : run
+    temp/tmpYN7U4g : run
+    temp/tmpfnTGqM : run
+    temp/tmpwLfyoz : run
+    temp/tmpuCKXKr : run
+    temp/tmpLDTf1J : run
+    temp/tmpPBnJr7 : run
+    temp/tmpVrU16c : run
+    temp/tmp7WJYe8 : run
+    temp/tmpn1DLdK : run
+    temp/tmpfZmnBI : run
+    temp/tmpCmBeC1 : run
+    temp/tmpaPUOat : run
+    temp/tmpinsDH5 : run
+    temp/tmpJiXvy2 : run
+    temp/tmprqX0Nz : run
+    temp/tmpL7z9DS : run
+    temp/tmpARV62D : run
+    temp/tmpJ_DKlk : run
+    temp/tmpV0GJ7O : run
+    temp/tmpLmmJzq : run
+    temp/tmpqHpx8K : run
+    temp/tmpLHY4Wv : run
+    temp/tmpSsb05f : run
+    temp/tmpyJe0s8 : run
+    temp/tmpxwKT0w : run
+    temp/tmpkzeR35 : run
+    temp/tmpsTO4BD : run
+    temp/tmpwQS8KT : run
+    temp/tmpmgFNpH : run
+    temp/tmpzrKC1B : run
+    temp/tmpdSY8LM : run
+    temp/tmpX2TfW9 : run
+    temp/tmph9tr27 : run
+    temp/tmpNUn5BX : run
+    temp/tmpuCU2rh : run
+    temp/tmpdFra7k : run
+    temp/tmpoOxHWC : run
+    temp/tmpaHgZSt : run
+    temp/tmp6CgApv : run
+    temp/tmptE8Fgh : run
+    temp/tmpci2IsI : run
+    temp/tmplnf4e_ : run
+    temp/tmpZSxN_B : run
+    temp/tmpKRYBwz : run
+    temp/tmpyFTHMQ : run
+    temp/tmpmkR_mz : run
+    temp/tmpu2DzPh : run
+    temp/tmpfx8i9N : run
+    temp/tmp2jk6SA : run
+    temp/tmpUCxtqp : run
+    temp/tmpLpivQq : run
+    temp/tmp4GM7VU : run
 

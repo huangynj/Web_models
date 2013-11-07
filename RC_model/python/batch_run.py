@@ -3,14 +3,18 @@
 # This script runs the RC model.
 # Can be used to prime the cache
 #
-
-
+import time
 
 import urllib2
 import urllib 
 import json 
 
+
+#form_url = 'http://192.168.33.43/rc'
+
 form_url = 'http://eaps-prod.mitx.mit.edu/rc'
+
+
 
 # These are the default values - change them below
 jdata = {
@@ -23,7 +27,7 @@ jdata = {
                       'month'     :  '3'    ,
                       'graph_time':  '6'    , 
                       'time_step' :  '10'   ,
-                      'dirname'   :  './batch_run/', 
+                      'dirname'   :  'n', 
                       'w_p'       :  '500.0', 
                       'avg_time'  :  '25'   ,
                       'cfc11'     :  '280.0',
@@ -50,20 +54,33 @@ jdata = {
 
 # Start any looping here
 
-# Change the parameters like this
-jdata["days"] = str(500)
+days = [50, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+co2 =  [50, 100 ] 
 
 
 
-data = urllib.urlencode(jdata)
-req = urllib2.Request(form_url,data)
-req.add_header("Content-type", "application/x-www-form-urlencoded")
+for ico2 in range(0,1):
+   for sst in range(1,20):
 
-response = urllib2.urlopen(req)
-print response.read()
+    for idays in range(0,11):
 
 
 
+      # Change the parameters like this
+      jdata["days"] = str(days[idays])
+      jdata["co2"] = str(co2[ico2])
+      jdata["SSTi"] = str(sst)
+
+      print jdata
+
+      data = urllib.urlencode(jdata)
+      req = urllib2.Request(form_url,data)
+      req.add_header("Content-type", "application/x-www-form-urlencoded")
+
+      response = urllib2.urlopen(req)
+      print response.read()
+
+   time.sleep(60*5)
 
 
 
