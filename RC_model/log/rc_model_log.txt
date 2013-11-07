@@ -1244,3 +1244,11 @@ Thu Nov  7 14:41:09 2013: path = temp/tmpJC4AWn/plot1.png
 Thu Nov  7 14:41:09 2013: Figure: unknown: temp/tmpJC4AWn/plot1.png
 Thu Nov  7 14:41:09 2013: done at Thu Nov  7 14:41:09 2013
 Thu Nov  7 14:41:09 2013: === time taken: 1.54900550842 ms
+Thu Nov  7 15:05:02 2013: ==================================================
+Thu Nov  7 15:05:02 2013: === Starting Radiative-convective model server ===
+Thu Nov  7 15:05:02 2013: ===                                               
+Thu Nov  7 15:05:02 2013: === Using 2 threads for RC model                 
+Thu Nov  7 15:05:02 2013: === On 1 CPUs                                    
+Thu Nov  7 15:05:02 2013: ===                                               
+Thu Nov  7 15:05:02 2013: === Max simulation time: 300 seconds               
+Thu Nov  7 15:05:02 2013: ==================================================
