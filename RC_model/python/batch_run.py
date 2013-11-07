@@ -55,12 +55,12 @@ jdata = {
 # Start any looping here
 
 days = [50, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
-co2 =  [50, 100 ] 
+co2 =  [50, 100, 200, 300, 400, 500, 600] 
 
 
 
 for ico2 in range(0,1):
-   for sst in range(1,20):
+   for sst in range(10,20):
 
     for idays in range(0,11):
 
