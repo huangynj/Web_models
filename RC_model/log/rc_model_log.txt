@@ -150,3 +150,1097 @@ Wed Nov  6 17:14:23 2013: ==================================================
 Wed Nov  6 17:17:48 2013: Submit simulation: unknown: n, length: 50 days
 Wed Nov  6 17:17:49 2013: run: Returning cached result
 Wed Nov  6 17:17:49 2013: run: success: temp/tmpja01vO
+Wed Nov  6 21:52:34 2013: Submit simulation: unknown: temp/tmpja01vO, length: 50 days
+Wed Nov  6 21:52:35 2013: run: wait time: temp/tmpja01vO: 0.000997066497803
+Wed Nov  6 21:52:36 2013: run: run time: temp/tmpja01vO: 0.0261017799377
+Wed Nov  6 21:52:37 2013: run: success: temp/tmpja01vO
+Wed Nov  6 21:52:44 2013: Submit simulation: unknown: temp/tmpja01vO, length: 500 days
+Wed Nov  6 21:52:45 2013: run: wait time: temp/tmpja01vO: 0.000189065933228
+Wed Nov  6 21:52:56 2013: run: run time: temp/tmpja01vO: 0.0224477057457
+Wed Nov  6 21:52:56 2013: run: success: temp/tmpja01vO
+Wed Nov  6 21:53:16 2013: Submit simulation: unknown: temp/tmpja01vO, length: 1000 days
+Wed Nov  6 21:53:16 2013: run: wait time: temp/tmpja01vO: 0.000190019607544
+Wed Nov  6 21:55:24 2013: run: Model exit with code 139 - temp/tmpja01vO
+Wed Nov  6 22:01:20 2013: ==================================================
+Wed Nov  6 22:01:20 2013: === Starting Radiative-convective model server ===
+Wed Nov  6 22:01:20 2013: ===                                               
+Wed Nov  6 22:01:20 2013: === Using 2 threads for RC model                 
+Wed Nov  6 22:01:20 2013: === On 1 CPUs                                    
+Wed Nov  6 22:01:20 2013: ===                                               
+Wed Nov  6 22:01:20 2013: === Max simulation time: 300 seconds               
+Wed Nov  6 22:01:20 2013: ==================================================
+Wed Nov  6 22:01:45 2013: Submit simulation: unknown: temp/tmpja01vO, length: 150 days
+Wed Nov  6 22:01:45 2013: run: wait time: temp/tmpja01vO: 0.00128793716431
+Wed Nov  6 22:01:49 2013: run: run time: temp/tmpja01vO: 0.0232533137004
+Wed Nov  6 22:01:50 2013: run: success: temp/tmpja01vO
+Wed Nov  6 22:03:21 2013: ==================================================
+Wed Nov  6 22:03:21 2013: === Starting Radiative-convective model server ===
+Wed Nov  6 22:03:21 2013: ===                                               
+Wed Nov  6 22:03:21 2013: === Using 2 threads for RC model                 
+Wed Nov  6 22:03:21 2013: === On 1 CPUs                                    
+Wed Nov  6 22:03:21 2013: ===                                               
+Wed Nov  6 22:03:21 2013: === Max simulation time: 300 seconds               
+Wed Nov  6 22:03:21 2013: ==================================================
+Wed Nov  6 22:03:27 2013: Submit simulation: unknown: temp/tmpja01vO, length: 150 days
+Wed Nov  6 22:03:27 2013: run: Returning cached result
+Wed Nov  6 22:03:27 2013: run: success: temp/tmpja01vO
+Wed Nov  6 22:03:32 2013: Submit simulation: unknown: temp/tmpja01vO, length: 200 days
+Wed Nov  6 22:03:32 2013: run: wait time: temp/tmpja01vO: 0.00114011764526
+Wed Nov  6 22:03:37 2013: run: run time: temp/tmpja01vO: 0.0235287904739
+Wed Nov  6 22:03:37 2013: run: success: temp/tmpja01vO
+Wed Nov  6 22:03:52 2013: Submit simulation: unknown: temp/tmpja01vO, length: 1000 days
+Wed Nov  6 22:03:52 2013: run: wait time: temp/tmpja01vO: 0.000224113464355
+Wed Nov  6 22:05:29 2013: run: Model exit with code 139 - temp/tmpja01vO
+Thu Nov  7 01:00:00 2013: === Running scheduled tasks
+Thu Nov  7 14:20:04 2013: ==================================================
+Thu Nov  7 14:20:04 2013: === Starting Radiative-convective model server ===
+Thu Nov  7 14:20:04 2013: ===                                               
+Thu Nov  7 14:20:04 2013: === Using 2 threads for RC model                 
+Thu Nov  7 14:20:04 2013: === On 1 CPUs                                    
+Thu Nov  7 14:20:04 2013: ===                                               
+Thu Nov  7 14:20:04 2013: === Max simulation time: 300 seconds               
+Thu Nov  7 14:20:04 2013: ==================================================
+Thu Nov  7 14:21:02 2013: ==================================================
+Thu Nov  7 14:21:02 2013: === Starting Radiative-convective model server ===
+Thu Nov  7 14:21:02 2013: ===                                               
+Thu Nov  7 14:21:02 2013: === Using 2 threads for RC model                 
+Thu Nov  7 14:21:02 2013: === On 1 CPUs                                    
+Thu Nov  7 14:21:02 2013: ===                                               
+Thu Nov  7 14:21:02 2013: === Max simulation time: 300 seconds               
+Thu Nov  7 14:21:02 2013: ==================================================
+Thu Nov  7 14:21:13 2013: ------------------------------------------------------------
+Thu Nov  7 14:21:13 2013: POST
+Thu Nov  7 14:21:13 2013: user = unknown
+Thu Nov  7 14:21:13 2013: path = 
+Thu Nov  7 14:21:13 2013: Submit simulation: unknown: temp/tmpja01vO, length: 50 days
+Thu Nov  7 14:21:13 2013: form={'dry_conv': 'on', 'n2o': '310', 'w_max': '0.0', 'S0': '1360', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '10', 'dirname': 'temp/tmpja01vO', 'w_p': '500.0', 'co2': '360', 'avg_time': '25', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'w_bot': '1000', 'SSTi': '21', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'rad_freq': '1', 'hour': '0.0', 'days': '50', 'ch4': '1.7', 'p_pbl': '850', 'ml_depth': '1.0'}
+Thu Nov  7 14:21:14 2013: run: wait time: temp/tmp4yEoaB: 0.00128507614136
+Thu Nov  7 14:21:14 2013: done at Thu Nov  7 14:21:14 2013
+Thu Nov  7 14:21:14 2013: === time taken: 273.819208145 ms
+Thu Nov  7 14:21:14 2013: ------------------------------------------------------------
+Thu Nov  7 14:21:14 2013: GET
+Thu Nov  7 14:21:14 2013: user = unknown
+Thu Nov  7 14:21:14 2013: path = 
+Thu Nov  7 14:21:14 2013: Enquire: unknown: temp/tmp4yEoaB
+Thu Nov  7 14:21:14 2013: done at Thu Nov  7 14:21:14 2013
+Thu Nov  7 14:21:14 2013: === time taken: 2.77090072632 ms
+Thu Nov  7 14:21:15 2013: ------------------------------------------------------------
+Thu Nov  7 14:21:15 2013: GET
+Thu Nov  7 14:21:15 2013: user = unknown
+Thu Nov  7 14:21:15 2013: path = 
+Thu Nov  7 14:21:15 2013: Enquire: unknown: temp/tmp4yEoaB
+Thu Nov  7 14:21:15 2013: done at Thu Nov  7 14:21:15 2013
+Thu Nov  7 14:21:15 2013: === time taken: 1.48510932922 ms
+Thu Nov  7 14:21:15 2013: run: run time: temp/tmp4yEoaB: 0.027507019043
+Thu Nov  7 14:21:16 2013: ------------------------------------------------------------
+Thu Nov  7 14:21:16 2013: GET
+Thu Nov  7 14:21:16 2013: user = unknown
+Thu Nov  7 14:21:16 2013: path = 
+Thu Nov  7 14:21:16 2013: Enquire: unknown: temp/tmp4yEoaB
+Thu Nov  7 14:21:16 2013: run: success: temp/tmp4yEoaB
+Thu Nov  7 14:21:16 2013: done at Thu Nov  7 14:21:16 2013
+Thu Nov  7 14:21:16 2013: === time taken: 16.2470340729 ms
+Thu Nov  7 14:21:16 2013: ------------------------------------------------------------
+Thu Nov  7 14:21:16 2013: GET
+Thu Nov  7 14:21:16 2013: user = unknown
+Thu Nov  7 14:21:16 2013: path = temp/tmp4yEoaB/plot1.png
+Thu Nov  7 14:21:16 2013: Figure: unknown: temp/tmp4yEoaB/plot1.png
+Thu Nov  7 14:21:16 2013: done at Thu Nov  7 14:21:16 2013
+Thu Nov  7 14:21:16 2013: === time taken: 1.51205062866 ms
+Thu Nov  7 14:21:16 2013: ------------------------------------------------------------
+Thu Nov  7 14:21:16 2013: GET
+Thu Nov  7 14:21:16 2013: user = unknown
+Thu Nov  7 14:21:16 2013: path = temp/tmp4yEoaB/plot1.png
+Thu Nov  7 14:21:16 2013: Figure: unknown: temp/tmp4yEoaB/plot1.png
+Thu Nov  7 14:21:16 2013: done at Thu Nov  7 14:21:16 2013
+Thu Nov  7 14:21:16 2013: === time taken: 1.02210044861 ms
+Thu Nov  7 14:21:32 2013: ------------------------------------------------------------
+Thu Nov  7 14:21:32 2013: POST
+Thu Nov  7 14:21:32 2013: user = unknown
+Thu Nov  7 14:21:32 2013: path = 
+Thu Nov  7 14:21:32 2013: Submit simulation: unknown: temp/tmp4yEoaB, length: 50 days
+Thu Nov  7 14:21:32 2013: form={'dry_conv': 'on', 'n2o': '310', 'w_max': '0.0', 'S0': '1360', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '10', 'dirname': 'temp/tmp4yEoaB', 'w_p': '500.0', 'co2': '360', 'avg_time': '25', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'w_bot': '1000', 'SSTi': '21', 'w_top': '100', 'w_T': '1000', 'alpha': '0.15', 'rad_type': '0', 'ugust': '5.0', 'rad_freq': '1', 'hour': '0.0', 'days': '50', 'ch4': '1.7', 'p_pbl': '850', 'ml_depth': '1.0'}
+Thu Nov  7 14:21:32 2013: run: Returning cached result
+Thu Nov  7 14:21:32 2013: done at Thu Nov  7 14:21:32 2013
+Thu Nov  7 14:21:32 2013: === time taken: 686.803102493 ms
+Thu Nov  7 14:21:32 2013: ------------------------------------------------------------
+Thu Nov  7 14:21:32 2013: GET
+Thu Nov  7 14:21:32 2013: user = unknown
+Thu Nov  7 14:21:32 2013: path = 
+Thu Nov  7 14:21:32 2013: Enquire: unknown: temp/tmp4yEoaB
+Thu Nov  7 14:21:32 2013: run: success: temp/tmp4yEoaB
+Thu Nov  7 14:21:32 2013: done at Thu Nov  7 14:21:32 2013
+Thu Nov  7 14:21:32 2013: === time taken: 2.04086303711 ms
+Thu Nov  7 14:21:33 2013: ------------------------------------------------------------
+Thu Nov  7 14:21:33 2013: GET
+Thu Nov  7 14:21:33 2013: user = unknown
+Thu Nov  7 14:21:33 2013: path = temp/tmp4yEoaB/plot1.png
+Thu Nov  7 14:21:33 2013: Figure: unknown: temp/tmp4yEoaB/plot1.png
+Thu Nov  7 14:21:33 2013: done at Thu Nov  7 14:21:33 2013
+Thu Nov  7 14:21:33 2013: === time taken: 1.78790092468 ms
+Thu Nov  7 14:21:33 2013: ------------------------------------------------------------
+Thu Nov  7 14:21:33 2013: GET
+Thu Nov  7 14:21:33 2013: user = unknown
+Thu Nov  7 14:21:33 2013: path = temp/tmp4yEoaB/plot1.png
+Thu Nov  7 14:21:33 2013: Figure: unknown: temp/tmp4yEoaB/plot1.png
+Thu Nov  7 14:21:33 2013: done at Thu Nov  7 14:21:33 2013
+Thu Nov  7 14:21:33 2013: === time taken: 1.2059211731 ms
+Thu Nov  7 14:32:01 2013: ------------------------------------------------------------
+Thu Nov  7 14:32:01 2013: GET
+Thu Nov  7 14:32:01 2013: user = unknown
+Thu Nov  7 14:32:01 2013: path = 
+Thu Nov  7 14:32:01 2013: Clean: unknown: temp/tmp4yEoaB
+Thu Nov  7 14:32:01 2013: ------------------------------------------------------------
+Thu Nov  7 14:32:01 2013: GET
+Thu Nov  7 14:32:01 2013: user = unknown
+Thu Nov  7 14:32:01 2013: path = 
+Thu Nov  7 14:32:01 2013: Figure: unknown: 
+Thu Nov  7 14:32:01 2013: >> Error: Unknown file request - 
+Thu Nov  7 14:32:01 2013: done at Thu Nov  7 14:32:01 2013
+Thu Nov  7 14:32:01 2013: === time taken: 1.64914131165 ms
+Thu Nov  7 14:38:34 2013: ------------------------------------------------------------
+Thu Nov  7 14:38:34 2013: POST
+Thu Nov  7 14:38:34 2013: user = unknown
+Thu Nov  7 14:38:34 2013: path = 
+Thu Nov  7 14:38:34 2013: Submit simulation: unknown: n, length: 300 days
+Thu Nov  7 14:38:34 2013: form={'dry_conv': 'on', 'n2o': '310', 'w_max': '0.0', 'S0': '1360', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '10', 'dirname': 'n', 'w_p': '500.0', 'co2': '360', 'avg_time': '25', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'w_bot': '1000', 'SSTi': '12', 'w_top': '100', 'w_T': '1000', 'alpha': '0.25', 'rad_type': '0', 'ugust': '5', 'rad_freq': '1', 'hour': '0', 'days': '300', 'ch4': '1.7', 'p_pbl': '850', 'ml_depth': '1.0'}
+Thu Nov  7 14:38:35 2013: run: wait time: temp/tmpJC4AWn: 0.000285863876343
+Thu Nov  7 14:38:35 2013: done at Thu Nov  7 14:38:35 2013
+Thu Nov  7 14:38:35 2013: === time taken: 212.697982788 ms
+Thu Nov  7 14:38:35 2013: ------------------------------------------------------------
+Thu Nov  7 14:38:35 2013: GET
+Thu Nov  7 14:38:35 2013: user = unknown
+Thu Nov  7 14:38:35 2013: path = 
+Thu Nov  7 14:38:35 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:38:35 2013: done at Thu Nov  7 14:38:35 2013
+Thu Nov  7 14:38:35 2013: === time taken: 1.18398666382 ms
+Thu Nov  7 14:38:36 2013: ------------------------------------------------------------
+Thu Nov  7 14:38:36 2013: GET
+Thu Nov  7 14:38:36 2013: user = unknown
+Thu Nov  7 14:38:36 2013: path = 
+Thu Nov  7 14:38:36 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:38:36 2013: done at Thu Nov  7 14:38:36 2013
+Thu Nov  7 14:38:36 2013: === time taken: 1.54590606689 ms
+Thu Nov  7 14:38:37 2013: ------------------------------------------------------------
+Thu Nov  7 14:38:37 2013: GET
+Thu Nov  7 14:38:37 2013: user = unknown
+Thu Nov  7 14:38:37 2013: path = 
+Thu Nov  7 14:38:37 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:38:37 2013: done at Thu Nov  7 14:38:37 2013
+Thu Nov  7 14:38:37 2013: === time taken: 1.85298919678 ms
+Thu Nov  7 14:38:38 2013: ------------------------------------------------------------
+Thu Nov  7 14:38:38 2013: GET
+Thu Nov  7 14:38:38 2013: user = unknown
+Thu Nov  7 14:38:38 2013: path = 
+Thu Nov  7 14:38:38 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:38:38 2013: done at Thu Nov  7 14:38:38 2013
+Thu Nov  7 14:38:38 2013: === time taken: 1.36494636536 ms
+Thu Nov  7 14:38:39 2013: ------------------------------------------------------------
+Thu Nov  7 14:38:39 2013: GET
+Thu Nov  7 14:38:39 2013: user = unknown
+Thu Nov  7 14:38:39 2013: path = 
+Thu Nov  7 14:38:39 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:38:39 2013: done at Thu Nov  7 14:38:39 2013
+Thu Nov  7 14:38:39 2013: === time taken: 1.3279914856 ms
+Thu Nov  7 14:38:40 2013: ------------------------------------------------------------
+Thu Nov  7 14:38:40 2013: GET
+Thu Nov  7 14:38:40 2013: user = unknown
+Thu Nov  7 14:38:40 2013: path = 
+Thu Nov  7 14:38:40 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:38:40 2013: done at Thu Nov  7 14:38:40 2013
+Thu Nov  7 14:38:40 2013: === time taken: 1.9690990448 ms
+Thu Nov  7 14:38:41 2013: ------------------------------------------------------------
+Thu Nov  7 14:38:41 2013: GET
+Thu Nov  7 14:38:41 2013: user = unknown
+Thu Nov  7 14:38:41 2013: path = 
+Thu Nov  7 14:38:41 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:38:41 2013: done at Thu Nov  7 14:38:41 2013
+Thu Nov  7 14:38:41 2013: === time taken: 1.52492523193 ms
+Thu Nov  7 14:38:41 2013: run: run time: temp/tmpJC4AWn: 0.0212721029917
+Thu Nov  7 14:38:42 2013: ------------------------------------------------------------
+Thu Nov  7 14:38:42 2013: GET
+Thu Nov  7 14:38:42 2013: user = unknown
+Thu Nov  7 14:38:42 2013: path = 
+Thu Nov  7 14:38:42 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:38:42 2013: run: success: temp/tmpJC4AWn
+Thu Nov  7 14:38:42 2013: done at Thu Nov  7 14:38:42 2013
+Thu Nov  7 14:38:42 2013: === time taken: 2.11119651794 ms
+Thu Nov  7 14:38:42 2013: ------------------------------------------------------------
+Thu Nov  7 14:38:42 2013: GET
+Thu Nov  7 14:38:42 2013: user = unknown
+Thu Nov  7 14:38:42 2013: path = temp/tmpJC4AWn/plot1.png
+Thu Nov  7 14:38:42 2013: Figure: unknown: temp/tmpJC4AWn/plot1.png
+Thu Nov  7 14:38:42 2013: done at Thu Nov  7 14:38:42 2013
+Thu Nov  7 14:38:42 2013: === time taken: 1.42908096313 ms
+Thu Nov  7 14:38:42 2013: ------------------------------------------------------------
+Thu Nov  7 14:38:42 2013: GET
+Thu Nov  7 14:38:42 2013: user = unknown
+Thu Nov  7 14:38:42 2013: path = temp/tmpJC4AWn/plot1.png
+Thu Nov  7 14:38:42 2013: Figure: unknown: temp/tmpJC4AWn/plot1.png
+Thu Nov  7 14:38:42 2013: done at Thu Nov  7 14:38:42 2013
+Thu Nov  7 14:38:42 2013: === time taken: 1.22213363647 ms
+Thu Nov  7 14:39:00 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:00 2013: POST
+Thu Nov  7 14:39:00 2013: user = unknown
+Thu Nov  7 14:39:00 2013: path = 
+Thu Nov  7 14:39:00 2013: Submit simulation: unknown: temp/tmpJC4AWn, length: 1000 days
+Thu Nov  7 14:39:00 2013: form={'dry_conv': 'on', 'n2o': '310', 'w_max': '0.0', 'S0': '1360', 'month': '3', 'graph_time': '6', 'session': '', 'time_step': '10', 'dirname': 'temp/tmpJC4AWn', 'w_p': '500.0', 'co2': '360', 'avg_time': '25', 'cfc11': '280.0', 'cfc12': '484.0', 'turb_flux': 'on', 'water_frac': '1.0', 'moist_conv': 'on', 'day': '1', 'rad_cld': '0', 'theta': '15', 'w_bot': '1000', 'SSTi': '12', 'w_top': '100', 'w_T': '1000', 'alpha': '0.25', 'rad_type': '0', 'ugust': '5', 'rad_freq': '1', 'hour': '0', 'days': '1000', 'ch4': '1.7', 'p_pbl': '850', 'ml_depth': '1.0'}
+Thu Nov  7 14:39:00 2013: run: wait time: temp/tmpJC4AWn: 0.000240087509155
+Thu Nov  7 14:39:00 2013: done at Thu Nov  7 14:39:00 2013
+Thu Nov  7 14:39:00 2013: === time taken: 163.945913315 ms
+Thu Nov  7 14:39:00 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:00 2013: GET
+Thu Nov  7 14:39:00 2013: user = unknown
+Thu Nov  7 14:39:00 2013: path = 
+Thu Nov  7 14:39:00 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:00 2013: done at Thu Nov  7 14:39:00 2013
+Thu Nov  7 14:39:00 2013: === time taken: 1.20186805725 ms
+Thu Nov  7 14:39:01 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:01 2013: GET
+Thu Nov  7 14:39:01 2013: user = unknown
+Thu Nov  7 14:39:01 2013: path = 
+Thu Nov  7 14:39:01 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:01 2013: done at Thu Nov  7 14:39:01 2013
+Thu Nov  7 14:39:01 2013: === time taken: 10.0328922272 ms
+Thu Nov  7 14:39:02 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:02 2013: GET
+Thu Nov  7 14:39:02 2013: user = unknown
+Thu Nov  7 14:39:02 2013: path = 
+Thu Nov  7 14:39:02 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:02 2013: done at Thu Nov  7 14:39:02 2013
+Thu Nov  7 14:39:02 2013: === time taken: 1.27792358398 ms
+Thu Nov  7 14:39:03 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:03 2013: GET
+Thu Nov  7 14:39:03 2013: user = unknown
+Thu Nov  7 14:39:03 2013: path = 
+Thu Nov  7 14:39:03 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:03 2013: done at Thu Nov  7 14:39:03 2013
+Thu Nov  7 14:39:03 2013: === time taken: 1.29008293152 ms
+Thu Nov  7 14:39:04 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:04 2013: GET
+Thu Nov  7 14:39:04 2013: user = unknown
+Thu Nov  7 14:39:04 2013: path = 
+Thu Nov  7 14:39:04 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:04 2013: done at Thu Nov  7 14:39:04 2013
+Thu Nov  7 14:39:04 2013: === time taken: 1.54089927673 ms
+Thu Nov  7 14:39:05 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:05 2013: GET
+Thu Nov  7 14:39:05 2013: user = unknown
+Thu Nov  7 14:39:05 2013: path = 
+Thu Nov  7 14:39:05 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:05 2013: done at Thu Nov  7 14:39:05 2013
+Thu Nov  7 14:39:05 2013: === time taken: 1.23000144958 ms
+Thu Nov  7 14:39:06 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:06 2013: GET
+Thu Nov  7 14:39:06 2013: user = unknown
+Thu Nov  7 14:39:06 2013: path = 
+Thu Nov  7 14:39:06 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:06 2013: done at Thu Nov  7 14:39:06 2013
+Thu Nov  7 14:39:06 2013: === time taken: 1.33013725281 ms
+Thu Nov  7 14:39:07 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:07 2013: GET
+Thu Nov  7 14:39:07 2013: user = unknown
+Thu Nov  7 14:39:07 2013: path = 
+Thu Nov  7 14:39:07 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:07 2013: done at Thu Nov  7 14:39:07 2013
+Thu Nov  7 14:39:07 2013: === time taken: 1.50179862976 ms
+Thu Nov  7 14:39:08 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:08 2013: GET
+Thu Nov  7 14:39:08 2013: user = unknown
+Thu Nov  7 14:39:08 2013: path = 
+Thu Nov  7 14:39:08 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:08 2013: done at Thu Nov  7 14:39:08 2013
+Thu Nov  7 14:39:08 2013: === time taken: 1.43599510193 ms
+Thu Nov  7 14:39:09 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:09 2013: GET
+Thu Nov  7 14:39:09 2013: user = unknown
+Thu Nov  7 14:39:09 2013: path = 
+Thu Nov  7 14:39:09 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:09 2013: done at Thu Nov  7 14:39:09 2013
+Thu Nov  7 14:39:09 2013: === time taken: 1.76692008972 ms
+Thu Nov  7 14:39:10 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:10 2013: GET
+Thu Nov  7 14:39:10 2013: user = unknown
+Thu Nov  7 14:39:10 2013: path = 
+Thu Nov  7 14:39:10 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:10 2013: done at Thu Nov  7 14:39:10 2013
+Thu Nov  7 14:39:10 2013: === time taken: 1.20806694031 ms
+Thu Nov  7 14:39:11 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:11 2013: GET
+Thu Nov  7 14:39:11 2013: user = unknown
+Thu Nov  7 14:39:11 2013: path = 
+Thu Nov  7 14:39:11 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:11 2013: done at Thu Nov  7 14:39:11 2013
+Thu Nov  7 14:39:11 2013: === time taken: 1.60098075867 ms
+Thu Nov  7 14:39:12 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:12 2013: GET
+Thu Nov  7 14:39:12 2013: user = unknown
+Thu Nov  7 14:39:12 2013: path = 
+Thu Nov  7 14:39:12 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:12 2013: done at Thu Nov  7 14:39:12 2013
+Thu Nov  7 14:39:12 2013: === time taken: 1.33299827576 ms
+Thu Nov  7 14:39:14 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:14 2013: GET
+Thu Nov  7 14:39:14 2013: user = unknown
+Thu Nov  7 14:39:14 2013: path = 
+Thu Nov  7 14:39:14 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:14 2013: done at Thu Nov  7 14:39:14 2013
+Thu Nov  7 14:39:14 2013: === time taken: 1.67393684387 ms
+Thu Nov  7 14:39:15 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:15 2013: GET
+Thu Nov  7 14:39:15 2013: user = unknown
+Thu Nov  7 14:39:15 2013: path = 
+Thu Nov  7 14:39:15 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:15 2013: done at Thu Nov  7 14:39:15 2013
+Thu Nov  7 14:39:15 2013: === time taken: 1.305103302 ms
+Thu Nov  7 14:39:16 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:16 2013: GET
+Thu Nov  7 14:39:16 2013: user = unknown
+Thu Nov  7 14:39:16 2013: path = 
+Thu Nov  7 14:39:16 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:16 2013: done at Thu Nov  7 14:39:16 2013
+Thu Nov  7 14:39:16 2013: === time taken: 1.31297111511 ms
+Thu Nov  7 14:39:17 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:17 2013: GET
+Thu Nov  7 14:39:17 2013: user = unknown
+Thu Nov  7 14:39:17 2013: path = 
+Thu Nov  7 14:39:17 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:17 2013: done at Thu Nov  7 14:39:17 2013
+Thu Nov  7 14:39:17 2013: === time taken: 1.23691558838 ms
+Thu Nov  7 14:39:18 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:18 2013: GET
+Thu Nov  7 14:39:18 2013: user = unknown
+Thu Nov  7 14:39:18 2013: path = 
+Thu Nov  7 14:39:18 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:18 2013: done at Thu Nov  7 14:39:18 2013
+Thu Nov  7 14:39:18 2013: === time taken: 1.73711776733 ms
+Thu Nov  7 14:39:19 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:19 2013: GET
+Thu Nov  7 14:39:19 2013: user = unknown
+Thu Nov  7 14:39:19 2013: path = 
+Thu Nov  7 14:39:19 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:19 2013: done at Thu Nov  7 14:39:19 2013
+Thu Nov  7 14:39:19 2013: === time taken: 1.63722038269 ms
+Thu Nov  7 14:39:20 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:20 2013: GET
+Thu Nov  7 14:39:20 2013: user = unknown
+Thu Nov  7 14:39:20 2013: path = 
+Thu Nov  7 14:39:20 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:20 2013: done at Thu Nov  7 14:39:20 2013
+Thu Nov  7 14:39:20 2013: === time taken: 1.51205062866 ms
+Thu Nov  7 14:39:21 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:21 2013: GET
+Thu Nov  7 14:39:21 2013: user = unknown
+Thu Nov  7 14:39:21 2013: path = 
+Thu Nov  7 14:39:21 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:21 2013: done at Thu Nov  7 14:39:21 2013
+Thu Nov  7 14:39:21 2013: === time taken: 1.40404701233 ms
+Thu Nov  7 14:39:22 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:22 2013: GET
+Thu Nov  7 14:39:22 2013: user = unknown
+Thu Nov  7 14:39:22 2013: path = 
+Thu Nov  7 14:39:22 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:22 2013: done at Thu Nov  7 14:39:22 2013
+Thu Nov  7 14:39:22 2013: === time taken: 1.2800693512 ms
+Thu Nov  7 14:39:23 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:23 2013: GET
+Thu Nov  7 14:39:23 2013: user = unknown
+Thu Nov  7 14:39:23 2013: path = 
+Thu Nov  7 14:39:23 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:23 2013: done at Thu Nov  7 14:39:23 2013
+Thu Nov  7 14:39:23 2013: === time taken: 1.42097473145 ms
+Thu Nov  7 14:39:24 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:24 2013: GET
+Thu Nov  7 14:39:24 2013: user = unknown
+Thu Nov  7 14:39:24 2013: path = 
+Thu Nov  7 14:39:24 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:24 2013: done at Thu Nov  7 14:39:24 2013
+Thu Nov  7 14:39:24 2013: === time taken: 1.39093399048 ms
+Thu Nov  7 14:39:25 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:25 2013: GET
+Thu Nov  7 14:39:25 2013: user = unknown
+Thu Nov  7 14:39:25 2013: path = 
+Thu Nov  7 14:39:25 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:25 2013: done at Thu Nov  7 14:39:25 2013
+Thu Nov  7 14:39:25 2013: === time taken: 1.35707855225 ms
+Thu Nov  7 14:39:27 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:27 2013: GET
+Thu Nov  7 14:39:27 2013: user = unknown
+Thu Nov  7 14:39:27 2013: path = 
+Thu Nov  7 14:39:27 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:27 2013: done at Thu Nov  7 14:39:27 2013
+Thu Nov  7 14:39:27 2013: === time taken: 1.33991241455 ms
+Thu Nov  7 14:39:28 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:28 2013: GET
+Thu Nov  7 14:39:28 2013: user = unknown
+Thu Nov  7 14:39:28 2013: path = 
+Thu Nov  7 14:39:28 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:28 2013: done at Thu Nov  7 14:39:28 2013
+Thu Nov  7 14:39:28 2013: === time taken: 1.28316879272 ms
+Thu Nov  7 14:39:29 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:29 2013: GET
+Thu Nov  7 14:39:29 2013: user = unknown
+Thu Nov  7 14:39:29 2013: path = 
+Thu Nov  7 14:39:29 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:29 2013: done at Thu Nov  7 14:39:29 2013
+Thu Nov  7 14:39:29 2013: === time taken: 1.53303146362 ms
+Thu Nov  7 14:39:30 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:30 2013: GET
+Thu Nov  7 14:39:30 2013: user = unknown
+Thu Nov  7 14:39:30 2013: path = 
+Thu Nov  7 14:39:30 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:30 2013: done at Thu Nov  7 14:39:30 2013
+Thu Nov  7 14:39:30 2013: === time taken: 1.21903419495 ms
+Thu Nov  7 14:39:31 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:31 2013: GET
+Thu Nov  7 14:39:31 2013: user = unknown
+Thu Nov  7 14:39:31 2013: path = 
+Thu Nov  7 14:39:31 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:31 2013: done at Thu Nov  7 14:39:31 2013
+Thu Nov  7 14:39:31 2013: === time taken: 1.49989128113 ms
+Thu Nov  7 14:39:32 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:32 2013: GET
+Thu Nov  7 14:39:32 2013: user = unknown
+Thu Nov  7 14:39:32 2013: path = 
+Thu Nov  7 14:39:32 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:32 2013: done at Thu Nov  7 14:39:32 2013
+Thu Nov  7 14:39:32 2013: === time taken: 1.216173172 ms
+Thu Nov  7 14:39:33 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:33 2013: GET
+Thu Nov  7 14:39:33 2013: user = unknown
+Thu Nov  7 14:39:33 2013: path = 
+Thu Nov  7 14:39:33 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:33 2013: done at Thu Nov  7 14:39:33 2013
+Thu Nov  7 14:39:33 2013: === time taken: 1.46293640137 ms
+Thu Nov  7 14:39:34 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:34 2013: GET
+Thu Nov  7 14:39:34 2013: user = unknown
+Thu Nov  7 14:39:34 2013: path = 
+Thu Nov  7 14:39:34 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:34 2013: done at Thu Nov  7 14:39:34 2013
+Thu Nov  7 14:39:34 2013: === time taken: 1.24502182007 ms
+Thu Nov  7 14:39:35 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:35 2013: GET
+Thu Nov  7 14:39:35 2013: user = unknown
+Thu Nov  7 14:39:35 2013: path = 
+Thu Nov  7 14:39:35 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:35 2013: done at Thu Nov  7 14:39:35 2013
+Thu Nov  7 14:39:35 2013: === time taken: 1.24716758728 ms
+Thu Nov  7 14:39:36 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:36 2013: GET
+Thu Nov  7 14:39:36 2013: user = unknown
+Thu Nov  7 14:39:36 2013: path = 
+Thu Nov  7 14:39:36 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:36 2013: done at Thu Nov  7 14:39:36 2013
+Thu Nov  7 14:39:36 2013: === time taken: 1.83296203613 ms
+Thu Nov  7 14:39:37 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:37 2013: GET
+Thu Nov  7 14:39:37 2013: user = unknown
+Thu Nov  7 14:39:37 2013: path = 
+Thu Nov  7 14:39:37 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:37 2013: done at Thu Nov  7 14:39:37 2013
+Thu Nov  7 14:39:37 2013: === time taken: 1.43003463745 ms
+Thu Nov  7 14:39:38 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:38 2013: GET
+Thu Nov  7 14:39:38 2013: user = unknown
+Thu Nov  7 14:39:38 2013: path = 
+Thu Nov  7 14:39:38 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:38 2013: done at Thu Nov  7 14:39:38 2013
+Thu Nov  7 14:39:38 2013: === time taken: 1.39403343201 ms
+Thu Nov  7 14:39:39 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:39 2013: GET
+Thu Nov  7 14:39:39 2013: user = unknown
+Thu Nov  7 14:39:39 2013: path = 
+Thu Nov  7 14:39:39 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:39 2013: done at Thu Nov  7 14:39:39 2013
+Thu Nov  7 14:39:39 2013: === time taken: 1.51801109314 ms
+Thu Nov  7 14:39:40 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:40 2013: GET
+Thu Nov  7 14:39:40 2013: user = unknown
+Thu Nov  7 14:39:40 2013: path = 
+Thu Nov  7 14:39:40 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:40 2013: done at Thu Nov  7 14:39:40 2013
+Thu Nov  7 14:39:40 2013: === time taken: 1.31011009216 ms
+Thu Nov  7 14:39:41 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:41 2013: GET
+Thu Nov  7 14:39:41 2013: user = unknown
+Thu Nov  7 14:39:41 2013: path = 
+Thu Nov  7 14:39:41 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:41 2013: done at Thu Nov  7 14:39:41 2013
+Thu Nov  7 14:39:41 2013: === time taken: 1.66392326355 ms
+Thu Nov  7 14:39:43 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:43 2013: GET
+Thu Nov  7 14:39:43 2013: user = unknown
+Thu Nov  7 14:39:43 2013: path = 
+Thu Nov  7 14:39:43 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:43 2013: done at Thu Nov  7 14:39:43 2013
+Thu Nov  7 14:39:43 2013: === time taken: 1.70302391052 ms
+Thu Nov  7 14:39:44 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:44 2013: GET
+Thu Nov  7 14:39:44 2013: user = unknown
+Thu Nov  7 14:39:44 2013: path = 
+Thu Nov  7 14:39:44 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:44 2013: done at Thu Nov  7 14:39:44 2013
+Thu Nov  7 14:39:44 2013: === time taken: 2.13885307312 ms
+Thu Nov  7 14:39:45 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:45 2013: GET
+Thu Nov  7 14:39:45 2013: user = unknown
+Thu Nov  7 14:39:45 2013: path = 
+Thu Nov  7 14:39:45 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:45 2013: done at Thu Nov  7 14:39:45 2013
+Thu Nov  7 14:39:45 2013: === time taken: 1.8298625946 ms
+Thu Nov  7 14:39:46 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:46 2013: GET
+Thu Nov  7 14:39:46 2013: user = unknown
+Thu Nov  7 14:39:46 2013: path = 
+Thu Nov  7 14:39:46 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:46 2013: done at Thu Nov  7 14:39:46 2013
+Thu Nov  7 14:39:46 2013: === time taken: 1.33991241455 ms
+Thu Nov  7 14:39:47 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:47 2013: GET
+Thu Nov  7 14:39:47 2013: user = unknown
+Thu Nov  7 14:39:47 2013: path = 
+Thu Nov  7 14:39:47 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:47 2013: done at Thu Nov  7 14:39:47 2013
+Thu Nov  7 14:39:47 2013: === time taken: 1.34181976318 ms
+Thu Nov  7 14:39:48 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:48 2013: GET
+Thu Nov  7 14:39:48 2013: user = unknown
+Thu Nov  7 14:39:48 2013: path = 
+Thu Nov  7 14:39:48 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:48 2013: done at Thu Nov  7 14:39:48 2013
+Thu Nov  7 14:39:48 2013: === time taken: 1.70111656189 ms
+Thu Nov  7 14:39:49 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:49 2013: GET
+Thu Nov  7 14:39:49 2013: user = unknown
+Thu Nov  7 14:39:49 2013: path = 
+Thu Nov  7 14:39:49 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:49 2013: done at Thu Nov  7 14:39:49 2013
+Thu Nov  7 14:39:49 2013: === time taken: 1.24001502991 ms
+Thu Nov  7 14:39:50 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:50 2013: GET
+Thu Nov  7 14:39:50 2013: user = unknown
+Thu Nov  7 14:39:50 2013: path = 
+Thu Nov  7 14:39:50 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:50 2013: done at Thu Nov  7 14:39:50 2013
+Thu Nov  7 14:39:50 2013: === time taken: 1.52993202209 ms
+Thu Nov  7 14:39:51 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:51 2013: GET
+Thu Nov  7 14:39:51 2013: user = unknown
+Thu Nov  7 14:39:51 2013: path = 
+Thu Nov  7 14:39:51 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:51 2013: done at Thu Nov  7 14:39:51 2013
+Thu Nov  7 14:39:51 2013: === time taken: 1.16181373596 ms
+Thu Nov  7 14:39:52 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:52 2013: GET
+Thu Nov  7 14:39:52 2013: user = unknown
+Thu Nov  7 14:39:52 2013: path = 
+Thu Nov  7 14:39:52 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:52 2013: done at Thu Nov  7 14:39:52 2013
+Thu Nov  7 14:39:52 2013: === time taken: 1.46102905273 ms
+Thu Nov  7 14:39:53 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:53 2013: GET
+Thu Nov  7 14:39:53 2013: user = unknown
+Thu Nov  7 14:39:53 2013: path = 
+Thu Nov  7 14:39:53 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:53 2013: done at Thu Nov  7 14:39:53 2013
+Thu Nov  7 14:39:53 2013: === time taken: 1.41286849976 ms
+Thu Nov  7 14:39:54 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:54 2013: GET
+Thu Nov  7 14:39:54 2013: user = unknown
+Thu Nov  7 14:39:54 2013: path = 
+Thu Nov  7 14:39:54 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:54 2013: done at Thu Nov  7 14:39:54 2013
+Thu Nov  7 14:39:54 2013: === time taken: 1.36399269104 ms
+Thu Nov  7 14:39:56 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:56 2013: GET
+Thu Nov  7 14:39:56 2013: user = unknown
+Thu Nov  7 14:39:56 2013: path = 
+Thu Nov  7 14:39:56 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:56 2013: done at Thu Nov  7 14:39:56 2013
+Thu Nov  7 14:39:56 2013: === time taken: 1.55401229858 ms
+Thu Nov  7 14:39:57 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:57 2013: GET
+Thu Nov  7 14:39:57 2013: user = unknown
+Thu Nov  7 14:39:57 2013: path = 
+Thu Nov  7 14:39:57 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:57 2013: done at Thu Nov  7 14:39:57 2013
+Thu Nov  7 14:39:57 2013: === time taken: 1.36613845825 ms
+Thu Nov  7 14:39:58 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:58 2013: GET
+Thu Nov  7 14:39:58 2013: user = unknown
+Thu Nov  7 14:39:58 2013: path = 
+Thu Nov  7 14:39:58 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:58 2013: done at Thu Nov  7 14:39:58 2013
+Thu Nov  7 14:39:58 2013: === time taken: 1.99389457703 ms
+Thu Nov  7 14:39:59 2013: ------------------------------------------------------------
+Thu Nov  7 14:39:59 2013: GET
+Thu Nov  7 14:39:59 2013: user = unknown
+Thu Nov  7 14:39:59 2013: path = 
+Thu Nov  7 14:39:59 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:39:59 2013: done at Thu Nov  7 14:39:59 2013
+Thu Nov  7 14:39:59 2013: === time taken: 2.02488899231 ms
+Thu Nov  7 14:40:00 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:00 2013: GET
+Thu Nov  7 14:40:00 2013: user = unknown
+Thu Nov  7 14:40:00 2013: path = 
+Thu Nov  7 14:40:00 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:00 2013: done at Thu Nov  7 14:40:00 2013
+Thu Nov  7 14:40:00 2013: === time taken: 1.82199478149 ms
+Thu Nov  7 14:40:02 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:02 2013: GET
+Thu Nov  7 14:40:02 2013: user = unknown
+Thu Nov  7 14:40:02 2013: path = 
+Thu Nov  7 14:40:02 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:02 2013: done at Thu Nov  7 14:40:02 2013
+Thu Nov  7 14:40:02 2013: === time taken: 40.2891635895 ms
+Thu Nov  7 14:40:03 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:03 2013: GET
+Thu Nov  7 14:40:03 2013: user = unknown
+Thu Nov  7 14:40:03 2013: path = 
+Thu Nov  7 14:40:03 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:03 2013: done at Thu Nov  7 14:40:03 2013
+Thu Nov  7 14:40:03 2013: === time taken: 1.24311447144 ms
+Thu Nov  7 14:40:04 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:04 2013: GET
+Thu Nov  7 14:40:04 2013: user = unknown
+Thu Nov  7 14:40:04 2013: path = 
+Thu Nov  7 14:40:04 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:04 2013: done at Thu Nov  7 14:40:04 2013
+Thu Nov  7 14:40:04 2013: === time taken: 2.06112861633 ms
+Thu Nov  7 14:40:05 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:05 2013: GET
+Thu Nov  7 14:40:05 2013: user = unknown
+Thu Nov  7 14:40:05 2013: path = 
+Thu Nov  7 14:40:05 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:05 2013: done at Thu Nov  7 14:40:05 2013
+Thu Nov  7 14:40:05 2013: === time taken: 1.35803222656 ms
+Thu Nov  7 14:40:06 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:06 2013: GET
+Thu Nov  7 14:40:06 2013: user = unknown
+Thu Nov  7 14:40:06 2013: path = 
+Thu Nov  7 14:40:06 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:06 2013: done at Thu Nov  7 14:40:06 2013
+Thu Nov  7 14:40:06 2013: === time taken: 1.86204910278 ms
+Thu Nov  7 14:40:07 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:07 2013: GET
+Thu Nov  7 14:40:07 2013: user = unknown
+Thu Nov  7 14:40:07 2013: path = 
+Thu Nov  7 14:40:07 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:07 2013: done at Thu Nov  7 14:40:07 2013
+Thu Nov  7 14:40:07 2013: === time taken: 1.23906135559 ms
+Thu Nov  7 14:40:08 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:08 2013: GET
+Thu Nov  7 14:40:08 2013: user = unknown
+Thu Nov  7 14:40:08 2013: path = 
+Thu Nov  7 14:40:08 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:08 2013: done at Thu Nov  7 14:40:08 2013
+Thu Nov  7 14:40:08 2013: === time taken: 1.37090682983 ms
+Thu Nov  7 14:40:09 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:09 2013: GET
+Thu Nov  7 14:40:09 2013: user = unknown
+Thu Nov  7 14:40:09 2013: path = 
+Thu Nov  7 14:40:09 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:09 2013: done at Thu Nov  7 14:40:09 2013
+Thu Nov  7 14:40:09 2013: === time taken: 2.05087661743 ms
+Thu Nov  7 14:40:10 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:10 2013: GET
+Thu Nov  7 14:40:10 2013: user = unknown
+Thu Nov  7 14:40:10 2013: path = 
+Thu Nov  7 14:40:10 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:10 2013: done at Thu Nov  7 14:40:10 2013
+Thu Nov  7 14:40:10 2013: === time taken: 2.0899772644 ms
+Thu Nov  7 14:40:12 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:12 2013: GET
+Thu Nov  7 14:40:12 2013: user = unknown
+Thu Nov  7 14:40:12 2013: path = 
+Thu Nov  7 14:40:12 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:12 2013: done at Thu Nov  7 14:40:12 2013
+Thu Nov  7 14:40:12 2013: === time taken: 1.32393836975 ms
+Thu Nov  7 14:40:13 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:13 2013: GET
+Thu Nov  7 14:40:13 2013: user = unknown
+Thu Nov  7 14:40:13 2013: path = 
+Thu Nov  7 14:40:13 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:13 2013: done at Thu Nov  7 14:40:13 2013
+Thu Nov  7 14:40:13 2013: === time taken: 1.69992446899 ms
+Thu Nov  7 14:40:14 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:14 2013: GET
+Thu Nov  7 14:40:14 2013: user = unknown
+Thu Nov  7 14:40:14 2013: path = 
+Thu Nov  7 14:40:14 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:14 2013: done at Thu Nov  7 14:40:14 2013
+Thu Nov  7 14:40:14 2013: === time taken: 1.31392478943 ms
+Thu Nov  7 14:40:15 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:15 2013: GET
+Thu Nov  7 14:40:15 2013: user = unknown
+Thu Nov  7 14:40:15 2013: path = 
+Thu Nov  7 14:40:15 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:15 2013: done at Thu Nov  7 14:40:15 2013
+Thu Nov  7 14:40:15 2013: === time taken: 1.28507614136 ms
+Thu Nov  7 14:40:16 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:16 2013: GET
+Thu Nov  7 14:40:16 2013: user = unknown
+Thu Nov  7 14:40:16 2013: path = 
+Thu Nov  7 14:40:16 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:16 2013: done at Thu Nov  7 14:40:16 2013
+Thu Nov  7 14:40:16 2013: === time taken: 1.57999992371 ms
+Thu Nov  7 14:40:17 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:17 2013: GET
+Thu Nov  7 14:40:17 2013: user = unknown
+Thu Nov  7 14:40:17 2013: path = 
+Thu Nov  7 14:40:17 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:17 2013: done at Thu Nov  7 14:40:17 2013
+Thu Nov  7 14:40:17 2013: === time taken: 1.35493278503 ms
+Thu Nov  7 14:40:18 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:18 2013: GET
+Thu Nov  7 14:40:18 2013: user = unknown
+Thu Nov  7 14:40:18 2013: path = 
+Thu Nov  7 14:40:18 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:18 2013: done at Thu Nov  7 14:40:18 2013
+Thu Nov  7 14:40:18 2013: === time taken: 1.36518478394 ms
+Thu Nov  7 14:40:19 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:19 2013: GET
+Thu Nov  7 14:40:19 2013: user = unknown
+Thu Nov  7 14:40:19 2013: path = 
+Thu Nov  7 14:40:19 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:19 2013: done at Thu Nov  7 14:40:19 2013
+Thu Nov  7 14:40:19 2013: === time taken: 1.71804428101 ms
+Thu Nov  7 14:40:20 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:20 2013: GET
+Thu Nov  7 14:40:20 2013: user = unknown
+Thu Nov  7 14:40:20 2013: path = 
+Thu Nov  7 14:40:20 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:20 2013: done at Thu Nov  7 14:40:20 2013
+Thu Nov  7 14:40:20 2013: === time taken: 1.74593925476 ms
+Thu Nov  7 14:40:21 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:21 2013: GET
+Thu Nov  7 14:40:21 2013: user = unknown
+Thu Nov  7 14:40:21 2013: path = 
+Thu Nov  7 14:40:21 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:21 2013: done at Thu Nov  7 14:40:21 2013
+Thu Nov  7 14:40:21 2013: === time taken: 1.44410133362 ms
+Thu Nov  7 14:40:22 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:22 2013: GET
+Thu Nov  7 14:40:22 2013: user = unknown
+Thu Nov  7 14:40:22 2013: path = 
+Thu Nov  7 14:40:22 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:22 2013: done at Thu Nov  7 14:40:22 2013
+Thu Nov  7 14:40:22 2013: === time taken: 1.29008293152 ms
+Thu Nov  7 14:40:23 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:23 2013: GET
+Thu Nov  7 14:40:23 2013: user = unknown
+Thu Nov  7 14:40:23 2013: path = 
+Thu Nov  7 14:40:23 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:23 2013: done at Thu Nov  7 14:40:23 2013
+Thu Nov  7 14:40:23 2013: === time taken: 1.75905227661 ms
+Thu Nov  7 14:40:24 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:24 2013: GET
+Thu Nov  7 14:40:24 2013: user = unknown
+Thu Nov  7 14:40:24 2013: path = 
+Thu Nov  7 14:40:24 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:24 2013: done at Thu Nov  7 14:40:24 2013
+Thu Nov  7 14:40:24 2013: === time taken: 1.26886367798 ms
+Thu Nov  7 14:40:25 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:25 2013: GET
+Thu Nov  7 14:40:25 2013: user = unknown
+Thu Nov  7 14:40:25 2013: path = 
+Thu Nov  7 14:40:25 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:25 2013: done at Thu Nov  7 14:40:25 2013
+Thu Nov  7 14:40:25 2013: === time taken: 1.22594833374 ms
+Thu Nov  7 14:40:26 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:26 2013: GET
+Thu Nov  7 14:40:26 2013: user = unknown
+Thu Nov  7 14:40:26 2013: path = 
+Thu Nov  7 14:40:26 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:26 2013: done at Thu Nov  7 14:40:26 2013
+Thu Nov  7 14:40:26 2013: === time taken: 7.30800628662 ms
+Thu Nov  7 14:40:28 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:28 2013: GET
+Thu Nov  7 14:40:28 2013: user = unknown
+Thu Nov  7 14:40:28 2013: path = 
+Thu Nov  7 14:40:28 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:28 2013: done at Thu Nov  7 14:40:28 2013
+Thu Nov  7 14:40:28 2013: === time taken: 1.36399269104 ms
+Thu Nov  7 14:40:29 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:29 2013: GET
+Thu Nov  7 14:40:29 2013: user = unknown
+Thu Nov  7 14:40:29 2013: path = 
+Thu Nov  7 14:40:29 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:29 2013: done at Thu Nov  7 14:40:29 2013
+Thu Nov  7 14:40:29 2013: === time taken: 1.42598152161 ms
+Thu Nov  7 14:40:30 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:30 2013: GET
+Thu Nov  7 14:40:30 2013: user = unknown
+Thu Nov  7 14:40:30 2013: path = 
+Thu Nov  7 14:40:30 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:30 2013: done at Thu Nov  7 14:40:30 2013
+Thu Nov  7 14:40:30 2013: === time taken: 1.58190727234 ms
+Thu Nov  7 14:40:31 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:31 2013: GET
+Thu Nov  7 14:40:31 2013: user = unknown
+Thu Nov  7 14:40:31 2013: path = 
+Thu Nov  7 14:40:31 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:31 2013: done at Thu Nov  7 14:40:31 2013
+Thu Nov  7 14:40:31 2013: === time taken: 1.80292129517 ms
+Thu Nov  7 14:40:32 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:32 2013: GET
+Thu Nov  7 14:40:32 2013: user = unknown
+Thu Nov  7 14:40:32 2013: path = 
+Thu Nov  7 14:40:32 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:32 2013: done at Thu Nov  7 14:40:32 2013
+Thu Nov  7 14:40:32 2013: === time taken: 1.28602981567 ms
+Thu Nov  7 14:40:33 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:33 2013: GET
+Thu Nov  7 14:40:33 2013: user = unknown
+Thu Nov  7 14:40:33 2013: path = 
+Thu Nov  7 14:40:33 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:33 2013: done at Thu Nov  7 14:40:33 2013
+Thu Nov  7 14:40:33 2013: === time taken: 1.37305259705 ms
+Thu Nov  7 14:40:34 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:34 2013: GET
+Thu Nov  7 14:40:34 2013: user = unknown
+Thu Nov  7 14:40:34 2013: path = 
+Thu Nov  7 14:40:34 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:34 2013: done at Thu Nov  7 14:40:34 2013
+Thu Nov  7 14:40:34 2013: === time taken: 1.36613845825 ms
+Thu Nov  7 14:40:35 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:35 2013: GET
+Thu Nov  7 14:40:35 2013: user = unknown
+Thu Nov  7 14:40:35 2013: path = 
+Thu Nov  7 14:40:35 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:35 2013: done at Thu Nov  7 14:40:35 2013
+Thu Nov  7 14:40:35 2013: === time taken: 1.28293037415 ms
+Thu Nov  7 14:40:36 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:36 2013: GET
+Thu Nov  7 14:40:36 2013: user = unknown
+Thu Nov  7 14:40:36 2013: path = 
+Thu Nov  7 14:40:36 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:36 2013: done at Thu Nov  7 14:40:36 2013
+Thu Nov  7 14:40:36 2013: === time taken: 1.28293037415 ms
+Thu Nov  7 14:40:37 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:37 2013: GET
+Thu Nov  7 14:40:37 2013: user = unknown
+Thu Nov  7 14:40:37 2013: path = 
+Thu Nov  7 14:40:37 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:37 2013: done at Thu Nov  7 14:40:37 2013
+Thu Nov  7 14:40:37 2013: === time taken: 1.30200386047 ms
+Thu Nov  7 14:40:38 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:38 2013: GET
+Thu Nov  7 14:40:38 2013: user = unknown
+Thu Nov  7 14:40:38 2013: path = 
+Thu Nov  7 14:40:38 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:38 2013: done at Thu Nov  7 14:40:38 2013
+Thu Nov  7 14:40:38 2013: === time taken: 1.32703781128 ms
+Thu Nov  7 14:40:39 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:39 2013: GET
+Thu Nov  7 14:40:39 2013: user = unknown
+Thu Nov  7 14:40:39 2013: path = 
+Thu Nov  7 14:40:39 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:39 2013: done at Thu Nov  7 14:40:39 2013
+Thu Nov  7 14:40:39 2013: === time taken: 1.33490562439 ms
+Thu Nov  7 14:40:40 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:40 2013: GET
+Thu Nov  7 14:40:40 2013: user = unknown
+Thu Nov  7 14:40:40 2013: path = 
+Thu Nov  7 14:40:40 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:40 2013: done at Thu Nov  7 14:40:40 2013
+Thu Nov  7 14:40:40 2013: === time taken: 1.20496749878 ms
+Thu Nov  7 14:40:42 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:42 2013: GET
+Thu Nov  7 14:40:42 2013: user = unknown
+Thu Nov  7 14:40:42 2013: path = 
+Thu Nov  7 14:40:42 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:42 2013: done at Thu Nov  7 14:40:42 2013
+Thu Nov  7 14:40:42 2013: === time taken: 1.54900550842 ms
+Thu Nov  7 14:40:43 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:43 2013: GET
+Thu Nov  7 14:40:43 2013: user = unknown
+Thu Nov  7 14:40:43 2013: path = 
+Thu Nov  7 14:40:43 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:43 2013: done at Thu Nov  7 14:40:43 2013
+Thu Nov  7 14:40:43 2013: === time taken: 1.52206420898 ms
+Thu Nov  7 14:40:44 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:44 2013: GET
+Thu Nov  7 14:40:44 2013: user = unknown
+Thu Nov  7 14:40:44 2013: path = 
+Thu Nov  7 14:40:44 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:44 2013: done at Thu Nov  7 14:40:44 2013
+Thu Nov  7 14:40:44 2013: === time taken: 1.30295753479 ms
+Thu Nov  7 14:40:45 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:45 2013: GET
+Thu Nov  7 14:40:45 2013: user = unknown
+Thu Nov  7 14:40:45 2013: path = 
+Thu Nov  7 14:40:45 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:45 2013: done at Thu Nov  7 14:40:45 2013
+Thu Nov  7 14:40:45 2013: === time taken: 1.35588645935 ms
+Thu Nov  7 14:40:46 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:46 2013: GET
+Thu Nov  7 14:40:46 2013: user = unknown
+Thu Nov  7 14:40:46 2013: path = 
+Thu Nov  7 14:40:46 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:46 2013: done at Thu Nov  7 14:40:46 2013
+Thu Nov  7 14:40:46 2013: === time taken: 1.30295753479 ms
+Thu Nov  7 14:40:47 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:47 2013: GET
+Thu Nov  7 14:40:47 2013: user = unknown
+Thu Nov  7 14:40:47 2013: path = 
+Thu Nov  7 14:40:47 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:47 2013: done at Thu Nov  7 14:40:47 2013
+Thu Nov  7 14:40:47 2013: === time taken: 1.39808654785 ms
+Thu Nov  7 14:40:49 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:49 2013: GET
+Thu Nov  7 14:40:49 2013: user = unknown
+Thu Nov  7 14:40:49 2013: path = 
+Thu Nov  7 14:40:49 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:49 2013: done at Thu Nov  7 14:40:49 2013
+Thu Nov  7 14:40:49 2013: === time taken: 1.216173172 ms
+Thu Nov  7 14:40:50 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:50 2013: GET
+Thu Nov  7 14:40:50 2013: user = unknown
+Thu Nov  7 14:40:50 2013: path = 
+Thu Nov  7 14:40:50 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:50 2013: done at Thu Nov  7 14:40:50 2013
+Thu Nov  7 14:40:50 2013: === time taken: 1.31988525391 ms
+Thu Nov  7 14:40:51 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:51 2013: GET
+Thu Nov  7 14:40:51 2013: user = unknown
+Thu Nov  7 14:40:51 2013: path = 
+Thu Nov  7 14:40:51 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:51 2013: done at Thu Nov  7 14:40:51 2013
+Thu Nov  7 14:40:51 2013: === time taken: 1.38592720032 ms
+Thu Nov  7 14:40:52 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:52 2013: GET
+Thu Nov  7 14:40:52 2013: user = unknown
+Thu Nov  7 14:40:52 2013: path = 
+Thu Nov  7 14:40:52 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:52 2013: done at Thu Nov  7 14:40:52 2013
+Thu Nov  7 14:40:52 2013: === time taken: 2.24304199219 ms
+Thu Nov  7 14:40:53 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:53 2013: GET
+Thu Nov  7 14:40:53 2013: user = unknown
+Thu Nov  7 14:40:53 2013: path = 
+Thu Nov  7 14:40:53 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:53 2013: done at Thu Nov  7 14:40:53 2013
+Thu Nov  7 14:40:53 2013: === time taken: 1.26886367798 ms
+Thu Nov  7 14:40:54 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:54 2013: GET
+Thu Nov  7 14:40:54 2013: user = unknown
+Thu Nov  7 14:40:54 2013: path = 
+Thu Nov  7 14:40:54 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:54 2013: done at Thu Nov  7 14:40:54 2013
+Thu Nov  7 14:40:54 2013: === time taken: 1.28722190857 ms
+Thu Nov  7 14:40:55 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:55 2013: GET
+Thu Nov  7 14:40:55 2013: user = unknown
+Thu Nov  7 14:40:55 2013: path = 
+Thu Nov  7 14:40:55 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:55 2013: done at Thu Nov  7 14:40:55 2013
+Thu Nov  7 14:40:55 2013: === time taken: 1.31487846375 ms
+Thu Nov  7 14:40:56 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:56 2013: GET
+Thu Nov  7 14:40:56 2013: user = unknown
+Thu Nov  7 14:40:56 2013: path = 
+Thu Nov  7 14:40:56 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:56 2013: done at Thu Nov  7 14:40:56 2013
+Thu Nov  7 14:40:56 2013: === time taken: 1.26695632935 ms
+Thu Nov  7 14:40:57 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:57 2013: GET
+Thu Nov  7 14:40:57 2013: user = unknown
+Thu Nov  7 14:40:57 2013: path = 
+Thu Nov  7 14:40:57 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:57 2013: done at Thu Nov  7 14:40:57 2013
+Thu Nov  7 14:40:57 2013: === time taken: 1.3599395752 ms
+Thu Nov  7 14:40:58 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:58 2013: GET
+Thu Nov  7 14:40:58 2013: user = unknown
+Thu Nov  7 14:40:58 2013: path = 
+Thu Nov  7 14:40:58 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:58 2013: done at Thu Nov  7 14:40:58 2013
+Thu Nov  7 14:40:58 2013: === time taken: 1.27410888672 ms
+Thu Nov  7 14:40:59 2013: ------------------------------------------------------------
+Thu Nov  7 14:40:59 2013: GET
+Thu Nov  7 14:40:59 2013: user = unknown
+Thu Nov  7 14:40:59 2013: path = 
+Thu Nov  7 14:40:59 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:40:59 2013: done at Thu Nov  7 14:40:59 2013
+Thu Nov  7 14:40:59 2013: === time taken: 1.31797790527 ms
+Thu Nov  7 14:41:00 2013: ------------------------------------------------------------
+Thu Nov  7 14:41:00 2013: GET
+Thu Nov  7 14:41:00 2013: user = unknown
+Thu Nov  7 14:41:00 2013: path = 
+Thu Nov  7 14:41:00 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:41:00 2013: done at Thu Nov  7 14:41:00 2013
+Thu Nov  7 14:41:00 2013: === time taken: 1.6028881073 ms
+Thu Nov  7 14:41:02 2013: ------------------------------------------------------------
+Thu Nov  7 14:41:02 2013: GET
+Thu Nov  7 14:41:02 2013: user = unknown
+Thu Nov  7 14:41:02 2013: path = 
+Thu Nov  7 14:41:02 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:41:02 2013: done at Thu Nov  7 14:41:02 2013
+Thu Nov  7 14:41:02 2013: === time taken: 79.0791511536 ms
+Thu Nov  7 14:41:03 2013: ------------------------------------------------------------
+Thu Nov  7 14:41:03 2013: GET
+Thu Nov  7 14:41:03 2013: user = unknown
+Thu Nov  7 14:41:03 2013: path = 
+Thu Nov  7 14:41:03 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:41:03 2013: done at Thu Nov  7 14:41:03 2013
+Thu Nov  7 14:41:03 2013: === time taken: 1.70111656189 ms
+Thu Nov  7 14:41:04 2013: ------------------------------------------------------------
+Thu Nov  7 14:41:04 2013: GET
+Thu Nov  7 14:41:04 2013: user = unknown
+Thu Nov  7 14:41:04 2013: path = 
+Thu Nov  7 14:41:04 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:41:04 2013: done at Thu Nov  7 14:41:04 2013
+Thu Nov  7 14:41:04 2013: === time taken: 1.19185447693 ms
+Thu Nov  7 14:41:05 2013: ------------------------------------------------------------
+Thu Nov  7 14:41:05 2013: GET
+Thu Nov  7 14:41:05 2013: user = unknown
+Thu Nov  7 14:41:05 2013: path = 
+Thu Nov  7 14:41:05 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:41:05 2013: done at Thu Nov  7 14:41:05 2013
+Thu Nov  7 14:41:05 2013: === time taken: 1.57284736633 ms
+Thu Nov  7 14:41:06 2013: ------------------------------------------------------------
+Thu Nov  7 14:41:06 2013: GET
+Thu Nov  7 14:41:06 2013: user = unknown
+Thu Nov  7 14:41:06 2013: path = 
+Thu Nov  7 14:41:06 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:41:06 2013: done at Thu Nov  7 14:41:06 2013
+Thu Nov  7 14:41:06 2013: === time taken: 1.57904624939 ms
+Thu Nov  7 14:41:07 2013: ------------------------------------------------------------
+Thu Nov  7 14:41:07 2013: GET
+Thu Nov  7 14:41:07 2013: user = unknown
+Thu Nov  7 14:41:07 2013: path = 
+Thu Nov  7 14:41:07 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:41:07 2013: done at Thu Nov  7 14:41:07 2013
+Thu Nov  7 14:41:07 2013: === time taken: 1.86586380005 ms
+Thu Nov  7 14:41:08 2013: ------------------------------------------------------------
+Thu Nov  7 14:41:08 2013: GET
+Thu Nov  7 14:41:08 2013: user = unknown
+Thu Nov  7 14:41:08 2013: path = 
+Thu Nov  7 14:41:08 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:41:08 2013: done at Thu Nov  7 14:41:08 2013
+Thu Nov  7 14:41:08 2013: === time taken: 1.86109542847 ms
+Thu Nov  7 14:41:09 2013: run: run time: temp/tmpJC4AWn: 0.128951975107
+Thu Nov  7 14:41:09 2013: ------------------------------------------------------------
+Thu Nov  7 14:41:09 2013: GET
+Thu Nov  7 14:41:09 2013: user = unknown
+Thu Nov  7 14:41:09 2013: path = 
+Thu Nov  7 14:41:09 2013: Enquire: unknown: temp/tmpJC4AWn
+Thu Nov  7 14:41:09 2013: run: success: temp/tmpJC4AWn
+Thu Nov  7 14:41:09 2013: done at Thu Nov  7 14:41:09 2013
+Thu Nov  7 14:41:09 2013: === time taken: 1.91402435303 ms
+Thu Nov  7 14:41:09 2013: ------------------------------------------------------------
+Thu Nov  7 14:41:09 2013: GET
+Thu Nov  7 14:41:09 2013: user = unknown
+Thu Nov  7 14:41:09 2013: path = temp/tmpJC4AWn/plot1.png
+Thu Nov  7 14:41:09 2013: Figure: unknown: temp/tmpJC4AWn/plot1.png
+Thu Nov  7 14:41:09 2013: done at Thu Nov  7 14:41:09 2013
+Thu Nov  7 14:41:09 2013: === time taken: 1.16300582886 ms
+Thu Nov  7 14:41:09 2013: ------------------------------------------------------------
+Thu Nov  7 14:41:09 2013: GET
+Thu Nov  7 14:41:09 2013: user = unknown
+Thu Nov  7 14:41:09 2013: path = temp/tmpJC4AWn/plot1.png
+Thu Nov  7 14:41:09 2013: Figure: unknown: temp/tmpJC4AWn/plot1.png
+Thu Nov  7 14:41:09 2013: done at Thu Nov  7 14:41:09 2013
+Thu Nov  7 14:41:09 2013: === time taken: 1.54900550842 ms
