@@ -12,7 +12,7 @@ import tempfile
 import json
 import multiprocessing
 import threading
-
+from statsd import statsd
 import sys
 
 
@@ -491,6 +491,7 @@ def submit_sim(form, path, queue,user): ########################################
         # Put in queue 
         queued_jobs[dirname] = 'run' 
         queue_order.append(dirname) 
+        statsd.gauge('submission')
         submit_time = time.time()
         queue.put([dirname,submit_time,days,s3_file])             
         json_output['html'] = '<br><br><br><center><h3>Your job is in the queue</h3><br><br><h2>Please Wait<h2></center><br>'
