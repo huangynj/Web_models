@@ -347,7 +347,7 @@ def submit_sim(form, path, queue,user): ########################################
         print "form=%s" % dict((k,form[k].value) for k in form)
         # Put some info in the LOG file -------------------------------
         days = form['days'].value
-        LOG('Submit simulation: %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
+        LOG('Submit simulation3: %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
          
         if verbose > 1:
            LOG("form=%s" % dict((k,form[k].value) for k in form))
