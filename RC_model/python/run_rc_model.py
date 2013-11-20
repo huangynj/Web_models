@@ -793,8 +793,6 @@ def get_health(path,queue): ####################################################
     else:
        return 'ERROR','404 Not Found'
 
->>>>>>> release
-
 
 def get_textfile(form, path, queue,user): ##############################################################
 ### Function called when client asks for text output ###
