@@ -13,13 +13,9 @@ import json
 import multiprocessing
 import threading
 from statsd import statsd
-<<<<<<< HEAD
 import socket
-=======
 
->>>>>>> release
 import sys
-import socket
 
 # Modules specific to RC model
 from mime import *
@@ -41,11 +37,7 @@ num_threads = 2
 # max time for any given simulation (seconds)
 max_simulation_time = 5*60
 
-<<<<<<< HEAD
-# Max length of queue before we kill machine
-=======
 # max queue length before we sacrifice the machine
->>>>>>> release
 QMAX = 50
 
 # Verbosity of log (0,0.5,1,2)
@@ -376,16 +368,8 @@ def submit_sim(form, path, queue,user): ########################################
         print "form=%s" % dict((k,form[k].value) for k in form)
         # Put some info in the LOG file -------------------------------
         days = form['days'].value
-<<<<<<< HEAD
         LOG('Submit simulation: %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
-<<<<<<< HEAD
         statsd.increment('RC_model.submit',tags=[IPid])
-=======
-        LOG('Submit simulation3: %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
->>>>>>> 04f1022ecf065946ab0cef1858c66b36d2ab31da
-=======
-        statsd.increment('RC_model.submit',tags=[IPid]) 
->>>>>>> release
          
         if verbose > 1:
            LOG("form=%s" % dict((k,form[k].value) for k in form))
@@ -516,11 +500,7 @@ def submit_sim(form, path, queue,user): ########################################
                 json_output['alert'] +='Please go back and try running again. <\html>' 
 
                 LOG('>> Error: Could not create input file')
-<<<<<<< HEAD
                 statsd.increment('RC_model.error',tags=[IPid,'createinputfile'])
-=======
-                statsd.increment('RC_model.error',tags=[IPid,'inputfilemissing'])
->>>>>>> release
 		return json.dumps(json_output,indent=1)
         
 
@@ -775,7 +755,6 @@ def clean_sim(form,path,queue,user): ###########################################
 
     return json.dumps(json_output,indent=1)
 
-<<<<<<< HEAD
 def get_health(path, queue): ##############################################################
 ### Function called when client asks for health of queue ###
 
@@ -994,19 +973,12 @@ def write_queue_status(): ######################################################
 
             f.write('\n')
 
-<<<<<<< HEAD
  
-       statsd.gauge('RC_model.threads',num_threads,tags=[IPid])
-       statsd.gauge('RC_model.working_threads',alivethread,tags=[IPid])
-       statsd.gauge('RC_model.queued_jobs',len(queued_jobs),tags=[IPid])
-       statsd.gauge('RC_model.running_jobs',len(running_jobs),tags=[IPid])
-=======
        # Send some data to the dog...
        statsd.gauge('RC_model.threads',num_threads,tags=[IPid])
        statsd.gauge('RC_model.working_threads',alivethread,tags=[IPid])
        statsd.gauge('RC_model.running_jobs',len(running_jobs),tags=[IPid])
        statsd.gauge('RC_model.queued_jobs',len(queued_jobs),tags=[IPid])
->>>>>>> release
 
 
 
