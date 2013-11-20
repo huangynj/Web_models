@@ -13,9 +13,13 @@ import json
 import multiprocessing
 import threading
 from statsd import statsd
+<<<<<<< HEAD
 import socket
-import sys
+=======
 
+>>>>>>> release
+import sys
+import socket
 
 # Modules specific to RC model
 from mime import *
@@ -37,7 +41,11 @@ num_threads = 2
 # max time for any given simulation (seconds)
 max_simulation_time = 5*60
 
+<<<<<<< HEAD
 # Max length of queue before we kill machine
+=======
+# max queue length before we sacrifice the machine
+>>>>>>> release
 QMAX = 50
 
 # Verbosity of log (0,0.5,1,2)
@@ -87,6 +95,14 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("gmail.com",80))
 IPid = s.getsockname()[0]
 s.close()
+
+
+# Get IP address for this machine - this is a hack to get the internet facing socket
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("gmail.com",80))
+IPid = s.getsockname()[0]
+s.close()
+
 
 
 def LOG(x): #######################################################################################
@@ -362,10 +378,14 @@ def submit_sim(form, path, queue,user): ########################################
         days = form['days'].value
 <<<<<<< HEAD
         LOG('Submit simulation: %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
+<<<<<<< HEAD
         statsd.increment('RC_model.submit',tags=[IPid])
 =======
         LOG('Submit simulation3: %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
 >>>>>>> 04f1022ecf065946ab0cef1858c66b36d2ab31da
+=======
+        statsd.increment('RC_model.submit',tags=[IPid]) 
+>>>>>>> release
          
         if verbose > 1:
            LOG("form=%s" % dict((k,form[k].value) for k in form))
@@ -496,7 +516,11 @@ def submit_sim(form, path, queue,user): ########################################
                 json_output['alert'] +='Please go back and try running again. <\html>' 
 
                 LOG('>> Error: Could not create input file')
+<<<<<<< HEAD
                 statsd.increment('RC_model.error',tags=[IPid,'createinputfile'])
+=======
+                statsd.increment('RC_model.error',tags=[IPid,'inputfilemissing'])
+>>>>>>> release
 		return json.dumps(json_output,indent=1)
         
 
@@ -751,6 +775,7 @@ def clean_sim(form,path,queue,user): ###########################################
 
     return json.dumps(json_output,indent=1)
 
+<<<<<<< HEAD
 def get_health(path, queue): ##############################################################
 ### Function called when client asks for health of queue ###
 
@@ -768,6 +793,28 @@ def get_health(path, queue): ###################################################
 
     else:
        return 'ERROR: No queue status file','200 OK'
+=======
+def get_health(path,queue): ##############################################################
+### Function called when client asks for health of server ###
+
+    '''
+    This function returns text files.
+    '''
+    write_queue_status()
+    
+    textfile = Q_STATFILE
+
+    if queue.qsize() > QMAX:
+        return '502 ERROR (I do not know how to actually throw a 502)','502 Bad Gateway'
+ 
+    if os.path.exists(textfile):
+
+       return  open(textfile).read(),'200 OK'
+
+    else:
+       return 'ERROR','404 Not Found'
+
+>>>>>>> release
 
 
 def get_textfile(form, path, queue,user): ##############################################################
@@ -802,7 +849,7 @@ def get_figurefile(form,path,queue,user): ######################################
     if not path.startswith(TEMPDIR):
        
        if verbose > 0: LOG('>> Error: Unknown file request - '+path)
-       return 'Unknown file request'
+       return 'Unknown file request - '+path
        
 
     if os.path.exists(path):
@@ -834,7 +881,9 @@ def application(env, start_response):
 	#if sslcert:
         #	user = sslcert.rsplit('emailAddress=',1)[-1]
 
-
+        # Set the response to OK
+        response = '200 OK'
+        
         # Log the request
         if verbose > 1:	
 	   LOG('-' * 60)
@@ -874,6 +923,8 @@ def application(env, start_response):
              elif "textfile" in data: 	# Client wants text data
                  ret = get_textfile(data,path,queue,user)
 
+             elif "health" in path: 	# asking about health of queue
+                 ret,response = get_health(path,queue)
              else:                 	# Client is asking for figure file
                  ret = get_figurefile(data,path,queue,user)
 		
@@ -897,6 +948,13 @@ def application(env, start_response):
         except:
            pass
 
+        # If the returned string is a json object add the IP address to it
+        try:
+           ret['IPaddress'] = IPid
+        except:
+           pass
+            
+
         return [str(ret)]
 
 
@@ -912,6 +970,7 @@ def write_queue_status(): ######################################################
        if  alivethread < num_threads:
 
             LOG("Found only "+str(alivethread)+" model thread(s). Restarting broken thread(s).")
+            statsd.increment('RC_model.restartthread',tags=[IPid])
 
             for i in range(alivethread,num_threads):
                t = model_daemon(queue,queued_jobs,queue_order,running_jobs)
@@ -925,22 +984,29 @@ def write_queue_status(): ######################################################
             f.write('Time: '+time.ctime(time.time())+'\n')
             f.write('Number of model threads:   '+str(num_threads)+'\n')
             f.write('Number of working threads: '+str(alivethread)+'\n\n')
-            f.write('Number of server threads:  '+'2'+'\n\n')
-            f.write('Running jobs:\n')
+            f.write('Running jobs: '+str(len(running_jobs))+'\n')
 
             for key in running_jobs.keys(): f.write('    '+str(key)+' : '+str(running_jobs.get(key))+'\n')
             f.write('\n')
-            f.write('Queued jobs:\n')
+            f.write('Queued jobs: '+str(len(queued_jobs))+'\n')
 
             for key in queued_jobs.keys(): f.write('    '+str(key)+' : '+str(queued_jobs.get(key))+'\n')
 
             f.write('\n')
 
+<<<<<<< HEAD
  
        statsd.gauge('RC_model.threads',num_threads,tags=[IPid])
        statsd.gauge('RC_model.working_threads',alivethread,tags=[IPid])
        statsd.gauge('RC_model.queued_jobs',len(queued_jobs),tags=[IPid])
        statsd.gauge('RC_model.running_jobs',len(running_jobs),tags=[IPid])
+=======
+       # Send some data to the dog...
+       statsd.gauge('RC_model.threads',num_threads,tags=[IPid])
+       statsd.gauge('RC_model.working_threads',alivethread,tags=[IPid])
+       statsd.gauge('RC_model.running_jobs',len(running_jobs),tags=[IPid])
+       statsd.gauge('RC_model.queued_jobs',len(queued_jobs),tags=[IPid])
+>>>>>>> release
 
 
 

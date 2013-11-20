@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "run_rc_model.py", line 25, in <module>
+    from s3_functions   import send_to_bucket,get_from_bucket,S3_name
+  File "/opt/eaps/app/RC_model/python/s3_functions.py", line 1, in <module>
+    import boto
+ImportError: No module named boto
