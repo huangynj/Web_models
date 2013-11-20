@@ -772,7 +772,7 @@ def get_health(path, queue): ###################################################
 
     else:
        return 'ERROR: No queue status file','200 OK'
-=======
+
 def get_health(path,queue): ##############################################################
 ### Function called when client asks for health of server ###
 
