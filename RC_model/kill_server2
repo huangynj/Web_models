@@ -12,9 +12,5 @@ if [ -a $pidfile ]; then
 
 fi
 
-echo "Starting new instance of server"
-cd python
-nohup python run_rc_model.py >& python.log &
-cd ..
 
 
