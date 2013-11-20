@@ -1,0 +1,247 @@
+<html>
+<head>
+	<title>One-layer model with ice-albedo feedback</title>
+
+ 	<!-- Style sheet for fonts etc -->
+	<LINK href="../tools/mitx_style.css" rel="stylesheet" type="text/css"> 
+ 
+
+
+	<style>
+	  h1 {
+	     color: #3c3c3c;
+	     font: normal 2em/1.4em "Open Sans", Verdana, Geneva, sans-serif;
+	     letter-spacing: 1px;
+	     margin-bottom: 30px;
+	     text-align: center; }
+
+	  h2 {
+	     color: #646464;
+	     font: normal 1.2em/1.2em Georgia, Cambria, "Times New Roman", Times, serif;
+	     letter-spacing: 1px;
+	     margin-bottom: 15px;
+	     text-transform: uppercase;
+	     -webkit-font-smoothing: antialiased; }
+
+
+          h3 {
+             color: #3c3c3c;
+             font: normal 1.2em/1.2em Georgia, Cambria, "Times New Roman", Times, serif;
+             margin: 0px; }
+
+          .framel {
+	     width: 70%;
+	     float: left;
+	     overflow-y: none;
+	  }
+
+
+          .framer {
+	     width: 30%;
+	     float: left;
+	     overflow-y: none;
+	  }
+
+	  .label {
+	      display: inline-block;
+	      width: 300px;
+	      font: inherit;
+	      color: inherit; }
+          
+	  .dates {
+	      width: 160px; 
+	      display: inline-block;
+	      font: inherit;
+	      color: inherit; }
+
+
+	  .chkbx {
+	      margin-left: 20px; 
+	      font: inherit;
+	      color: inherit; }
+
+	  .form_input {
+              color: #3c3c3c;
+              font: 300 1rem/1.6rem Georgia, Cambria, "Times New Roman", Times, serif;
+              margin-bottom: 5px;
+              text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+              -webkit-font-smoothing: antialiased; }
+
+	  p {
+              color: #3c3c3c;
+              font: 300 1rem/1.6rem Georgia, Cambria, "Times New Roman", Times, serif;
+              margin-bottom: 5px;
+	      margin-left: 0px; 
+              text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+              -webkit-font-smoothing: antialiased; }
+  
+          input[type=number]{
+            width: 70;
+          }
+
+          /* ??? */
+          input::-webkit-outer-spin-button,
+          input::-webkit-inner-spin-button {
+
+          /* display: none; <- Crashes Chrome on hover */
+          -webkit-appearance: none;
+          margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+          }
+
+
+
+ 
+	</style>
+
+
+
+	<!-- Load in the jquery and numeric language components -->
+        <script src="../tools/jquery-1.9.1/jquery-1.9.1.min.js"></script>
+        <script src="../tools/numeric-1.2.6/numeric-1.2.6.min.js"></script>
+
+        <!-- Initial script to set upo form -->
+	<script> 
+		$(document).ready(function(){
+                   $("#lay2").hide() 		// Hide layer
+                   $("#lay3").hide() 		// Hide layer
+                   $("#lay4").hide() 		// Hide layer
+                   $("#lay5").hide() 		// Hide layer
+                   $("#lay6").hide() 		// Hide layer
+		});
+	</script>
+
+
+
+</head>
+
+
+<body>
+<div>
+
+   <h2>One-layer model with ice-albedo feedback</h2>
+
+   <form method="POST" action="N_layer.py" name="model_options" id="model_options">
+   <p>
+
+     <!-- BASIC PARAMETERS -->
+     <p>This model solves the radiative balance for a one-layer atmosphere. It includes an ice-albedo feedback in the following way; If the surface temperature is above freezing, the planetary albedo is set to 0.3, if the surface temperature is below ferezing, it is assumed to be ice covered, and to have a higher albedo of 0.6. This feedback introduces a dependence of the steady state solution on the initial condition, so that the intial surface temperature must be specified.
+
+     <p>Set the value of the solar constant, S<sub>0</sub>, the initial Surface temperature T<sub>init</sub>, and the long-wave emissivity of the atmospheric layer &epsilon;. Then click "run model" to solve for the radiative equilibrium temperature of each layer. The atmospheric layer is assumed to be transparent to solar radiation.</p><br>
+
+
+<span class="label"></span><span class=label></span><input type="submit" value="Run model" id="run_model">
+
+<br>
+<table>
+  <tr>
+    <td style="vertical-align:middle">S<sub>0</sub> = </td><td style="vertical-align:middle"><input type="number" step=any size="4" name="S0" id="S0" value="1370"> W/m<sup>2</sup></td><td style="vertical-align:middle"><img align="right" src="sun.png" width="100" height="100"></td><td style="vertical-align:middle"></td>
+  </tr>
+  <tr id="lay1">
+    <td style="vertical-align:middle">&epsilon; = </td><td style="vertical-align:middle"><input type="number" step=any min=0 max=1 size="2" name="e1" id="e1" value="1.0"></td><td style="vertical-align:middle"><img src="layer.png" width="300" height="100"></td><td style="vertical-align:middle" id="T1"></td>
+  </tr>
+  <tr id="surf">
+    <td style="vertical-align:middle">T<sub>init</sub> = </td><td style="vertical-align:middle"><input type="number" step="any" min=200 max=400 size="2" name="Tinit" id="Tinit" value="288"> K</td><td style="vertical-align:middle"><img src="surface.png" width="300" id="surf_pic"  height="80"></td><td style="vertical-align:middle" id="Ts"></td>
+  </tr>
+</table>
+
+
+
+</div>
+
+
+<div>
+
+   <div id="put"></div>
+
+   </form>
+
+
+
+<script>
+$("#run_model").click(function() {
+
+    jQuery('input[type=input], input').attr('disabled', true);
+     
+    var S0 = $('#S0').val() 
+
+    var Ts = $('#Tinit').val()
+
+
+    for(ii=0;ii<2;++ii){
+       if(Ts>273.15 ){
+          var alpha = 0.3;
+       }
+       else{ 
+          var alpha = 0.6;
+       }
+
+       var e1 = $('#e1').val() 
+       var siginv = 17636684.3     // recipricol of Stefan-Boltzmann constant 
+
+       // Solve the model here  
+
+       // Initialize vectors
+       Np1 = 2;
+       eps = [1.0,e1];
+       eps_vec = numeric.rep([Np1],1);               
+       for(i=0;i<Np1;++i) eps_vec[i] = eps[i];
+  
+       S_vec = numeric.rep([Np1],S0)
+       S_vec = numeric.mul(S_vec,1-alpha)
+       S_vec = numeric.mul(S_vec,0.25)
+
+
+       F_matrix = numeric.rep([Np1,Np1], 0 )
+
+
+       for (i=0;i<Np1;++i){
+           for(k=0;k<Np1;++k){
+                             if (k<= i){ 
+                                       multiplier = eps_vec[k]  
+                                       for(j=k+1;j<=i;++j){ multiplier = numeric.mul(multiplier,1-eps_vec[j]) }
+                                       F_matrix[i][k] = multiplier  
+                                    }
+                             else     
+                                     { 
+                                       multiplier = -eps_vec[k]  
+                                       for(j=i+1;j<=k-1;++j){ multiplier = numeric.mul(multiplier,1-eps_vec[j]) }
+                                       F_matrix[i][k] = multiplier 
+                                     }
+                            }
+                         }
+
+      // This is where the magic happens...
+        T_vec = numeric.solve(F_matrix,S_vec)
+   
+        T_vec = numeric.mul(T_vec,siginv )
+        T_vec = numeric.sqrt( T_vec )
+        T_vec = numeric.sqrt( T_vec )
+        for(i=Np1;i<=6;++i){ T_vec[i] = 0 }
+
+        Ts = T_vec[0]
+        T1 = T_vec[1]
+               
+    }
+
+
+	$('#Ts').html("T<sub>s</sub> = "+Ts.toFixed(1)+" K")
+	$('#T1').html("T<sub>1</sub> = "+T1.toFixed(1)+" K")
+        if(Ts<273.15) {$("#surf_pic").attr("src","ice.png");}
+        else{$("#surf_pic").attr("src", "surface.png");}
+
+        jQuery('input[type=input], input').attr('disabled', false);
+
+    return false; // avoid to execute the actual submit of the form.
+});
+</script>
+
+
+</div>
+
+
+
+
+</body>
+
+</html>
+

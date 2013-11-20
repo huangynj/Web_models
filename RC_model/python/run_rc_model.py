@@ -360,8 +360,12 @@ def submit_sim(form, path, queue,user): ########################################
         print "form=%s" % dict((k,form[k].value) for k in form)
         # Put some info in the LOG file -------------------------------
         days = form['days'].value
+<<<<<<< HEAD
         LOG('Submit simulation: %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
         statsd.increment('RC_model.submit',tags=[IPid])
+=======
+        LOG('Submit simulation3: %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
+>>>>>>> 04f1022ecf065946ab0cef1858c66b36d2ab31da
          
         if verbose > 1:
            LOG("form=%s" % dict((k,form[k].value) for k in form))
