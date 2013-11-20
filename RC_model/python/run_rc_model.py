@@ -13,7 +13,7 @@ import json
 import multiprocessing
 import threading
 from statsd import statsd
-
+import socket
 import sys
 
 
@@ -36,6 +36,9 @@ num_threads = 2
 
 # max time for any given simulation (seconds)
 max_simulation_time = 5*60
+
+# Max length of queue before we kill machine
+QMAX = 50
 
 # Verbosity of log (0,0.5,1,2)
 verbose = 0
@@ -79,6 +82,11 @@ manager = multiprocessing.Manager()
 queued_jobs = manager.dict()
 queue_order = manager.list([])
 running_jobs = manager.dict()
+
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("gmail.com",80))
+IPid = s.getsockname()[0]
+s.close()
 
 
 def LOG(x): #######################################################################################
@@ -192,6 +200,7 @@ class model_daemon(multiprocessing.Process): ###################################
 
             # Log the wait time
             LOG('run: wait time: '+dirname+': '+str(wait_time))
+            statsd.histogram('RC_model.queue_time',wait_time,tags=[IPid])
  
             # Initialize the running time
             run_time = time.time()
@@ -208,6 +217,7 @@ class model_daemon(multiprocessing.Process): ###################################
 
             if return_code == 0:
                LOG('run: run time: '+dirname+': '+str(run_time))
+               statsd.histogram('RC_model.run_time',run_time,tags=[IPid])
 
             # Note that result is about to be cached
                with open(dirname+'/log.out', 'w') as f:
@@ -259,17 +269,20 @@ class model_daemon(multiprocessing.Process): ###################################
                      f.write('timeout')
                except:
                   LOG('>> Error: Missing log file on timeout - '+dirname)
+                  statsd.increment('RC_model.error',tags=[IPid,'logfilemissing'])
  
                return return_code
 
            elif run_obj.returncode > 0:
 
                LOG('run: Model exit with code '+str(run_obj.returncode)+' - '+dirname)
+               statsd.increment('RC_model.error',tags=[IPid,'exit:'+str(run_obj.returncode)])
                try:
                   with open(dirname+'/log.out', 'w') as f:
                      f.write('exit '+str(run_obj.returncode))
                except:
                   LOG('>> Error: Missing log file on crash - '+dirname)
+                  statsd.incremenr('RC_model.error',tags=[IPid,'logfilemissing'])
               
                return return_code
 
@@ -348,6 +361,7 @@ def submit_sim(form, path, queue,user): ########################################
         # Put some info in the LOG file -------------------------------
         days = form['days'].value
         LOG('Submit simulation: %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
+        statsd.increment('RC_model.submit',tags=[IPid])
          
         if verbose > 1:
            LOG("form=%s" % dict((k,form[k].value) for k in form))
@@ -412,6 +426,7 @@ def submit_sim(form, path, queue,user): ########################################
               form["plot_opt"] = "time_sst"
               json_output = output_control(form,dirname,json_output)
               LOG('run: Returning cached result')
+              statsd.increment('RC_model.cached',tags=[IPid])
               return json.dumps(json_output,indent=1)
 
         
@@ -477,6 +492,7 @@ def submit_sim(form, path, queue,user): ########################################
                 json_output['alert'] +='Please go back and try running again. <\html>' 
 
                 LOG('>> Error: Could not create input file')
+                statsd.increment('RC_model.error',tags=[IPid,'createinputfile'])
 		return json.dumps(json_output,indent=1)
         
 
@@ -622,6 +638,7 @@ def enquire_sim(form,path,queue,user): #########################################
 
            # Log that model completed succesfully
            LOG('run: success: '+dirname)
+           statsd.increment('RC_model.complete',tags=[IPid])
  
 	   # print the html to file
 	   json_output['html'] =  html_file
@@ -638,6 +655,7 @@ def enquire_sim(form,path,queue,user): #########################################
           json_output['html'] += '<h2>click "Run model" to start again<h2></center><br>'
 
           LOG('>> Error: Timeout - '+dirname)
+          statsd.increment('RC_model.error',tags=[IPid,'timeout'])
 
         # Model crashed  ~~~~~~~~~~~~~~~~~~
         elif model_status.startswith('exit'):
@@ -729,6 +747,25 @@ def clean_sim(form,path,queue,user): ###########################################
 
     return json.dumps(json_output,indent=1)
 
+def get_health(path, queue): ##############################################################
+### Function called when client asks for health of queue ###
+
+    '''
+    This function returns the queue status files.
+    '''
+    write_queue_status()
+  
+    if queue.qsize() > QMAX:
+       return 'ERROR: 502: Queue too large','502 Bad Gateway'
+ 
+    if os.path.exists(Q_STATFILE):
+
+       return  open(Q_STATFILE).read(),'200 OK'
+
+    else:
+       return 'ERROR: No queue status file','200 OK'
+
+
 def get_textfile(form, path, queue,user): ##############################################################
 ### Function called when client asks for text output ###
 
@@ -802,6 +839,9 @@ def application(env, start_response):
 	   LOG('path = %s' % path)
 
 
+        # set the response
+        response = '200 OK'
+
         # Get the data from the request
 	data = cgi.FieldStorage(fp=env['wsgi.input'], environ=env.copy(), keep_blank_values=True)
 
@@ -823,7 +863,9 @@ def application(env, start_response):
 
              elif "dirname" in data: 	# Client is asking for simulation progress  
                  ret = enquire_sim(data,path,queue,user)
-
+ 
+             elif "health" in path:
+                 ret,response = get_health(path,queue)
 
              elif "textfile" in data: 	# Client wants text data
                  ret = get_textfile(data,path,queue,user)
@@ -836,7 +878,7 @@ def application(env, start_response):
         else:
                 mime = "text/plain"
 
-        start_response('200 OK', [('Content-Type', mime)])
+        start_response(response, [('Content-Type', mime)])
         
         # Write the model and queue status
         write_queue_status()
@@ -844,6 +886,12 @@ def application(env, start_response):
         if verbose > 1: LOG("done at %s" % time.ctime(time.time()))
 
         if verbose > 0.7: LOG("=== time taken: "+str((time.time()-tic)*1000)+" ms")
+ 
+        # Send the IP address if sending a json object
+        try:
+           ret['IPaddress'] = IPid
+        except:
+           pass
 
         return [str(ret)]
 
@@ -884,7 +932,11 @@ def write_queue_status(): ######################################################
 
             f.write('\n')
 
-
+ 
+       statsd.gauge('RC_model.threads',num_threads,tags=[IPid])
+       statsd.gauge('RC_model.working_threads',alivethread,tags=[IPid])
+       statsd.gauge('RC_model.queued_jobs',len(queued_jobs),tags=[IPid])
+       statsd.gauge('RC_model.running_jobs',len(running_jobs),tags=[IPid])
 
 
 
