@@ -40,6 +40,9 @@ max_simulation_time = 5*60
 # max queue length before we sacrifice the machine
 QMAX = 50
 
+# Time between scheduled queue checks (seconds)
+T_Qcheck = 180
+
 # Verbosity of log (0,0.5,1,2)
 verbose = 0
 
@@ -125,8 +128,19 @@ def LOG(x): ####################################################################
     fp.flush()
     fp.close()
 
+def background_tasks():
+   """ Perform some tasks every so often """
 
-def scheduled_tasks(day_num,schedule_time):
+   # Check what the queue is up to
+   check_queue_health()
+
+   # Clean the temp directory
+   ret = subprocess.call([TMPWATCH,'1',TEMPDIR])
+
+   # schedule the next task in T_Qcheck seconds
+   threading.Timer(T_Qcheck,background_tasks).start()
+
+def daily_tasks(day_num,schedule_time):
    """ Perform the daily scheduled tasks"""
 
    LOG('=== Running scheduled tasks')
@@ -178,7 +192,10 @@ def schedule_daily_tasks():
 
    schedule_time = time.mktime(time.strptime(the_date,"%Y %m %d"))+86400+3600
    #schedule_time = time.time()+7
-   threading.Timer(schedule_time-time.time(), scheduled_tasks, [the_day,schedule_time]).start()
+   threading.Timer(schedule_time-time.time(), daily_tasks, [the_day,schedule_time]).start()
+
+
+
 
 class model_daemon(multiprocessing.Process): #############################################################
 ##### CLASS: Run queued jobs ###
@@ -200,7 +217,7 @@ class model_daemon(multiprocessing.Process): ###################################
         while True:
             # gets the simulation parameters from the queue
             [dirname,submit_time,days,s3_file] = self.queue.get()
-
+            write_queue_status()
  
             # Calculate queue wait time
             wait_time = time.time()-submit_time
@@ -524,7 +541,7 @@ def submit_sim(form, path, queue,user): ########################################
 
 
         # Write the model and queue status
-        write_queue_status()
+        check_queue_health()
 
         return json.dumps(json_output,indent=1)
               
@@ -773,26 +790,6 @@ def get_health(path, queue): ###################################################
     else:
        return 'ERROR: No queue status file','200 OK'
 
-def get_health(path,queue): ##############################################################
-### Function called when client asks for health of server ###
-
-    '''
-    This function returns text files.
-    '''
-    write_queue_status()
-    
-    textfile = Q_STATFILE
-
-    if queue.qsize() > QMAX:
-        return '502 ERROR (I do not know how to actually throw a 502)','502 Bad Gateway'
- 
-    if os.path.exists(textfile):
-
-       return  open(textfile).read(),'200 OK'
-
-    else:
-       return 'ERROR','404 Not Found'
-
 
 def get_textfile(form, path, queue,user): ##############################################################
 ### Function called when client asks for text output ###
@@ -939,21 +936,6 @@ def application(env, start_response):
 def write_queue_status(): #########################################################################
 ### Function to write the wueue status to the log ###
 
-       # Make sure we haven't lost any threads
-
-       running_procs = multiprocessing.active_children()
-
-       alivethread = len(running_procs)-1
-       if  alivethread < num_threads:
-
-            LOG("Found only "+str(alivethread)+" model thread(s). Restarting broken thread(s).")
-            statsd.increment('RC_model.restartthread',tags=[IPid])
-
-            for i in range(alivethread,num_threads):
-               t = model_daemon(queue,queued_jobs,queue_order,running_jobs)
-               t.daemon = True
-               t.start()
-
 
        alivethread = len(multiprocessing.active_children())-1
        with open(Q_STATFILE, 'w') as f:
@@ -978,7 +960,24 @@ def write_queue_status(): ######################################################
        statsd.gauge('RC_model.running_jobs',len(running_jobs),tags=[IPid])
        statsd.gauge('RC_model.queued_jobs',len(queued_jobs),tags=[IPid])
 
+def check_queue_health():
 
+       # Make sure we haven't lost any threads
+
+       running_procs = multiprocessing.active_children()
+       alivethread = len(running_procs)-1
+
+       if  alivethread < num_threads:
+
+            LOG("Found only "+str(alivethread)+" model thread(s). Restarting broken thread(s).")
+            statsd.increment('RC_model.restartthread',tags=[IPid])
+
+            for i in range(alivethread,num_threads):
+               t = model_daemon(queue,queued_jobs,queue_order,running_jobs)
+               t.daemon = True
+               t.start()
+
+       write_queue_status()
 
 #--------------------
 
@@ -1008,11 +1007,14 @@ def runserver(): ###############################################################
 	    t.start()
 
 
-        # schedule the daily cleanup tasks
-        schedule_daily_tasks()
+        # schedule the daily cleanup tasks (No need to do this as now we send data to the dog)
+        #schedule_daily_tasks()
+
+        # run the background tasks
+        background_tasks()
 
         # Write the queue status to a file
-        write_queue_status()
+        check_queue_health()
 
         # Start server
 	from wsgiref.simple_server import make_server

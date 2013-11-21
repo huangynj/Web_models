@@ -75,7 +75,6 @@ def get_from_bucket(s3_file,dirname):
    bucket = conn.create_bucket(bucket_name)
    file_list = bucket.list(s3_file)
    if file_list:
-     print 'found cache'
      try:
 
       key = bucket.new_key(s3_file+'/botbar.out')
@@ -119,12 +118,10 @@ def get_from_bucket(s3_file,dirname):
 
 
       return 0
-
      except:
-      print 'boo!'
+      
       return 9
    else:
-     print 'no cache'
      return 1
 
 
