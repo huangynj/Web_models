@@ -53,7 +53,7 @@
            <span class="label">Length of simulation: </span>   
            <label><input type="number" min="50" max="1000" 
                          title="Minimum: 50&#10;Maximum: 1000&#10;Default: 50"  
-                         name="days" value="50" id="days" class=required> days
+                         name="days" value="500" id="days" class=required> days
            </label> 
            <span class=errcontainer></span> <br>
 
@@ -72,6 +72,13 @@
                          name="S0" id = "S0" value="1360" class=required> W/m^2 
            </label>
            <span class=errcontainer></span><br>
+
+	   <span class="label">Surface albedo:           </span> 
+            <label><input type="number" min=0 max=1 
+                         title="Minimum: 0&#10;Maximum: 1&#10;Default: 0.25" 
+                          name="alpha" id="alpha" value="0.25" class=required> 
+            </label>
+            <span class=errcontainer></span>  <br>
 
            <span class="label">Initial SST:          </span>  
            <label> <input type="number"  min=-20 max=50
@@ -312,14 +319,8 @@
          <div class="form_input" id="surface">
          <h3>Surface parameters:</h3><br>
 
-	 <p><span class="label">Surface albedo:           </span> 
-            <label><input type="number" min=0 max=1 
-                         title="Minimum: 0&#10;Maximum: 1&#10;Default: 0.25" 
-                          name="alpha" id="alpha" value="0.25" class=required> 
-            </label>
-            <span class=errcontainer></span>  <br>
 
-            <span class="label">Surface windspeed:	   </span> 
+           <p> <span class="label">Surface windspeed:	   </span> 
             <label><input type="number" min=0.5 max=100 
                           title="Minimum: 0.1&#10;Maximum: 100&#10;Default: 5" 
                           name="ugust" id="ugust" value="5.0" class=required> m/s
