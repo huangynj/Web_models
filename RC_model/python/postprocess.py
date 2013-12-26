@@ -171,7 +171,7 @@ def output_control(form,dirname,json_output):
 	elif plot_opt == "profile_massflux":
 		filename = dirname+"/plot1.png"
 		plot_profile(profile[:,9:12],p,r'Mass flux (10$^{-3}$ kg/m$^2$)','Convective mass flux') # col9: up, col10: pen, col11: down
-                mp.legend(['Net upward','Penetrative','Usaturated'])
+                mp.legend(['Net upward','Penetrative','Unsaturated'])
                 l = mp.gca().get_legend(); mp.setp(l.get_texts(), fontsize=12)
 		hf = mp.savefig(filename)
 

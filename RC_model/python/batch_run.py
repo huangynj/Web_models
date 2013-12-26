@@ -57,12 +57,13 @@ jdata = {
 days = [50, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
 co2 =  [50, 100, 200, 300, 400, 500, 600] 
 
+sst = 10
+idays = 2
 
+for ico2 in range(0,5):
+   for sst in range(10,13):
 
-for ico2 in range(0,1):
-   for sst in range(10,20):
-
-    for idays in range(0,11):
+    #for idays in range(0,11):
 
 
 
@@ -80,7 +81,7 @@ for ico2 in range(0,1):
       response = urllib2.urlopen(req)
       print response.read()
 
-   time.sleep(60*5)
+      time.sleep(1)
 
 
 

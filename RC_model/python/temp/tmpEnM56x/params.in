@@ -2,7 +2,7 @@
  -------         ------                          ---------------                     
  Program Control                                                                     
     n          (y or n)                    Restart from end of last integration?    
-    1000          days                        Length of integration                    
+    50          days                        Length of integration                    
     10          minutes                     Time step                                
     25          days                        Composite averaging time at end of integration
     6          hours                       Frequency of graphics output to time series   
@@ -12,7 +12,7 @@
     0           (0/y/n)                   Interactive cloud?                       
     y           (y or n)                   Interactive surface temperature          
     1           hours                      Frequency of radiation calls (if interactive)
-    1348         Watts/m^2                     SCON = Solar constant                    
+    1356         Watts/m^2                     SCON = Solar constant                    
     15        Degrees latitude              Latitude of column                       
     3           (1-12)                      Starting month                           
     1          (1-31)                      Starting day                             
@@ -22,7 +22,7 @@
     0.25                                      Ocean surface albedo (if n above)        
  -------------------------------                                                     
  Radiatively active gases                                                            
-   360           ppm                         CO2 content                              
+   320           ppm                         CO2 content                              
    1.7           ppm                         CH4 content                              
    310           ppb                         N20 content                              
    280.0           ppt                         CFC11 content                            
