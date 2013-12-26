@@ -305,7 +305,7 @@ $(document).ready(function(){
    // Function to create spinners /////////////////////////////////////////////////////////
    $(function() {
       $( "#days" ).spinner({
-        step: 50
+        step: 100
       });
       $( "#co2" ).spinner({
         step: 20
