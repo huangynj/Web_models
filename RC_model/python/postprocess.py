@@ -247,7 +247,7 @@ def plot_timeseries(x,y,ylab,tit):
 
 def plot_two_timeseries(x,y1,y2,ylab1,ylab2,tit):
 
-        rect = [0.15,0.1,0.75,0.8]
+        rect = [0.15,0.1,0.7,0.8]
         a1=mp.axes(rect)
         a1.yaxis.tick_left()
 	hp = mp.plot(x,y1)
