@@ -106,28 +106,26 @@ def output_control(form,dirname,json_output):
 	if plot_opt == "time_sst":
 		filename = dirname+"/plot1.png"
         	hp1=plot_timeseries(time1,time[:,3:5],'SST (deg. C)','Surface temperature') # col3: air temp, col4: sst
-		mp.legend(["Air Temp","SST"], loc='upper right' )
+		mp.legend(["Air Temp","SST"],loc='best' )
                 l = mp.gca().get_legend(); mp.setp(l.get_texts(), fontsize=12)
 		hf = mp.savefig(filename)
 
 	elif plot_opt == "time_precip":
 		filename = dirname+"/plot1.png"
                 plot_timeseries(timem,time[:,1:3],'(mm/day)','Precipitation & Evaporation') # col1: precip, col2: evap
-		mp.legend(["precip","evap"], loc='upper right' )
+		mp.legend(["precip","evap"],loc='best' )
                 l = mp.gca().get_legend(); mp.setp(l.get_texts(), fontsize=12)
 		hf = mp.savefig(filename)
 
 	elif plot_opt == "time_T500":
 		filename = dirname+"/plot1.png"
-                plot_timeseries(time1,time[:,5:7],'T (C) / q (g/kg)','500mb Temperature and humidity') # col5: T500, col6: q500
-		mp.legend([r'$T$',r'$q$'], loc='upper right' )
-                l = mp.gca().get_legend(); mp.setp(l.get_texts(), fontsize=12)
+                plot_two_timeseries(time1,time[:,5],time[:,6],'T (C)','q (g/kg)','500mb Temperature and humidity') # col5: T500, col6: q500
 		hf = mp.savefig(filename)
 
 	elif plot_opt == "time_radflx":
 		filename = dirname+"/plot1.png"
                 plot_timeseries(time1,time[:,7:9],'W/m^2','TOA SW and LW fluxes') # col7: sw, col8: lw
-		mp.legend(["SW","LW"], loc='upper right' )
+		mp.legend(["SW","LW"],loc='best' )
                 l = mp.gca().get_legend(); mp.setp(l.get_texts(), fontsize=12)
 		hf = mp.savefig(filename)
 
@@ -164,28 +162,28 @@ def output_control(form,dirname,json_output):
 	elif plot_opt == "profile_heating":
 		filename = dirname+"/plot1.png"
 		plot_profile(profile[:,5:9],p,'Heating (C/day)','Heating rate') # col5: conv, col6: rad, col7: turb, col8: lscale
-                mp.legend(['Convective','Radiative','Turbulent', 'Large-scale adiabatic'])
+                mp.legend(['Convective','Radiative','Turbulent', 'Large-scale adiabatic'],loc='best')
                 l = mp.gca().get_legend(); mp.setp(l.get_texts(), fontsize=12)
 		hf = mp.savefig(filename)
 
 	elif plot_opt == "profile_massflux":
 		filename = dirname+"/plot1.png"
 		plot_profile(profile[:,9:12],p,r'Mass flux (10$^{-3}$ kg/m$^2$)','Convective mass flux') # col9: up, col10: pen, col11: down
-                mp.legend(['Net upward','Penetrative','Unsaturated'])
+                mp.legend(['Net upward','Penetrative','Unsaturated'],loc='best')
                 l = mp.gca().get_legend(); mp.setp(l.get_texts(), fontsize=12)
 		hf = mp.savefig(filename)
 
 	elif plot_opt == "profile_entrainment":
 		filename = dirname+"/plot1.png"
 		plot_profile(profile[:,12:14],p,r'(10$^{-3}$ kgm$^{-2}$s$^{-1}$)','Entrainment and detrainment') # col12, entrain, col13: detrain
-                mp.legend(['Entrainment','Detrainment'])
+                mp.legend(['Entrainment','Detrainment'],loc='best')
                 l = mp.gca().get_legend(); mp.setp(l.get_texts(), fontsize=12)
 		hf = mp.savefig(filename)
 
 	elif plot_opt == "profile_MSE":
 		filename = dirname+"/plot1.png"
-		plot_profile(profile[:,14],p,'MSE (J/kg)','Moist static energy') # col14, MSE
-		mp.xlim((min(profile[:,14])-5,profile[0,14]+20))
+		plot_profile(profile[:,14]*1.0057,p,'MSE (kJ/kg)','Moist static energy') # col14, MSE
+		mp.xlim((min(profile[:,14])-5)*1.0057,(profile[0,14]+20)*1.0057)
 		hf = mp.savefig(filename)
 
 	elif plot_opt == "hov_t":
@@ -244,6 +242,31 @@ def plot_timeseries(x,y,ylab,tit):
 	mp.xlabel('time (days)')
 	mp.ylabel(ylab)
 	mp.title(tit)
+
+	return hp
+
+def plot_two_timeseries(x,y1,y2,ylab1,ylab2,tit):
+
+        rect = [0.15,0.1,0.75,0.8]
+        a1=mp.axes(rect)
+        a1.yaxis.tick_left()
+	hp = mp.plot(x,y1)
+	mp.xlabel('time (days)')
+	mp.ylabel(ylab1)
+	mp.title(tit)
+
+   
+        a2=mp.axes(rect,frameon=False)
+        a2.yaxis.tick_right()
+        hp2=mp.plot(x,y2,'g')
+        a2.yaxis.set_label_position('right')
+        mp.ylabel(ylab2)
+        a2.set_xticks([])
+
+	mp.legend([hp[0],hp2[0]],[r'$T$',r'$q$'],loc='best' )
+        l = mp.gca().get_legend(); mp.setp(l.get_texts(), fontsize=12)
+
+
 
 	return hp
 
