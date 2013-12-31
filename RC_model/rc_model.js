@@ -357,7 +357,7 @@ function dopoll(){
              type: "GET",
              url: url,
              data: {dirname:  $('#dirname').val() }, // serializes the form's elements.
-             error: {           alert('Connection error.\n\n The server is no longer responding with the model status. This may mean the model is crashed or there is some other problem a the server. If this problem persists please email mssingh@mit.edu, including as much detail of the circumstances as possible.')
+             error: function() {           alert('Connection error.\n\n The server is no longer responding with the model status. This may mean the model is crashed or there is some other problem a the server. If this problem persists please email mssingh@mit.edu, including as much detail of the circumstances as possible.')
 
                       // allow for form resubmsion 
                       $("#stop_model").hide();
