@@ -184,7 +184,7 @@ $(document).ready(function(){
            error: function() {
 
                       // Print an error message - this error means all other error handling/validation has failed
-                      alert('A fatal error occured. If this problem persists please email mssingh@mit.edu, including as much detail of the circumstances as possible.')
+                      alert('Client side error.\n\n A fatal error occured. If this problem persists please email mssingh@mit.edu, including as much detail of the circumstances as possible.')
 
                       // allow for form resubmsion 
                       $("#stop_model").hide();
@@ -357,7 +357,14 @@ function dopoll(){
              type: "GET",
              url: url,
              data: {dirname:  $('#dirname').val() }, // serializes the form's elements.
-             error: {},
+             error: {           alert('Connection error.\n\n The server is no longer responding with the model status. This may mean the model is crashed or there is some other problem a the server. If this problem persists please email mssingh@mit.edu, including as much detail of the circumstances as possible.')
+
+                      // allow for form resubmsion 
+                      $("#stop_model").hide();
+                      $("#run_model").show();
+                      jQuery('input[type=input], input').attr('disabled', false);
+
+           },
              success: function(data)
                  {
                  // If simulation has been terminated stop poll    

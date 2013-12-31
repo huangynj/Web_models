@@ -307,7 +307,7 @@ class model_daemon(multiprocessing.Process): ###################################
                      f.write('exit '+str(run_obj.returncode))
                except:
                   LOG('>> Error: Missing log file on crash - '+dirname)
-                  statsd.incremenr('RC_model.error',tags=[IPid,'logfilemissing'])
+                  statsd.increment('RC_model.error',tags=[IPid,'logfilemissing'])
               
                return return_code
 
@@ -578,7 +578,7 @@ def enquire_sim(form,path,queue,user): #########################################
         json_output['status'] = 'undefined';
         json_output['html']   = '<h2>Model Error</h2>';
         json_output['html']  += 'The model has crashed. Click Run model to rerun the simulation.';
-        json_output['alert']  = 'Model Error\n\n';
+        json_output['alert']  = 'Model Error.\n\n';
         json_output['alert'] += 'The model has crashed.\n\n'
         json_output['alert'] += 'If this problem persists please email mssingh@mit.edu,'
         json_output['alert'] += ' including as much detail on the problem as possible.';

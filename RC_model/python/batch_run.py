@@ -10,9 +10,9 @@ import urllib
 import json 
 
 
-#form_url = 'http://192.168.33.43/rc'
+form_url = 'http://192.168.33.43/rc'
 
-form_url = 'http://eaps-prod.mitx.mit.edu/rc'
+#form_url = 'http://eaps-prod.mitx.mit.edu/rc'
 
 
 
@@ -27,7 +27,7 @@ jdata = {
                       'month'     :  '3'    ,
                       'graph_time':  '6'    , 
                       'time_step' :  '10'   ,
-                      'dirname'   :  'n', 
+                      'dirname'   :  'temp/test', 
                       'w_p'       :  '500.0', 
                       'avg_time'  :  '25'   ,
                       'cfc11'     :  '280.0',
@@ -54,12 +54,12 @@ jdata = {
 
 # Start any looping here
 
-days = [500, 600, 700, 800, 900, 1000]
+days = [1000, 600, 700, 800, 900, 1000]
 co2 =  [50, 100, 200, 500] 
 S0 =  [1356, 1358, 1360, 1362, 1364, 1366, 1368, 1370] 
 albedo =  [0.1, 0.2, 0.3, 0.4, 0.5, 0.6] 
 
-sst = 12
+sst = 24
 idays = 2
 
 for ico2 in range(0,3):
@@ -83,9 +83,9 @@ for ico2 in range(0,3):
 
         response = urllib2.urlopen(req)
         print response.read()
-
+    
+        exit()
         time.sleep(12)
-
 
 
 
