@@ -58,6 +58,13 @@
 
 /* Formating for the errors */
 
+/* prevent chrome default error checking */
+input:invalid {
+   background:#fff;
+}
+
+
+
 /* the error input boxes themselves */
 
       input.error {
@@ -89,7 +96,7 @@
            font-size:0.7em;
            height: 65px;
            padding: 10px;
-           /*background: #FF6B6C;*/
+           background: #FF6B6C;
            color:#fff;
            -webkit-border-radius: 15px;
            -moz-border-radius: 15px;
