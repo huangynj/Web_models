@@ -32,7 +32,7 @@ from s3_functions   import send_to_bucket,get_from_bucket,S3_name
 ### Parameters for server instance ###
 
 # Number of simultaneous model instances allowed
-num_threads = 2
+num_threads = 8
 
 # max time for any given simulation (seconds)
 max_simulation_time = 5*60
