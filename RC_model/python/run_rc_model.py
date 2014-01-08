@@ -78,7 +78,7 @@ DEFAULT_USER = "unknown"
 open(PIDFILE,'w').write(str(os.getpid()))
 
 # Make a queue to handle the model simulations
-queue = multiprocessing.JoinableQueue()
+queue = multiprocessing.JoinableQueue(QMAX)
 
 # Define list/dictionary of the queued/running jobs
 manager = multiprocessing.Manager()
@@ -535,9 +535,15 @@ def submit_sim(form, path, queue,user): ########################################
         queue_order.append(dirname)
         statsd.increment('submission')
         submit_time = time.time()
-        queue.put([dirname,submit_time,days,s3_file])             
-        json_output['html'] = '<br><br><br><center><h3>Your job is in the queue</h3><br><br><h2>Please Wait<h2></center><br>'
 
+        try:
+          queue.put([dirname,submit_time,days,s3_file])             
+          json_output['html'] = '<br><br><br><center><h3>Your job is in the queue</h3><br><br><h2>Please Wait<h2></center><br>'
+
+        except:
+          json_output['html'] = '<br><br><br><center><h3>Model capacity has been reached</h3><br><br><h2>Please try again in a few minutes<h2></center><br>'
+          json_output['alert'] = 'Model capacity reached:\n\nThe model has reached its capacity and cannot handle more requests. Please wait a few minutes while extra capacity is added and try again.'
+          
 
 
         # Write the model and queue status
