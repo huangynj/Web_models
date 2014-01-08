@@ -50,10 +50,10 @@ T_Qcheck = 180
 verbose = 0
 
 # Name of log files
-PIDFILE    = "../log/rc_model.pid"
-LOGFILE    = "../log/rc_model_log.txt"
-Q_STATFILE = "../log/queue_status.txt"
-REPORTDIR  = "../log/reports/"
+PIDFILE    = "/opt/eaps/logs/rc_model.pid"
+LOGFILE    = "/opt/eaps/logs/rc_model_log.txt"
+Q_STATFILE = "/opt/eaps/logs/queue_status.txt"
+REPORTDIR  = "/opt/eaps/logs/reports/"
 
 # Location of the tmpwatch command
 TMPWATCH   = "../../tools/tmpwatch/tmpwatch"
@@ -68,7 +68,7 @@ model_exec = '../model/rc_web'
 O3in = '../model/O3.in'
 
 # Directory where each model instance will be stored
-TEMPDIR = 'temp'
+TEMPDIR = '/tmp'
 
 ### Setup server instance ###
 
@@ -138,7 +138,7 @@ def background_tasks():
    check_queue_health()
 
    # Clean the temp directory
-   ret = subprocess.call([TMPWATCH,'1',TEMPDIR])
+   ret = subprocess.call([TMPWATCH,'1',TEMPDIR+'/RCmod*'])
 
    # schedule the next task in T_Qcheck seconds
    threading.Timer(T_Qcheck,background_tasks).start()
@@ -177,7 +177,7 @@ def daily_tasks(day_num,schedule_time):
  
 
    # Clean the temp directory
-   ret = subprocess.call([TMPWATCH,'1',TEMPDIR])
+   ret = subprocess.call([TMPWATCH,'1',TEMPDIR+'/RCmod*'])
 
    # Update the bar chart
    plot_model_log(LOGFILE,REPORTDIR,day_num)
@@ -431,7 +431,7 @@ def submit_sim(form, path, queue,user): ########################################
 
        		else:
        			# Can't find directory, so create a new unique directory 
-      			dirname = tempfile.mkdtemp(dir=TEMPDIR)
+      			dirname = tempfile.mkdtemp(dir=TEMPDIR,prefix='RCmod_')
                         form["dirname"].value = dirname
         
 

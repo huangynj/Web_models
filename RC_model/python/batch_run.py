@@ -10,9 +10,9 @@ import urllib
 import json 
 
 
-form_url = 'http://192.168.33.43/rc'
+#form_url = 'http://192.168.33.43/rc'
 
-#form_url = 'http://eaps-prod.mitx.mit.edu/rc'
+form_url = 'http://eaps-prod.mitx.mit.edu/rc'
 
 
 
@@ -59,7 +59,7 @@ co2 =  [50, 100, 200, 500]
 S0 =  [1356, 1358, 1360, 1362, 1364, 1366, 1368, 1370] 
 albedo =  [0.1, 0.2, 0.3, 0.4, 0.5, 0.6] 
 
-sst = 24
+sst = 21
 idays = 2
 
 for ico2 in range(0,3):
@@ -84,8 +84,8 @@ for ico2 in range(0,3):
         response = urllib2.urlopen(req)
         print response.read()
     
-        exit()
-        time.sleep(12)
+        #exit()
+        time.sleep(1)
 
 
 
