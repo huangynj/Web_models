@@ -31,8 +31,11 @@ from s3_functions   import send_to_bucket,get_from_bucket,S3_name
 
 ### Parameters for server instance ###
 
+# Number of CPUs available
+num_CPUs = multiprocessing.cpu_count()
+
 # Number of simultaneous model instances allowed
-num_threads = 8
+num_threads = max(num_CPUs-1,2)
 
 # max time for any given simulation (seconds)
 max_simulation_time = 5*60
@@ -994,7 +997,6 @@ PORT = 9003	# marty
 def runserver(): ##################################################################################
 
 
-        num_CPUs = multiprocessing.cpu_count()
 
 	LOG('==================================================')
 	LOG('=== Starting Radiative-convective model server ===')
