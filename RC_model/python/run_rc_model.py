@@ -811,7 +811,8 @@ def get_textfile(form, path, queue,user): ######################################
     textfile = form["textfile"].value
    
     if verbose > 0: LOG('Textfile: '+user+': '+textfile)
-
+    if not TEMPDIR in textfile:
+        return 'You attempted to open an illegal directory'
  
     if os.path.exists(textfile):
 
