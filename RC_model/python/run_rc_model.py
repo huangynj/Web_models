@@ -811,8 +811,8 @@ def get_textfile(form, path, queue,user): ######################################
     textfile = form["textfile"].value
    
     if verbose > 0: LOG('Textfile: '+user+': '+textfile)
-    textfile = '{0}/{1}'.format(TEMPDIR, textfile)
-    
+
+ 
     if os.path.exists(textfile):
 
        return  open(textfile).read()
