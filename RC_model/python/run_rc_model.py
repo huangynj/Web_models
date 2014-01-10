@@ -68,7 +68,7 @@ model_exec = '../model/rc_web'
 O3in = '../model/O3.in'
 
 # Directory where each model instance will be stored
-TEMPDIR = '/tmp'
+TEMPDIR = '/opt/eaps/gen'
 
 ### Setup server instance ###
 
