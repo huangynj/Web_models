@@ -50,10 +50,10 @@ T_Qcheck = 180
 verbose = 0
 
 # Name of log files
-PIDFILE    = "../log/rc_model.pid"
-LOGFILE    = "../log/rc_model_log.txt"
-Q_STATFILE = "../log/queue_status.txt"
-REPORTDIR  = "../log/reports/"
+PIDFILE    = "/opt/eaps/var/run/rc_model.pid"
+LOGFILE    = "/opt/eaps/logs/rc_model_log.txt"
+Q_STATFILE = "/opt/eaps/var/run/queue_status.txt"
+REPORTDIR  = "/opt/eaps/var/reports/"
 
 # Location of the tmpwatch command
 TMPWATCH   = "../../tools/tmpwatch/tmpwatch"
@@ -68,7 +68,7 @@ model_exec = '../model/rc_web'
 O3in = '../model/O3.in'
 
 # Directory where each model instance will be stored
-TEMPDIR = 'temp'
+TEMPDIR = '/opt/eaps/gen'
 
 ### Setup server instance ###
 
@@ -138,7 +138,7 @@ def background_tasks():
    check_queue_health()
 
    # Clean the temp directory
-   ret = subprocess.call([TMPWATCH,'1',TEMPDIR])
+   ret = subprocess.call([TMPWATCH,'1',TEMPDIR+'/RCmod*'])
 
    # schedule the next task in T_Qcheck seconds
    threading.Timer(T_Qcheck,background_tasks).start()
@@ -177,7 +177,7 @@ def daily_tasks(day_num,schedule_time):
  
 
    # Clean the temp directory
-   ret = subprocess.call([TMPWATCH,'1',TEMPDIR])
+   ret = subprocess.call([TMPWATCH,'1',TEMPDIR+'/RCmod*'])
 
    # Update the bar chart
    plot_model_log(LOGFILE,REPORTDIR,day_num)
@@ -431,7 +431,8 @@ def submit_sim(form, path, queue,user): ########################################
 
        		else:
        			# Can't find directory, so create a new unique directory 
-      			dirname = tempfile.mkdtemp(dir=TEMPDIR)
+      			dirname = tempfile.mkdtemp(dir=TEMPDIR,prefix='RCmod_')
+                        os.chmod(dirname, 0755)
                         form["dirname"].value = dirname
         
 
@@ -625,7 +626,7 @@ def enquire_sim(form,path,queue,user): #########################################
            fig_file = dirname+'/plot1.png'
 
 	   if os.path.isfile(fig_file):
-        	image_code =  "<img id=plot src=/rc/"+fig_file+" alt=\"RC model output\" width=\"600\" height=\"450\" />"
+        	image_code =  "<img id=plot src=/rc/"+fig_file.replace(TEMPDIR,'')+" alt=\"RC model output\" width=\"600\" height=\"450\" />"
 	   else:
         	image_code =  '<html><h2>Plotting error</h2>'
                 image_code += '<p>There was an error in creating the plot you asked for. <br>'
@@ -810,7 +811,8 @@ def get_textfile(form, path, queue,user): ######################################
     textfile = form["textfile"].value
    
     if verbose > 0: LOG('Textfile: '+user+': '+textfile)
-
+    if not TEMPDIR in textfile:
+        return 'You attempted to open an illegal directory'
  
     if os.path.exists(textfile):
 
@@ -829,11 +831,7 @@ def get_figurefile(form,path,queue,user): ######################################
 
     
 
-    if not path.startswith(TEMPDIR):
-       
-       if verbose > 0: LOG('>> Error: Unknown file request - '+path)
-       return 'Unknown file request - '+path
-       
+    path = '{0}/{1}'.format(TEMPDIR, path)
 
     if os.path.exists(path):
        if path.endswith('png'):
