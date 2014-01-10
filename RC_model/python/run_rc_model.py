@@ -51,7 +51,7 @@ verbose = 0
 
 # Name of log files
 PIDFILE    = "/opt/eaps/var/run/rc_model.pid"
-LOGFILE    = "/opt/eaps/log/rc_model_log.txt"
+LOGFILE    = "/opt/eaps/logs/rc_model_log.txt"
 Q_STATFILE = "/opt/eaps/var/run/queue_status.txt"
 REPORTDIR  = "/opt/eaps/var/reports/"
 
@@ -626,7 +626,7 @@ def enquire_sim(form,path,queue,user): #########################################
            fig_file = dirname+'/plot1.png'
 
 	   if os.path.isfile(fig_file):
-        	image_code =  "<img id=plot src=/gen/"+fig_file+" alt=\"RC model output\" width=\"600\" height=\"450\" />"
+        	image_code =  "<img id=plot src=/rc/"+fig_file.replace(REPORTDIR,'')+" alt=\"RC model output\" width=\"600\" height=\"450\" />"
 	   else:
         	image_code =  '<html><h2>Plotting error</h2>'
                 image_code += '<p>There was an error in creating the plot you asked for. <br>'
@@ -811,8 +811,8 @@ def get_textfile(form, path, queue,user): ######################################
     textfile = form["textfile"].value
    
     if verbose > 0: LOG('Textfile: '+user+': '+textfile)
-
- 
+    textfile = '{0}/{1}'.format(REPORTDIR,textfile)
+    
     if os.path.exists(textfile):
 
        return  open(textfile).read()
@@ -830,11 +830,7 @@ def get_figurefile(form,path,queue,user): ######################################
 
     
 
-    if not path.startswith(TEMPDIR):
-       
-       if verbose > 0: LOG('>> Error: Unknown file request - '+path)
-       return 'Unknown file request - '+path
-       
+    path = '{0}/{1}'.format(REPORTDIR)       
 
     if os.path.exists(path):
        if path.endswith('png'):
