@@ -626,7 +626,7 @@ def enquire_sim(form,path,queue,user): #########################################
            fig_file = dirname+'/plot1.png'
 
 	   if os.path.isfile(fig_file):
-        	image_code =  "<img id=plot src=/rc/"+fig_file.replace(REPORTDIR,'')+" alt=\"RC model output\" width=\"600\" height=\"450\" />"
+        	image_code =  "<img id=plot src=/rc/"+fig_file.replace(TEMPDIR,'')+" alt=\"RC model output\" width=\"600\" height=\"450\" />"
 	   else:
         	image_code =  '<html><h2>Plotting error</h2>'
                 image_code += '<p>There was an error in creating the plot you asked for. <br>'
@@ -811,7 +811,7 @@ def get_textfile(form, path, queue,user): ######################################
     textfile = form["textfile"].value
    
     if verbose > 0: LOG('Textfile: '+user+': '+textfile)
-    textfile = '{0}/{1}'.format(REPORTDIR,textfile)
+    textfile = '{0}/{1}'.format(TEMPDIR, textfile)
     
     if os.path.exists(textfile):
 
@@ -830,7 +830,7 @@ def get_figurefile(form,path,queue,user): ######################################
 
     
 
-    path = '{0}/{1}'.format(REPORTDIR)       
+    path = '{0}/{1}'.format(TEMPDIR, path)
 
     if os.path.exists(path):
        if path.endswith('png'):
