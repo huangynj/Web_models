@@ -138,7 +138,7 @@ def background_tasks():
    check_queue_health()
 
    # Clean the temp directory
-   ret = subprocess.call([TMPWATCH,'1',TEMPDIR+'/RCmod*'])
+   ret = subprocess.call([TMPWATCH,'1',TEMPDIR])
 
    # schedule the next task in T_Qcheck seconds
    threading.Timer(T_Qcheck,background_tasks).start()
@@ -590,8 +590,8 @@ def enquire_sim(form,path,queue,user): #########################################
         json_output['html']  += 'The model has crashed. Click Run model to rerun the simulation.';
         json_output['alert']  = 'Model Error.\n\n';
         json_output['alert'] += 'The model has crashed.\n\n'
-        json_output['alert'] += 'If this problem persists please email mssingh@mit.edu,'
-        json_output['alert'] += ' including as much detail on the problem as possible.';
+        json_output['alert'] += 'Please try running the simulation again. If the error re-occurs, wait a few minutes, reload the page, and try again. If the problem still persists please post in the discussion forum titled "Radiative-convective model issues", including as much detail of the circumstances as possible.'
+
 
         if verbose > 0: LOG('>> Error: Fatal - '+dirname)
 
