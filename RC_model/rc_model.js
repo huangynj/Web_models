@@ -184,7 +184,8 @@ $(document).ready(function(){
            error: function() {
 
                       // Print an error message - this error means all other error handling/validation has failed
-                      alert('Client side error.\n\n A fatal error occured. If this problem persists please email mssingh@mit.edu, including as much detail of the circumstances as possible.')
+                      alert('Client side error.\n\n A fatal error occured. Please try running the simulation again. If the error occurs again, wait a few minutes, reload the page, and try again. If the problem still persists please post in the discussion forum titled "Radiative-convective model issues", including as much detail of the circumstances as possible.')
+
 
                       // allow for form resubmsion 
                       $("#stop_model").hide();
@@ -357,7 +358,8 @@ function dopoll(){
              type: "GET",
              url: url,
              data: {dirname:  $('#dirname').val() }, // serializes the form's elements.
-             error: function() {           alert('Connection error.\n\n The server is no longer responding with the model status. This may mean the model has crashed or there is some other problem at the server. If this problem persists please email mssingh@mit.edu, including as much detail of the circumstances as possible.')
+             error: function() {           alert('Connection error.\n\n The server is no longer responding with the model status. This may mean the model has crashed or there is some other problem at the server.  Please try running the simulation again. If the error occurs again, wait a few minutes, reload the page, and try again. If the problem still persists please post in the discussion forum titled "Radiative-convective model issues", including as much detail of the circumstances as possible.')
+
 
                       // allow for form resubmsion 
                       $("#stop_model").hide();
