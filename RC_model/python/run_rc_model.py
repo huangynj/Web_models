@@ -72,7 +72,7 @@ TEMPDIR = '/opt/eaps/gen'
 
 ### Setup server instance ###
 
-os.environ['MPLCONFIGDIR'] = './'+TEMPDIR+'/'
+os.environ['MPLCONFIGDIR'] = TEMPDIR+'/'
 
 # Default user
 DEFAULT_USER = "unknown"
@@ -89,10 +89,6 @@ queued_jobs = manager.dict()
 queue_order = manager.list([])
 running_jobs = manager.dict()
 
-s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.connect(("gmail.com",80))
-IPid = s.getsockname()[0]
-s.close()
 
 
 # Get IP address for this machine - this is a hack to get the internet facing socket
