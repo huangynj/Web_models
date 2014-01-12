@@ -315,7 +315,7 @@ $(document).ready(function(){
         step: 2
       });
       $( "#SSTi" ).spinner({
-        step: 1
+        step: 5
       });
       $( "#ch4" ).spinner({
         step: 0.1
