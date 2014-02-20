@@ -135,7 +135,11 @@ def LOG(x): ####################################################################
 
 def background_tasks():
    """ Perform some tasks every so often """
-
+   global count_submit
+   global count_error
+   global count_cache
+   global count_complete
+ 
    # Check what the queue is up to
    check_queue_health()
 
@@ -275,6 +279,10 @@ class model_daemon(multiprocessing.Process): ###################################
     #----------------------------------------------------------------------
     def run_model(self,dirname):
         """"""
+        global count_submit
+        global count_error
+        global count_cache
+        global count_complete
        
         json_output = {}
 
@@ -398,6 +406,11 @@ def submit_sim(form, path, queue,user): ########################################
 ### Function to submit simulation ###
 
 # This is what we do when the browser posts some data to the server
+
+        global count_submit
+        global count_error
+        global count_cache
+        global count_complete
 
         '''
         This function submits a simulation to be run.
@@ -580,6 +593,11 @@ def submit_sim(form, path, queue,user): ########################################
 def enquire_sim(form,path,queue,user): #################################################################
 ### Function called when client asks server on progress of simulation ###
 
+    
+    global count_submit
+    global count_error
+    global count_cache
+    global count_complete
     '''
     This function returns the status of a simulation
     '''
