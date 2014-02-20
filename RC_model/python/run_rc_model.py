@@ -144,9 +144,13 @@ def background_tasks():
 
    # Send some data to the dog
    statsd.gauge('RC_model.Gsubmit',count_submit,tags=[IPid])
+   count_submit = 0
    statsd.gauge('RC_model.Gcomplete',count_complete,tags=[IPid])
+   count_complete = 0
    statsd.gauge('RC_model.Gcached',count_cache,tags=[IPid])
+   count_cache = 0
    statsd.gauge('RC_model.Gerror',count_error,tags=[IPid])
+   count_error = 0
 
    # schedule the next task in T_Qcheck seconds
    threading.Timer(T_Qcheck,background_tasks).start()
