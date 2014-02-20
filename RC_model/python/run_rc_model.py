@@ -89,6 +89,12 @@ queued_jobs = manager.dict()
 queue_order = manager.list([])
 running_jobs = manager.dict()
 
+# Initialize some counters
+count_submit = 0
+count_complete = 0
+count_cache = 0
+count_error = 0
+
 
 
 # Get IP address for this machine - this is a hack to get the internet facing socket
@@ -136,8 +142,16 @@ def background_tasks():
    # Clean the temp directory
    ret = subprocess.call([TMPWATCH,'1',TEMPDIR])
 
+   # Send some data to the dog
+   statsd.gauge('RC_model.Gsubmit',count_submit,tags=[IPid])
+   statsd.gauge('RC_model.Gcomplete',count_complete,tags=[IPid])
+   statsd.gauge('RC_model.Gcached',count_cache,tags=[IPid])
+   statsd.gauge('RC_model.Gerror',count_error,tags=[IPid])
+
    # schedule the next task in T_Qcheck seconds
    threading.Timer(T_Qcheck,background_tasks).start()
+ 
+  
 
 def daily_tasks(day_num,schedule_time):
    """ Perform the daily scheduled tasks"""
@@ -294,6 +308,7 @@ class model_daemon(multiprocessing.Process): ###################################
                except:
                   LOG('>> Error: Missing log file on timeout - '+dirname)
                   statsd.increment('RC_model.error',tags=[IPid,'logfilemissing'])
+                  count_error +=1
  
                return return_code
 
@@ -301,12 +316,14 @@ class model_daemon(multiprocessing.Process): ###################################
 
                LOG('run: Model exit with code '+str(run_obj.returncode)+' - '+dirname)
                statsd.increment('RC_model.error',tags=[IPid,'exit:'+str(run_obj.returncode)])
+               count_error +=1
                try:
                   with open(dirname+'/log.out', 'w') as f:
                      f.write('exit '+str(run_obj.returncode))
                except:
                   LOG('>> Error: Missing log file on crash - '+dirname)
                   statsd.increment('RC_model.error',tags=[IPid,'logfilemissing'])
+                  count_error +=1
               
                return return_code
 
@@ -386,6 +403,7 @@ def submit_sim(form, path, queue,user): ########################################
         days = form['days'].value
         LOG('Submit simulation: %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
         statsd.increment('RC_model.submit',tags=[IPid])
+        count_submit +=1
          
         if verbose > 1:
            LOG("form=%s" % dict((k,form[k].value) for k in form))
@@ -452,6 +470,7 @@ def submit_sim(form, path, queue,user): ########################################
               json_output = output_control(form,dirname,json_output)
               LOG('run: Returning cached result')
               statsd.increment('RC_model.cached',tags=[IPid])
+              count_cache +=1
               return json.dumps(json_output,indent=1)
 
         
@@ -518,6 +537,7 @@ def submit_sim(form, path, queue,user): ########################################
 
                 LOG('>> Error: Could not create input file')
                 statsd.increment('RC_model.error',tags=[IPid,'createinputfile'])
+                count_error +=1
 		return json.dumps(json_output,indent=1)
         
 
@@ -670,6 +690,7 @@ def enquire_sim(form,path,queue,user): #########################################
            # Log that model completed succesfully
            LOG('run: success: '+dirname)
            statsd.increment('RC_model.complete',tags=[IPid])
+           count_complete +=1
  
 	   # print the html to file
 	   json_output['html'] =  html_file
@@ -687,6 +708,7 @@ def enquire_sim(form,path,queue,user): #########################################
 
           LOG('>> Error: Timeout - '+dirname)
           statsd.increment('RC_model.error',tags=[IPid,'timeout'])
+          count_error +=1
 
         # Model crashed  ~~~~~~~~~~~~~~~~~~
         elif model_status.startswith('exit'):
