@@ -9,7 +9,12 @@
 // Initialize variables
 var model_terminated = 0; // has the model been terminated?
 var validator = 0;        // null value of form validation
-
+var url = 'python/run_rc_model.fcgi'
+//var url = '/12340x/eaps-rc-model-12340x/RC_model/python/run_rc_model.fcgi/application'
+//var url = './python/run_rc_model.py/application'
+//var url = '127.0.0.1:8051'
+//var url = '/rc'
+//var url = ''
 
 
 
@@ -137,7 +142,6 @@ $(document).ready(function(){
    // function to submit model run to server -------------------------------------------
    $("#run_model").click(function() {
 
-      var url = "/rc"; // the script where you handle the form input.
 
       $.ajax({
            type: "POST",
@@ -190,6 +194,9 @@ $(document).ready(function(){
                       // allow for form resubmsion 
                       $("#stop_model").hide();
                       $("#run_model").show();
+                      $('#loading').hide()
+                      $("#progress").hide() 
+                      $('#put').html("")
                       jQuery('input[type=input], input').attr('disabled', false);
 
            },
@@ -271,7 +278,6 @@ $(document).ready(function(){
        $("#stop_model").hide();
        $("#run_model").show();
 
-       var url = "/rc"; // the script where you handle the form input.
 
        // Send request to server to clean up the mess we made
        $.ajax({
@@ -347,7 +353,6 @@ $(document).ready(function(){
 
 // Polling funciton to ask server for model simulation progress /////////////////////
 function dopoll(){
-       var url = "/rc"; // the script where you handle the form input.
 
        // If simulation has been terminated stop poll
        if (model_terminated == 1) {model_terminated=0}
@@ -499,7 +504,6 @@ function dopoll(){
 // Function to clean up directories when user navigates away ////////////////////////////
 window.onbeforeunload = function (e) {
 
-    var url = "/rc"; // the script where you handle the form input.
 
     // Message to pass to user (currently unused)
     var msg = 'If you leave this page any running simulation will be stopped, and any output data lost.';

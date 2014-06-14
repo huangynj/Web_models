@@ -11,7 +11,7 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
    bin_width = 21600
 
    # Find current time - subtract 3 hours since we will be running this just after midnight
-   current_time = time.localtime(time.time()-10800)
+   current_time = time.localtime(time.time())
 
    # Get the beginning and end times of the month
    the_year = time.strftime("%Y",current_time)

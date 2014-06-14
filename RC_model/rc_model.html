@@ -41,7 +41,7 @@
 
 
 
-   <form method="POST" action="/rc" name="model_options" id="model_options" onsubmit="return false" novalidate="">
+   <form method="POST" action="ierrlevant" name="model_options" id="model_options" onsubmit="return false" novalidate="">
    <p>
 
 
@@ -326,6 +326,8 @@
                           name="ugust" id="ugust" value="5.0" class=required> m/s
             </label>
             <span class=errcontainer></span><br>
+	         
+            <p><label><input type="checkbox" name="surf_int">&nbsp Fixed surface temperature</label><br></p>
 
             <!-- advanced surface options (hidden by default) -->
             <div id="adv_surface">
@@ -345,7 +347,6 @@
                  </label>
                  <span class=errcontainer></span><br>
 
-	         <p><label><input type="checkbox" name="surf_int">&nbsp Fixed surface temperature</label><br></p>
 
             </div>
 

@@ -1,5 +1,6 @@
 import boto
 import boto.s3.connection
+import os
 
 bucket_name = 'eaps-rc-model-12340x'
 access_key  = 'AKIAIYH3XSY6GZOXJ3GA'

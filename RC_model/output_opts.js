@@ -21,8 +21,7 @@ $("input:radio[name='plot_type']").click(function() {
 // Function to replot data /////////////////////////////////////////////////////////////////
 $("#replot").click(function() {
 
-    var url = "/rc"; // the script where you handle the form input.
-
+    var url = 'python/run_rc_model.fcgi'
 
     // Send ajax request to server
     $.ajax({

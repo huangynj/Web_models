@@ -7,34 +7,89 @@ import numpy as np
 import matplotlib;  matplotlib.use('agg')
 import pylab as mp
 
-def output_control(form,dirname,json_output):
+def output_control():
+
+        print("""
+
+        """)
+        dirname = raw_input('Enter directory where output resides (default "output"): ')
+        if not dirname:
+           dirname = 'output'
 
 
 
-	# Parse plotting options ############################################
 
-        diff_plot = "false"
-        if type(form) is dict:
-           plot_opt = form["plot_opt"]
 
-        else:
+	# Parse plottiing options ############################################
+        print("""
+           Time evolution:
+           1.  Surface air and sea-surface temperatures 
+           2.  Precipitation and evaporation 
+           3.  500 mb T and q
+           4.  TOA shortwave and longwave radiation 
+
+           Vertical profiles:
+           5.  Temperature
+           6.  Specific humidity
+           7.  Relative humidity 
+           8.  Buoyancy 
+           9.  Entrainment and detrainment 
+           10. Moist static energy
+           11. Cloud fraction
+           12. Cloud condensaed water
+           13. Mass fluxes
+
+           Time-height sections
+           14. Temperature
+           15. Humidity
+           16. Cloud fraction
+           17. Buoyancy
+
+        """)
            
-   	   plot_opt = form["plot_type"].value
+        selection=raw_input("Please Select:") 
 
-	   if plot_opt == "time_opts":
-	   	plot_opt = form["timeplot"].value
-	   elif plot_opt == "prof_opts":
-		plot_opt = form["profplot"].value
- 	   elif plot_opt == "hov_opts":
-		plot_opt = form["hovplot"].value
-	   elif plot_opt == "diff_opts":
-		plot_opt = form["diffplot"].value
-                diff_plot = "true"
-	   else:	
-		json_output['html'] = '<h2>Plotting error</h2><p> Unknown plotting option </html>'
-                json_output['alert'] = 'Plotting error: Unknown plotting option'
-                return json_output
-      
+        if selection =='1': 
+          plot_opt = 'time_sst' 
+        elif selection == '2': 
+          plot_opt = 'time_precip' 
+        elif selection == '3':
+          plot_opt = 'time_T500' 
+        elif selection == '4': 
+          plot_opt = 'time_radflux' 
+        elif selection == '5': 
+          plot_opt = 'profile_t' 
+        elif selection == '6': 
+          plot_opt = 'profile_q' 
+        elif selection == '7': 
+          plot_opt = 'profile_rh' 
+        elif selection == '8': 
+          plot_opt = 'profile_b' 
+        elif selection == '9': 
+          plot_opt = 'profile_entrainment' 
+        elif selection == '10': 
+          plot_opt = 'profile_MSE' 
+        elif selection == '11': 
+          plot_opt = 'profile_cld' 
+        elif selection == '12': 
+          plot_opt = 'profile_clw' 
+        elif selection == '13': 
+          plot_opt = 'profile_massflux' 
+        elif selection == '14': 
+          plot_opt = 'hov_t' 
+        elif selection == '15': 
+          plot_opt = 'hov_q' 
+        elif selection == '16': 
+          plot_opt = 'hov_cld' 
+        elif selection == '17': 
+          plot_opt = 'hov_buoy' 
+        else: 
+          print " "
+          print "Unknown Option Selected!"
+          print " "
+          return
+
+
 	# get output data ####################################################
 	outdir = dirname+'/'
         
@@ -56,9 +111,9 @@ def output_control(form,dirname,json_output):
    	      profileold = np.array(get_output(outdir+'profile.old'))
 
         except:
-	   json_output['html'] = '<h2>Plotting error</h2><p> Cannot find output </html>'
-           json_output['alert'] = 'Plotting error: Cannot find output.\nYour session may have expired.\n\nIf you leave the model idle for longer than 20 minutes the output may be cleaned up '
-           return json_output
+           print('Error in reading model output.')
+           return
+ 
 
 	# Convert to variables we require
 	p=profile[:,0];
@@ -91,7 +146,6 @@ def output_control(form,dirname,json_output):
 
 	   zoldkm=0.001*zold;
 
-        #LOG(str(profileold[:,1]))
 	if (diff_plot == "true"):
            profile = profile - profileold
     
@@ -213,19 +267,17 @@ def output_control(form,dirname,json_output):
 		hf = mp.savefig(filename)
 
 	else:
-		json_output['html'] = '<h2>Plotting error</h2><p> Unknown plotting option </html>'
-                json_output['alert'] = 'Plotting error: Unknown plotting option'
-                return json_output
+                print('Error: unknown plotting option')
+                return
 
+
+        print('Plot saved as '+filename )
+        return
  
-        mp.close(fig)
-        json_output['fig_file'] = filename
-	return json_output
 
 ######################################################################
 
 def get_output(filename):
-
 
 	outvar = []
         for row in open(filename,'rt'):
@@ -302,3 +354,9 @@ def plot_hov(x,y,z,ylab,tit):
 
 
 	return CS
+
+if __name__ == '__main__':
+        output_control()
+
+
+
