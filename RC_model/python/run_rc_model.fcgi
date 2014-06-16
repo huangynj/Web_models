@@ -98,9 +98,6 @@ os.environ['MPLCONFIGDIR'] = TEMPDIR+'/'
 # Default user
 DEFAULT_USER = "unknown"
 
-# Send PID to logfile
-open(PIDFILE,'w').write(str(os.getpid()))
-open(PIDDIR+str(time.strftime("%Y%m%d_%H%M",time.localtime(time.time()))),'w').write(str(os.getpid()))
 
 # Make a queue to handle the model simulations
 queue = multiprocessing.JoinableQueue(QMAX)
@@ -125,6 +122,9 @@ if not os.path.exists(TEMPDIR):   os.makedirs(TEMPDIR)
 if not os.path.exists(LOGDIR):    os.makedirs(LOGDIR)
 if not os.path.exists(REPORTDIR): os.makedirs(REPORTDIR)
 
+# Send PID to logfile
+open(PIDFILE,'w').write(str(os.getpid()))
+open(PIDDIR+str(time.strftime("%Y%m%d_%H%M",time.localtime(time.time()))),'w').write(str(os.getpid()))
 
 # Get IP address for this machine - this is a hack to get the internet facing socket
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -1093,7 +1093,8 @@ def runserver(): ###############################################################
 
 
         # Run some startup tasks
-        startup_tasks()
+        # Run some startup tasks in background (delay by 10 seconds).
+        threading.Timer(10,startup_tasks).start()
 
         # run the background tasks
         background_tasks()

@@ -12,7 +12,7 @@ import json
 
 #form_url = 'http://192.168.33.43/rc'
 
-form_url = 'http://eaps-prod.mitx.mit.edu/rc'
+form_url = 'http://12340x.scripts.mit.edu/eaps-rc-model-12340x/RC_model/python/run_rc_model.fcgi'
 
 
 

@@ -13,8 +13,26 @@ eaps-12340x web-interface models
     Developed by Kerry Emanuel and collaborators.
     Web interface developed by Martin Singh & Tim Cronin with help from Isaac Chuang.
 
-        * To start the server type ./start_server
-        * To kill the server type ./kill_server
+    This version of the RC model is constructed to run on the athena network at MIT. 
+    The RC model requires the python package "boto" to run. To install this in your athena locker type the following commands at the terminal:
+
+    % add consult
+    % mkdir -p /mit/12.340x/.local/lib/python2.7/site-packages/
+    % fsr sa /mit/12.340x/.local/lib/python2.7/site-packages/daemon.scripts write
+    % easy_install --user -Z boto
+     
+
+    where 12.340x should be replaced with the name of the locker you are installing the RC model to.
+
+    Once this is done, the RC model should run; it will create a few directories that it needs the first time it is invoked.
+
+    To view the log files on the internet one must run a further command once the model has been invoked for a first time:
+
+    From the directory in whic hthe git repo resides type:
+
+    chmod 777 logs/*
+    chmod 777 var/*
+
 
     ### Nlayer ###
  

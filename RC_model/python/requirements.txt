@@ -22,6 +22,8 @@ sys
 multiprocessing*
 threading*
 
+flup**
+
 s3_functions.py ----------------------------
 
 boto**
