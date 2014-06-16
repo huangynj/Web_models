@@ -1,4 +1,5 @@
-=========================================
+=
+=======================================
 Python libraries required for the RC model
 ==========================================
 
@@ -18,6 +19,7 @@ subprocess
 tempfile
 json
 sys
+flup**
 
 multiprocessing*
 threading*

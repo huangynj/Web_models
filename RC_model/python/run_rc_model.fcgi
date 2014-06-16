@@ -1092,8 +1092,8 @@ def runserver(): ###############################################################
 	    t.start()
 
 
-        # Run some startup tasks
-        startup_tasks()
+        # Run some startup tasks in background (delay by 10 seconds).
+        threading.Timer(10,startup_tasks).start()
 
         # run the background tasks
         background_tasks()
