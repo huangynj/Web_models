@@ -145,7 +145,7 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
       day_run_times = []
       for j in range(0,len(run_vec)):
          if run_vec[j] >= bin_ends[i] and run_vec[j] <  bin_ends[i+1]:
-            day_run_times.append(run_times[j])
+            day_run_times.append(run_times[j]*1000)
 
       try:
          max_run_time.append(max(day_run_times))
