@@ -145,7 +145,7 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
       day_run_times = []
       for j in range(0,len(run_vec)):
          if run_vec[j] >= bin_ends[i] and run_vec[j] <  bin_ends[i+1]:
-            day_run_times.append(run_times[j]*1000)
+            day_run_times.append(run_times[j])
 
       try:
          max_run_time.append(max(day_run_times))
@@ -167,16 +167,16 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
    xtickmarks = []
    xticks = []
    for t in bin_ends:
-      if ( t -time_beg_month ) % 86400 == 0:
+      if t % 86400 == 0:
          xtickmarks.append(time.strftime("%d",time.localtime(t)))
          xticks.append(t)
 
 
    # Make the figure ----------------------------------------
-   fig = mp.figure(figsize=(14, 9))
+   fig = mp.figure(figsize=(15, 9))
    ax = fig.add_subplot(311)
 
-   ax.set_position([0.1,0.7,0.7,0.25])
+   ax.set_position([0.05,0.7,0.7,0.25])
 
    sims = ax.bar(bin_ends[0:-1]+0.05*bin_width,simulations,width=0.9*bin_width,edgecolor='none')
    errs = ax.bar(bin_ends[0:-1]+0.25*bin_width,errors,width=0.5*bin_width,color='red',edgecolor='none')
@@ -185,7 +185,7 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
    ax.set_xlim(bin_ends[0],bin_ends[-1])
    ax.set_xticks(xticks)
    ax.set_title(tit,fontsize=18)
-   ax.set_ylabel('No. of submissions',fontsize=12)
+   ax.set_ylabel('No. of submissions',fontsize=16)
    xticknames = ax.set_xticklabels([])
    ax.legend( (sims[0], errs[0]), ('Submissions', 'errors'), loc=leg_loc)
    mp.setp(ax.get_legend().get_texts(), fontsize='10')
@@ -193,7 +193,7 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
    # ---------------------
 
    ax2 = fig.add_subplot(312)
-   ax2.set_position([0.1,0.4,0.7,0.25])
+   ax2.set_position([0.05,0.4,0.7,0.25])
    maxwait = ax2.bar(bin_ends[0:-1]+0.05*bin_width,max_wait_time,width=0.9*bin_width,color='blue',edgecolor='none')
    meanwait = ax2.bar(bin_ends[0:-1]+0.05*bin_width,mean_wait_time,width=0.9*bin_width,color='red',edgecolor='none')
    medwait = ax2.bar(bin_ends[0:-1]+0.05*bin_width,median_wait_time,width=0.9*bin_width,color='green',edgecolor='none')
@@ -207,14 +207,14 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
    xticknames = ax2.set_xticklabels([],fontsize=10)
    ax2.legend( (maxwait[0], meanwait[0],medwait[0]), ('Maximum', 'Mean','Median'), loc=leg_loc)
    mp.setp(ax2.get_legend().get_texts(), fontsize='10')
-   ax2.set_ylabel('Wait time (sec)',fontsize=12)
+   ax2.set_ylabel('Wait time (sec)',fontsize=16)
 
    ax2.set_title('Queue wait times',fontsize=18)
 
    # -------------------------------
 
    ax3 = fig.add_subplot(313)
-   ax3.set_position([0.1,0.1,0.7,0.25])
+   ax3.set_position([0.05,0.1,0.7,0.25])
 
    maxrun = ax3.bar(bin_ends[0:-1]+0.05*bin_width,max_run_time,width=0.9*bin_width,color='blue',edgecolor='none')
    meanrun = ax3.bar(bin_ends[0:-1]+0.05*bin_width,mean_run_time,width=0.9*bin_width,color='red',edgecolor='none')
@@ -230,7 +230,7 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
    xticknames = ax3.set_xticklabels(xtickmarks,fontsize=10)
    ax3.legend( (maxrun[0], meanrun[0],minrun[0]), ('Maximum', 'Mean','Minimum'), loc=leg_loc )
    mp.setp(ax3.get_legend().get_texts(), fontsize='10')
-   ax3.set_ylabel('Run time (sec/1000 days)',fontsize=12)
+   ax3.set_ylabel('Run time (sec/model day)',fontsize=16)
 
    ax3.set_title('Running times',fontsize=18)
 
@@ -239,30 +239,31 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
 
    #mp.setp(xticknames, rotation=90, fontsize=10)
    string = 'Total submissions: '+str(len(submit_vec))
-   ax.text(1.025, 0.75, string, fontsize=15,transform=ax.transAxes)
+   ax.text(1.13, 0.75, string, fontsize=15,transform=ax.transAxes)
 
    string = 'Successful: '+str(len(success_vec))
-   ax.text(1.025, 0.65, string, fontsize=15,transform=ax.transAxes)
+   ax.text(1.13, 0.65, string, fontsize=15,transform=ax.transAxes)
 
    string = 'Cached: '+str(len(cache_vec))
-   ax.text(1.025, 0.55, string, fontsize=15,transform=ax.transAxes)
+   ax.text(1.13, 0.55, string, fontsize=15,transform=ax.transAxes)
 
    string = 'Stopped by user: '+str(len(stop_vec))
-   ax.text(1.025, 0.45, string, fontsize=15,transform=ax.transAxes)
+   ax.text(1.13, 0.45, string, fontsize=15,transform=ax.transAxes)
 
    string = 'Timeouts: '+str(len(timeout_vec))
-   ax.text(1.025, 0.35, string, fontsize=15,transform=ax.transAxes)
+   ax.text(1.13, 0.35, string, fontsize=15,transform=ax.transAxes)
 
    string = 'Errors: '+str(len(error_vec))
-   ax.text(1.025, 0.25, string, fontsize=15,transform=ax.transAxes)
+   ax.text(1.13, 0.25, string, fontsize=15,transform=ax.transAxes)
 
+   string = 'Total Users: '+str(len(user_list))
+   ax.text(1.13, 0.15, string, fontsize=15,transform=ax.transAxes)
 
+   string = 'Plot updated daily'
+   ax.text(1.13, 0.0, string, fontsize=12,transform=ax.transAxes)
 
-   string = 'All times in Boston local time'
-   ax.text(1.025, -0.0, string, fontsize=12,transform=ax.transAxes)
-
-   string = 'Updated: '+time.ctime(time.time())
-   ax.text(1.025, -0.08, string, fontsize=12,transform=ax.transAxes)
+   string = 'All times in UTC'
+   ax.text(1.13, -0.08, string, fontsize=12,transform=ax.transAxes)
 
 
    hf = mp.savefig(REPORTDIR+the_year+'_'+the_month+'.png')
