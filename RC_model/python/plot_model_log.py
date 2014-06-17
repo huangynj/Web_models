@@ -39,15 +39,19 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
 
    # Get the simulation data -----------------------------------------
    for row in open(LOGFILE,'rt'):
-     
+
      # Get the time string
      the_time = row[0:24]
 
      # Change time to a number in seconds
-     time_vec.append(time.mktime(time.strptime(the_time, "%a %b %d %H:%M:%S  %Y")))
+     try:
+       time_vec.append(time.mktime(time.strptime(the_time, "%a %b %d %H:%M:%S  %Y")))
 
-     # Get the rest of the info from the call
-     the_rest = row[25:].split(': ')
+       # Get the rest of the info from the call
+       the_rest = row[25:].split(': ')
+     except:
+       the_rest = 'READERROR'     
+
 
      # Call type
      call_type = the_rest[0].strip()
@@ -72,12 +76,18 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
      elif call_type.startswith('run'):
         if 'wait time' in the_rest[1]:
            call_vec.append(5)
-           wait_times.append(float(the_rest[3]))
-           wait_vec.append(time_vec[-1])
+           try:
+              wait_times.append(float(the_rest[3]))
+              wait_vec.append(time_vec[-1])
+           except:
+              pass
         elif 'run time' in the_rest[1]:
            call_vec.append(6)
-           run_times.append(float(the_rest[3]))
-           run_vec.append(time_vec[-1])
+           try:
+              run_times.append(float(the_rest[3]))
+              run_vec.append(time_vec[-1])
+           except:
+              pass
         elif 'kill' in the_rest[1]:
            stop_vec.append(time_vec[-1])
            call_vec.append(7)
@@ -92,13 +102,15 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
            cache_vec.append(time_vec[-1])
         else:
            call_vec.append(9)
-
+        
      # If the user is named put it in the user vector
      if len(the_rest) > 1:
         this_user = the_rest[1].strip()
         if '@' in this_user:
            user_vec.append(this_user)
  
+
+
 
 
    # Get the unique users
