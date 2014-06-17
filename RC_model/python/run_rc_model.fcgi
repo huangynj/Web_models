@@ -54,7 +54,7 @@ elif caching == 2:
 num_CPUs = multiprocessing.cpu_count()
 
 # Number of simultaneous model instances allowed
-num_threads = 2
+num_threads = 4
 
 # max time for any given simulation (seconds)
 max_simulation_time = 5*60

@@ -88,8 +88,7 @@ for isst in range(0,5):
           print 'received error! skipping this simulation and waiting 3 seconds'
           time.sleep(60)
     
-        exit()
-        time.sleep(30)
+        time.sleep(15)
 
 
 
