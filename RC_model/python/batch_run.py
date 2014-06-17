@@ -12,7 +12,7 @@ import json
 
 #form_url = 'http://192.168.33.43/rc'
 
-form_url = 'http://12340x.scripts.mit.edu/eaps-rc-model-12340x/RC_model/python/run_rc_model.fcgi'
+form_url = 'http://12.340x.scripts.mit.edu/eaps-rc-model-12340x/RC_model/python/run_rc_model.fcgi'
 
 
 
@@ -54,18 +54,18 @@ jdata = {
 
 # Start any looping here
 
-days = [1000, 600, 700, 800, 900, 1000]
-co2 =  [50, 100, 200, 500] 
-S0 =  [1356, 1358, 1360, 1362, 1364, 1366, 1368, 1370] 
+days = [500, 600, 700, 800, 900, 1000]
+co2 =  [50, 100, 200, 360, 500, 720, 1000] 
+S0 =  [1300, 1356, 1358, 1360, 1362, 1364, 1366, 1368, 1370, 1400] 
 albedo =  [0.1, 0.2, 0.3, 0.4, 0.5, 0.6] 
 
-sst = [5 10 15 20 25]
-idays = 2
+sst = [5, 10, 15, 20, 25]
+
 for isst in range(0,5):
- for ico2 in range(0,3):
-   for ialb in range(0,5):
-     for iS0 in range(0,7):
-       for idays in range(0,5):
+ for ico2 in range(0,7):
+   for ialb in range(0,6):
+     for iS0 in range(0,10):
+       for idays in range(0,6):
 
 
         # Change the parameters like this
@@ -86,10 +86,10 @@ for isst in range(0,5):
           print response.read()
         except:
           print 'received error! skipping this simulation and waiting 3 seconds'
-          time.sleep(3)
+          time.sleep(60)
     
-        #exit()
-        time.sleep(0.2)
+        exit()
+        time.sleep(30)
 
 
 

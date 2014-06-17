@@ -126,7 +126,7 @@ def get_from_bucket(s3_file,dirname):
      return 1
 
 
-def S3_name(form):
+def cache_name(form):
 # Construct a file name for sending to the S3 bucket
 
    if 'restart' in form:

@@ -21,7 +21,6 @@ from mime import *
 from write_input    import write_params_in,write_sounding_in
 from postprocess    import output_control, get_output
 from plot_model_log import plot_model_log
-from s3_functions   import send_to_bucket,get_from_bucket,S3_name
 
 # Initial setup  ###################################################################################
 
@@ -36,10 +35,17 @@ if datadog:
 
 ### Caching ###
 
-caching = 1;    # 0: No caching - just run model for each new simulation
+caching = 2;    # 0: No caching - just run model for each new simulation
 		# 1: Use Amazon S3 bucket for caching
 		#    S3 bucket details (name, keys etc.) given in file "s3_functions.py" 
-		# 2: Local caching - yet to be implemented
+		# 2: Local caching
+
+if caching == 1:
+   from s3_functions          import send_to_bucket,get_from_bucket,cache_name
+
+elif caching == 2:
+   from local_cache_functions import send_to_local_cache,get_from_local_cache,cache_name
+
 
 
 ### Parameters for server instance ###
@@ -69,6 +75,9 @@ VARDIR     = "../../../var/"
 PIDDIR     = VARDIR+"PIDs/"
 PIDFILE    = VARDIR+"rc_model.pid"
 Q_STATFILE = VARDIR+"queue_status.txt"
+
+# Directory containing local cache
+CACHEDIR = "../../../cache/"
 
 # Directory where each model instance will be stored
 TEMPDIR = '../../../temp/'
@@ -121,6 +130,8 @@ if not os.path.exists(PIDDIR):    os.makedirs(PIDDIR)
 if not os.path.exists(TEMPDIR):   os.makedirs(TEMPDIR)
 if not os.path.exists(LOGDIR):    os.makedirs(LOGDIR)
 if not os.path.exists(REPORTDIR): os.makedirs(REPORTDIR)
+if not os.path.exists(CACHEDIR): os.makedirs(CACHEDIR)
+
 
 # Send PID to logfile
 open(PIDFILE,'w').write(str(os.getpid()))
@@ -275,7 +286,7 @@ class model_daemon(multiprocessing.Process): ###################################
     def run(self):
         while True:
             # gets the simulation parameters from the queue
-            [dirname,submit_time,days,s3_file] = self.queue.get()
+            [dirname,submit_time,days,cache_file] = self.queue.get()
             write_queue_status()
  
             # Calculate queue wait time
@@ -292,9 +303,6 @@ class model_daemon(multiprocessing.Process): ###################################
             # Run the simulation
             return_code = self.run_model(dirname)
 
-            # send a signal to the queue that the job is done
-            self.queue.task_done()
-
 
             # Calculate the running time per day of simulation
             run_time = (time.time() - run_time)/float(days)
@@ -308,12 +316,14 @@ class model_daemon(multiprocessing.Process): ###################################
       	  	  f.write('cached')
 
             # Send output to the cache
-            if s3_file != '':   # If no caching wanted then s3 file should be set to null
+            if cache_file != '':   # If no caching wanted then cache file should be set to null
                if caching == 1:
-                  send_to_bucket(s3_file,dirname)
+                  send_to_bucket(cache_file,dirname)
                else:
-		  LOG('>> Warning: Requested caching method unsupported; not sending to cache')
+                  send_to_local_cache(cache_file,dirname)
 
+            # send a signal to the queue that the job is done
+            self.queue.task_done()
 
 
     #----------------------------------------------------------------------
@@ -509,29 +519,33 @@ def submit_sim(form, path, queue,user): ########################################
         if ( os.path.isfile(dirname+'/profile.out') ): 
                 os.rename(dirname+'/profile.out',dirname+'/profile.old')
 
-        # Set name for s3 storage of cached results
-        s3_file = S3_name(form)
+        # Set name for cached storage of cached results
+        cache_file = cache_name(form)
+        if caching == 2:
+            cache_file = CACHEDIR+cache_file
+
+    
 
         if 'restart' in form or 'surf_int' in form or caching == 0:
-            s3_file = ''
+            cache_file = ''
 
         # Attempt to obtain output from cache
-        if s3_file != '':
+        if cache_file != '':
 
            if caching == 1: # S3 bucket
-              retval = get_from_bucket(s3_file,dirname)
-              if retval == 0:
-                 os.system("touch "+dirname+"/*")
-                 json_output['html'] = '<br><br><br><center><h3>Retrieving cached results</h3><br><br><h2>Please Wait<h2></center><br>'
-                 form = {}
-                 form["plot_opt"] = "time_sst"
-                 json_output = output_control(form,dirname,json_output)
-                 LOG('run: Returning cached result')
-                 if datadog: statsd.increment('RC_model.cached',tags=[IPid]); count_cache +=1
-                 return json.dumps(json_output,indent=1)
+              retval = get_from_bucket(cache_file,dirname)
+           else:
+              retval = get_from_local_cache(cache_file,dirname)
 
-           else:            # Local caching
-		  LOG('>> Warning: Requested caching method unsupported; running simulation')
+           if retval == 0:
+              os.system("touch "+dirname+"/*")
+              json_output['html'] = '<br><br><br><center><h3>Retrieving cached results</h3><br><br><h2>Please Wait<h2></center><br>'
+              form = {}
+              form["plot_opt"] = "time_sst"
+              json_output = output_control(form,dirname,json_output)
+              LOG('run: Returning cached result')
+              if datadog: statsd.increment('RC_model.cached',tags=[IPid]); count_cache +=1
+              return json.dumps(json_output,indent=1)
 
         
 	# Write inputs for model ------------------------------
@@ -616,7 +630,7 @@ def submit_sim(form, path, queue,user): ########################################
         submit_time = time.time()
 
         try:
-          queue.put([dirname,submit_time,days,s3_file])             
+          queue.put([dirname,submit_time,days,cache_file])             
           json_output['html'] = '<br><br><br><center><h3>Your job is in the queue</h3><br><br><h2>Please Wait<h2></center><br>'
 
         except:
