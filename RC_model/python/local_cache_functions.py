@@ -31,7 +31,6 @@ def get_from_local_cache(cache_dir,dirname):
   
    if os.path.exists(cache_dir):
      try:
-
        shutil.copy (cache_dir+'/botbar.out',dirname+'/botbar.out')
        shutil.copy (cache_dir+'/lwbar.out',dirname+'/lwbar.out')
        shutil.copy (cache_dir+'/shfbar.out',dirname+'/shfbar.out')
@@ -46,8 +45,8 @@ def get_from_local_cache(cache_dir,dirname):
        shutil.copy (cache_dir+'/log.out',dirname+'/log.out')
        return 0
      except:
-      
-       return 9
+       return 8 
+       
    else:
      return 1
 
@@ -61,11 +60,13 @@ def cache_name(form):
 
    keys_list = ['days','time_step','avg_time','graph_time','rad_type','month','day','hour','rad_freq','rad_wv','rad_cld','S0','theta','co2','ch4','n2o','cfc11','cfc12','dry_conv','moist_conv','turb_flux','water_frac','ugust','ml_depth','alpha','w_cubic','w_max','w_T','w_top','w_bot','w_p','p_pbl','SSTi']
 
-   days = form['days'].value
-   if float(days) > 750:
-     name = 'RC2_'
-   else:
-     name = 'RC_'
+   #days = form[days].value
+   #if float(days) > 750:
+   #   name = 'RC2_'
+   #else:
+   #   name = 'RC_'
+    
+   name = 'RC_'
  
    for key in keys_list:
 

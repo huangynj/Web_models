@@ -520,9 +520,12 @@ def submit_sim(form, path, queue,user): ########################################
                 os.rename(dirname+'/profile.out',dirname+'/profile.old')
 
         # Set name for cached storage of cached results
-        cache_file = cache_name(form)
-        if caching == 2:
-            cache_file = CACHEDIR+cache_file
+        if caching > 0:
+           cache_file = cache_name(form)
+           if caching == 2:
+               cache_file = CACHEDIR+cache_file
+        else:
+           cache_file = ''
 
     
 

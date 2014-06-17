@@ -61,34 +61,34 @@ albedo =  [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
 
 sst = [5, 10, 15, 20, 25]
 
-for isst in range(0,5):
- for ico2 in range(0,7):
-   for ialb in range(0,6):
-     for iS0 in range(0,10):
-       for idays in range(0,6):
+for ico2 in range(0,7):
+  for ialb in range(0,6):
+    for iS0 in range(0,10):
+      for idays in range(0,6):
+        for isst in range(0,5):
 
 
-        # Change the parameters like this
-        jdata["days"] = str(days[idays])
-        jdata["co2"] = str(co2[ico2])
-        jdata["alpha"] = str(albedo[ialb])
-        jdata["S0"] = str(S0[iS0])
-        jdata["SSTi"] = str(sst[isst])
+         # Change the parameters like this
+         jdata["days"] = str(days[idays])
+         jdata["co2"] = str(co2[ico2])
+         jdata["alpha"] = str(albedo[ialb])
+         jdata["S0"] = str(S0[iS0])
+         jdata["SSTi"] = str(sst[isst])
 
-        print jdata
+         print jdata
 
-        data = urllib.urlencode(jdata)
-        req = urllib2.Request(form_url,data)
-        req.add_header("Content-type", "application/x-www-form-urlencoded")
+         data = urllib.urlencode(jdata)
+         req = urllib2.Request(form_url,data)
+         req.add_header("Content-type", "application/x-www-form-urlencoded")
     
-        try:
-          response = urllib2.urlopen(req)
-          print response.read()
-        except:
-          print 'received error! skipping this simulation and waiting 3 seconds'
-          time.sleep(60)
+         try:
+           response = urllib2.urlopen(req)
+           print response.read()
+         except:
+           print 'received error! skipping this simulation and waiting 3 seconds'
+           time.sleep(60)
     
-        time.sleep(15)
+         time.sleep(20)
 
 
 
