@@ -54,16 +54,16 @@ elif caching == 2:
 num_CPUs = multiprocessing.cpu_count()
 
 # Number of simultaneous model instances allowed
-num_threads = 4
+num_threads = 3
 
 # max time for any given simulation (seconds)
-max_simulation_time = 5*60
+max_simulation_time = 3*60
 
 # max queue length before we sacrifice the machine
-QMAX = 50
+QMAX = 20
 
 # Time between scheduled queue checks (seconds)
-T_Qcheck = 180
+T_Qcheck = 5*60
 
 # Verbosity of log (0,0.5,1,2)
 verbose = 0
@@ -215,6 +215,8 @@ def startup_tasks():
    current_time = time.localtime(time.time())
    the_day = int(time.strftime("%d",current_time))
 
+   background_tasks()
+
    # Monthly tasks
    if the_day ==1:
       # Pick a time in last month 
@@ -311,16 +313,17 @@ class model_daemon(multiprocessing.Process): ###################################
                LOG('run: run time: '+dirname+': '+str(run_time))
                if datadog: statsd.histogram('RC_model.run_time',run_time,tags=[IPid])
 
-            # Note that result is about to be cached
+               # Note that result is about to be cached
                with open(dirname+'/log.out', 'w') as f:
       	  	  f.write('cached')
 
-            # Send output to the cache
-            if cache_file != '':   # If no caching wanted then cache file should be set to null
-               if caching == 1:
-                  send_to_bucket(cache_file,dirname)
-               else:
-                  send_to_local_cache(cache_file,dirname)
+               # Send output to the cache
+               if cache_file != '':   # If no caching wanted then cache file should be set to null
+                  if caching == 1:
+                     send_to_bucket(cache_file,dirname)
+                  else:
+                     ret = send_to_local_cache(cache_file,dirname)
+                     if verbose > 1: LOG('cache send: '+ret)
 
             # send a signal to the queue that the job is done
             self.queue.task_done()
@@ -522,6 +525,7 @@ def submit_sim(form, path, queue,user): ########################################
         # Set name for cached storage of cached results
         if caching > 0:
            cache_file = cache_name(form)
+           if verbose > 1: LOG('cache file: '+cache_file)
            if caching == 2:
                cache_file = CACHEDIR+cache_file
         else:
@@ -539,6 +543,7 @@ def submit_sim(form, path, queue,user): ########################################
               retval = get_from_bucket(cache_file,dirname)
            else:
               retval = get_from_local_cache(cache_file,dirname)
+              if verbose > 1: LOG('cache get: '+str(retval))
 
            if retval == 0:
               os.system("touch "+dirname+"/*")
@@ -1081,11 +1086,6 @@ def check_queue_health():
 
 #--------------------
 
-#host = 'http://scripts.mit.edu'
-#host = '127.0.0.1'
-host = 'localhost'
-#PORT = 9004	# ichuang
-PORT = 8051	# marty
 
 def runserver(): ##################################################################################
 
@@ -1109,20 +1109,12 @@ def runserver(): ###############################################################
 	    t.start()
 
 
-        # Run some startup tasks
         # Run some startup tasks in background (delay by 10 seconds).
         threading.Timer(10,startup_tasks).start()
 
-        # run the background tasks
-        background_tasks()
-
-        # Write the queue status to a file
+        # Check the queue
         check_queue_health()
 
-        # Start server
-	#from wsgiref.simple_server import make_server
-	#srv = make_server(host, PORT, application)
-	#srv.serve_forever()
    
         # Use FastCGI to be compatible with Athena
         from flup.server.fcgi import WSGIServer

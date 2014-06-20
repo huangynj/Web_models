@@ -54,18 +54,18 @@ jdata = {
 
 # Start any looping here
 
-days = [500, 600, 700, 800, 900, 1000]
-co2 =  [50, 100, 200, 360, 500, 720, 1000] 
-S0 =  [1300, 1356, 1358, 1360, 1362, 1364, 1366, 1368, 1370, 1400] 
-albedo =  [0.1, 0.2, 0.3, 0.4, 0.5, 0.6] 
+days = [500, 1000]
+co2 =  [50, 100, 200, 360, 400, 2000, 4000] 
+S0 =  [1000, 1100, 1200,1300,1400, 1500] 
+albedo =  [0.2] 
 
-sst = [5, 10, 15, 20, 25]
+sst = [15]
 
 for ico2 in range(0,7):
-  for ialb in range(0,6):
-    for iS0 in range(0,10):
-      for idays in range(0,6):
-        for isst in range(0,5):
+  for ialb in range(0,1):
+    for iS0 in range(0,6):
+      for idays in range(0,2):
+        for isst in range(0,1):
 
 
          # Change the parameters like this
@@ -88,7 +88,7 @@ for ico2 in range(0,7):
            print 'received error! skipping this simulation and waiting 3 seconds'
            time.sleep(60)
     
-         time.sleep(20)
+         time.sleep(5)
 
 
 

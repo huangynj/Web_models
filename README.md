@@ -46,10 +46,6 @@ eaps-12340x web-interface models
     Written by Martin Singh based on MATLAB version developed y Kerry Emanuel
 
 
-    ### EBM ###
-
-    Plan to write a javascript version of the Bitz Energy balance model. Currently work in progress
-
 
     Directory Structure
     -------------------
