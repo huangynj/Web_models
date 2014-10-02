@@ -26,6 +26,15 @@ from plot_model_log import plot_model_log
 
 ### Parameters for the type of model setup ###
 
+### Contact method for problems ###
+
+# For athena model - email Martin Singh (or current maintainer)
+contact = 'email mssingh@mit.edu'
+
+# For EdX platform - use discussion forums
+#contact = 'post in the discussion thread titled ''Radiative-convective model issues'''
+
+
 ### Using datadog to send metircs? ###
 
 datadog = 0
@@ -233,7 +242,8 @@ def startup_tasks():
          subprocess.call(['mv',LOGFILE,report_file])
  
          # Start a new log file
-         LOG('=== Welcome to the month of '+the_month)    
+         LOG('=== Welcome to the month of '+the_month)
+         os.chmod(LOGFILE, 0755)
 
          # Make sure we don't lose any of this months logs
          lfile=open(LOGFILE,"a")
@@ -399,7 +409,7 @@ class model_daemon(multiprocessing.Process): ###################################
 
 
 	# Check that there is output
-        if ( not os.path.isfile(dirname+'/sounding.out') ):
+        if ( not os.path.isfile(dirname+'/profile.out') ):
 
                 if verbose > 0: LOG('Clean: model terminated by user or crashed')
                 try:
@@ -501,7 +511,7 @@ def submit_sim(form, path, queue,user): ########################################
                         json_output['html'] +="<p>If you leave the model idle for longer than 20 minutes its output may be cleaned up,"
                         json_output['html'] += "preventing you from restarting the model from the end of the simulation."
 
-                        json_output['alert']  ="Restart error: Cannot find previous output."
+                        json_output['alert']  ="Restart error: Cannot find previous output.   (Error code: NRESTRT)"
 			json_output['alert'] +="\nYour session has probably expired.\n\n"
                         json_output['alert'] +="If you leave the model idle for longer than 20 minutes its output may be cleaned up,"
                         json_output['alert'] +=" preventing you from restarting the model from the end of the simulation"
@@ -570,7 +580,8 @@ def submit_sim(form, path, queue,user): ########################################
                 json_output['html'] += ' </b> in the range <b> ['+err['min']+','+err['max']+'] </b><br>'
                 json_output['html'] += 'The value given was: <b>"'+err['value']+'"</b> <br> </html>'
 			
-		json_output['alert']  = "Input error: Invalid input for "+err['var']
+		json_output['alert']  = "Input error:    (Error code: INVPARAM) \n\n"
+                json_output['alert'] += "Invalid input for "+err['var']
                 json_output['alert'] += "\n\nInput should be of type: "
                 json_output['alert'] += err['type']+" in the range "+err['min']+" - "+err['max']
                 json_output['alert'] += "\nValue given was: "+err['value']
@@ -596,7 +607,8 @@ def submit_sim(form, path, queue,user): ########################################
                 json_output['html'] += ' </b> in the range <b> ['+err['min']+','+err['max']+'] </b><br>'
                 json_output['html'] += 'The value given was: <b>"'+err['value']+'"</b> <br> </html>'
 			
-		json_output['alert']  = "Input error: Invalid input for "+err['var']
+		json_output['alert']  = "Input error:    (Error code: INVSOUND) \n\n"
+		json_output['alert'] += "Invalid input for "+err['var']
                 json_output['alert'] += "\n\nInput should be of type: "
                 json_output['alert'] += err['type']+" in the range "+err['min']+" - "+err['max']
                 json_output['alert'] += "\nValue given was: "+err['value']
@@ -613,7 +625,8 @@ def submit_sim(form, path, queue,user): ########################################
        		json_output['html'] +='<p>There was a problem writing the required input files to the RC model. '
                 json_output['html'] +='Please go back and try running again. <\html>' 
 
-       		json_output['alert'] = 'Input error: Cannot find input files'
+       		json_output['alert'] = 'Input error:     (Error code: NINPUT) \n\n'
+                json_output['alert'] += 'Cannot find input files.'
        		json_output['alert'] +='\n\nThere was a problem writing the required input files to the RC model.'
                 json_output['alert'] +='Please go back and try running again. <\html>' 
 
@@ -643,7 +656,7 @@ def submit_sim(form, path, queue,user): ########################################
 
         except:
           json_output['html'] = '<br><br><br><center><h3>Model capacity has been reached</h3><br><br><h2>Please try again in a few minutes<h2></center><br>'
-          json_output['alert'] = 'Model capacity reached:\n\nThe model has reached its capacity and cannot handle more requests. Please wait a few minutes while extra capacity is added and try again.'
+          json_output['alert'] = 'Model capacity reached:     (Error code: QLONG)  \n\nThe model has reached its capacity and cannot handle more requests. Please wait a few minutes while extra capacity is added and try again.'
           
 
 
@@ -688,15 +701,19 @@ def enquire_sim(form,path,queue,user): #########################################
     else:		# Log does not exist model must have crashed
         model_status = 'undefined'
         json_output['status'] = 'undefined';
-        json_output['html']   = '<h2>Model Error</h2>';
-        json_output['html']  += 'The model has crashed. Click Run model to rerun the simulation.';
-        json_output['alert']  = 'Model Error.\n\n';
-        json_output['alert'] += 'The model has crashed.\n\n'
-        json_output['alert'] += 'Please try running the simulation again. If the error re-occurs, wait a few minutes, reload the page, and try again. If the problem still persists please post in the discussion forum titled "Radiative-convective model issues", including as much detail of the circumstances as possible.'
+        json_output['alert']  = 'Simulation crashed!    (Error code: NLOGU) \n\n' 
+        json_output['alert'] += 'The simulation you requested could not be completed. Possible reasons may be:\n'
+        json_output['alert'] += ' - The initial condition is too far from equilibrium. Try changing the initial SST.\n'
+        json_output['alert'] += ' - The parameters are too unrealistic. Try changing them to be closer to the defaults.\n\n'
+        json_output['alert'] += 'If the problem occurs with the default parameter set, wait a few minutes, reload the page, and try again.' 
+        json_output['alert'] += 'If the problem still persists please '+contact+' and include as much detail of the circumstances leading to the problem as possible.'
 
+        json_output['html'] = '<br><br><br><center><h3>Simulation could not be completed</h3><br><br>'
+        json_output['html'] += '<h2>click "Run model" to start again<h2></center><br>'
 
         if verbose > 0: LOG('>> Error: Fatal - '+dirname)
 
+        return json.dumps(json_output,indent=1)
 
     # Return the status to the client --------------------------------
 
@@ -784,7 +801,7 @@ def enquire_sim(form,path,queue,user): #########################################
 
         # Model timed out ~~~~~~~~~~~~~~~~~~
         elif model_status =='timeout':
-          json_output['alert']  = 'Simulation timed out\n\n ' 
+          json_output['alert']  = 'Simulation timed out    (Error code: TIMEOUT) \n\n ' 
           json_output['alert'] += 'The simulation you requested is taking too long.\n'
           json_output['alert'] += 'This may be because you have requested a job that is too intensive, or there is a problem with the server.\n'
           json_output['alert'] += 'Try shortening the length of the simulation and try again.'
@@ -796,10 +813,13 @@ def enquire_sim(form,path,queue,user): #########################################
 
         # Model crashed  ~~~~~~~~~~~~~~~~~~
         elif model_status.startswith('exit'):
-          json_output['alert']  = 'Simulation crashed!\n\n ' 
+          json_output['alert']  = 'Simulation crashed!    (Error code: CRASHEX) \n\n ' 
           json_output['alert'] += 'The simulation you requested could not be completed. Possible reasons may be:\n'
           json_output['alert'] += ' - The initial condition is too far from equilibrium. Try changing the initial SST.\n'
-          json_output['alert'] += ' - The parameters are too unrealistic. Try changing them to be closer to the defaults.'
+          json_output['alert'] += ' - The parameters are too unrealistic. Try changing them to be closer to the defaults.\n\n'
+          json_output['alert'] += 'If the problem occurs with the default parameter set, wait a few minutes, reload the page, and try again.' 
+          json_output['alert'] += 'If the problem still persists please '+contact+' and include as much detail of the circumstances leading to the problem as possible.'
+
           json_output['html'] = '<br><br><br><center><h3>Simulation could not be completed</h3><br><br>'
           json_output['html'] += '<h2>click "Run model" to start again<h2></center><br>'
 
