@@ -705,7 +705,7 @@ def enquire_sim(form,path,queue,user): #########################################
         json_output['alert'] += 'The simulation you requested could not be completed. Possible reasons may be:\n'
         json_output['alert'] += ' - The initial condition is too far from equilibrium. Try changing the initial SST.\n'
         json_output['alert'] += ' - The parameters are too unrealistic. Try changing them to be closer to the defaults.\n\n'
-        json_output['alert'] += 'If the problem occurs with the default parameter set, wait a few minutes, reload the page, and try again.' 
+        json_output['alert'] += 'If the problem occurs with the default parameter set, wait a few minutes, reload the page, and try again. ' 
         json_output['alert'] += 'If the problem still persists please '+contact+' and include as much detail of the circumstances leading to the problem as possible.'
 
         json_output['html'] = '<br><br><br><center><h3>Simulation could not be completed</h3><br><br>'
@@ -817,7 +817,7 @@ def enquire_sim(form,path,queue,user): #########################################
           json_output['alert'] += 'The simulation you requested could not be completed. Possible reasons may be:\n'
           json_output['alert'] += ' - The initial condition is too far from equilibrium. Try changing the initial SST.\n'
           json_output['alert'] += ' - The parameters are too unrealistic. Try changing them to be closer to the defaults.\n\n'
-          json_output['alert'] += 'If the problem occurs with the default parameter set, wait a few minutes, reload the page, and try again.' 
+          json_output['alert'] += 'If the problem occurs with the default parameter set, wait a few minutes, reload the page, and try again. ' 
           json_output['alert'] += 'If the problem still persists please '+contact+' and include as much detail of the circumstances leading to the problem as possible.'
 
           json_output['html'] = '<br><br><br><center><h3>Simulation could not be completed</h3><br><br>'
