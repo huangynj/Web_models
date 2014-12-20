@@ -28,7 +28,7 @@ eaps-12340x web-interface models
 
     To view the log files on the internet one must run a further command once the model has been invoked for a first time:
 
-    From the directory in whic hthe git repo resides type:
+    From the directory in which the git repo resides type:
 
     chmod 777 logs/*
     chmod 777 var/*
