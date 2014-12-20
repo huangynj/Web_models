@@ -55,6 +55,8 @@ if caching == 1:
 elif caching == 2:
    from local_cache_functions import send_to_local_cache,get_from_local_cache,cache_name
 
+### Use Gao IP to get country names of users (must have GeoIP.py and GeoIP.dat)
+GEOIP_TOOL = 1
 
 
 ### Parameters for server instance ###
@@ -78,6 +80,7 @@ T_Qcheck = 5*60
 verbose = 0
 
 ### Some directories we need ###
+
 
 # Directory where PID files and queue status are placed
 VARDIR     = "../../../var/"
@@ -108,13 +111,13 @@ model_exec = '../model/rc_web'
 # relative path to O3 input file
 O3in = '../model/O3.in'
 
+# text to use for defaul IP
+DEFAULT_USER = 'unknown'
 
 ### Setup server instance ###
 
 os.environ['MPLCONFIGDIR'] = TEMPDIR+'/'
 
-# Default user
-DEFAULT_USER = "unknown"
 
 
 # Make a queue to handle the model simulations
@@ -181,6 +184,7 @@ def LOG(x): ####################################################################
     fp.flush()
     fp.close()
 
+
 def background_tasks():
    """ Perform some tasks every so often """
    global count_submit
@@ -222,46 +226,51 @@ def startup_tasks():
    LOG('=== Running startup tasks')
 
    current_time = time.localtime(time.time())
+   the_month = time.strftime("%b",current_time)
    the_day = int(time.strftime("%d",current_time))
 
+   # Do the background tasks
    background_tasks()
 
-   # Monthly tasks
-   if the_day ==1:
-      # Pick a time in last month 
-      last_month = time.localtime(schedule_time-86400)
+   # Check if we need to move logfile output
+   with open(LOGFILE, 'r') as f:
+      line = f.readline()
 
-      # Figure out month and year strings
-      the_month = time.strftime("%b",last_month)
-      the_year = time.strftime("%Y",last_month)
-   
+   if the_month not in line:
+
+      # Get the month that the log file had its first entry
+      # This is dependent on the date format of the log file
+      # (More bad coding practices from MSS!)
+      log_month = line[4:7]
+      log_year = line[20:24]
+
       # move the log file
-      report_file = REPORTDIR+the_year+'_'+the_month+'_log.txt'
+      report_file = REPORTDIR+log_year+'_'+log_month+'_log.txt'
+      subprocess.call(['cp',LOGFILE,report_file])
 
-      if not os.path.isfile(file_path):
-         subprocess.call(['mv',LOGFILE,report_file])
- 
-         # Start a new log file
-         LOG('=== Welcome to the month of '+the_month)
-         os.chmod(LOGFILE, 0755)
+      # Remove all the data from the old log file 
+      # Do this so that the log file retains all its previous permissions (hopefully) 
+      lfile=open(LOGFILE,"w")
+      lfile.close()
 
-         # Make sure we don't lose any of this months logs
-         lfile=open(LOGFILE,"a")
-         rfile=open(report_file)
+      # Start a new log file
+      LOG('=== Welcome to the month of '+the_month)
+      #os.chmod(LOGFILE, 777)
 
-         for line in rfile:
-            if the_month in line:
-               lfile.write(line)
+      # Make sure we don't lose any of this months logs
+      rfile=open(report_file)
+         
+      for line in rfile:
+          if the_month in line:
+             lfile.write(line)
 
-         lfile.close()
-         rfile.close()
- 
 
-   # Clean the temp directory
-   ret = subprocess.call([TMPWATCH,'1',TEMPDIR+'/RCmod*'])
+      lfile.close()
+      rfile.close()
+      
 
    # Update the bar chart
-   plot_model_log(LOGFILE,REPORTDIR,the_day)
+   plot_model_log(LOGFILE,REPORTDIR,the_day,GEOIP_TOOL)
 
 
 
@@ -478,7 +487,7 @@ def submit_sim(form, path, queue,user): ########################################
         print "form=%s" % dict((k,form[k].value) for k in form)
         # Put some info in the LOG file -------------------------------
         days = form['days'].value
-        LOG('Submit simulation: %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
+        LOG('Submit simulation: user IP - %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
         if datadog: statsd.increment('RC_model.submit',tags=[IPid]); count_submit +=1
          
         
@@ -976,14 +985,17 @@ def application(env, start_response):
 
         tic = time.time()
 	
+        visitor_IP = DEFAULT_USER
+
 	method = env['REQUEST_METHOD']
 	path = env.get('PATH_INFO', '').lstrip('/')
+	try:
+           visitor_IP = env['REMOTE_ADDR']
+        except:
+           pass
+
 	data = None
 	
-	#sslcert = env.get('HTTP_SSL_CLIENT_S_DN','')	# username from SSL cert
-        user = DEFAULT_USER
-	#if sslcert:
-        #	user = sslcert.rsplit('emailAddress=',1)[-1]
 
         # Set the response to OK
         response = '200 OK'
@@ -992,7 +1004,7 @@ def application(env, start_response):
         if verbose > 1:	
 	   LOG('-' * 60)
 	   LOG(method)
-	   LOG('user = %s' % user)
+	   LOG('IP = %s' % visitor_IP)
 	   LOG('path = %s' % path)
 
         # set the response
@@ -1010,27 +1022,27 @@ def application(env, start_response):
 
              if "replot" in data: 	# Client is replotting some data
 
-                 ret = replot_sim(data,path,queue,user)
+                 ret = replot_sim(data,path,queue,visitor_IP)
 
              else: 			# Client is submitting a simulation to be run     
 
-                 ret = submit_sim(data,path,queue,user)
+                 ret = submit_sim(data,path,queue,visitor_IP)
 
 	else:					# GET method
 
              if "clean" in data: 	# Client wants to stop simulation and clean it up
-                 ret = clean_sim(data,path,queue,user)
+                 ret = clean_sim(data,path,queue,visitor_IP)
 
              elif "dirname" in data: 	# Client is asking for simulation progress  
-                 ret = enquire_sim(data,path,queue,user)
+                 ret = enquire_sim(data,path,queue,visitor_IP)
  
              elif "textfile" in data: 	# Client wants text data
-                 ret = get_textfile(data,path,queue,user)
+                 ret = get_textfile(data,path,queue,visitor_IP)
 
              elif "health" in data: 	# asking about health of queue
                  ret,response = get_health(path,queue)
              else:                 	# Client is asking for figure file
-                 ret = get_figurefile(data,path,queue,user)
+                 ret = get_figurefile(data,path,queue,visitor_IP)
 		
         if isinstance(ret, webobj):	# see mime.py
                 mime = ret.mime

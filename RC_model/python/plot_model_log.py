@@ -4,8 +4,12 @@ import time
 import matplotlib
 import pylab as mp
 import numpy as np
+from collections import Counter
 
-def plot_model_log(LOGFILE,REPORTDIR,day_num):
+def plot_model_log(LOGFILE,REPORTDIR,day_num,GeoIP_tool):
+
+   if GeoIP_tool:
+      import GeoIP
 
    # Width of the time windows to examine in seconds
    bin_width = 21600
@@ -13,19 +17,23 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
    # Find current time - subtract 3 hours since we will be running this just after midnight
    current_time = time.localtime(time.time())
 
-   # Get the beginning and end times of the month
+   # Get the beginning and end times of the month (This is very ugly, but can't be bothered fixing now)
    the_year = time.strftime("%Y",current_time)
    the_month = time.strftime("%m",current_time)
-
    time_beg_month = time.mktime(time.strptime(the_month+' '+the_year,"%m %Y"))
-   time_end_month = time.mktime(time.strptime(str(int(the_month)+1)+' '+the_year,"%m %Y"))
+   
+   next_month = time.strftime("%m",time.localtime(time_beg_month+33*86400)) # Gets next month
+   next_year = time.strftime("%Y",time.localtime(time_beg_month+33*86400)) # Gets next year
+   time_end_month = time.mktime(time.strptime(str(int(next_month))+' '+next_year,"%m %Y"))
 
+   # Name of the month we are in
    the_month = time.strftime("%b",time.localtime(time.time()))
 
    # Initialize the vectors
    time_vec = []      # vector of times of each call
    call_vec = []      # vector of type of call
    user_vec = []      # Vector of user names
+   country_vec = []   # Vector of countries if using GeoIP_tool
    submit_vec = []    # Vector of times of simulation submisssion
    error_vec = []     # Vector of times of error occurances
    wait_vec = []      # Vector of times when wait time was returned
@@ -106,15 +114,22 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
      # If the user is named put it in the user vector
      if len(the_rest) > 1:
         this_user = the_rest[1].strip()
-        if '@' in this_user:
+        if 'user' in this_user:
+           this_user = this_user.split()
+           this_user = this_user[3]
            user_vec.append(this_user)
- 
-
-
+              
 
 
    # Get the unique users
    user_list = list(set(user_vec))
+
+   if GeoIP_tool:
+      for user in user_list:
+         country_vec.append(GeoIP.country(user,'GeoIP.dat'))
+           
+      # Get the unique countries
+      countries = Counter(country_vec)
 
  
 
@@ -277,9 +292,25 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num):
    string = 'Updated: '+time.ctime(time.time())
    ax.text(1.025, -0.08, string, fontsize=12,transform=ax.transAxes)
 
+
+   if GeoIP_tool & len(countries) > 0:
+
+      # Now make the pie chart if using GeoIP
+      axP = mp.axes([0.83, 0.1, 0.12, 0.21])
+   
+
+      # The slices will be ordered and plotted counter-clockwise.
+      labels = countries.keys()
+      fracs = [int(i) for i in countries.values()]
+
+      mp.rcParams['font.size'] = 9
+      patches, texts, autotexts =  mp.pie(fracs, labels=labels,
+                                    autopct='%d %%', shadow=False, startangle=0)
+
+      mp.title('Users by Country',fontsize=10)
+
    hf = mp.savefig(REPORTDIR+the_year+'_'+the_month+'.png')
    hf = mp.savefig(REPORTDIR+'latest.png')
-
 
    mp.close(fig)
    return
