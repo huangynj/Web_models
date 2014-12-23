@@ -6,7 +6,17 @@ import pylab as mp
 import numpy as np
 from collections import Counter
 
-def plot_model_log(LOGFILE,REPORTDIR,day_num,GeoIP_tool):
+
+# Error code groups
+timeout = ('TIMEOUT','NLOGTIME')
+qlong   = ('QLONG')
+crash   = ('EXIT','CRASHEX','NLOGU','UNKNOWN_K','UNKNOWN_E')
+io      = ('INVPARAM','NINPUT','NPLOT','REQDIR','NPATH')
+
+
+
+
+def plot_model_log(LOGFILE,REPORTDIR,GeoIP_tool):
 
    if GeoIP_tool:
       import GeoIP
@@ -20,6 +30,7 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num,GeoIP_tool):
    # Get the beginning and end times of the month (This is very ugly, but can't be bothered fixing now)
    the_year = time.strftime("%Y",current_time)
    the_month = time.strftime("%m",current_time)
+   day_num = int(time.strftime("%d",current_time))
    time_beg_month = time.mktime(time.strptime(the_month+' '+the_year,"%m %Y"))
    
    next_month = time.strftime("%m",time.localtime(time_beg_month+33*86400)) # Gets next month
@@ -35,13 +46,16 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num,GeoIP_tool):
    user_vec = []      # Vector of user names
    country_vec = []   # Vector of countries if using GeoIP_tool
    submit_vec = []    # Vector of times of simulation submisssion
-   error_vec = []     # Vector of times of error occurances
    wait_vec = []      # Vector of times when wait time was returned
    wait_times = []    # Vector of wait times
    run_times = []     # Vector of run times
    run_vec = []       # Vector of times when run time was returned
    stop_vec = []      # Vector of user stopped sims
+   error_vec = []     # Vector of times of error occurances
    timeout_vec = []   # Vector of timeouts
+   crash_vec = []     # Vector of crashes
+   io_vec = []        # Vector of io errors
+   qlong_vec = []     # Vector of queue length violations
    success_vec = []   # Vector of succesful sims
    cache_vec = []     # Vector of cache returns
 
@@ -63,13 +77,18 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num,GeoIP_tool):
 
      # Call type
      call_type = the_rest[0].strip()
-
      if call_type == '>> Error':
+        error_vec.append(time_vec[-1])
         call_vec.append(-1)
-        if the_rest[1].startswith('Timeout'):
+        err_code = the_rest[-1]
+        if err_code.startswith(timeout) :
            timeout_vec.append(time_vec[-1])
-        else:
-           error_vec.append(time_vec[-1])
+        elif err_code.startswith(qlong) :
+           qlong_vec.append(time_vec[-1])
+        elif err_code.startswith(crash) :
+           crash_vec.append(time_vec[-1])
+        elif err_code.startswith(io) :
+           io_vec.append(time_vec[-1])
      elif call_type.startswith('Enquire'):
         call_vec.append(0)
      elif call_type.startswith('Submit'):
@@ -118,7 +137,6 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num,GeoIP_tool):
            this_user = this_user.split()
            this_user = this_user[3]
            user_vec.append(this_user)
-              
 
 
    # Get the unique users
@@ -265,35 +283,64 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num,GeoIP_tool):
    # -----------------------------
 
    #mp.setp(xticknames, rotation=90, fontsize=10)
-   string = 'Total submissions: '+str(len(submit_vec))
+   string = 'Total submissions: '
    ax.text(1.025, 0.75, string, fontsize=15,transform=ax.transAxes)
+   string = '{:>8}'.format(str(len(submit_vec)))
+   ax.text(1.2, 0.75, string, fontsize=15,transform=ax.transAxes)
 
-   string = 'Successful: '+str(len(success_vec))
-   ax.text(1.025, 0.65, string, fontsize=15,transform=ax.transAxes)
+   string = 'Successful: '
+   ax.text(1.045, 0.62, string, fontsize=15,transform=ax.transAxes)
+   string = '{:>8}'.format(str(len(success_vec)))
+   ax.text(1.2, 0.62, string, fontsize=15,transform=ax.transAxes)
 
-   string = 'Cached: '+str(len(cache_vec))
-   ax.text(1.025, 0.55, string, fontsize=15,transform=ax.transAxes)
+   string = 'Cached: '
+   ax.text(1.045, 0.51, string, fontsize=15,transform=ax.transAxes)
+   string = '{:>8}'.format(str(len(cache_vec)))
+   ax.text(1.2, 0.51, string, fontsize=15,transform=ax.transAxes)
 
-   string = 'Stopped by user: '+str(len(stop_vec))
-   ax.text(1.025, 0.45, string, fontsize=15,transform=ax.transAxes)
+   string = 'Stopped by user: '
+   ax.text(1.045, 0.40, string, fontsize=15,transform=ax.transAxes)
+   string = '{:>8}'.format(str(len(stop_vec)))
+   ax.text(1.2, 0.40, string, fontsize=15,transform=ax.transAxes)
 
-   string = 'Timeouts: '+str(len(timeout_vec))
-   ax.text(1.025, 0.35, string, fontsize=15,transform=ax.transAxes)
+   string = 'Total Errors: '
+   ax.text(1.025, 0.22, string, fontsize=15,transform=ax.transAxes)
+   string = '{:>8}'.format(str(len(error_vec)))
+   ax.text(1.2, 0.22, string, fontsize=15,transform=ax.transAxes)
 
-   string = 'Errors: '+str(len(error_vec))
-   ax.text(1.025, 0.25, string, fontsize=15,transform=ax.transAxes)
+   string = 'Crashes: '
+   ax.text(1.045, 0.09, string, fontsize=15,transform=ax.transAxes)
+   string = '{:>8}'.format(str(len(crash_vec)))
+   ax.text(1.2, 0.09, string, fontsize=15,transform=ax.transAxes)
 
-   string = 'Total Users: '+str(len(user_list))
-   ax.text(1.025, 0.15, string, fontsize=15,transform=ax.transAxes)
+   string = 'Timeouts: '
+   ax.text(1.045, -0.02, string, fontsize=15,transform=ax.transAxes)
+   string = '{:>8}'.format(str(len(timeout_vec)))
+   ax.text(1.2, -0.02, string, fontsize=15,transform=ax.transAxes)
 
-   string = 'All times in Boston local time'
-   ax.text(1.025, 0.0, string, fontsize=12,transform=ax.transAxes)
+   string = 'Queue too long: '
+   ax.text(1.045, -0.13, string, fontsize=15,transform=ax.transAxes)
+   string = '{:>8}'.format(str(len(qlong_vec)))
+   ax.text(1.2, -0.13, string, fontsize=15,transform=ax.transAxes)
+
+   string = 'I/O errors: '
+   ax.text(1.045, -0.24, string, fontsize=15,transform=ax.transAxes)
+   string = '{:>8}'.format(str(len(io_vec)))
+   ax.text(1.2, -0.24, string, fontsize=15,transform=ax.transAxes)
+
+
+   string = 'Total Users: '
+   ax.text(1.025, -0.42, string, fontsize=15,transform=ax.transAxes)
+   string = '{:>8}'.format(str(len(user_list)))
+   ax.text(1.2, -0.42, string, fontsize=15,transform=ax.transAxes)
+
+   string = 'All times local to Boston, MA, USA.'
+   ax.text(1.025, -0.65, string, fontsize=12,transform=ax.transAxes)
 
    string = 'Updated: '+time.ctime(time.time())
-   ax.text(1.025, -0.08, string, fontsize=12,transform=ax.transAxes)
+   ax.text(1.025, -0.73, string, fontsize=12,transform=ax.transAxes)
 
-
-   if GeoIP_tool & len(countries) > 0:
+   if GeoIP_tool and len(countries) > 0:
 
       # Now make the pie chart if using GeoIP
       axP = mp.axes([0.83, 0.1, 0.12, 0.21])
@@ -313,4 +360,5 @@ def plot_model_log(LOGFILE,REPORTDIR,day_num,GeoIP_tool):
    hf = mp.savefig(REPORTDIR+'latest.png')
 
    mp.close(fig)
+
    return

@@ -42,6 +42,10 @@ datadog = 0
 if datadog:
    from statsd import statsd
 
+### Do a set of tasks once per day, or only on startup? ###
+daily_tasks = 0
+
+
 ### Caching ###
 
 caching = 2;    # 0: No caching - just run model for each new simulation
@@ -78,6 +82,35 @@ T_Qcheck = 5*60
 
 # Verbosity of log (0,0.5,1,2)
 verbose = 0
+
+### Error codes: ###
+
+# EXCESSIVE LOAD ERRORS
+#   'TIMEOUT'		Occurs when max_simulation_time is exceeded.
+#   'NLOGTIME'		Occurs when max_simulation_time is exceeded and there is not log file left over.
+#   'QLONG'		Occurs when the length of the queue exceeds QMAX, model is not able to be submitted.
+
+# MODEL CRASH ERRORS
+#   'EXIT##'		Occurs when model exits with a code > 0, ## is replaced by the error code.
+#   'CRASHEX'		Occurs when model crashes with exit code, should happen along with above code.
+#   'NLOGU'		Occurs when simulation crashes, but no exit code is given.
+#   'UNKNOWN_K'		Occurs when model crashes because unusual kill signal is sent.
+#   'UNKNOWN_E'		Occurs when unknown fatal error occurs; no other error handling caught the error.
+
+# INPUT ERRORS
+#   'INVPARAM'		Occurs when invald parameters are specified. Should not happen with standard form input.
+#   'NINPUT'		Occurs when the input files are not created or corrupt.
+
+# OUTPUT ERRORS
+#   'NPLOT'		Occurs when there is an error in creating or retreiving the plot.
+#   'REQDIR'		Occurs when path to figure file is a directory.
+#   'NPATH'		Occurs when figure file does not exist.
+
+# IDLING ERRORS
+#   'NRESTRT'		Occurs when user asks for a restart, but there is no restart file.
+
+
+
 
 ### Some directories we need ###
 
@@ -223,7 +256,7 @@ def background_tasks():
 def startup_tasks():
    """ Perform the daily scheduled tasks"""
 
-   LOG('=== Running startup tasks')
+   LOG('=== Running startup/daily tasks')
 
    current_time = time.localtime(time.time())
    the_month = time.strftime("%b",current_time)
@@ -270,8 +303,10 @@ def startup_tasks():
       
 
    # Update the bar chart
-   plot_model_log(LOGFILE,REPORTDIR,the_day,GEOIP_TOOL)
+   plot_model_log(LOGFILE,REPORTDIR,GEOIP_TOOL)
 
+   if daily_tasks:
+      schedule_daily_tasks
 
 
 def schedule_daily_tasks():
@@ -282,8 +317,7 @@ def schedule_daily_tasks():
    the_day = int(time.strftime("%d",current_time))
 
    schedule_time = time.mktime(time.strptime(the_date,"%Y %m %d"))+86400+3600
-   #schedule_time = time.time()+7
-   threading.Timer(schedule_time-time.time(), daily_tasks, [the_day,schedule_time]).start()
+   threading.Timer(schedule_time-time.time(), startup_tasks, [the_day,schedule_time]).start()
 
 
 
@@ -390,22 +424,22 @@ class model_daemon(multiprocessing.Process): ###################################
                   with open(dirname+'/log.out', 'w') as f:
                      f.write('timeout')
                except:
-                  LOG('>> Error: Missing log file on timeout - '+dirname)
-                  if datadog: statsd.increment('RC_model.error',tags=[IPid,'logfilemissing']); count_error +=1
+                  LOG('>> Error: Timeout - '+dirname+': NLOGTIME')
+                  if datadog: statsd.increment('RC_model.error',tags=[IPid,'NLOGTIME']); count_error +=1
  
                return return_code
 
            elif run_obj.returncode > 0:
 
                LOG('run: Model exit with code '+str(run_obj.returncode)+' - '+dirname)
-               if datadog: statsd.increment('RC_model.error',tags=[IPid,'exit:'+str(run_obj.returncode)]); count_error +=1
+               if datadog: statsd.increment('RC_model.error',tags=[IPid,'EXIT'+str(run_obj.returncode)]); count_error +=1
+               LOG('>> Error: Exitcode - '+dirname+': EXIT'+str(run_obj.returncode))
                try:
                   with open(dirname+'/log.out', 'w') as f:
                      f.write('exit '+str(run_obj.returncode))
                except:
-                  LOG('>> Error: Missing log file on crash - '+dirname)
-                  if datadog: statsd.increment('RC_model.error',tags=[IPid,'logfilemissing']); count_error +=1
-              
+                  pass
+ 
                return return_code
 
  
@@ -484,7 +518,9 @@ def submit_sim(form, path, queue,user): ########################################
         '''
         This function submits a simulation to be run.
         '''
+
         print "form=%s" % dict((k,form[k].value) for k in form)
+
         # Put some info in the LOG file -------------------------------
         days = form['days'].value
         LOG('Submit simulation: user IP - %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
@@ -525,6 +561,9 @@ def submit_sim(form, path, queue,user): ########################################
                         json_output['alert'] +="If you leave the model idle for longer than 20 minutes its output may be cleaned up,"
                         json_output['alert'] +=" preventing you from restarting the model from the end of the simulation"
 
+		        LOG('>> Error: Restart error - '+dirname+': NRESTRT') 
+		        if datadog: statsd.increment('RC_model.error',tags=[IPid,user,'NRESTRT'])
+
 			return json.dumps(json_output,indent=1)
 
        		else:
@@ -551,7 +590,7 @@ def submit_sim(form, path, queue,user): ########################################
            cache_file = ''
 
     
-
+        # Do not cache if a restart, if surface is non-interactive, or if caching is turned off
         if 'restart' in form or 'surf_int' in form or caching == 0:
             cache_file = ''
 
@@ -595,7 +634,8 @@ def submit_sim(form, path, queue,user): ########################################
                 json_output['alert'] += err['type']+" in the range "+err['min']+" - "+err['max']
                 json_output['alert'] += "\nValue given was: "+err['value']
 
-                if verbose > 0: LOG('>> Error: Input error - '+dirname)
+                LOG('>> Error: Input error - '+dirname+': INVPARAM')
+		if datadog: statsd.increment('RC_model.error',tags=[IPid,user,'INVPARAM']); count_error +=1
                 if verbose > 1:
                    LOG('>> Var:  '+err['var'])
                    LOG('>> Type: '+err['type'])
@@ -622,7 +662,8 @@ def submit_sim(form, path, queue,user): ########################################
                 json_output['alert'] += err['type']+" in the range "+err['min']+" - "+err['max']
                 json_output['alert'] += "\nValue given was: "+err['value']
 
-                if verbose > 0: LOG('>> Error: Fatal - '+dirname)
+                LOG('>> Error: Input error - '+dirname+': INVPARAM')
+		if datadog: statsd.increment('RC_model.error',tags=[IPid,user,'INVPARAM']); count_error +=1
                 return json.dumps(json_output,indent=1)
 
 
@@ -639,8 +680,8 @@ def submit_sim(form, path, queue,user): ########################################
        		json_output['alert'] +='\n\nThere was a problem writing the required input files to the RC model.'
                 json_output['alert'] +='Please go back and try running again. <\html>' 
 
-                LOG('>> Error: Could not create input file')
-                if datadog: statsd.increment('RC_model.error',tags=[IPid,'createinputfile']); count_error +=1
+                LOG('>> Error: Input error - '+dirname+': NINPUT')
+                if datadog: statsd.increment('RC_model.error',tags=[IPid,user,'NINPUT']); count_error +=1
 		return json.dumps(json_output,indent=1)
         
 
@@ -656,7 +697,7 @@ def submit_sim(form, path, queue,user): ########################################
         # Put in queue 
         queued_jobs[dirname] = 'run' 
         queue_order.append(dirname)
-        if datadog: statsd.increment('submission')
+        if datadog: statsd.increment('submission',tags=[IPid,user,'QLONG']); count_submit += 1
         submit_time = time.time()
 
         try:
@@ -666,6 +707,8 @@ def submit_sim(form, path, queue,user): ########################################
         except:
           json_output['html'] = '<br><br><br><center><h3>Model capacity has been reached</h3><br><br><h2>Please try again in a few minutes<h2></center><br>'
           json_output['alert'] = 'Model capacity reached:     (Error code: QLONG)  \n\nThe model has reached its capacity and cannot handle more requests. Please wait a few minutes while extra capacity is added and try again.'
+          LOG('>> Error: Queue length - '+dirname+': QLONG')
+          if datadog: statsd.increment('RC_model.error',tags=[IPid,user,'QLONG']); count_error +=1
           
 
 
@@ -720,7 +763,8 @@ def enquire_sim(form,path,queue,user): #########################################
         json_output['html'] = '<br><br><br><center><h3>Simulation could not be completed</h3><br><br>'
         json_output['html'] += '<h2>click "Run model" to start again<h2></center><br>'
 
-        if verbose > 0: LOG('>> Error: Fatal - '+dirname)
+        LOG('>> Error: Fatal - '+dirname+': NLOGU')
+        if datadog: statsd.increment('RC_model.error',tags=[IPid,user,'NLOGU']); count_error +=1
 
         return json.dumps(json_output,indent=1)
 
@@ -757,8 +801,11 @@ def enquire_sim(form,path,queue,user): #########################################
         	image_code =  "<img id=plot src=../../temp/"+fig_file.replace(TEMPDIR,'')+" alt=\"RC model output\" width=\"600\" height=\"450\" />"
 	   else:
         	image_code =  '<html><h2>Plotting error</h2>'
-                image_code += '<p>There was an error in creating the plot you asked for. <br>'
+                image_code += '<p>There was an error (CODE: NPLOT) in creating the plot you asked for. <br>'
                 image_code += 'You can try plotting something else, or rerun the simulation.'
+        
+                LOG('>> Error: Plotting - '+dirname+': NPLOT')
+                if datadog: statsd.increment('RC_model.error',tags=[IPid,user,'NPLOT']); count_error +=1
        
 
            # Read some key numbers and from the output files
@@ -801,7 +848,7 @@ def enquire_sim(form,path,queue,user): #########################################
 
            # Log that model completed succesfully
            LOG('run: success: '+dirname)
-           if datadog: statsd.increment('RC_model.complete',tags=[IPid]); count_complete +=1
+           if datadog: statsd.increment('RC_model.complete',tags=[IPid,user]); count_complete +=1
  
 	   # print the html to file
 	   json_output['html'] =  html_file
@@ -817,8 +864,8 @@ def enquire_sim(form,path,queue,user): #########################################
           json_output['html'] = '<br><br><br><center><h3>Simulation timed out</h3><br><br>'
           json_output['html'] += '<h2>click "Run model" to start again<h2></center><br>'
 
-          LOG('>> Error: Timeout - '+dirname)
-          if datadog: statsd.increment('RC_model.error',tags=[IPid,'timeout']); count_error +=1
+          LOG('>> Error: Timeout - '+dirname+': TIMEOUT')
+          if datadog: statsd.increment('RC_model.error',tags=[IPid,user,'TIMEOUT']); count_error +=1
 
         # Model crashed  ~~~~~~~~~~~~~~~~~~
         elif model_status.startswith('exit'):
@@ -832,15 +879,18 @@ def enquire_sim(form,path,queue,user): #########################################
           json_output['html'] = '<br><br><br><center><h3>Simulation could not be completed</h3><br><br>'
           json_output['html'] += '<h2>click "Run model" to start again<h2></center><br>'
 
-          if verbose > 0: LOG('>> Error: Crash - '+dirname)
+          LOG('>> Error: Crash - '+dirname+': CRASHEX')
+          if datadog: statsd.increment('RC_model.error',tags=[IPid,user,'CRASHEX']); count_error +=1
         # Something else happened ~~~~~~~~~~~
         elif model_status =='kill':
           json_output['html'] = '<br><br><br><center><h3>Unknown fatal error occured</h3><br><br>'
-          if verbose > 0: LOG('>> Error: Fatal - '+dirname)
+          LOG('>> Error: Fatal - '+dirname+': UNKNOWN_K')
+          if datadog: statsd.increment('RC_model.error',tags=[IPid,user,'UNKNOWN_K']); count_error +=1
  
         else: 
           json_output['html'] = '<br><br><br><center><h3>Unknown fatal error occured</h3><br><br>'
-          if verbose > 0: LOG('>> Error: Fatal - '+dirname)
+          LOG('>> Error: Fatal - '+dirname+': UNKNOWN_E')
+          if datadog: statsd.increment('RC_model.error',tags=[IPid,user,'UNKNOWN_E']); count_error +=1
  
     
     return json.dumps(json_output,indent=1)
@@ -968,10 +1018,15 @@ def get_figurefile(form,path,queue,user): ######################################
     if os.path.exists(path):
        if path.endswith('png'):
           return PNG(open(path).read())
+       elif os.path.isdir(path):
+          return 'Error in request'
+          LOG('>> Error: No output - '+path+': REQDIR')
+          if datadog: statsd.increment('RC_model.error',tags=[IPid,user,'REQDIR']); count_error +=1
        else:
           return HTML(open(path).read())
 
-    if verbose > 0: LOG('>> Error: Cannot find requested output - '+path)
+    LOG('>> Error: No output - '+path+': NPATH')
+    if datadog: statsd.increment('RC_model.error',tags=[IPid,user,'NPATH']); count_error +=1
     return 'Cannot find requested output'
 
 
@@ -996,7 +1051,6 @@ def application(env, start_response):
 
 	data = None
 	
-
         # Set the response to OK
         response = '200 OK'
         
@@ -1013,12 +1067,22 @@ def application(env, start_response):
         # Get the data from the request
 	data = cgi.FieldStorage(fp=env['wsgi.input'], environ=env.copy(), keep_blank_values=True)
 
+
         if verbose > 1:
            LOG("form=%s" % dict((k,data[k].value) for k in data))
 
-
         # Decide what client is asking for ########################################
-	if method=='POST': 			# POST method
+
+        if not data:
+	   path  = '\n\n\n'
+           path +='**************** Welcome to the RC model ****************\n\n'
+           path +='This message should appear if you run "run_rc_model.wsgi" from the terminal.\n'
+           path +="If it appears in any other circumstance it is a result of an http request error.\n"
+           path +="Please "+contact+" if this happens repeatedly.\n\n"
+           path +="**********************************************************\n\n\n"
+           ret = path
+
+	elif method=='POST': 			# POST method
 
              if "replot" in data: 	# Client is replotting some data
 
@@ -1043,6 +1107,7 @@ def application(env, start_response):
                  ret,response = get_health(path,queue)
              else:                 	# Client is asking for figure file
                  ret = get_figurefile(data,path,queue,visitor_IP)
+                    
 		
         if isinstance(ret, webobj):	# see mime.py
                 mime = ret.mime
@@ -1056,7 +1121,7 @@ def application(env, start_response):
 
         if verbose > 1: LOG("done at %s" % time.ctime(time.time()))
 
-        if verbose > 0.7: LOG("=== time taken: "+str((time.time()-tic)*1000)+" ms")
+        if verbose > 1: LOG("=== time taken: "+str((time.time()-tic)*1000)+" ms")
  
         # Send the IP address if sending a json object
         try:
