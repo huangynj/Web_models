@@ -17,7 +17,7 @@ import socket
 import sys
 
 # Modules specific to RC model
-from mime import *
+from mime           import *
 from write_input    import write_params_in,write_sounding_in
 from postprocess    import output_control, get_output
 from plot_model_log import plot_model_log
@@ -144,13 +144,12 @@ model_exec = '../model/rc_web'
 # relative path to O3 input file
 O3in = '../model/O3.in'
 
-# text to use for defaul IP
+# text to use for default IP
 DEFAULT_USER = 'unknown'
 
 ### Setup server instance ###
 
 os.environ['MPLCONFIGDIR'] = TEMPDIR+'/'
-
 
 
 # Make a queue to handle the model simulations

@@ -11,7 +11,7 @@ from collections import Counter
 timeout = ('TIMEOUT','NLOGTIME')
 qlong   = ('QLONG')
 crash   = ('EXIT','CRASHEX','NLOGU','UNKNOWN_K','UNKNOWN_E')
-io      = ('INVPARAM','NINPUT','NPLOT','REQDIR','NPATH')
+io      = ('INVPARAM','NINPUT','NPLOT','REQDIR','NPATH','NRESTRT')
 
 
 
