@@ -291,6 +291,7 @@ def startup_tasks():
 
       # Make sure we don't lose any of this months logs
       rfile=open(report_file)
+      lfile=open(LOGFILE)
          
       for line in rfile:
           if the_month in line:
