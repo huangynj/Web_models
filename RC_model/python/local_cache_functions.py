@@ -54,11 +54,24 @@ def get_from_local_cache(cache_dir,dirname):
 def cache_name(form):
 # Construct a file name for sending to the S3 bucket
 
-   if 'restart' in form or 'surf_int' in form:
+   keys_list = ['days','time_step','avg_time','graph_time','rad_type','month','day','hour','rad_freq','rad_wv','rad_cld','S0','theta','co2','ch4','n2o','cfc11','cfc12','dry_conv','moist_conv','turb_flux','water_frac','ugust','ml_depth','alpha','w_cubic','w_max','w_T','w_top','w_bot','w_p','p_pbl','SSTi']
+
+   # Don't cache if:
+   dont_cache = 0
+
+   if 'restart'     in form: 			dont_cache = 1	# This is a restart
+   if 'surf_int'    in form: 			dont_cache = 1	# The surface temperature is fixed
+   if 'calc_albedo' in form:			dont_cache = 1 	# aledo is calculated
+   if 'forcing_opt' in form:			dont_cache = 1	# We are running with forcing
+   if form["time_step"].value   != '10':	dont_cache = 1  # time step is different from 10 minutes
+   if form["cfc11"].value       != '280.0':	dont_cache = 1  # cfc11 concentration is different from default
+   if form["cfc12"].value       != '484.0':	dont_cache = 1  # cfc12 concentration is different from default
+   if form["avg_time"].value    != '25':	dont_cache = 1  # avg time is different from 25 days
+   if form["graph_time"].value  != '6':		dont_cache = 1  # graph time is different from 6 hours
+
+   if dont_cache == 1:
        name = ''
        return str(name)
-
-   keys_list = ['days','time_step','avg_time','graph_time','rad_type','month','day','hour','rad_freq','rad_wv','rad_cld','S0','theta','co2','ch4','n2o','cfc11','cfc12','dry_conv','moist_conv','turb_flux','water_frac','ugust','ml_depth','alpha','w_cubic','w_max','w_T','w_top','w_bot','w_p','p_pbl','SSTi']
 
    # Eventually will need to use /data partition as well
    # currently does not work due to permissions problem
@@ -86,14 +99,10 @@ def cache_name(form):
         keyval   = 'y' if "calc_albedo" in form else 'n'
       elif key == 'w_cubic':
         keyval   = 'y' if "w_cubic" in form else 'n'
-      elif key == 'wtg':
-         keyval  = 'y' if "wtg" in form else 'n'
       else:
          keyval = form[key].value
       
  
-      if key == 'hour' and abs(float(keyval))<0.1:
-         keyval = '0.0'
          
       name += '/'+key+'-' 
       name += keyval 

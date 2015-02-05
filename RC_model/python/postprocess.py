@@ -235,6 +235,17 @@ def get_output(filename):
 
 	return outvar
 
+def get_avgtime(filename):
+
+
+        for row in open(filename,'rt'):
+		#print row
+		row_data = [x for x in row.split()]
+                if 'Composite' in row_data:
+   		   outvar = row_data[0]
+	           return outvar
+
+        return '0'
 
 def plot_timeseries(x,y,ylab,tit):
 

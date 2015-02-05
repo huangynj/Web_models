@@ -19,7 +19,7 @@ import sys
 # Modules specific to RC model
 from mime           import *
 from write_input    import write_params_in,write_sounding_in
-from postprocess    import output_control, get_output
+from postprocess    import output_control, get_output, get_avgtime
 from plot_model_log import plot_model_log
 
 # Initial setup  ###################################################################################
@@ -519,15 +519,18 @@ def submit_sim(form, path, queue,user): ########################################
         This function submits a simulation to be run.
         '''
 
+
         print "form=%s" % dict((k,form[k].value) for k in form)
+
+        # Round the form inputs to help with caching
+        form = round_form(form)
 
         # Put some info in the LOG file -------------------------------
         days = form['days'].value
         LOG('Submit simulation: user IP - %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
         if datadog: statsd.increment('RC_model.submit',tags=[IPid]); count_submit +=1
-         
-        
-        if verbose > 1: LOG("form: %s" % dict((k,form[k].value) for k in form))
+
+        if verbose == 0: LOG("form: %s" % dict((k,form[k].value) for k in form))
 
         # Initialize JSON output structure ----------------------------
         json_output = {}
@@ -583,16 +586,13 @@ def submit_sim(form, path, queue,user): ########################################
         # Set name for cached storage of cached results
         if caching > 0:
            cache_file = cache_name(form)
-           if verbose > 1: LOG('cache file: '+cache_file)
+           if verbose ==0: LOG('cache file: '+cache_file)
            if caching == 2:
                cache_file = CACHEDIR+cache_file
         else:
            cache_file = ''
 
-    
-        # Do not cache if a restart, if surface is non-interactive, or if caching is turned off
-        if 'restart' in form or 'surf_int' in form or caching == 0:
-            cache_file = ''
+
 
         # Attempt to obtain output from cache
         if cache_file != '':
@@ -612,14 +612,11 @@ def submit_sim(form, path, queue,user): ########################################
               LOG('run: Returning cached result')
               if datadog: statsd.increment('RC_model.cached',tags=[IPid]); count_cache +=1
               return json.dumps(json_output,indent=1)
-
         
 	# Write inputs for model ------------------------------
-        
         # write the 'params.in' file
         err = write_params_in(form,dirname)
-        
-        
+
         # If server-side form validation failed write error
         if err['err'] == 'fatal':
                 json_output['html']  = '<html><h2>Input error</h2>'
@@ -816,6 +813,8 @@ def enquire_sim(form,path,queue,user): #########################################
            table_vals.extend(get_output(dirname+'/shfbar.out'))
            table_vals.extend(get_output(dirname+'/sstbar.out'))
 
+           avgtime = get_avgtime(dirname+'/params.in')
+
 
            
            # Read the replotting form html
@@ -841,6 +840,8 @@ def enquire_sim(form,path,queue,user): #########################################
 	   html_file = html_file.replace('#SHSFC#',"%7.1f" % float(table_vals[6][0]))
 	   html_file = html_file.replace('#LHSFC#',"%7.1f" % float(table_vals[7][0]))
 	   html_file = html_file.replace('##SST##',"%7.1f" % float(table_vals[8][0]))
+
+	   html_file = html_file.replace('##AVGTIME##',"%s" % avgtime)
         
            # Make sure the new form knows where the output lives so we can restart
 	   html_file = html_file.replace('dirname" value="','dirname" value="'+dirname)
@@ -963,6 +964,33 @@ def clean_sim(form,path,queue,user): ###########################################
 
 
     return json.dumps(json_output,indent=1)
+
+
+def round_form(form): ##############################################################
+
+   form["time_step"].value  = str("%.0f" % float(form["time_step"].value))
+   form["avg_time"].value   = str("%.0f" % float(form["avg_time"].value))
+   form["graph_time"].value = str("%.0f" % float(form["graph_time"].value))
+   form["hour"].value       = str("%.1f" % float(form["hour"].value))
+   form["S0"].value         = str("%.0f" % float(form["S0"].value))
+   form["theta"].value      = str("%.0f" % float(form["theta"].value))
+   form["co2"].value        = str("%.0f" % float(form["co2"].value))
+   form["ch4"].value        = str("%.1f" % float(form["ch4"].value))
+   form["n2o"].value        = str("%.0f" % float(form["n2o"].value))
+   form["cfc11"].value      = str("%.1f" % float(form["cfc11"].value))
+   form["cfc12"].value      = str("%.1f" % float(form["cfc12"].value))
+   form["ugust"].value      = str("%.0f" % float(form["ugust"].value))
+   form["ml_depth"].value   = str("%.1f" % float(form["ml_depth"].value))
+   form["water_frac"].value = str("%.1f" % float(form["water_frac"].value))
+   form["w_max"].value      = str("%.1f" % float(form["w_max"].value))
+   form["w_T"].value        = str("%.0f" % float(form["w_T"].value))
+   form["w_top"].value      = str("%.0f" % float(form["w_top"].value))
+   form["w_bot"].value      = str("%.0f" % float(form["w_bot"].value))
+   form["w_p"].value        = str("%.1f" % float(form["w_p"].value))
+   form["p_pbl"].value      = str("%.0f" % float(form["p_pbl"].value))
+   form["SSTi"].value       = str("%.0f" % float(form["SSTi"].value))
+
+   return form
 
 def get_health(path, queue): ##############################################################
 ### Function called when client asks for health of queue ###
@@ -1105,6 +1133,11 @@ def application(env, start_response):
 
              elif "health" in data: 	# asking about health of queue
                  ret,response = get_health(path,queue)
+             elif "daily_tasks" in data: # ping with this to run daily tasks
+                 startup_tasks()
+                 ret = "running startup tasks"
+             elif "wakeup" in data: # ping with this to run daily tasks
+                 ret = "wake up call"
              else:                 	# Client is asking for figure file
                  ret = get_figurefile(data,path,queue,visitor_IP)
                     

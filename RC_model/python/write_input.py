@@ -44,13 +44,13 @@ def write_params_in(form,dirname):
 	# Atmospheric composition
 	co2      = form["co2"].value;  		  err = input_error('CO2 concentration',co2,'float',1,10000);
         if err['err'] == 'fatal': return err
-	ch4      = form["ch4"].value;  		  err = input_error('CH4 concentration',co2,'float',1,10000);
+	ch4      = form["ch4"].value;  		  err = input_error('CH4 concentration',ch4,'float',1,10000);
         if err['err'] == 'fatal': return err
-	n2o      = form["n2o"].value;  		  err = input_error('N2O concentration',co2,'float',1,10000);
+	n2o      = form["n2o"].value;  		  err = input_error('N2O concentration',n2o,'float',1,10000);
         if err['err'] == 'fatal': return err
-	cfc11    = form["cfc11"].value;  	  err = input_error('CFC11 concentration',co2,'float',1,10000);
+	cfc11    = form["cfc11"].value;  	  err = input_error('CFC11 concentration',cfc11,'float',1,10000);
         if err['err'] == 'fatal': return err
-	cfc12    = form["cfc12"].value;  	  err = input_error('CFC12 concentration',co2,'float',1,10000);
+	cfc12    = form["cfc12"].value;  	  err = input_error('CFC12 concentration',cfc12,'float',1,10000);
         if err['err'] == 'fatal': return err
 
 	# parameterization
@@ -86,7 +86,10 @@ def write_params_in(form,dirname):
         if err['err'] == 'fatal': return err
 
 	# Weak temperature gradient
-        wtg         = 'y' if "wtg" in form else 'n'
+        wtg = 'n'
+        if 'forcing_opt' in form: 
+           wtg = form["forcing_opt"].value
+
         p_pbl       = form["p_pbl"].value;		input_error('p above which sounding is fixed',p_pbl,'float',0,1000);
         if err['err'] == 'fatal': return err
 

@@ -56,12 +56,23 @@ $(document).ready(function(){
    $("#stop_model").hide()              // Hide button to stop model
 
    // Decide whether to show various options depending on the URL given
-   if (getUrlVars()["sim"]==1) {$("#sim").val(1)} else { $("#adv_simulation").hide() }
-   if (getUrlVars()["rad"]==1) {$("#rad").val(1)} else { $("#adv_radiation").hide() }
-   if (getUrlVars()["gas"]==1) {$("#gas").val(1)} else { $("#adv_composition").hide() }
-   if (getUrlVars()["srf"]==1) {$("#srf").val(1)} else { $("#adv_surface").hide() }
-   if (getUrlVars()["par"]==1) {$("#par").val(1)} else { $("#adv_parameterizations").hide() }
-   if (getUrlVars()["frc"]==1) {$("#frc").val(1)} else { $("#adv_forcing").hide() }
+//   if(currentPage=="advanced.html") { }
+   if (getUrlVars()["advanced"]==1) { }
+   else {
+
+   $("#adv_simulation").hide() 
+   $("#adv_radiation").hide() 
+   $("#adv_composition").hide() 
+   $("#adv_surface").hide() 
+   $("#adv_parameterizations").hide() 
+   $("#adv_forcing").hide() }
+
+//   if (getUrlVars()["sim"]==1) {$("#sim").val(1)} else { $("#adv_simulation").hide() }
+//   if (getUrlVars()["rad"]==1) {$("#rad").val(1)} else { $("#adv_radiation").hide() }
+//   if (getUrlVars()["gas"]==1) {$("#gas").val(1)} else { $("#adv_composition").hide() }
+//   if (getUrlVars()["srf"]==1) {$("#srf").val(1)} else { $("#adv_surface").hide() }
+//   if (getUrlVars()["par"]==1) {$("#par").val(1)} else { $("#adv_parameterizations").hide() }
+//   if (getUrlVars()["frc"]==1) {$("#frc").val(1)} else { $("#adv_forcing").hide() }
 
 
    // Show advanced options ------------------------------------------------------------
@@ -333,13 +344,55 @@ $(document).ready(function(){
         step: 0.05
       });
       $( "#ugust" ).spinner({
-        step: 0.5
+        step: 1
       });
       $( "#thetaspin" ).spinner({
         step: 15
       });
       $( "#hourspin" ).spinner({
         step: 1
+      });
+      $( "#time_step" ).spinner({
+        step: 1
+      });
+      $( "#graph_time" ).spinner({
+        step: 1
+      });
+      $( "#avg_time" ).spinner({
+        step: 5
+      });
+      $( "#rad_freq" ).spinner({
+        step: 1
+      });
+      $( "#cfc11" ).spinner({
+        step: 20
+      });
+      $( "#cfc12" ).spinner({
+        step: 20
+      });
+      $( "#water_frac" ).spinner({
+        step: 0.1
+      });
+      $( "#ml_depth" ).spinner({
+        step: 0.1
+      });
+      $( "#w_max" ).spinner({
+        step: 0.1
+      });
+      $( "#w_p" ).spinner({
+        step: 20
+      });
+      $( "#w_T" ).spinner({
+        step: 1
+      });
+      $( "#w_bot" ).spinner({
+        step: 20
+      });
+      $( "#w_top" ).spinner({
+        step: 20
+      });
+      $( "#p_pbl" ).spinner({
+        step: 20
       });
    }); 
 

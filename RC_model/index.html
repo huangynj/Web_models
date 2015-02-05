@@ -118,25 +118,26 @@
          <div id="adv_simulation" class="form_input">
          <h3>Simulation parameters:</h3><input type="hidden"><br>
 
+
 	    <p>
                <span class="label">Model time-step:                </span>  
                <label><input type="number" min=1 max=20 
                              title="Minimum: 1&#10;Maximum: 20&#10;Default: 10" 
-                             name="time_step"  value="10" class="required"> minutes
+                             name="time_step" id="time_step"  value="10" class="required"> minutes
                </label>
                <span class=errcontainer></span><br>
 
                <span class="label">Time between graphical output:                </span>  
                <label><input type="number" min=1 max=48 
                              title="Minimum: 1&#10;Maximum: 48&#10;Default: 6" 
-                             name="graph_time"  value="6" class="required"> hours
+                             name="graph_time" id="graph_time" value="6" class="required"> hours
                </label>
                <span class=errcontainer></span><br>
 
                <span class="label">Graphics averaging time:                </span>  
-               <label><input type="number" min=1 max=100 
-                             title="Minimum: 1&#10;Maximum: 100&#10;Default: 10" 
-                             name="avg_time"  value="25" class="required"> days
+               <label><input type="number" min=5 max=100 
+                             title="Minimum: 5&#10;Maximum: 100&#10;Default: 10" 
+                             name="avg_time" id="avg_time"  value="25" class="required"> days
                </label>
                <span class=errcontainer></span><br></p>
 
@@ -252,7 +253,7 @@
                <p><span class="label">Time between radiation calls:         </span>  
                <label><input type="number" min=1 max=6 
                              title="Minimum: 1&#10;Maximum: 6&#10;Default: 1" 
-                             name="rad_freq"  value="1" class="required"> hours
+                             name="rad_freq" id="rad_freq"  value="1" class="required"> hours
                </label>
                <span class=errcontainer></span><br></p>
 
@@ -288,17 +289,17 @@
              <p>
 	       <span class="label">CFC-11 concentration:     </span>   
                <label>  
-                  <input type="number" min="1" max="2000" 
-                         title="Minimum: 1&#10;Maximum: 2000&#10;Default: 280"
-                         name="cfc11"   value="280.0" class=required> ppt 
+                  <input type="number" min="20" max="2000" 
+                         title="Minimum: 20&#10;Maximum: 2000&#10;Default: 280"
+                         name="cfc11" id="cfc11"  value="280.0" class=required> ppt 
                </label>
                <span class=errcontainer></span><br>
 
 	       <span class="label">CFC-12 concentration:     </span>   
                <label>  
-                  <input type="number" min="1" max="2000" 
-                         title="Minimum: 1&#10;Maximum: 2000&#10;Default: 484"
-                         name="cfc12"   value="484.0" class=required> ppt 
+                  <input type="number" min="20" max="2000" 
+                         title="Minimum: 20&#10;Maximum: 2000&#10;Default: 484"
+                         name="cfc12" id="cfc12"  value="484.0" class=required> ppt 
                </label>
                <span class=errcontainer></span><br></p>
 
@@ -321,8 +322,8 @@
 
 
            <p> <span class="label">Surface windspeed:	   </span> 
-            <label><input type="number" min=0.5 max=100 
-                          title="Minimum: 0.1&#10;Maximum: 100&#10;Default: 5" 
+            <label><input type="number" min=1 max=40 
+                          title="Minimum: 1&#10;Maximum: 40&#10;Default: 5" 
                           name="ugust" id="ugust" value="5.0" class=required> m/s
             </label>
             <span class=errcontainer></span><br>
@@ -336,14 +337,14 @@
                  <span class="label">Fraction of surf. covered by water:	   </span> 
                  <label><input type="number" min=0 max=1 
                                title="Minimum: 0&#10;Maximum: 1&#10;Default: 1" 
-                               name="water_frac" value="1.0" class=required> 
+                               name="water_frac" id="water_frac" value="1.0" class=required> 
                  </label>
                  <span class=errcontainer></span><br>
 
                  <span class="label">Mixed layer depth:	   </span> 
                  <label><input type="number" min=0.1 max=100 
                                title="Minimum: 0.1&#10;Maximum: 100&#10;Default: 1" 
-                               name="ml_depth" value="1.0" class=required> m
+                               name="ml_depth" id="ml_depth" value="1.0" class=required> m
                  </label>
                  <span class=errcontainer></span><br>
 
@@ -364,28 +365,28 @@
   	       <p>Forcing type:
                    <p>
                      <span class="chkbx"> 
-                       <label><input type="radio" name="forcing_opt" value="omega">&nbsp Specify omega profile</label><br>
+                       <label><input type="radio" name="forcing_opt" value="n">&nbsp Specify omega profile</label><br>
                      </span>
 
 	            <span class="chkbx">  
-                       <label><input type="radio" name="forcing_opt" value="wtg">&nbsp Weak Temperature gradient mode</label><br>
+                       <label><input type="radio" name="forcing_opt" value="y">&nbsp Weak Temperature gradient mode</label><br>
                     </span>
                </p>
    	       </div>
 
-  	       <div id="omega" class="force_opts">
+  	       <div id="n" class="force_opts">
      	         <p>
                    <span class="label">Extreme value of omega:	   </span> 
                    <label><input type="number" min=0 max=100 
                                title="Minimum: 0&#10;Maximum: 10&#10;Default: 0" 
-                               name="w_max" value="0.0" class=required> hPa/hr
+                               name="w_max" id="w_max" value="0.0" class=required> hPa/hr
                    </label>
                    <span class=errcontainer></span><br>
 
                    <span class="label">Pressure of maximum in forcing:	   </span> 
                    <label><input type="number" min=0 max=1000 
                                title="Minimum: 0&#10;Maximum: 1000&#10;Default: 500" 
-                               name="w_p" value="500.0" class=required> hPa
+                               name="w_p" id="w_p" value="500.0" class=required> hPa
                    </label>
                    <span class=errcontainer></span><br>
 
@@ -393,7 +394,7 @@
                    <span class="label">Period of forcing:	   </span> 
                    <label><input type="number" min=1 max=10000 
                                title="Minimum: 1&#10;Maximum: 10000&#10;Default: 10000" 
-                               name="w_T" value="1000" class=required> hPa/hr
+                               name="w_T" id="w_T" value="1000" class=required> hr
                    </label>
                    <span class=errcontainer></span><br>
 
@@ -406,25 +407,25 @@
                     
                       <label>  <input type="number" min=0 max=1000 
                              title="Minimum: 0&#10;Maximum: 1000&#10;Default: 1000" 
-                             name="w_bot" value="1000" class=required> hPa to
+                             name="w_bot" id="w_bot" value="1000" class=required> hPa to
                       </label>
                       <span class=errcontainer></span>
                  
                       
                       <label><input type="number" min=0 max=1000 
                              title="Minimum: 0&#10;Maximum: 1000&#10;Default: 100" 
-                             name="w_top" value="100" class=required> hPa
+                             name="w_top" id="w_top" value="100" class=required> hPa
                       </label>
                       <span class=errcontainer></span><br>
  
 	       </div>
 
-	       <div id="wtg" class="force_opts">
+	       <div id="y" class="force_opts">
                  <p>
                    <span class="label">Pressure above which sounding fixed:	   </span> 
                    <label><input type="number" min=1 max=1000 
                                title="Minimum: 1&#10;Maximum: 1000&#10;Default: 850" 
-                               name="p_pbl" value="850" class=required> hPa/hr
+                               name="p_pbl" id="p_pbl" value="850" class=required> hPa/hr
                    </label>
                    <span class=errcontainer></span><br>
 
