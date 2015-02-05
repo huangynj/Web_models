@@ -530,7 +530,7 @@ def submit_sim(form, path, queue,user): ########################################
         LOG('Submit simulation: user IP - %s: %s, length: %s days' % (user,form['dirname'].value,days)) 
         if datadog: statsd.increment('RC_model.submit',tags=[IPid]); count_submit +=1
 
-        if verbose == 0: LOG("form: %s" % dict((k,form[k].value) for k in form))
+        if verbose > 1: LOG("form: %s" % dict((k,form[k].value) for k in form))
 
         # Initialize JSON output structure ----------------------------
         json_output = {}
@@ -586,7 +586,7 @@ def submit_sim(form, path, queue,user): ########################################
         # Set name for cached storage of cached results
         if caching > 0:
            cache_file = cache_name(form)
-           if verbose ==0: LOG('cache file: '+cache_file)
+           if verbose >1: LOG('cache file: '+cache_file)
            if caching == 2:
                cache_file = CACHEDIR+cache_file
         else:
