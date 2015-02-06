@@ -59,7 +59,7 @@ if caching == 1:
 elif caching == 2:
    from local_cache_functions import send_to_local_cache,get_from_local_cache,cache_name
 
-### Use Gao IP to get country names of users (must have GeoIP.py and GeoIP.dat)
+### Use Geo IP to get country names of users (must have GeoIP.py and GeoIP.dat)
 GEOIP_TOOL = 1
 
 
@@ -74,16 +74,20 @@ num_threads = 3
 # max time for any given simulation (seconds)
 max_simulation_time = 3*60
 
-# max queue length before we sacrifice the machine
+# max queue length before we start to respond to health checks with 502 errors
 QMAX = 20
 
 # Time between scheduled queue checks (seconds)
 T_Qcheck = 5*60
 
-# Verbosity of log (0,0.5,1,2)
-verbose = 0
+# Verbosity of log
+verbose = 0  	# 0 = standard statistical and error output
+		# 1 = additional warnings
+		# 2 = logging of all requests
+		# 3 = include request debugging information 
+		# 4 = include queue status infromation
 
-### Error codes: ###
+### Error codes: ######################################################################################
 
 # EXCESSIVE LOAD ERRORS
 #   'TIMEOUT'		Occurs when max_simulation_time is exceeded.
@@ -112,7 +116,7 @@ verbose = 0
 
 
 
-### Some directories we need ###
+### Some directories we need ##############################################################
 
 
 # Directory where PID files and queue status are placed
@@ -224,7 +228,7 @@ def background_tasks():
    global count_cache
    global count_complete
  
-   if verbose > 1:
+   if verbose > 3:
       LOG('=== Running background tasks to check queue health and remove stale output')  
 
    # Check what the queue is up to
@@ -454,12 +458,12 @@ class model_daemon(multiprocessing.Process): ###################################
 	# Check that there is output
         if ( not os.path.isfile(dirname+'/profile.out') ):
 
-                if verbose > 0: LOG('Clean: model terminated by user or crashed')
+                if verbose > 0: LOG('>> Warning: Clean: model terminated by user or crashed')
                 try:
                    shutil.rmtree(dirname)
-                   if verbose >0: LOG('Clean: Directory removed')
+                   if verbose >1: LOG('Clean: Directory removed')
                 except:
-                   if verbose > 0: LOG('Clean: Directory cannot be removed')
+                   if verbose > 0: LOG('>> Warning: Clean: Directory cannot be removed')
 
                 return return_code
         	
@@ -497,8 +501,8 @@ def replot_sim(form, path, queue,user): ########################################
     else:
         dirname = ''
 
-    if verbose > 0: LOG('Replot: '+user+': '+dirname)
-    if verbose > 1: LOG("Inputs: %s" % dict((k,form[k].value) for k in form))
+    if verbose > 1: LOG('Replot: '+user+': '+dirname)
+    if verbose > 2: LOG("Inputs: %s" % dict((k,form[k].value) for k in form))
 
     json_output = output_control(form,dirname,json_output)
     return json.dumps(json_output,indent=1)
@@ -694,7 +698,7 @@ def submit_sim(form, path, queue,user): ########################################
         # Put in queue 
         queued_jobs[dirname] = 'run' 
         queue_order.append(dirname)
-        if datadog: statsd.increment('submission',tags=[IPid,user,'QLONG']); count_submit += 1
+        if datadog: statsd.increment('submission',tags=[IPid,user]); count_submit += 1
         submit_time = time.time()
 
         try:
@@ -741,7 +745,7 @@ def enquire_sim(form,path,queue,user): #########################################
     # Read the model status from the log file ------------------------
     model_log = dirname+'/log.out' 
    
-    if verbose > 0: LOG('Enquire: '+user+': '+dirname)
+    if verbose > 1: LOG('Enquire: '+user+': '+dirname)
     
     if os.path.exists(model_log):   # Look for model log and read
 	with open(model_log, 'r') as fin:
@@ -917,7 +921,7 @@ def clean_sim(form,path,queue,user): ###########################################
     else:
        dirname = 'nn'
 
-    if verbose > 0: LOG("Clean: "+user+': '+dirname)
+    if verbose > 1: LOG("Clean: "+user+': '+dirname)
 
     if verbose > 3:
        LOG(running_jobs)
@@ -942,7 +946,7 @@ def clean_sim(form,path,queue,user): ###########################################
             with open(dirname+'/log.out', 'w') as f:
                 f.write('kill')
          except:
-                 if verbose > 0: LOG('>> Error: clean - Missing log file')
+                 if verbose > 0: LOG('>> Warning: clean - Missing log file')
 
 
     if dirname in queued_jobs:			 # simulation is queued - remove from queue
@@ -960,7 +964,7 @@ def clean_sim(form,path,queue,user): ###########################################
             try:
               os.system("rm -rf "+dirname)
             except:
-              if verbose > 0: LOG("Can't find "+dirname+": probably already cleaned")
+              if verbose > 0: LOG(">> Warning: Can't find "+dirname+": probably already cleaned")
 
 
     return json.dumps(json_output,indent=1)
@@ -1020,7 +1024,7 @@ def get_textfile(form, path, queue,user): ######################################
 
     textfile = form["textfile"].value
    
-    if verbose > 0: LOG('Textfile: '+user+': '+textfile)
+    if verbose > 1: LOG('Textfile: '+user+': '+textfile)
     if not TEMPDIR in textfile:
         return 'You attempted to open an illegal directory'
  
@@ -1037,7 +1041,7 @@ def get_figurefile(form,path,queue,user): ######################################
     '''
     This function returns figure files.
     '''
-    if verbose > 0: LOG('Figure: '+user+': '+path)
+    if verbose > 1: LOG('Figure: '+user+': '+path)
 
     
 
@@ -1083,7 +1087,7 @@ def application(env, start_response):
         response = '200 OK'
         
         # Log the request
-        if verbose > 1:	
+        if verbose > 2:	
 	   LOG('-' * 60)
 	   LOG(method)
 	   LOG('IP = %s' % visitor_IP)
@@ -1096,7 +1100,7 @@ def application(env, start_response):
 	data = cgi.FieldStorage(fp=env['wsgi.input'], environ=env.copy(), keep_blank_values=True)
 
 
-        if verbose > 1:
+        if verbose > 0:
            LOG("form=%s" % dict((k,data[k].value) for k in data))
 
         # Decide what client is asking for ########################################
@@ -1136,7 +1140,7 @@ def application(env, start_response):
              elif "daily_tasks" in data: # ping with this to run daily tasks
                  startup_tasks()
                  ret = "running startup tasks"
-             elif "wakeup" in data: # ping with this to run daily tasks
+             elif "wakeup" in data: # ping with this to ensure model is awake
                  ret = "wake up call"
              else:                 	# Client is asking for figure file
                  ret = get_figurefile(data,path,queue,visitor_IP)
@@ -1152,9 +1156,9 @@ def application(env, start_response):
         # Write the model and queue status
         write_queue_status()
 
-        if verbose > 1: LOG("done at %s" % time.ctime(time.time()))
+        if verbose > 2: LOG("done at %s" % time.ctime(time.time()))
 
-        if verbose > 1: LOG("=== time taken: "+str((time.time()-tic)*1000)+" ms")
+        if verbose > 2: LOG("=== time taken: "+str((time.time()-tic)*1000)+" ms")
  
         # Send the IP address if sending a json object
         try:
@@ -1221,15 +1225,9 @@ def runserver(): ###############################################################
 
 
 
-	LOG('==================================================')
-	LOG('=== Starting Radiative-convective model server ===')
-        LOG('===                                               ')
-	LOG('=== Using %s threads for RC model                 ' % str(num_threads))
-	LOG('=== On %s CPUs                                    ' % str(num_CPUs))
-	LOG('===                                               ')
-	LOG('=== Max simulation time: %s seconds               ' % str(max_simulation_time))
-	LOG('=== IP address is: %s                             ' % str(IPid))
-	LOG('==================================================')
+	LOG('=== Server starting from IP: %s =======  ' %  str(IPid))
+	LOG('=== %s threads on %s CPUs                ' % (str(num_threads),str(num_CPUs)) )
+	LOG('=== Max sim. time: %s sec                ' %  str(max_simulation_time))
 
 
 
