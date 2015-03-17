@@ -29,10 +29,14 @@ from plot_model_log import plot_model_log
 ### Contact method for problems ###
 
 # For athena model - email Martin Singh (or current maintainer)
-contact = 'email mssingh@mit.edu'
+contact = 'contact your instructor'
 
 # For EdX platform - use discussion forums
 #contact = 'post in the discussion thread titled ''Radiative-convective model issues'''
+
+# Server information
+host = 'localhost'
+PORT = 8080
 
 
 ### Using datadog to send metircs? ###
@@ -69,10 +73,10 @@ GEOIP_TOOL = 1
 num_CPUs = multiprocessing.cpu_count()
 
 # Number of simultaneous model instances allowed
-num_threads = 3
+num_threads = 1
 
 # max time for any given simulation (seconds)
-max_simulation_time = 3*60
+max_simulation_time = 5*60
 
 # max queue length before we start to respond to health checks with 502 errors
 QMAX = 20
@@ -192,6 +196,8 @@ IPid = s.getsockname()[0]
 s.close()
 
 
+
+
 def LOG(x): #######################################################################################
 ### Function to send information to log file ###
 
@@ -252,7 +258,9 @@ def background_tasks():
  
 
    # schedule the next task in T_Qcheck seconds
-   threading.Timer(T_Qcheck,background_tasks).start()
+   t = threading.Timer(T_Qcheck,background_tasks)
+   t.daemon = True
+   t.start()
  
   
 
@@ -321,9 +329,9 @@ def schedule_daily_tasks():
    the_day = int(time.strftime("%d",current_time))
 
    schedule_time = time.mktime(time.strptime(the_date,"%Y %m %d"))+86400+3600
-   threading.Timer(schedule_time-time.time(), startup_tasks, [the_day,schedule_time]).start()
-
-
+   t = threading.Timer(schedule_time-time.time(), startup_tasks, [the_day,schedule_time])
+   t.daemon = True
+   t.start()
 
 
 class model_daemon(multiprocessing.Process): #############################################################
@@ -1093,8 +1101,6 @@ def application(env, start_response):
 	   LOG('IP = %s' % visitor_IP)
 	   LOG('path = %s' % path)
 
-        # set the response
-        response = '200 OK'
 
         # Get the data from the request
 	data = cgi.FieldStorage(fp=env['wsgi.input'], environ=env.copy(), keep_blank_values=True)
@@ -1151,7 +1157,7 @@ def application(env, start_response):
         else:
                 mime = "text/plain"
 
-        start_response(response, [('Content-Type', mime)])
+        start_response(response, [('Content-Type', mime),('Access-Control-Allow-Origin','*')])
         
         # Write the model and queue status
         write_queue_status()
@@ -1224,7 +1230,6 @@ def check_queue_health():
 def runserver(): ##################################################################################
 
 
-
 	LOG('=== Server starting from IP: %s =======  ' %  str(IPid))
 	LOG('=== %s threads on %s CPUs                ' % (str(num_threads),str(num_CPUs)) )
 	LOG('=== Max sim. time: %s sec                ' %  str(max_simulation_time))
@@ -1234,20 +1239,31 @@ def runserver(): ###############################################################
 	# create a thread pool and give them a queue
 	for i in range(num_threads):
 	    t = model_daemon(queue,queued_jobs,queue_order,running_jobs)
+            t.daemon = True
 	    t.start()
 
 
         # Run some startup tasks in background (delay by 10 seconds).
-        threading.Timer(10,startup_tasks).start()
+        t = threading.Timer(10,startup_tasks)
+        t.daemon = True
+        t.start()    
 
         # Check the queue
         check_queue_health()
 
    
         # Use FastCGI to be compatible with Athena
-        from flup.server.fcgi import WSGIServer
-        WSGIServer(application).run()
+        #from flup.server.fcgi import WSGIServer
+        #WSGIServer(application).run()
    
+        # start server
+        from wsgiref.simple_server import make_server
+        srv = make_server(host,PORT,application)
+        try:
+           srv.serve_forever()
+        except (KeyboardInterrupt, SystemExit):
+           LOG('=== Shutting down server ======  ')
+           sys.exit()
        
 
 	

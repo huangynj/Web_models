@@ -9,10 +9,11 @@
 // Initialize variables
 var model_terminated = 0; // has the model been terminated?
 var validator = 0;        // null value of form validation
-var url = 'python/run_rc_model.fcgi'
+//var url = 'python/run_rc_model.fcgi'
 //var url = '/12340x/eaps-rc-model-12340x/RC_model/python/run_rc_model.fcgi/application'
 //var url = './python/run_rc_model.py/application'
 //var url = '127.0.0.1:8051'
+var url = 'http://localhost:8080'
 //var url = '/rc'
 //var url = ''
 

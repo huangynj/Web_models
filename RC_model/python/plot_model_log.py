@@ -144,7 +144,10 @@ def plot_model_log(LOGFILE,REPORTDIR,GeoIP_tool):
 
    if GeoIP_tool:
       for user in user_list:
-         country_vec.append(GeoIP.country(user,'GeoIP.dat'))
+         if user == '127.0.0.1':
+            country_vec.append('local')
+         else:
+            country_vec.append(GeoIP.country(user,'GeoIP.dat'))
            
       # Get the unique countries
       countries = Counter(country_vec)

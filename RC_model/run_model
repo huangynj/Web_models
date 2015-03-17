@@ -1,0 +1,10 @@
+#!/bin/bash
+
+firefox -new-window ./index.html &
+
+cd python
+
+./run_rc_model.wsgi 
+
+cd ../
+
