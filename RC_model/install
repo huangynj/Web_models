@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install required python packages
-apt-get install python-matplotlib python-numpy python-scipy python-pylab
+apt-get install python-matplotlib python-numpy python-scipy
 
 # Install nginx
 apt-get install nginx
