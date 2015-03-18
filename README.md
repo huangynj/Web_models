@@ -13,25 +13,9 @@ eaps-12340x web-interface models
     Developed by Kerry Emanuel and collaborators.
     Web interface developed by Martin Singh & Tim Cronin with help from Isaac Chuang.
 
-    This version of the RC model is constructed to run on the athena network at MIT. 
-    The RC model requires the python package "boto" to run. To install this in your athena locker type the following commands at the terminal:
-
-    % add consult
-    % mkdir -p /mit/12.340x/.local/lib/python2.7/site-packages/
-    % fsr sa /mit/12.340x/.local/lib/python2.7/site-packages/daemon.scripts write
-    % easy_install --user -Z boto
-     
-
-    where 12.340x should be replaced with the name of the locker you are installing the RC model to.
-
-    Once this is done, the RC model should run; it will create a few directories that it needs the first time it is invoked.
-
-    To view the log files on the internet one must run a further command once the model has been invoked for a first time:
-
-    From the directory in which the git repo resides type:
-
-    chmod 777 logs/*
-    chmod 777 var/*
+    This version of the RC model is constructed to run locally through a browser. An install script describes the python packages you need to run the model.
+    Works on Ubuntu 14.04
+    No support for other ditros 
 
 
     ### Nlayer ###
@@ -40,10 +24,16 @@ eaps-12340x web-interface models
     Written by Martin Singh.
 
 
-    ### Nlayer_RC ###
+    ### Twolayer_RC ###
   
     2-layer radiative-convective model written in javascript (client side). Gray radiation, and convective adjustment.
-    Written by Martin Singh based on MATLAB version developed y Kerry Emanuel
+    Written by Martin Singh based on MATLAB version developed by Kerry Emanuel
+
+    ### Onelayer_icealbedo ###
+  
+    1-layer radiative model with crude formulation of ice-albedo feedback
+    Written in javascript (client side).
+    Written by Martin Singh
 
 
 
@@ -79,22 +69,16 @@ eaps-12340x web-interface models
             rc_model.css     - style sheet for model web interface
             output_opts.html - html snippet to display options for displaying output when simulation is finished
             output_opts.js   - javascript functions for output options page
-            start_server     - script to start python server
-            kill_server      - script to kill python server
 
             ### python/ ###
 
    	    Contains Python scripts to run server, receieve requests from client and run model
 
-                * run_rc_wsgi.py    - main script for dealing with client requests
+                * run_rc_model.wsgi  - main script for dealing with client requests
                 * write_input.py    - script that writes input files for rc model
                 * postprocess.py    - script that reads output for rc model and plots data
                 * plot_model_log.py - script that reads output for rc log file and plots it
                 * mime.py           - function to work with mime types
-
-            ### temp/ ###
-
-	    Directory for temporary files made for each user session
 
             ### model/ ###
 
@@ -107,12 +91,9 @@ eaps-12340x web-interface models
 
             ### log/ ###
 
-            Contains log files of server instance
+            Contains html log interface
         
-                * rc_model_log.txt - main log file for server
-                * rc_model.pid     - process id of server instance
-                * queue_status.txt - status of job queue
-                * reports/         - directory containing old log files and plots of the model log
+                * model_log.html
         
             ### build/ ###
  
