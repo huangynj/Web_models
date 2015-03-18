@@ -1,6 +1,7 @@
 #!/bin/bash
 
 firefox -new-window ./index.html &
+#firefox -new-window ./index.html?advanced=1 &
 
 cd python
 
